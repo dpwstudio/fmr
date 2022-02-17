@@ -1,0 +1,455 @@
+ <!-- App Capsule -->
+ <div id="appCapsule">
+
+   <div class="section mt-3 text-center">
+     <h1 class="text-primary my-0" style="font-size: 40px;">Vendre</h1>
+     <h4>Mettre un article en vente</h4>
+   </div>
+
+   <div class="listview-title mt-1">Visuel</div>
+   <ul class="listview image-listview inset">
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#picturesForm">
+         <div class="in">
+           <div>
+             Ajouter des photos
+           </div>
+         </div>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+       </a>
+     </li>
+   </ul>
+
+   <div class="listview-title mt-1">Détails</div>
+   <ul class="listview image-listview inset">
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#descriptionForm">
+         <div class="in">
+           <div>Description</div>
+         </div>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+       </a>
+     </li>
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#dimensionsForm">
+         <div class="in">
+           <div>Dimensions</div>
+         </div>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+       </a>
+     </li>
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#stateForm">
+         <div class="in">
+           <div>Etat</div>
+         </div>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+       </a>
+     </li>
+   </ul>
+
+   <div class="listview-title mt-1">Montant</div>
+   <ul class="listview image-listview inset">
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#amountForm">
+         <div class="in">
+           <div>Ajouter le prix</div>
+         </div>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+       </a>
+     </li>
+   </ul>
+
+   <div class="section">
+     <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;">Valider</button>
+   </div>
+
+ </div>
+ <!-- * App Capsule -->
+
+ <!-- Form Action Sheet -->
+ <div class="modal fade action-sheet" id="picturesForm" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h2 class="modal-title">Ajouter des photos</h2>
+       </div>
+       <div class="modal-body" style="padding: 15px;">
+         <form>
+           <div class="row mb-2">
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 1 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 2 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+           </div>
+
+           <div class="row mb-2">
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 3 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 4 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 5 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+             <div class="col-6">
+               <div class="custom-file-upload" id="fileUpload1">
+                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput">
+                   <span>
+                     <strong>
+                       <ion-icon name="camera" class="md hydrated"></ion-icon>
+                       <i>Photo 6 (obligatoire)</i>
+                     </strong>
+                   </span>
+                 </label>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- * Form Action Sheet -->
+
+ <!-- Form Action Sheet -->
+ <div class="modal fade action-sheet" id="descriptionForm" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Informations sur l'article</h5>
+       </div>
+       <div class="modal-body">
+         <div class="wide-block pt-2 pb-2">
+           <ul class="nav nav-tabs style1" role="tablist">
+             <li class="nav-item">
+               <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                 Mode
+               </a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                 Art
+               </a>
+             </li>
+           </ul>
+           <div class="tab-content mt-2">
+             <div class="tab-pane fade show active" id="home" role="tabpanel">
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="city4">Catégorie</label>
+                   <select class="form-control custom-select" id="city4">
+                     <option value="0"></option>
+                     <option value="1">Homme</option>
+                     <option value="2">Femme</option>
+                     <option value="3">Enfant</option>
+                     <option value="4">Autre</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="city4">Marque</label>
+                   <select class="form-control custom-select" id="city4">
+                     <option value="0"></option>
+                     <option value="1">Dior</option>
+                     <option value="2">Louis Vuitton</option>
+                     <option value="3">Valentino</option>
+                     <option value="4">Balenciaga</option>
+                     <option value="5">Saint Laurent</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="userid3">Modèle</label>
+                   <input type="text" class="form-control" id="userid3">
+                   <i class="clear-input">
+                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="userid3">Matière</label>
+                   <input type="text" class="form-control" id="userid3">
+                   <i class="clear-input">
+                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="userid3">Couleur</label>
+                   <input type="text" class="form-control" id="userid3">
+                   <i class="clear-input">
+                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="name3">Décrivez l'article</label>
+                   <textarea id="name3" rows="5" class="form-control"></textarea>
+                   <i class="clear-input">
+                     <ion-icon name="close-circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+             </div>
+             <div class="tab-pane fade" id="profile" role="tabpanel">
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="city4">Catégorie</label>
+                   <select class="form-control custom-select" id="city4">
+                     <option value="0"></option>
+                     <option value="1">Tableaux</option>
+                     <option value="2">Sculptures</option>
+                     <option value="3">Luminaires</option>
+                     <option value="4">Objets</option>
+                     <option value="4">Autres</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label" for="name3">Décrivez l'article</label>
+                   <textarea id="name3" rows="5" class="form-control"></textarea>
+                   <i class="clear-input">
+                     <ion-icon name="close-circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="form-group basic">
+             <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- * Form Action Sheet -->
+
+ <!-- Form Action Sheet -->
+ <div class="modal fade action-sheet" id="dimensionsForm" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Définissez les dimensions</h5>
+       </div>
+       <div class="modal-body">
+         <div class="wide-block pt-2 pb-2">
+           <form class="d-flex">
+             <div class="form-group basic mr-2">
+               <div class="input-wrapper">
+                 <label class="label text-center" for="userid3">Haut.</label>
+                 <input type="number" class="form-control text-center px-0 number" id="userid3">
+                 <i class="clear-input">
+                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                 </i>
+               </div>
+             </div>
+
+             <div class="form-group basic mr-2">
+               <div class="input-wrapper">
+                 <label class="label text-center" for="amount3">Larg.</label>
+                 <input type="number" class="form-control text-center px-0 number" id="amount3">
+                 <i class="clear-input">
+                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                 </i>
+               </div>
+             </div>
+             
+             <div class="form-group basic">
+               <div class="input-wrapper">
+                 <label class="label text-center" for="amount3">Prof.</label>
+                 <input type="number" class="form-control text-center px-0 number" id="amount3">
+                 <i class="clear-input">
+                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                 </i>
+               </div>
+             </div>
+           </form>
+           <div class="form-group basic">
+             <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- * Form Action Sheet -->
+
+ <!-- Form Action Sheet -->
+ <div class="modal fade action-sheet" id="stateForm" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Etat de l'article</h5>
+       </div>
+       <div class="modal-body" style="background:#EDEDF5; padding: 20px 0;">
+         <form>
+           <ul class="listview image-listview inset">
+             <li>
+               <a href="" class="item" data-dismiss="modal">
+                 <div class="in">
+                   <div>
+                     Jamais porté avec étiquette
+                     <footer>Un article jamais porté avec étiquette est un article qui n'a jamais été porté et
+                       présente les étiquettes originales d'achat (joindre la photo de l'étiquette).</footer>
+                   </div>
+                 </div>
+               </a>
+             </li>
+             <li>
+               <a href="" class="item" data-dismiss="modal">
+                 <div class="in">
+                   <div>
+                     Jamais porté
+                     <footer>Un article jamais porté sans étiquette est un article qui n'a jamais été porté et ne
+                       présente aucun défaut ni aucune modification.</footer>
+                   </div>
+                 </div>
+               </a>
+             </li>
+             <li>
+               <a href="" class="item" data-dismiss="modal">
+                 <div class="in">
+                   <div>
+                     Très bon état
+                     <footer>Un article en très bon état est un article d'occasion peu utilisé et très bien entretenu,
+                       pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le descriptif
+                       et visibles en photo).</footer>
+                   </div>
+                 </div>
+               </a>
+             </li>
+             <li>
+               <a href="" class="item" data-dismiss="modal">
+                 <div class="in">
+                   <div>
+                     Bon état
+                     <footer>Un article en bon état est un article d'occasion porté et bien entretenu. Si l'article
+                       présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en photo.
+                     </footer>
+                   </div>
+                 </div>
+               </a>
+             </li>
+             <li>
+               <a href="" class="item" data-dismiss="modal">
+                 <div class="in">
+                   <div>
+                     Correct
+                     <footer>Un article en état correct est un article d'occasion porté fréquemment pouvant présenter
+                       des défauts (mentionnés dans le descriptif et visibles en photo).</footer>
+                   </div>
+                 </div>
+               </a>
+             </li>
+           </ul>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- * Form Action Sheet -->
+
+ <!-- Form Action Sheet -->
+ <div class="modal fade action-sheet" id="amountForm" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Prix de l'article</h5>
+       </div>
+       <div class="modal-body">
+         <div class="action-sheet-content">
+           <form class="d-flex">
+             <div class="form-group basic mr-4">
+               <div class="input-wrapper">
+                 <label class="label text-center" for="userid3">Prix</label>
+                 <input type="number" class="form-control text-center px-0 number" id="userid3">
+                 <i class="clear-input">
+                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                 </i>
+               </div>
+             </div>
+
+             <div class="form-group basic">
+               <div class="input-wrapper">
+                 <label class="label text-center" for="amount3">Vous gagnez</label>
+                 <input type="number" class="form-control" id="amount3" disabled>
+                 <i class="clear-input">
+                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                 </i>
+               </div>
+             </div>
+
+           </form>
+           <div class="form-group basic">
+             <button type="button" class="btn btn-primary btn-block btn-lg mt-2" data-dismiss="modal">Valider</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- * Form Action Sheet -->

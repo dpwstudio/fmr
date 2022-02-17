@@ -1,0 +1,38 @@
+.total {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.wallet-card {
+  padding: 10px 24px;
+  border-top: 6px solid #ddd1b6;
+}
+
+.title-box {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0;
+  color: #cbba96;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  padding: 10px 13px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.90);
+  border-radius: 10px 0 0 10px;
+  text-align: right;
+
+  h1 {
+    font-size: 25px;
+    margin: 0;
+  }
+
+  span {
+    font-size: 13px;
+  }
+}

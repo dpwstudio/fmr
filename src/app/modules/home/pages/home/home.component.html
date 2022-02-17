@@ -1,0 +1,480 @@
+<app-loader></app-loader>
+<!-- App Capsule -->
+<div id="appCapsule">
+
+  <div class="section full">
+
+    <owl-carousel-o [options]="carouselFullOptions">
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/slide/slide1.png" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <div class="item">
+          <img src="assets/img/slide/slide2.png" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/slide/slide3.png" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+
+  </div>
+  <!-- Wallet Card -->
+  <div class="section position-absolute" style="top: 280px; width: 100%;">
+    <div class="wallet-card">
+      <!-- Balance -->
+      <div class="balance my-0">
+        <div class="left">
+          <h6 class="title-box">Découvrez l'univers</h6>
+          <span class="title">de l'art et de la mode éphémères.</span>
+        </div>
+      </div>
+      <!-- * Balance -->
+    </div>
+  </div>
+  <!-- Wallet Card -->
+
+  <!-- Send Money -->
+  <div class="section full mt-4" style="margin-top: 70px !important;">
+    <div class="section-heading padding">
+      <h2 class="title">Catégories</h2>
+      <a [routerLink]="['/shop']" routerLinkActive="active" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselSmallOptions">
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/sac.png" alt="img" class="imaged w-48">
+              <strong>Sacs</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/clothes.png" alt="img" class="imaged w-48">
+              <strong>Vêtements</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/sneakers.png" alt="img" class="imaged w-48">
+              <strong>Sneakers</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/watches.png" alt="img" class="imaged w-48">
+              <strong>Montres</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/chapeau.png" alt="img" class="imaged w-48">
+              <strong>Autres</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/art/artdeco.png" alt="img" class="imaged w-48">
+              <strong>Sculptures</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/art/artvisuel.png" alt="img" class="imaged w-48">
+              <strong>Tableaux</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/art/objets.png" alt="img" class="imaged w-48">
+              <strong>Objets</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+            <div class="user-card">
+              <img src="assets/img/categorie/art/luminaire.png" alt="img" class="imaged w-48">
+              <strong>Luminaires</strong>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- * Send Money -->
+
+  <!-- News -->
+  <div class="section full mt-4 mb-3">
+    <div class="section-heading padding">
+      <h2 class="title">Nouveautés</h2>
+      <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselMultipleOptions">
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a [routerLink]="['/product-detail']" routerLinkActive="active">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/saclv.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">2150 €</div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Louis Vuitton</h1>
+                <p>Sac bandoulière</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/sacdior.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">2150 €</div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Dior</h1>
+                <p>Sac en toile</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-template>
+
+      <!-- * item -->
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/bonnet.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">2150 €</div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Chanel</h1>
+                <p>Bonnet en cachemire</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/sneakers.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">650 €</div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Balenciaga</h1>
+                <p>Baskets montantes en cuir</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- * News -->
+
+  <!-- News -->
+  <div class="section full mt-4 mb-3">
+    <div class="section-heading padding">
+      <h2 class="title">Les dressings</h2>
+      <a href="app-blog.html" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselSingleOptions">
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/dressing/dressing1.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>Le dressing de Caro</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <div class="item">
+          <img src="assets/img/dressing/dressing2.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>Le dressing d'Estelle</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/dressing/dressing3.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>Le dressing d'Ava</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- News -->
+  <div class="section full mt-4 mb-5">
+    <div class="section-heading padding">
+      <h2 class="title">Baisse de prix</h2>
+      <a href="app-blog.html" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselMultipleOptions">
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/saclv.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">
+                  <span class="original mr-1" style="text-decoration: line-through; font-size: 10px;">2150 €</span>
+                  <span class="text-danger">1650 €</span>
+                </div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Louis Vuitton</h1>
+                <p>Sac bandoulière</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/sacdior.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">
+                  <span class="original mr-1" style="text-decoration: line-through; font-size: 10px;">2150 €</span>
+                  <span class="text-danger">1650 €</span>
+                </div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Dior</h1>
+                <p>Sac en toile</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-template>
+
+      <!-- * item -->
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/bonnet.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">
+                  <span class="original mr-1" style="text-decoration: line-through; font-size: 10px;">350 €</span>
+                  <span class="text-danger">225,80 €</span>
+                </div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Chanel</h1>
+                <p>Bonnet en cachemire</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <!-- item -->
+        <div class="item">
+          <a href="app-blog-post.html">
+            <div class="blog-card">
+              <img src="assets/img/annonce/sacs/sneakers.jpeg" alt="image" class="imaged w-100">
+              <div class="bill-box">
+                <div class="price">
+                  <span class="original mr-1" style="text-decoration: line-through; font-size: 10px;">650 €</span>
+                  <span class="text-danger">450 €</span>
+                </div>
+                <h1 style="font-size: 15px; text-transform: uppercase;">Balenciaga</h1>
+                <p>Baskets montantes en cuir</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                    <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                  </div>
+                  <a href="#" class="btn btn-icon btn-primary me-1">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- * item -->
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- * News -->
+  <!-- News -->
+  <div class="section full mt-4 mb-5">
+    <div class="section-heading padding">
+      <h2 class="title">Les galeries</h2>
+      <a href="app-blog.html" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselSingleOptions">
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/galerie/galerie1.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>La galerie de Caro</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+
+        <div class="item">
+          <img src="assets/img/galerie/galerie2.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>La galerie de Maxime</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="assets/img/galerie/galerie3.png" alt="alt" class="imaged w-100">
+          <div class="box">
+            <h1>La galerie d'Ava</h1>
+            <span>Membre depuis le 01/02/2021</span>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- News -->
+</div>
+<!-- * App Capsule -->

@@ -1,0 +1,34 @@
+  <div class="appBottomMenu">
+    <a [routerLink]="['/home']" routerLinkActive="active" class="item">
+      <div class="col">
+        <ion-icon name="home-outline"></ion-icon>
+        <!-- <strong>Accueil</strong> -->
+      </div>
+    </a>
+    <a [routerLink]="['/categories']" routerLinkActive="active" class="item">
+      <div class="col">
+        <ion-icon name="grid-outline"></ion-icon>
+        <!-- <strong>Catégories</strong> -->
+      </div>
+    </a>
+    <a [routerLink]="['/post']" routerLinkActive="router-link-active"  class="item">
+      <div class="col">
+        <div class="action-button large">
+          <i class="icon ion-md-add"></i>
+        </div>
+      </div>
+    </a>
+    <a [routerLink]="['/profile']" routerLinkActive="active"  class="item">
+      <div class="col">
+        <ion-icon name="person-outline"></ion-icon>
+        <!-- <strong>Profil</strong> -->
+      </div>
+    </a>
+    <a [routerLink]="['/cart']" routerLinkActive="active"  class="item">
+      <div class="col">
+        <ion-icon name="bag-outline"></ion-icon>
+        <span class="badge badge-danger">6</span>
+        <!-- <strong>Panier</strong> -->
+      </div>
+    </a>
+  </div>

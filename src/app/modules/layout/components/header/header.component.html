@@ -1,0 +1,169 @@
+  <!-- App Header -->
+  <div class="appHeader">
+    <div class="left">
+      <a href="#" class="headerButton" data-toggle="modal" data-target="#sidebarPanel">
+        <ion-icon name="reorder-two-outline"></ion-icon>
+      </a>
+    </div>
+    <div class="pageTitle">
+      <a href="#">
+        <img src="assets/img/logo.png" alt="logo" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <a href="app-notifications.html" class="headerButton">
+        <ion-icon class="icon" name="notifications-outline"></ion-icon>
+        <span class="badge badge-danger">4</span>
+      </a>
+    </div>
+  </div>
+  <!-- * App Header -->
+
+
+  <!-- App Sidebar -->
+  <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <!-- profile box -->
+          <div class="profileBox pt-2 pb-2">
+            <div class="image-wrapper">
+              <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="imaged  w36">
+            </div>
+            <div class="in">
+              <strong>AVA</strong>
+            </div>
+            <a href="#" class="btn btn-link btn-icon sidebar-close" data-dismiss="modal">
+              <ion-icon name="close-outline"></ion-icon>
+            </a>
+          </div>
+          <!-- * profile box -->
+          <!-- balance -->
+          <div class="sidebar-balance">
+            <div class="listview-title">Total Panier</div>
+            <div class="in">
+              <h1 class="amount">1380,08 €</h1>
+            </div>
+          </div>
+          <!-- * balance -->
+
+          <!-- action group -->
+          <div class="action-group">
+            <a [routerLink]="['/cart']" routerLinkActive="router-link-active" class="action-button"
+              data-dismiss="modal">
+              <div class="in">
+                <div class="iconbox">
+                  <ion-icon name="bag-outline"></ion-icon>
+                </div>
+                Panier
+              </div>
+            </a>
+            <a [routerLink]="['/post']" routerLinkActive="router-link-active" class="action-button"
+              data-dismiss="modal">
+              <div class="in">
+                <div class="iconbox">
+                  <ion-icon name="add-outline"></ion-icon>
+                </div>
+                Vendre
+              </div>
+            </a>
+            <a [routerLink]="['/categories']" routerLinkActive="router-link-active" class="action-button"
+              data-dismiss="modal">
+              <div class="in">
+                <div class="iconbox">
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+                Acheter
+              </div>
+            </a>
+          </div>
+          <!-- * action group -->
+
+          <!-- menu -->
+          <div class="listview-title mt-1">Menu</div>
+          <ul class="listview flush transparent no-line image-listview">
+            <li>
+              <a href="#" class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="notifications-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Notifications
+                  <span class="badge badge-primary">10</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Nouveautés
+                </div>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/categories']" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="grid-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Catégories
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="arrow-down-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Baisse de prix
+                </div>
+              </a>
+            </li>
+          </ul>
+          <!-- * menu -->
+
+          <!-- others -->
+          <div class="listview-title mt-1">Autres</div>
+          <ul class="listview flush transparent no-line image-listview">
+            <li>
+              <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Profile
+                </div>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/contact']" routerLinkActive="router-link-active"  class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Contact
+                </div>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="log-out-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Log out
+                </div>
+              </a>
+            </li>
+          </ul>
+          <!-- * others -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- * App Sidebar -->

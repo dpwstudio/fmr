@@ -1,0 +1,300 @@
+    <!-- App Capsule -->
+    <div id="appCapsule">
+      <div class="section full">
+
+        <owl-carousel-o [options]="carouselFullOptions">
+          <ng-template carouselSlide>
+            <div class="item">
+              <img src="assets/img/product/img1.jpeg" alt="alt" class="imaged w-100 square">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+
+            <div class="item">
+              <img src="assets/img/product/img2.jpeg" alt="alt" class="imaged w-100 square">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="item">
+              <img src="assets/img/product/img3.jpeg" alt="alt" class="imaged w-100 square">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="item">
+              <img src="assets/img/product/img4.jpeg" alt="alt" class="imaged w-100 square">
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+
+      </div>
+      <div class="section mt-2">
+        <h1 class="my-0" style="font-size: 40px;">DIOR</h1>
+        <p style="font-size: 17px;">Sac à main en cuir d'agneau Cannage rose vif</p>
+        <div class="blog-header-info mt-2 mb-2">
+          <div>
+            <a href="#">
+              <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w48 rounded mr-05">
+              Dressing de Ava
+            </a>
+          </div>
+          <div>
+            24/09/2021
+          </div>
+        </div>
+      </div>
+
+      <div class="section full mt-4">
+        <div class="section-heading padding">
+          <h2 class="title">Détails de l'article</h2>
+        </div>
+
+        <div class="accordion" id="accordionExample1">
+
+          <div class="item">
+            <div class="accordion-header">
+              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion1"
+                aria-expanded="false">
+                <h2 class="my-0">Description</h2>
+              </button>
+            </div>
+            <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1" style="">
+              <div class="accordion-content">
+                Le micro sac Lady Dior incarne parfaitement la vision d'élégance et de beauté de la maison Dior.
+                Confectionnée en cuir d'agneau rose vif à surpiqûres Cannage, sa silhouette iconique est rehaussée du
+                charm D.I.O.R.. Ce micro sac Lady Dior accueillera vos petits essentiels. Il se portera aussi bien à la
+                main grâce à ses anses, qu'épaule ou crossbody grâce à sa bandoulière ajustable et amovible.
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="accordion-header">
+              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion2">
+                <h2 class="my-0">Information Taille & Coupe</h2>
+              </button>
+            </div>
+            <div id="accordion2" class="accordion-body collapse" data-parent="#accordionExample1">
+              <div class="accordion-content">
+                Dimensions : 12 x 10 x 5 cm
+                La taille convient parfaitement aux AirPods Pro, rouge à lèvres et clés
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="accordion-header">
+              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion3"
+                aria-expanded="false">
+                <h2 class="my-0">Livraison & Retours</h2>
+              </button>
+            </div>
+            <div id="accordion3" class="accordion-body collapse" data-parent="#accordionExample1" style="">
+              <div class="accordion-content">
+                <h3>Retours sous 30 jours offerts</h3>
+                <p>
+                  Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 30 jours
+                  à compter de sa date de réception. Pour plus d'informations consultez notre FAQ.
+                </p>
+
+                <h3>Livraison standard offerte</h3>
+                <ul>
+                  <li>Dior vous propose deux modes de livraisons rapides et sécurisés</li>
+                  <li>Livraison standard avec UPS (3 à 4 jours ouvrés): offerte</li>
+                  <li>Livraison express avec UPS (1 à 2 jours ouvrés): 9,95€</li>
+                  <li>Les délais de livraison sont estimés à partir de l'expédition de votre commande.</li>
+                </ul>
+                <h3>Expédition sous 24h</h3>
+                <p>
+                  Les commandes effectuées avant midi sont préparées et envoyées le même jour ; celles effectuées après
+                  midi sont envoyées dans les 24 heures
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="section mt-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <a href="crypto-exchange.html" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
+              </div>
+              <div class="col">
+                <a href="crypto-exchange.html" class="btn btn-block btn-lg btn-primary">Ajouter</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- News -->
+      <div class="section full mt-4 mb-5">
+        <div class="section-heading padding">
+          <h2 class="title">Articles suggérés</h2>
+          <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
+        </div>
+        <owl-carousel-o [options]="carouselMultipleOptions">
+          <ng-template carouselSlide>
+
+            <!-- item -->
+            <div class="item">
+              <a [routerLink]="['/product-detail']" routerLinkActive="active">
+                <div class="blog-card">
+                  <img src="assets/img/annonce/sacs/saclv.jpeg" alt="image" class="imaged w-100">
+                  <div class="bill-box">
+                    <div class="price">2150 €</div>
+                    <h1 style="font-size: 15px; text-transform: uppercase;">Louis Vuitton</h1>
+                    <p>Sac bandoulière</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      </div>
+                      <a href="#" class="btn btn-icon btn-primary me-1">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- * item -->
+          </ng-template>
+          <ng-template carouselSlide>
+
+            <!-- item -->
+            <div class="item">
+              <a href="app-blog-post.html">
+                <div class="blog-card">
+                  <img src="assets/img/annonce/sacs/sacdior.jpeg" alt="image" class="imaged w-100">
+                  <div class="bill-box">
+                    <div class="price">2150 €</div>
+                    <h1 style="font-size: 15px; text-transform: uppercase;">Dior</h1>
+                    <p>Sac en toile</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      </div>
+                      <a href="#" class="btn btn-icon btn-primary me-1">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </ng-template>
+
+          <!-- * item -->
+          <ng-template carouselSlide>
+
+            <!-- item -->
+            <div class="item">
+              <a href="app-blog-post.html">
+                <div class="blog-card">
+                  <img src="assets/img/annonce/sacs/bonnet.jpeg" alt="image" class="imaged w-100">
+                  <div class="bill-box">
+                    <div class="price">2150 €</div>
+                    <h1 style="font-size: 15px; text-transform: uppercase;">Chanel</h1>
+                    <p>Bonnet en cachemire</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      </div>
+                      <a href="#" class="btn btn-icon btn-primary me-1">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- * item -->
+          </ng-template>
+          <ng-template carouselSlide>
+
+            <!-- item -->
+            <div class="item">
+              <a href="app-blog-post.html">
+                <div class="blog-card">
+                  <img src="assets/img/annonce/sacs/sneakers.jpeg" alt="image" class="imaged w-100">
+                  <div class="bill-box">
+                    <div class="price">650 €</div>
+                    <h1 style="font-size: 15px; text-transform: uppercase;">Balenciaga</h1>
+                    <p>Baskets montantes en cuir</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      </div>
+                      <a href="#" class="btn btn-icon btn-primary me-1">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- * item -->
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <!-- * News -->
+
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- Share Action Sheet -->
+    <div class="modal fade action-sheet inset" id="actionSheetShare" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Share with</h5>
+          </div>
+          <div class="modal-body">
+            <ul class="action-button-list">
+              <li>
+                <a href="#" class="btn btn-list" data-dismiss="modal">
+                  <span>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    Facebook
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="btn btn-list" data-dismiss="modal">
+                  <span>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                    Twitter
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="btn btn-list" data-dismiss="modal">
+                  <span>
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    Instagram
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="btn btn-list" data-dismiss="modal">
+                  <span>
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                    Linkedin
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- * Share Action Sheet -->

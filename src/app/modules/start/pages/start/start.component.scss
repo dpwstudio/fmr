@@ -1,0 +1,16 @@
+.content {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1000;
+  background: url("../../../../../assets/img/splash.png") no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  .splash-page {
+	 text-align: justify;
+  }
+
+  .wide-block {
+	  background: #ffffffe8;
+  }
+}

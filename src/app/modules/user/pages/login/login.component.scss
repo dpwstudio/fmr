@@ -10,9 +10,25 @@
     background: white;
     text-align: center;
     border-top: 8px solid #dfd3b9;
-    margin: 10px;
+    margin: 16px;
     border-radius: 30px;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+
+    .btn-social {
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%) !important;
+      border-radius: 8px;
+      min-width: 150px;
+    }
+
+    .google {
+      color: #a0a0a0;
+    }
+
+    .facebook {
+      color: #1b77f2;
+    }
 
     .form-button-group {
       a {

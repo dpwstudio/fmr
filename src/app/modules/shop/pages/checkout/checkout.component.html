@@ -93,8 +93,8 @@
             'verso': verso
             }">
              <div class="card">
-               <div class="title">CREDIT CARD</div>
-               <div class="input-number"><span class="title-number">CARD NUMBER</span>
+               <div class="title">CARTE DE CREDIT</div>
+               <div class="input-number"><span class="title-number">NUMERO DE CARTE</span>
                  <div class="inputs-number">
                    <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
                    <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
@@ -102,7 +102,7 @@
                    <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
                  </div>
                  <div class="selects-date selecters">
-                   <div class="day-select mr-1"><span>DAY</span>
+                   <div class="day-select mr-1"><span>MOIS</span>
                      <select id="dates">
                        <option value="">1</option>
                        <option value="">2</option>
@@ -136,7 +136,7 @@
                        <option value="">30</option>
                      </select>
                    </div>
-                   <div class="year-select"><span>YEAR</span>
+                   <div class="year-select"><span>ANNEE</span>
                      <select id="dates">
                        <option value="">17</option>
                        <option value="">18</option>
@@ -160,7 +160,9 @@
                    </div>
                  </div>
                </div>
-               <div class="name"><span>NOM PRENOM</span></div>
+               <div class="name">
+                 NOM PRENOM
+               </div>
              </div>
              <div class="card-back">
                <div class="tire"></div>
@@ -170,7 +172,7 @@
                <div class="chip-card"></div>
              </div>
            </div>
-           <div class="button-sent mt-2">
+           <div class="button-sent mt-3">
              <button (click)="turnCard('recto')" class="btn btn-icon btn-primary mr-2">
                <ion-icon name="return-down-back-outline"></ion-icon>
              </button>
@@ -189,33 +191,33 @@
  <!-- * Form Action Sheet -->
 
  <div class="modal fade action-sheet" id="walletForm" tabindex="-1" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title">Wallet</h5>
-          </div>
-          <div class="modal-body">
-              <div class="action-sheet-content">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Wallet</h5>
+       </div>
+       <div class="modal-body">
+         <div class="action-sheet-content">
 
-                  <form>
-                      <div class="form-group basic">
-                          <div class="input-wrapper">
-                              <label class="label" for="account1">Liste des cartes</label>
-                              <select class="form-control custom-select" id="account1">
-                                  <option value="0">Visa (*** 5019)</option>
-                                  <option value="1">Mastercard (*** 6212)</option>
-                                  <option value="2">Amex (*** 5021)</option>
-                              </select>
-                          </div>
-                          <div class="input-info">Sélectionner une carte</div>
-                      </div>
-                      <div class="form-group basic">
-                          <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Valider</button>
-                      </div>
-                  </form>
+           <form>
+             <div class="form-group basic">
+               <div class="input-wrapper">
+                 <label class="label" for="account1">Liste des cartes</label>
+                 <select class="form-control custom-select" id="account1">
+                   <option value="0">Visa (*** 5019)</option>
+                   <option value="1">Mastercard (*** 6212)</option>
+                   <option value="2">Amex (*** 5021)</option>
+                 </select>
+               </div>
+               <div class="input-info">Sélectionner une carte</div>
+             </div>
+             <div class="form-group basic">
+               <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Valider</button>
+             </div>
+           </form>
 
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

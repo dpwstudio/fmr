@@ -14582,14 +14582,13 @@ a.text-dark {
 
 .form-group.basic .form-control,
 .form-group.basic .custom-select {
-  background: transparent;
+  background: #f1f1f6;
   border: none;
-  border-bottom: 1px solid #DCDCE9;
-  padding: 0 30px 0 0;
-  border-radius: 0;
+  padding: 0 10px;
+  border-radius: 6px;
   height: 40px;
   color: #27173E;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .form-group.basic .form-control:focus,
@@ -14711,11 +14710,10 @@ a.text-dark {
   bottom: 0;
   right: 0;
   overflow: hidden;
-  background-color: rgba(220, 220, 233, 0.2);
+  background-color: #f1f1f6;
   background-size: 45px 58px;
-  border: 1px solid #DCDCE9;
   border-radius: 10px;
-  margin: 0
+  margin: 0;
 }
 
 .custom-file-upload label span {
@@ -16982,7 +16980,7 @@ body.dark-mode .cookies-box {
 }
 
 .listview>li footer {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 500;
 }
 

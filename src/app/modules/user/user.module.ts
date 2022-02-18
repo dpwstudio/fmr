@@ -10,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     FormAddressDeliveryComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SettingsComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

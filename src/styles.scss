@@ -2121,7 +2121,6 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.5em + .75rem + 2px);
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -2154,27 +2153,42 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #6c757d;
+  color: #b6b6b6;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 1;
 }
 
 .form-control::-moz-placeholder {
-  color: #6c757d;
+  color: #b6b6b6;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #6c757d;
+  color: #b6b6b6;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 1;
 }
 
 .form-control::-ms-input-placeholder {
-  color: #6c757d;
+  color: #b6b6b6;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #6c757d;
+  color: #b6b6b6;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 1;
 }
 
@@ -4152,7 +4166,6 @@ input[type=submit].btn-block {
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: calc(1.5em + .75rem + 2px);
   padding: .375rem 1.75rem .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -12640,12 +12653,12 @@ a.badge-dark {
 }
 
 .listview .text-small {
-  font-size: 13px;
+  font-size: 16px !important;
   color: #958d9e;
 }
 
 .listview .text-xsmall {
-  font-size: 11px;
+  font-size: 11px !important;
   color: #A9ABAD;
 }
 
@@ -14585,9 +14598,8 @@ a.text-dark {
 .form-group.basic .custom-select {
   background: #f1f1f6;
   border: none;
-  padding: 0 10px;
+  padding: 10px;
   border-radius: 6px;
-  height: 40px;
   color: #27173E;
   font-size: 18px;
 }
@@ -14600,7 +14612,7 @@ a.text-dark {
 
 .form-group.basic textarea.form-control {
   height: auto;
-  padding: 7px 40px 7px 0;
+  padding: 10px;
 }
 
 .form-group.basic.animated .label {
@@ -17013,22 +17025,6 @@ body.dark-mode .cookies-box {
   transform: rotateY(180deg) !important;
 }
 
-::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 #area {
   display: flex;
   align-items: center;
@@ -17036,6 +17032,22 @@ body.dark-mode .cookies-box {
   overflow: hidden;
   perspective: 500px;
   flex-direction: column;
+
+  ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  ::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  :-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  :-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
 
   .master-card {
     padding: 10px;

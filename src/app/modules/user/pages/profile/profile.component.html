@@ -19,43 +19,14 @@
          <div class="in">
            <div>
              Mode sombre
-
-             {{darkMode}}
            </div>
            <div class="custom-control custom-switch">
-             <input type="checkbox" class="custom-control-input" id="customSwitch3" (click)="showDarkTheme()" [(ngModel)]="darkMode" />
+             <input type="checkbox" class="custom-control-input" id="customSwitch3" (click)="showDarkTheme()"
+               [(ngModel)]="darkMode" />
              <label class="custom-control-label" for="customSwitch3"></label>
            </div>
          </div>
        </div>
-     </li>
-   </ul>
-
-   <div class="listview-title mt-1">Notifications</div>
-   <ul class="listview image-listview inset">
-     <li>
-       <div class="item">
-         <div class="in">
-           <div>
-             Paiement alerte
-             <div class="text-muted" style="font-size: 14px;">
-              Envoyer une notification dès la réception d'un nouveau paiement
-             </div>
-           </div>
-           <div class="custom-control custom-switch">
-             <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
-             <label class="custom-control-label" for="customSwitch4"></label>
-           </div>
-         </div>
-       </div>
-     </li>
-     <li>
-       <a href="#" class="item">
-         <div class="in">
-           <div>Son notification</div>
-           <span class="text-primary">Beep</span>
-         </div>
-       </a>
      </li>
    </ul>
 
@@ -80,6 +51,34 @@
          <div class="in">
            <div>Adresse</div>
            <span class="text-primary">Modifier</span>
+         </div>
+       </a>
+     </li>
+   </ul>
+
+   <div class="listview-title mt-1">Notifications</div>
+   <ul class="listview image-listview inset">
+     <li>
+       <div class="item">
+         <div class="in">
+           <div>
+             Paiement alerte
+             <div class="text-muted" style="font-size: 14px;">
+               Envoyer une notification dès la réception d'un nouveau paiement
+             </div>
+           </div>
+           <div class="custom-control custom-switch">
+             <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
+             <label class="custom-control-label" for="customSwitch4"></label>
+           </div>
+         </div>
+       </div>
+     </li>
+     <li>
+       <a href="#" class="item">
+         <div class="in">
+           <div>Son notification</div>
+           <span class="text-primary">Beep</span>
          </div>
        </a>
      </li>

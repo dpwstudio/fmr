@@ -198,9 +198,10 @@
              <div class="tab-pane fade show active" id="home" role="tabpanel">
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="city4">Catégorie</label>
                    <select class="form-control custom-select" id="city4">
-                     <option value="0"></option>
+                     <option value="" selected disabled hidden>
+                       <span class="placeholder">Sélectionner une catégorie</span>
+                     </option>
                      <option value="1">Homme</option>
                      <option value="2">Femme</option>
                      <option value="3">Enfant</option>
@@ -210,9 +211,10 @@
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="city4">Marque</label>
                    <select class="form-control custom-select" id="city4">
-                     <option value="0"></option>
+                     <option value="" selected disabled hidden>
+                       <span class="placeholder">Sélectionner une marque</span>
+                     </option>
                      <option value="1">Dior</option>
                      <option value="2">Louis Vuitton</option>
                      <option value="3">Valentino</option>
@@ -223,26 +225,22 @@
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="userid3">Modèle</label>
-                   <input type="text" class="form-control" id="userid3">
+                   <input type="text" class="form-control" id="userid3" placeholder="Modèle">
                  </div>
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="userid3">Matière</label>
-                   <input type="text" class="form-control" id="userid3">
+                   <input type="text" class="form-control" id="userid3" placeholder="Matière">
                  </div>
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="userid3">Couleur</label>
-                   <input type="text" class="form-control" id="userid3">
+                   <input type="text" class="form-control" id="userid3" placeholder="Couleur">
                  </div>
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="name3">Décrivez l'article</label>
-                   <textarea id="name3" rows="3" class="form-control"></textarea>
+                   <textarea id="name3" rows="3" class="form-control" placeholder="Décrivez l'article"></textarea>
                    <i class="clear-input">
                      <ion-icon name="close-circle"></ion-icon>
                    </i>
@@ -252,9 +250,10 @@
              <div class="tab-pane fade" id="profile" role="tabpanel">
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="city4">Catégorie</label>
                    <select class="form-control custom-select" id="city4">
-                     <option value="0"></option>
+                     <option value="" selected disabled hidden>
+                       <span class="placeholder">Sélectionner une catégorie</span>
+                     </option>
                      <option value="1">Tableaux</option>
                      <option value="2">Sculptures</option>
                      <option value="3">Luminaires</option>
@@ -265,8 +264,7 @@
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <label class="label" for="name3">Décrivez l'article</label>
-                   <textarea id="name3" rows="3" class="form-control"></textarea>
+                   <textarea id="name3" rows="3" class="form-control" placeholder="Décrivez l'article"></textarea>
                  </div>
                </div>
              </div>
@@ -296,8 +294,7 @@
            <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <label class="label text-center" for="userid3">Haut.</label>
-                 <input type="number" class="form-control text-center px-0 number" id="userid3">
+                 <input type="number" class="form-control text-center px-0" id="userid3" placeholder="Haut.">
                  <i class="clear-input">
                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                  </i>
@@ -306,8 +303,7 @@
 
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <label class="label text-center" for="amount3">Larg.</label>
-                 <input type="number" class="form-control text-center px-0 number" id="amount3">
+                 <input type="number" class="form-control text-center px-0" id="amount3" placeholder="Larg.">
                  <i class="clear-input">
                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                  </i>
@@ -316,8 +312,7 @@
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <label class="label text-center" for="amount3">Prof.</label>
-                 <input type="number" class="form-control text-center px-0 number" id="amount3">
+                 <input type="number" class="form-control text-center px-0" id="amount3" placeholder="Prof.">
                  <i class="clear-input">
                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                  </i>
@@ -495,8 +490,7 @@
            <form class="d-flex">
              <div class="form-group basic mr-4">
                <div class="input-wrapper">
-                 <label class="label text-center" for="userid3">Prix</label>
-                 <input type="number" class="form-control text-center px-0 number" id="userid3">
+                 <input type="number" class="form-control text-center px-0" id="userid3" placeholder="Prix">
                  <i class="clear-input">
                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                  </i>
@@ -505,8 +499,8 @@
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <label class="label text-center" for="amount3">Vous gagnez</label>
-                 <input type="number" class="form-control" id="amount3" disabled>
+                 <input type="number" class="form-control text-center px-0" id="amount3" disabled
+                   placeholder="Vous gagnez">
                  <i class="clear-input">
                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                  </i>

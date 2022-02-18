@@ -28,11 +28,19 @@
 
       </div>
       <div class="section mt-2">
-        <h1 class="my-0" style="font-size: 40px;">DIOR</h1>
-        <p style="font-size: 17px;">Sac à main en cuir d'agneau Cannage rose vif</p>
+        <div class="d-flex align-items-center justify-content-between">
+          <h1 class="my-0" style="font-size: 40px;">DIOR</h1>
+          <div class="action d-flex align-items-center">
+            <span class="number d-flex align-items-center mr-1">
+              <ion-icon name="heart-outline" style="font-size: 25px; margin-right: 5px;"></ion-icon>
+            </span>
+            <ion-icon name="share-outline" style="font-size: 25px"></ion-icon>
+          </div>
+        </div>
+        <p style="font-size: 19px;">Sac à main en cuir d'agneau Cannage rose vif</p>
         <div class="blog-header-info mt-2 mb-2">
           <div>
-            <a href="#">
+            <a href="#" class="text-dark">
               <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w48 rounded mr-05">
               Dressing de Ava
             </a>
@@ -43,13 +51,12 @@
         </div>
       </div>
 
-      <div class="section full mt-4">
-        <div class="section-heading padding">
+      <div class="section mt-4">
+        <div class="section-heading">
           <h2 class="title">Détails de l'article</h2>
         </div>
 
         <div class="accordion" id="accordionExample1">
-
           <div class="item">
             <div class="accordion-header">
               <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion1"
@@ -120,10 +127,11 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <a href="crypto-exchange.html" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
+                <a href="#" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
               </div>
               <div class="col">
-                <a href="crypto-exchange.html" class="btn btn-block btn-lg btn-primary">Ajouter</a>
+                <a href="#" class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+                  data-target="#DialogIconedSuccess">Ajouter</a>
               </div>
             </div>
           </div>
@@ -298,3 +306,27 @@
       </div>
     </div>
     <!-- * Share Action Sheet -->
+
+    <div class="modal fade dialogbox" id="DialogIconedSuccess" data-backdrop="static" tabindex="-1" role="dialog"
+      aria-hidden="true" style="display: none;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-icon text-success">
+            <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+          </div>
+          <div class="modal-header">
+            <h2 class="modal-title" style="font-size: 22px;">Ajouté au panier</h2>
+          </div>
+          <div class="modal-body">
+            <p class="my-0" style="font-size: 18px;">L'article a bien été ajouté au panier</p>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-inline">
+              <a href="#" class="btn text-muted" data-dismiss="modal" style="font-size: 18px;">
+                Fermer
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

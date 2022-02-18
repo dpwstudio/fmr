@@ -2,8 +2,7 @@
  <div id="appCapsule">
 
    <div class="section mt-3 text-center">
-     <h1 class="text-primary my-0" style="font-size: 40px;">Vendre</h1>
-     <h4>Mettre un article en vente</h4>
+     <h1 class="my-0" style="font-size: 40px;">Vendre</h1>
    </div>
 
    <div class="listview-title mt-1">Visuel</div>
@@ -71,8 +70,11 @@
  <div class="modal fade action-sheet" id="picturesForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
-         <h2 class="modal-title">Ajouter des photos</h2>
+       <div class="modal-header d-flex align-items-center">
+         <h5 class="modal-title">Ajouter des photos</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body" style="padding: 15px;">
          <form>
@@ -172,11 +174,14 @@
  <div class="modal fade action-sheet" id="descriptionForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
+       <div class="modal-header d-flex align-items-center">
          <h5 class="modal-title">Informations sur l'article</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
-         <div class="wide-block pt-2 pb-2">
+         <div class="wide-block pt-2 pb-2 border-0">
            <ul class="nav nav-tabs style1" role="tablist">
              <li class="nav-item">
                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
@@ -280,12 +285,15 @@
  <div class="modal fade action-sheet" id="dimensionsForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title">Définissez les dimensions</h5>
+       <div class="modal-header d-flex align-items-center">
+         <h5 class="modal-title">Dimensions de l'article</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
-         <div class="wide-block pt-2 pb-2">
-           <form class="d-flex">
+         <div class="wide-block pt-2 pb-2 border-0">
+           <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
                  <label class="label text-center" for="userid3">Haut.</label>
@@ -330,11 +338,14 @@
  <div class="modal fade action-sheet" id="stateForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
+       <div class="modal-header d-flex align-items-center">
          <h5 class="modal-title">Etat de l'article</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
-         <div class="wide-block pt-2 pb-2" style="background:#EDEDF5;">
+         <div class="wide-block pt-2 pb-2 border-0" style="background:#EDEDF5;">
            <ul class="nav nav-tabs style1" role="tablist">
              <li class="nav-item">
                <a class="nav-link active" data-toggle="tab" href="#stateMode" role="tab">
@@ -349,7 +360,7 @@
            </ul>
            <div class="tab-content mt-2">
              <div class="tab-pane fade show active" id="stateMode" role="tabpanel">
-               <ul class="listview image-listview inset mx-0 mb-1">
+               <ul class="listview image-listview inset mx-0 mb-2">
                  <li>
                    <a href="" class="item" data-dismiss="modal">
                      <div class="in">
@@ -415,7 +426,7 @@
                </ul>
              </div>
              <div class="tab-pane fade" id="stateArt" role="tabpanel">
-               <ul class="listview image-listview inset mx-0 mb-1">
+               <ul class="listview image-listview inset mx-0 mb-2">
                  <li>
                    <a href="" class="item" data-dismiss="modal">
                      <div class="in">
@@ -473,8 +484,11 @@
  <div class="modal fade action-sheet" id="amountForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
+       <div class="modal-header d-flex align-items-center">
          <h5 class="modal-title">Prix de l'article</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
          <div class="action-sheet-content">

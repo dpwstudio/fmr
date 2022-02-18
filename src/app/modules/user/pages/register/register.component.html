@@ -6,21 +6,21 @@
   <div class="section mt-2 mb-5 p-3 content-form">
     <h1 class="text-primary my-0" style="font-size: 40px;">S'inscrire</h1>
     <h3 class="mb-3 text-secondary" style="font-weight: 500;">Créer un compte</h3>
-    <div class="d-flex justify-content-around mb-2">
-      <button type="button" class="btn btn-social google mr-1 mb-1">
+    <div class="d-flex justify-content-between mb-2">
+      <button type="button" class="btn btn-social google">
         <img src="assets/img/google.png" width="20" class="mr-2" alt="">
         Google
       </button>
-      <button type="button" class="btn  btn-social facebook mr-1 mb-1">
+      <button type="button" class="btn  btn-social facebook">
         <img src="assets/img/facebook.png" width="20" class="mr-2" alt="">
         Facebook
       </button>
     </div>
     <form action="">
-      <div class="step-1" *ngIf="showStep1">
+      <div class="step-1" *ngIf="showStep1" style="height: 290px;">
         <div class="form-group basic">
           <div class="input-wrapper">
-            <label class="label" for="email1">EMAIL</label>
+            <label class="label text-secondary" for="email1">EMAIL</label>
             <input type="email" class="form-control" id="email1">
             <i class="clear-input">
               <ion-icon name="close-circle"></ion-icon>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group basic">
           <div class="input-wrapper">
-            <label class="label" for="name4">PRENOM</label>
+            <label class="label text-secondary" for="name4">PRENOM</label>
             <input type="text" class="form-control" id="name4">
             <i class="clear-input">
               <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
@@ -46,11 +46,11 @@
 
 
       </div>
-      <div class="step-2 animate__animated animate__fadeInRight" *ngIf="showStep2">
+      <div class="step-2 animate__animated animate__fadeInRight" *ngIf="showStep2" style="height: 290px;">
 
         <div class="form-group basic">
           <div class="input-wrapper">
-            <label class="label" for="password1">MOT DE PASSE</label>
+            <label class="label text-secondary" for="password1">MOT DE PASSE</label>
             <input type="password" class="form-control" id="password1">
             <i class="clear-input">
               <ion-icon name="close-circle"></ion-icon>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group basic">
           <div class="input-wrapper">
-            <label class="label" for="password1">CONFIRMER MOT DE PASSE</label>
+            <label class="label text-secondary" for="password1">CONFIRMER MOT DE PASSE</label>
             <input type="password" class="form-control" id="password1">
             <i class="clear-input">
               <ion-icon name="close-circle"></ion-icon>

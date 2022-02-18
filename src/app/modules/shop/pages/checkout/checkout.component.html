@@ -83,8 +83,11 @@
  <div class="modal fade action-sheet" id="creditCardForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
+       <div class="modal-header d-flex align-items-center">
          <h5 class="modal-title">Saisissez votre carte</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
          <div id="area" class="pt-4 pb-3">
@@ -94,12 +97,13 @@
             }">
              <div class="card">
                <div class="title">CARTE DE CREDIT</div>
-               <div class="input-number"><span class="title-number">NUMERO DE CARTE</span>
+               <div class="input-number">
+                 <span class="title-number">NUMERO DE CARTE</span>
                  <div class="inputs-number">
-                   <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="text" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
                  </div>
                  <div class="selects-date selecters">
                    <div class="day-select mr-1"><span>MOIS</span>
@@ -161,13 +165,14 @@
                  </div>
                </div>
                <div class="name">
-                 NOM PRENOM
+                 <span class="title-number">NOM PRENOM</span>
+                 <input type="text" name="number-card" placeholder="Jean DUPONT" required="required" />
                </div>
              </div>
              <div class="card-back">
                <div class="tire"></div>
                <div class="secret-area">
-                 <input type="text" maxlength="3" name="number-card" placeholder="000" required="required" />
+                 <input type="number" maxlength="3" name="number-card" placeholder="000" required="required" />
                </div>
                <div class="chip-card"></div>
              </div>
@@ -179,8 +184,8 @@
              <button (click)="turnCard('verso')" class="btn btn-icon btn-primary mr-2">
                <ion-icon name="return-down-forward-outline"></ion-icon>
              </button>
-             <button (click)="turnCard('verso')" class="btn btn-primary">
-               Valider
+             <button (click)="turnCard('verso')" class="btn btn-primary btn-paid">
+               Procéder au paiement
              </button>
            </div>
          </div>
@@ -193,8 +198,11 @@
  <div class="modal fade action-sheet" id="walletForm" tabindex="-1" style="display: none;" aria-hidden="true">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
-       <div class="modal-header">
+       <div class="modal-header d-flex align-items-center">
          <h5 class="modal-title">Wallet</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
        </div>
        <div class="modal-body">
          <div class="action-sheet-content">
@@ -212,7 +220,8 @@
                <div class="input-info">Sélectionner une carte</div>
              </div>
              <div class="form-group basic">
-               <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Valider</button>
+               <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Procéder au
+                 paiement</button>
              </div>
            </form>
 

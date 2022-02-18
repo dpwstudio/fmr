@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     ProfileComponent,
     FormAddressDeliveryComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

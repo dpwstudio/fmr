@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -22,12 +23,13 @@ import { NotificationsComponent } from './components/notifications/notifications
     RegisterComponent,
     ForgotPasswordComponent,
     SettingsComponent,
-    NotificationsComponent
+    NotificationsComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
+    CarouselModule,
     UserRoutingModule,
     IonicModule
   ]

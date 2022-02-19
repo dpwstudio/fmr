@@ -32,7 +32,8 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent
-  }, {
+  },
+  {
     path: 'notifications',
     component: NotificationsComponent
   }

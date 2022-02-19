@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,32 @@ import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   darkMode: boolean = false;
+  carouselMultipleOptions: OwlOptions = {
+    stagePadding: 32,
+    loop: true,
+    margin: 16,
+    nav: false,
+    items: 2,
+    dots: false,
+  }
+ 
+  carouselMultipleOptions2: OwlOptions = {
+    stagePadding: 32,
+    loop: true,
+    margin: 16,
+    nav: false,
+    items: 2,
+    dots: false,
+  }
+ 
+  carouselMultipleOptions3: OwlOptions = {
+    stagePadding: 32,
+    loop: true,
+    margin: 16,
+    nav: false,
+    items: 2,
+    dots: false,
+  }
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

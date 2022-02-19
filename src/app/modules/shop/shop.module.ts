@@ -9,6 +9,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     CategoriesComponent,
     ProductDetailComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     CommonModule,

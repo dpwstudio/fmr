@@ -1,0 +1,45 @@
+.gradientSection {
+  position: relative;
+  text-align: center;
+  background: #ddd1b6;
+  background-image: linear-gradient(0deg, #ddd1b6 0%, rgba(255, 255, 255, 1) 100%);
+
+  .in {
+    position: relative;
+    z-index: 10;
+    padding: 20px 16px 70px 16px;
+  }
+
+  .total {
+    letter-spacing: -0.01em;
+    font-size: 32px;
+  }
+
+  .caption {
+    font-size: 20px;
+    font-weight: 300;
+  }
+}
+
+.card {
+  margin-top: -65px;
+  position: relative;
+  z-index: 100;
+
+  .card-bg {
+    background: url('../../../../../assets/img/dressing/dressing1.png') center center no-repeat;
+    height: 214px;
+    border: 5px solid white;
+    border-radius: 10px;
+  }
+}
+
+.section-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1em;
+  padding-right: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

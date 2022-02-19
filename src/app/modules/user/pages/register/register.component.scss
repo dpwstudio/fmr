@@ -9,11 +9,10 @@
   .content-form {
     background: white;
     text-align: center;
-    border-top: 6px solid #dfd3b9;
     margin: 16px;
-    min-height: 480px;
-    border-radius: 25px 50px;
+    border-radius: 25px;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+    border-bottom: 6px solid #f7f0e6;
     overflow: hidden;
 
     .label {

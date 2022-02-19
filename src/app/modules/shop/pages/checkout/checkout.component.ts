@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class CheckoutComponent implements OnInit {
   recto = true;
   verso = false;
+  showLoading = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +24,13 @@ export class CheckoutComponent implements OnInit {
       this.recto = false;
       this.verso = true;
     }
+  }
+
+  processPayment() {
+    this.showLoading = true;
+    setTimeout(() => {
+      this.showLoading = false;
+      this.router.navigate(['payment-status']);
+    }, 2000)
   }
 }

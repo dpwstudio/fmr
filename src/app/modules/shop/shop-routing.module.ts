@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
@@ -36,6 +37,12 @@ const routes: Routes = [
     component: CheckoutComponent,
     data: {
       title: 'Checkout'
+    }
+  }, {
+    path: 'payment-status',
+    component: PaymentStatusComponent,
+    data: {
+      title: 'Payment-status'
     }
   }
 ];

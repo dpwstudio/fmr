@@ -1,284 +1,289 @@
- <!-- App Capsule -->
- <div id="appCapsule">
+<!-- loader -->
+<app-loader [state]="showLoading"></app-loader>
+<!-- * loader -->
 
-   <div class="section mt-2 mb-2 px-0">
+<!-- App Capsule -->
+<div id="appCapsule">
+
+  <div class="section mt-2 mb-2 px-0">
 
 
-     <div class="listed-detail mt-3">
-       <h1 class="text-center mt-2 mb-2">Checkout</h1>
-     </div>
-     <div class="listview-title mt-2">Récapitulatif</div>
-     <ul class="listview image-listview inset">
-       <li>
-         <div class="item">
-           <div class="icon-box bg-primary">
-             <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="cash outline"></ion-icon>
-           </div>
-           <div class="in">
-             <div>Total</div>
-             <span class="text-dark number" style="font-size: 15px;">5287,00 €</span>
-           </div>
-         </div>
-       </li>
-     </ul>
-     <div class="listview-title mt-2">Adresse</div>
-     <ul class="listview image-listview inset">
-       <li>
-         <a href="" class="item" data-toggle="modal" data-target="#addressForm">
-           <div class="icon-box bg-primary">
-             <ion-icon name="location-outline" class="md hydrated"></ion-icon>
-           </div>
-           <div class="in">
-             <div>
-               <header class="text-secondary">Adresse enregistrée</header>
-               15 rue de Capucines
-               <footer class="text-dark">75016 PARIS</footer>
-             </div>
-           </div>
-         </a>
-       </li>
-     </ul>
+    <div class="listed-detail mt-3">
+      <h1 class="text-center mt-2 mb-2">Checkout</h1>
+    </div>
+    <div class="listview-title mt-2">Récapitulatif</div>
+    <ul class="listview image-listview inset">
+      <li>
+        <div class="item">
+          <div class="icon-box bg-primary">
+            <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="cash outline"></ion-icon>
+          </div>
+          <div class="in">
+            <div>Total</div>
+            <span class="text-dark number" style="font-size: 15px;">5287,00 €</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="listview-title mt-2">Adresse</div>
+    <ul class="listview image-listview inset">
+      <li>
+        <a href="" class="item" data-toggle="modal" data-target="#addressForm">
+          <div class="icon-box bg-primary">
+            <ion-icon name="location-outline" class="md hydrated"></ion-icon>
+          </div>
+          <div class="in">
+            <div>
+              <header class="text-secondary">Adresse enregistrée</header>
+              15 rue de Capucines
+              <footer class="text-dark">75016 PARIS</footer>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
 
-     <div class="listview-title mt-2">Méthode de paiement</div>
-     <ul class="listview image-listview inset">
-       <li>
-         <a href="#" class="item" data-toggle="modal" data-target="#walletForm">
-           <div class="icon-box bg-primary">
-             <ion-icon name="wallet-outline" role="img" class="md hydrated" aria-label="wallet outline"></ion-icon>
-           </div>
-           <div class="in">
-             <div>Wallet</div>
-             <span class="text-muted">Modifier</span>
-           </div>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="item" data-toggle="modal" data-target="#creditCardForm">
-           <div class="icon-box bg-primary">
-             <ion-icon name="card-outline" role="img" class="md hydrated" aria-label="card outline"></ion-icon>
-           </div>
-           <div class="in">
-             <div>Carte de crédit</div>
-           </div>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="item">
-           <div class="icon-box bg-primary">
-             <ion-icon name="logo-paypal" class="md hydrated"></ion-icon>
-           </div>
-           <div class="in">
-             <div>Paypal</div>
-           </div>
-         </a>
-       </li>
-     </ul>
+    <div class="listview-title mt-2">Méthode de paiement</div>
+    <ul class="listview image-listview inset">
+      <li>
+        <a href="#" class="item" data-toggle="modal" data-target="#walletForm">
+          <div class="icon-box bg-primary">
+            <ion-icon name="wallet-outline" role="img" class="md hydrated" aria-label="wallet outline"></ion-icon>
+          </div>
+          <div class="in">
+            <div>Wallet</div>
+            <span class="text-muted">Modifier</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="item" data-toggle="modal" data-target="#creditCardForm">
+          <div class="icon-box bg-primary">
+            <ion-icon name="card-outline" role="img" class="md hydrated" aria-label="card outline"></ion-icon>
+          </div>
+          <div class="in">
+            <div>Carte de crédit</div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="item">
+          <div class="icon-box bg-primary">
+            <ion-icon name="logo-paypal" class="md hydrated"></ion-icon>
+          </div>
+          <div class="in">
+            <div>Paypal</div>
+          </div>
+        </a>
+      </li>
+    </ul>
 
-   </div>
+  </div>
 
- </div>
- <!-- * App Capsule -->
+</div>
+<!-- * App Capsule -->
 
- <!-- Form Action Sheet -->
- <div class="modal fade action-sheet" id="creditCardForm" tabindex="-1" role="dialog">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Saisissez votre carte</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div id="area" class="pt-4 pb-3">
-           <div class="master-card" [ngClass]="{
+<!-- Form Action Sheet -->
+<div class="modal fade action-sheet" id="creditCardForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Saisissez votre carte</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div id="area" class="pt-4 pb-3">
+          <div class="master-card" [ngClass]="{
             'recto': recto,
             'verso': verso
             }">
-             <div class="card">
-               <div class="title">CARTE DE CREDIT</div>
-               <div class="input-number">
-                 <span class="title-number">NUMERO DE CARTE</span>
-                 <div class="inputs-number">
-                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                   <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
-                 </div>
-                 <div class="selects-date selecters">
-                   <div class="day-select mr-1"><span>MOIS</span>
-                     <select id="dates">
-                       <option value="">1</option>
-                       <option value="">2</option>
-                       <option value="">3</option>
-                       <option value="">4</option>
-                       <option value="">5</option>
-                       <option value="">6</option>
-                       <option value="">7</option>
-                       <option value="">8</option>
-                       <option value="">9</option>
-                       <option value="">10</option>
-                       <option value="">11</option>
-                       <option value="">12</option>
-                       <option value="">13</option>
-                       <option value="">14</option>
-                       <option value="">15</option>
-                       <option value="">16</option>
-                       <option value="">17</option>
-                       <option value="">18</option>
-                       <option value="">19</option>
-                       <option value="">20</option>
-                       <option value="">21</option>
-                       <option value="">22</option>
-                       <option value="">23</option>
-                       <option value="">24</option>
-                       <option value="">25</option>
-                       <option value="">26</option>
-                       <option value="">27</option>
-                       <option value="">28</option>
-                       <option value="">29</option>
-                       <option value="">30</option>
-                     </select>
-                   </div>
-                   <div class="year-select"><span>ANNEE</span>
-                     <select id="dates">
-                       <option value="">17</option>
-                       <option value="">18</option>
-                       <option value="">19</option>
-                       <option value="">20</option>
-                       <option value="">21</option>
-                       <option value="">22</option>
-                       <option value="">23</option>
-                       <option value="">24</option>
-                       <option value="">25</option>
-                       <option value="">26</option>
-                     </select>
-                   </div>
-                 </div>
-               </div>
-               <div class="mark-gold">
-                 <div class="round">
-                   <div class="circles">
-                     <div class="circle-1"> </div>
-                     <div class="circle-2"> </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="name">
-                 <span class="title-number">NOM PRENOM</span>
-                 <input type="text" name="number-card" placeholder="Jean DUPONT" required="required" />
-               </div>
-             </div>
-             <div class="card-back">
-               <div class="tire"></div>
-               <div class="secret-area">
-                 <input type="number" maxlength="3" name="number-card" placeholder="000" required="required" />
-               </div>
-               <div class="chip-card"></div>
-             </div>
-           </div>
-           <div class="button-sent mt-3">
-             <button (click)="turnCard('recto')" class="btn btn-icon btn-primary mr-2">
-               <ion-icon name="return-down-back-outline"></ion-icon>
-             </button>
-             <button (click)="turnCard('verso')" class="btn btn-icon btn-primary mr-2">
-               <ion-icon name="return-down-forward-outline"></ion-icon>
-             </button>
-             <button (click)="turnCard('verso')" class="btn btn-primary btn-paid">
-               Procéder au paiement
-             </button>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
- <!-- * Form Action Sheet -->
+            <div class="card">
+              <div class="title">CARTE DE CREDIT</div>
+              <div class="input-number">
+                <span class="title-number">NUMERO DE CARTE</span>
+                <div class="inputs-number">
+                  <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                  <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                  <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                  <input type="number" maxlength="4" name="number-card" placeholder="0000" required="required" />
+                </div>
+                <div class="selects-date selecters">
+                  <div class="day-select mr-1"><span>MOIS</span>
+                    <select id="dates">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                      <option value="">4</option>
+                      <option value="">5</option>
+                      <option value="">6</option>
+                      <option value="">7</option>
+                      <option value="">8</option>
+                      <option value="">9</option>
+                      <option value="">10</option>
+                      <option value="">11</option>
+                      <option value="">12</option>
+                      <option value="">13</option>
+                      <option value="">14</option>
+                      <option value="">15</option>
+                      <option value="">16</option>
+                      <option value="">17</option>
+                      <option value="">18</option>
+                      <option value="">19</option>
+                      <option value="">20</option>
+                      <option value="">21</option>
+                      <option value="">22</option>
+                      <option value="">23</option>
+                      <option value="">24</option>
+                      <option value="">25</option>
+                      <option value="">26</option>
+                      <option value="">27</option>
+                      <option value="">28</option>
+                      <option value="">29</option>
+                      <option value="">30</option>
+                    </select>
+                  </div>
+                  <div class="year-select"><span>ANNEE</span>
+                    <select id="dates">
+                      <option value="">17</option>
+                      <option value="">18</option>
+                      <option value="">19</option>
+                      <option value="">20</option>
+                      <option value="">21</option>
+                      <option value="">22</option>
+                      <option value="">23</option>
+                      <option value="">24</option>
+                      <option value="">25</option>
+                      <option value="">26</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="mark-gold">
+                <div class="round">
+                  <div class="circles">
+                    <div class="circle-1"> </div>
+                    <div class="circle-2"> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="name">
+                <span class="title-number">NOM PRENOM</span>
+                <input type="text" name="number-card" placeholder="Jean DUPONT" required="required" />
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="tire"></div>
+              <div class="secret-area">
+                <input type="number" maxlength="3" name="number-card" placeholder="000" required="required" />
+              </div>
+              <div class="chip-card"></div>
+            </div>
+          </div>
+          <div class="button-sent mt-3">
+            <button (click)="turnCard('recto')" class="btn btn-icon btn-primary mr-2">
+              <ion-icon name="return-down-back-outline"></ion-icon>
+            </button>
+            <button (click)="turnCard('verso')" class="btn btn-icon btn-primary mr-2">
+              <ion-icon name="return-down-forward-outline"></ion-icon>
+            </button>
+            <button (click)="processPayment()" class="btn btn-primary btn-paid" data-dismiss="modal">
+              Procéder au paiement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Form Action Sheet -->
 
- <div class="modal fade action-sheet" id="walletForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Wallet</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="action-sheet-content">
+<div class="modal fade action-sheet" id="walletForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Wallet</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="action-sheet-content">
 
-           <form>
-             <div class="form-group basic">
-               <div class="input-wrapper">
-                 <label class="label" for="account1">Liste des cartes</label>
-                 <select class="form-control custom-select" id="account1">
-                   <option value="0">Visa (*** 5019)</option>
-                   <option value="1">Mastercard (*** 6212)</option>
-                   <option value="2">Amex (*** 5021)</option>
-                 </select>
-               </div>
-               <div class="input-info">Sélectionner une carte</div>
-             </div>
-             <div class="form-group basic">
-               <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-dismiss="modal">Procéder au
-                 paiement</button>
-             </div>
-           </form>
+          <form>
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="account1">Liste des cartes</label>
+                <select class="form-control custom-select" id="account1">
+                  <option value="0">Visa (*** 5019)</option>
+                  <option value="1">Mastercard (*** 6212)</option>
+                  <option value="2">Amex (*** 5021)</option>
+                </select>
+              </div>
+              <div class="input-info">Sélectionner une carte</div>
+            </div>
+            <div class="form-group basic">
+              <button (click)="processPayment()" type="button" class="btn btn-primary btn-block btn-lg"
+                data-dismiss="modal">Procéder au
+                paiement</button>
+            </div>
+          </form>
 
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
- <div class="modal fade action-sheet" id="addressForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Adresse utilisé</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="section full mt-1 mb-2">
-           <div class="wide-block pb-1 pt-1 border-0">
-             <form>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="address4">Adresse</label>
-                   <textarea id="address4" rows="2" class="form-control">
+<div class="modal fade action-sheet" id="addressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Adresse utilisé</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="address4">Adresse</label>
+                  <textarea id="address4" rows="2" class="form-control">
                     15 rue des Capucines
                    </textarea>
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
 
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="name4">Code postal</label>
-                   <input type="text" class="form-control" id="name4" value="75016">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="name4">Code postal</label>
+                  <input type="text" class="form-control" id="name4" value="75016">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
 
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="city4">Ville</label>
-                   <select class="form-control custom-select" id="city4">
-                     <option value="0">PARIS</option>
-                     <option value="1">CHESSY</option>
-                   </select>
-                 </div>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="city4">Ville</label>
+                  <select class="form-control custom-select" id="city4">
+                    <option value="0">PARIS</option>
+                    <option value="1">CHESSY</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

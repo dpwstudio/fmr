@@ -9,7 +9,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,10 +20,11 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
     ProductDetailComponent,
     CartComponent,
     CheckoutComponent,
-    PaymentSuccessComponent
+    PaymentStatusComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ShopRoutingModule,
     CarouselModule,
     IonicModule

@@ -314,36 +314,35 @@
   <div class="section full mt-4 mb-3">
     <div class="section-heading padding">
       <h2 class="title">Les dressings</h2>
-      <a href="app-blog.html" class="link">Tout voir</a>
+      <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="link">Tout voir</a>
     </div>
     <owl-carousel-o [options]="carouselSingleOptions">
       <ng-template carouselSlide>
-        <div class="item">
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="item">
           <img src="assets/img/dressing/dressing1.png" alt="alt" class="imaged w-100">
           <div class="box">
             <h1>Le dressing de Caro</h1>
             <span>Membre depuis le 01/02/2021</span>
           </div>
-        </div>
+        </a>
       </ng-template>
       <ng-template carouselSlide>
-
-        <div class="item">
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="item">
           <img src="assets/img/dressing/dressing2.png" alt="alt" class="imaged w-100">
           <div class="box">
             <h1>Le dressing d'Estelle</h1>
             <span>Membre depuis le 01/02/2021</span>
           </div>
-        </div>
+        </a>
       </ng-template>
       <ng-template carouselSlide>
-        <div class="item">
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="item">
           <img src="assets/img/dressing/dressing3.png" alt="alt" class="imaged w-100">
           <div class="box">
             <h1>Le dressing d'Ava</h1>
             <span>Membre depuis le 01/02/2021</span>
           </div>
-        </div>
+        </a>
       </ng-template>
     </owl-carousel-o>
   </div>

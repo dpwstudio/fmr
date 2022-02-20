@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,29 +8,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent implements OnInit {
+  createPostForm: FormGroup;
   loading = false;
-  showStep1 = true;
-  showStep2 = false;
-  showStep3 = false;
-  showStep4 = false;
-  showFinalStep = false;
-  constructor(private router: Router) { }
+  imageSrc: string;
+
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createPostForm = this.formBuilder.group({
+      title: ["", Validators.required],
+      assetType: ["", Validators.required],
+      category: ["", Validators.required],
+      origin: ["", Validators.required],
+      description: [""],
+      file: ["", Validators.required],
+      fileSource: ["", Validators.required],
+      proof: ["", Validators.required],
+      amount: ["", Validators.required],
+      createdAt: new Date(),
+    });
   }
 
-  register() {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.router.navigate(['home']);
-    })
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.createPostForm.controls;
   }
 
-  initStep(step: string) {
-    if (step === 'showStep2') {
-      this.showStep1 = false;
-      this.showStep2 = true;
+  onFileChange(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+
+        this.imageSrc = reader.result as string;
+
+        this.createPostForm.patchValue({
+          fileSource: reader.result
+        });
+
+      };
+
     }
   }
 }

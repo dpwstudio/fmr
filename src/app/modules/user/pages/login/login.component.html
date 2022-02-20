@@ -1,3 +1,9 @@
+<app-loader [state]="isLoading()"></app-loader>
+<div class="alert alert-success mb-1" role="alert" *ngIf="showAlertSuccess"   style="position: relative;
+top: 73px;
+z-index: 99999;">
+  Vous êtes maintenant connecté à Dressing FMR
+</div>
 <!-- App Capsule -->
 <div id="appCapsule" class="content d-flex flex-column justify-content-center">
   <div class="section mt-2 text-center">
@@ -16,10 +22,10 @@
         Facebook
       </button>
     </div>
-    <form action="">
+    <form [formGroup]="loginForm">
       <div class="form-group basic">
         <div class="input-wrapper">
-          <input type="email" class="form-control" id="email1" placeholder="Email">
+          <input type="email" formControlName="email" class="form-control" id="email1" placeholder="Email">
           <i class="clear-input">
             <ion-icon name="close-circle"></ion-icon>
           </i>
@@ -28,7 +34,8 @@
 
       <div class="form-group basic">
         <div class="input-wrapper">
-          <input type="password" class="form-control" id="password1" placeholder="Mot de passe">
+          <input type="password" formControlName="password" class="form-control" id="password1"
+            placeholder="Mot de passe">
           <i class="clear-input">
             <ion-icon name="close-circle"></ion-icon>
           </i>
@@ -39,11 +46,12 @@
         <div>
           <a [routerLink]="['/register']" routerLinkActive="router-link-active" style="font-size: 17px">S'inscrire</a>
         </div>
-        <div><a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active"  class="text-muted" style="font-size: 17px">Mot de passe oublié ?</a>
+        <div><a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active" class="text-muted"
+            style="font-size: 17px">Mot de passe oublié ?</a>
         </div>
       </div>
-      <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="btn btn-primary btn-block btn-lg"
-        style="font-size: 20px; box-shadow: 0 1px 15px 0 rgb(0 0 0 / 9%);">Se connecter</a>
+      <button (click)="onSubmit()" class="btn btn-primary btn-block btn-lg"
+        style="font-size: 20px; box-shadow: 0 1px 15px 0 rgb(0 0 0 / 9%);">Se connecter</button>
 
     </form>
   </div>

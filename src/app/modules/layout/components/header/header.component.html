@@ -160,12 +160,12 @@
               </a>
             </li>
             <li>
-              <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+              <a (click)="logout()" class="item" data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="log-out-outline"></ion-icon>
                 </div>
                 <div class="in">
-                  Log out
+                  Déconnexion
                 </div>
               </a>
             </li>

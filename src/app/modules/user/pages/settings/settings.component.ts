@@ -1,5 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +13,9 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2) { }
+    private renderer: Renderer2,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +27,11 @@ export class SettingsComponent implements OnInit {
     } else {
       this.renderer.removeClass(this.document.body, 'dark-mode');
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    // this.notifier.notify('success', 'Vous êtes déconnecté')
+    this.router.navigate(['/login']);
   }
 }

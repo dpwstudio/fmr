@@ -80,9 +80,10 @@
          <form>
            <div class="row mb-2">
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" id="fileUpload1" style="overflow: hidden;">
+                 <input type="file" id="fileuploadInput" formControlName="file" (change)="onFileChange($event)"
+                   accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput" *ngIf="!imageSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -90,6 +91,9 @@
                      </strong>
                    </span>
                  </label>
+                 <div style="width: 172px; height: 163px;overflow: hidden; border-radius: 10px;" *ngIf="imageSrc">
+                   <img [src]="imageSrc" style="object-fit: cover; width: 100%; height: 100%;">
+                 </div>
                </div>
              </div>
              <div class="col-6">

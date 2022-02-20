@@ -8,12 +8,11 @@ import { FormAddressDeliveryComponent } from './components/form-address-delivery
 import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
 
 @NgModule({
   declarations: [
@@ -27,6 +26,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     SharedModule,
     CarouselModule,

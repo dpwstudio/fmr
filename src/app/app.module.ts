@@ -13,6 +13,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { StartModule } from './modules/start/start.module';
 import { PostModule } from './modules/post/post.module';
 import { ContactModule } from './modules/contact/contact.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContactModule } from './modules/contact/contact.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HomeModule,
     LayoutModule,
     ShopModule,

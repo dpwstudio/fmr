@@ -13,8 +13,8 @@
            <div>
              Ajouter des photos
            </div>
+           <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isPhotosComplete()"></ion-icon>
          </div>
-         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
        </a>
      </li>
    </ul>
@@ -26,7 +26,9 @@
          <div class="in">
            <div>Description</div>
          </div>
-         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"
+           *ngIf="isDescriptionComplete()">
+         </ion-icon>
        </a>
      </li>
      <li>
@@ -34,7 +36,8 @@
          <div class="in">
            <div>Dimensions</div>
          </div>
-         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isDimensionsComplete()">
+         </ion-icon>
        </a>
      </li>
      <li>
@@ -42,7 +45,8 @@
          <div class="in">
            <div>Etat</div>
          </div>
-         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"
+           *ngIf="isStateChoiceComplete()"></ion-icon>
        </a>
      </li>
    </ul>
@@ -54,13 +58,15 @@
          <div class="in">
            <div>Ajouter le prix</div>
          </div>
-         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"></ion-icon>
+         <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isAmountComplete()">
+         </ion-icon>
        </a>
      </li>
    </ul>
 
    <div class="section">
-     <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;">Valider</button>
+     <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;" (click)="addToSell()">Mettre en
+       vente</button>
    </div>
 
  </div>
@@ -80,10 +86,10 @@
          <form>
            <div class="row mb-2">
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1" style="overflow: hidden;">
-                 <input type="file" id="fileuploadInput" formControlName="file" (change)="onFileChange($event)"
-                   accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput" *ngIf="!imageSrc">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="fileuploadInput" [(ngModel)]="photoFace" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhotoFaceChange($event)" accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput" *ngIf="!photoFaceSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -91,15 +97,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div style="width: 172px; height: 163px;overflow: hidden; border-radius: 10px;" *ngIf="imageSrc">
-                   <img [src]="imageSrc" style="object-fit: cover; width: 100%; height: 100%;">
+                 <div class="image-upload" *ngIf="photoFaceSrc">
+                   <img [src]="photoFaceSrc">
                  </div>
                </div>
              </div>
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="photoDos" [(ngModel)]="photoDos" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photoDos" *ngIf="!photoDosSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -107,15 +114,18 @@
                      </strong>
                    </span>
                  </label>
+                 <div class="image-upload" *ngIf="photoDosSrc">
+                   <img [src]="photoDosSrc">
+                 </div>
                </div>
              </div>
            </div>
-
            <div class="row mb-2">
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="photoProfile" [(ngModel)]="photoProfile" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhotoProfileChange($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photoProfile" *ngIf="!photoProfileSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -123,12 +133,16 @@
                      </strong>
                    </span>
                  </label>
+                 <div class="image-upload" *ngIf="photoProfileSrc">
+                   <img [src]="photoProfileSrc">
+                 </div>
                </div>
              </div>
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="photoGriffe" [(ngModel)]="photoGriffe" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhotoGriffeChange($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photoGriffe" *ngIf="!photoGriffeSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -136,37 +150,49 @@
                      </strong>
                    </span>
                  </label>
+                 <div class="image-upload" *ngIf="photoGriffeSrc">
+                   <img [src]="photoGriffeSrc">
+                 </div>
                </div>
              </div>
            </div>
            <div class="row">
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="photo5" [(ngModel)]="photo5" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhoto5Change($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photo5" *ngIf="!photo5Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
-                       <i>Photo 5</i>
+                       <i>Photo 5*</i>
                      </strong>
                    </span>
                  </label>
+                 <div class="image-upload" *ngIf="photo5Src">
+                   <img [src]="photo5Src">
+                 </div>
                </div>
              </div>
              <div class="col-6">
-               <div class="custom-file-upload" id="fileUpload1">
-                 <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput">
+               <div class="custom-file-upload" style="overflow: hidden;">
+                 <input type="file" id="photo6" [(ngModel)]="photo6" [ngModelOptions]="{standalone: true}"
+                   (change)="onPhoto6Change($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photo6" *ngIf="!photo6Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
-                       <i>Photo 6</i>
+                       <i>Photo 6*</i>
                      </strong>
                    </span>
                  </label>
+                 <div class="image-upload" *ngIf="photo6Src">
+                   <img [src]="photo6Src">
+                 </div>
                </div>
              </div>
            </div>
+           <button class="btn btn-lg btn-block btn-rounded btn-primary mt-2 mb-2" data-dismiss="modal">Valider</button>
          </form>
        </div>
      </div>
@@ -200,77 +226,81 @@
            </ul>
            <div class="tab-content mt-2">
              <div class="tab-pane fade show active" id="home" role="tabpanel">
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <select class="form-control custom-select" id="city4">
-                     <option value="" selected disabled hidden>
-                       <span class="placeholder">Sélectionner une catégorie</span>
-                     </option>
-                     <option value="1">Homme</option>
-                     <option value="2">Femme</option>
-                     <option value="3">Enfant</option>
-                     <option value="4">Autre</option>
-                   </select>
+               <form>
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <select class="form-control custom-select" [(ngModel)]="category"
+                       [ngModelOptions]="{standalone: true}">
+                       <option value="" selected disabled>
+                         <span class="placeholder">Sélectionner une catégorie</span>
+                       </option>
+                       <option value="1">Homme</option>
+                       <option value="2">Femme</option>
+                       <option value="3">Enfant</option>
+                     </select>
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <select class="form-control custom-select" id="city4">
-                     <option value="" selected disabled hidden>
-                       <span class="placeholder">Sélectionner une marque</span>
-                     </option>
-                     <option value="1">Dior</option>
-                     <option value="2">Louis Vuitton</option>
-                     <option value="3">Valentino</option>
-                     <option value="4">Balenciaga</option>
-                     <option value="5">Saint Laurent</option>
-                   </select>
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <div class="input-wrapper">
+                       <input type="text" class="form-control" [(ngModel)]="brand" [ngModelOptions]="{standalone: true}"
+                         placeholder="Marque">
+                     </div>
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="userid3" placeholder="Modèle">
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <input type="text" class="form-control" [(ngModel)]="model" [ngModelOptions]="{standalone: true}"
+                       placeholder="Modèle">
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="userid3" placeholder="Matière">
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <input type="text" class="form-control" [(ngModel)]="matter" [ngModelOptions]="{standalone: true}"
+                       placeholder="Matière">
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="userid3" placeholder="Couleur">
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <input type="text" class="form-control" [(ngModel)]="color" [ngModelOptions]="{standalone: true}"
+                       placeholder="Couleur">
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <textarea id="name3" rows="3" class="form-control" placeholder="Décrivez l'article"></textarea>
-                   <i class="clear-input">
-                     <ion-icon name="close-circle"></ion-icon>
-                   </i>
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <textarea rows="3" class="form-control" [(ngModel)]="description"
+                       [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
+                     <i class="clear-input">
+                       <ion-icon name="close-circle"></ion-icon>
+                     </i>
+                   </div>
                  </div>
-               </div>
+               </form>
              </div>
              <div class="tab-pane fade" id="profile" role="tabpanel">
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <select class="form-control custom-select" id="city4">
-                     <option value="" selected disabled hidden>
-                       <span class="placeholder">Sélectionner une catégorie</span>
-                     </option>
-                     <option value="1">Tableaux</option>
-                     <option value="2">Sculptures</option>
-                     <option value="3">Luminaires</option>
-                     <option value="4">Objets</option>
-                     <option value="4">Autres</option>
-                   </select>
+               <form>
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <select class="form-control custom-select" [(ngModel)]="categoryArt"
+                       [ngModelOptions]="{standalone: true}">
+                       <option value="" selected disabled hidden>
+                         <span class="placeholder">Sélectionner une catégorie</span>
+                       </option>
+                       <option value="1">Tableaux</option>
+                       <option value="2">Sculptures</option>
+                       <option value="3">Luminaires</option>
+                       <option value="4">Objets</option>
+                       <option value="4">Autres</option>
+                     </select>
+                   </div>
                  </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <textarea id="name3" rows="3" class="form-control" placeholder="Décrivez l'article"></textarea>
+                 <div class="form-group basic">
+                   <div class="input-wrapper">
+                     <textarea id="name3" rows="3" class="form-control" [(ngModel)]="descriptionArt"
+                       [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
+                   </div>
                  </div>
-               </div>
+               </form>
              </div>
            </div>
            <div class="form-group basic">
@@ -298,28 +328,25 @@
            <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0" id="userid3" placeholder="Haut.">
-                 <i class="clear-input">
-                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                 </i>
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="height"
+                   [ngModelOptions]="{standalone: true}" placeholder="Haut.">
+
                </div>
              </div>
 
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0" id="amount3" placeholder="Larg.">
-                 <i class="clear-input">
-                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                 </i>
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="width"
+                   [ngModelOptions]="{standalone: true}" placeholder="Larg.">
+
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0" id="amount3" placeholder="Prof.">
-                 <i class="clear-input">
-                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                 </i>
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="depth"
+                   [ngModelOptions]="{standalone: true}" placeholder="Prof.">
+
                </div>
              </div>
            </form>
@@ -331,9 +358,9 @@
      </div>
    </div>
  </div>
- <!-- * Form Dimensions Sheet -->
+ <!-- * Form Dimensions -->
 
- <!-- Form Etat Sheet -->
+ <!-- Form  State Choice -->
  <div class="modal fade action-sheet" id="stateForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -359,114 +386,143 @@
            </ul>
            <div class="tab-content mt-2">
              <div class="tab-pane fade show active" id="stateMode" role="tabpanel">
-               <ul class="listview image-listview inset mx-0 mb-2">
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Jamais porté avec étiquette
-                         <footer>Un article jamais porté avec étiquette est un article qui n'a jamais été porté et
-                           présente les étiquettes originales d'achat (joindre la photo de l'étiquette).</footer>
+               <div class="wide-block p-0 mb-3">
+                 <div class="input-list">
+                   <div class="custom-control custom-radio">
+                     <input type="radio" id="neverWornWithTagChoice" [(ngModel)]="stateChoice"
+                       value="neverWornWithTagChoice" class="custom-control-input">
+                     <label class="custom-control-label" for="neverWornWithTagChoice">
+                       <div class="in">
+                         <div>
+                           <p class="my-0" style="font-size: 18px;">Jamais porté avec étiquette</p>
+                           <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                             article jamais porté avec étiquette est un article qui n'a jamais été porté et
+                             présente les étiquettes originales d'achat (joindre la photo de l'étiquette).</footer>
+                         </div>
                        </div>
-                     </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Jamais porté
-                         <footer>Un article jamais porté sans étiquette est un article qui n'a jamais été porté et ne
-                           présente aucun défaut ni aucune modification.</footer>
+                     </label>
+                   </div>
+                   <div class="custom-control custom-radio">
+                     <input type="radio" id="neverWornChoice" [(ngModel)]="stateChoice" value="neverWornChoice"
+                       class="custom-control-input">
+                     <label class="custom-control-label" for="neverWornChoice">
+                       <div class="in">
+                         <div>
+                           <p class="my-0" style="font-size: 18px;">Jamais porté</p>
+                           <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                             article jamais porté sans étiquette est un article qui n'a jamais été porté et ne
+                             présente aucun défaut ni aucune modification.</footer>
+                         </div>
                        </div>
-                     </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Très bon état
-                         <footer>Un article en très bon état est un article d'occasion peu utilisé et très bien
-                           entretenu,
-                           pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le
-                           descriptif
-                           et visibles en photo).</footer>
+                     </label>
+                   </div>
+                   <div class="custom-control custom-radio">
+                     <input type="radio" id="veryGoodStateChoice" [(ngModel)]="stateChoice" value="veryGoodStateChoice"
+                       class="custom-control-input">
+                     <label class="custom-control-label" for="veryGoodStateChoice">
+                       <div class="in">
+                         <div>
+                           <p class="my-0" style="font-size: 18px;">Très bon état</p>
+                           <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                             article en très bon état est un article d'occasion peu utilisé et très bien
+                             entretenu,
+                             pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le
+                             descriptif
+                             et visibles en photo).</footer>
+                         </div>
                        </div>
-                     </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Bon état
-                         <footer>Un article en bon état est un article d'occasion porté et bien entretenu. Si
-                           l'article
-                           présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en
-                           photo.
-                         </footer>
+                     </label>
+                   </div>
+                   <div class="custom-control custom-radio">
+                     <input type="radio" id="goodStateChoice" [(ngModel)]="stateChoice" value="goodStateChoice"
+                       class="custom-control-input">
+                     <label class="custom-control-label" for="goodStateChoice">
+                       <div class="in">
+                         <div>
+                           <p class="my-0" style="font-size: 18px;">Bon état</p>
+                           <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                             article en bon état est un article d'occasion porté et bien entretenu. Si
+                             l'article
+                             présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en
+                             photo.
+                           </footer>
+                         </div>
                        </div>
-                     </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Correct
-                         <footer>Un article en état correct est un article d'occasion porté fréquemment pouvant
-                           présenter
-                           des défauts (mentionnés dans le descriptif et visibles en photo).</footer>
+                     </label>
+                   </div>
+                   <div class="custom-control custom-radio">
+                     <input type="radio" id="correctChoice" [(ngModel)]="stateChoice" value="correctChoice"
+                       class="custom-control-input">
+                     <label class="custom-control-label" for="correctChoice">
+                       <div class="in">
+                         <div>
+                           <p class="my-0" style="font-size: 18px;">Correct</p>
+                           <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
+                             Un article en état correct est un article d'occasion porté fréquemment pouvant
+                             présenter
+                             des défauts (mentionnés dans le descriptif et visibles en photo).
+                           </footer>
+                         </div>
                        </div>
-                     </div>
-                   </a>
-                 </li>
-               </ul>
+                     </label>
+                   </div>
+                 </div>
+               </div>
              </div>
              <div class="tab-pane fade" id="stateArt" role="tabpanel">
-               <ul class="listview image-listview inset mx-0 mb-2">
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Très bon état
-                         <footer>Un article en très bon état est un article d'occasion peu utilisé et très bien
-                           entretenu,
-                           pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le
-                           descriptif
-                           et visibles en photo).</footer>
-                       </div>
+               <div class="wide-block p-0 mb-3">
+                 <div class="input-list">
+                   <form>
+                     <div class="custom-control custom-radio">
+                       <input type="radio" id="veryGoodStateChoiceArt" [(ngModel)]="stateChoiceArt"
+                         value="veryGoodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
+                       <label class="custom-control-label" for="veryGoodStateChoiceArt">
+                         <div class="in">
+                           <div>
+                             <p class="my-0" style="font-size: 18px;">Très bon état</p>
+                             <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
+                               Un
+                               article en très bon état est un article d'occasion très bien
+                               entretenu, pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés
+                               dans le descriptif et visibles en photo).</footer>
+                           </div>
+                         </div>
+                       </label>
                      </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Bon état
-                         <footer>Un article en bon état est un article d'occasion porté et bien entretenu. Si
-                           l'article présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et
-                           visibles en
-                           photo.
-                         </footer>
-                       </div>
+                     <div class="custom-control custom-radio">
+                       <input type="radio" id="goodStateChoiceArt" [(ngModel)]="stateChoiceArt"
+                         value="goodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
+                       <label class="custom-control-label" for="goodStateChoiceArt">
+                         <div class="in">
+                           <div>
+                             <p class="my-0" style="font-size: 18px;">Bon état</p>
+                             <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
+                               Un
+                               article en bon état est un article d'occasion bien entretenu. Si l'article présente des
+                               défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en photo.
+                             </footer>
+                           </div>
+                         </div>
+                       </label>
                      </div>
-                   </a>
-                 </li>
-                 <li>
-                   <a href="" class="item" data-dismiss="modal">
-                     <div class="in">
-                       <div>
-                         Correct
-                         <footer>Un article en état correct est un article d'occasion porté fréquemment pouvant
-                           présenter
-                           des défauts (mentionnés dans le descriptif et visibles en photo).</footer>
-                       </div>
+                     <div class="custom-control custom-radio">
+                       <input type="radio" id="correctChoiceArt" [(ngModel)]="stateChoiceArt" value="correctChoiceArt"
+                         name="stateChoiceArt" class="custom-control-input">
+                       <label class="custom-control-label" for="correctChoiceArt">
+                         <div class="in">
+                           <div>
+                             <p class="my-0" style="font-size: 18px;">Correct</p>
+                             <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
+                               Un article en état correct est un article d'occasion pouvant présenter des défauts
+                               (mentionnés dans le descriptif et visibles en photo).
+                             </footer>
+                           </div>
+                         </div>
+                       </label>
                      </div>
-                   </a>
-                 </li>
-               </ul>
+                   </form>
+                 </div>
+               </div>
              </div>
            </div>
            <div class="form-group basic">
@@ -477,9 +533,9 @@
      </div>
    </div>
  </div>
- <!-- * Form Etat Sheet -->
+ <!-- * Form State Choice -->
 
- <!-- Form Action Sheet -->
+ <!-- Form Amount -->
  <div class="modal fade action-sheet" id="amountForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -494,20 +550,15 @@
            <form class="d-flex">
              <div class="form-group basic mr-4">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0" id="userid3" placeholder="Prix">
-                 <i class="clear-input">
-                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                 </i>
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="amount"
+                   [ngModelOptions]="{standalone: true}" placeholder="Prix">
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0" id="amount3" disabled
-                   placeholder="Vous gagnez">
-                 <i class="clear-input">
-                   <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                 </i>
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="amountWin"
+                   [ngModelOptions]="{standalone: true}" placeholder="Vous gagnez">
                </div>
              </div>
 
@@ -520,4 +571,4 @@
      </div>
    </div>
  </div>
- <!-- * Form Action Sheet -->
+ <!-- * Form Amount -->

@@ -1,5 +1,5 @@
 export interface Product {
-	id: number;
+	id?: number;
 	stripeId?: string;
 	/**
 	 * Photo de face
@@ -36,7 +36,7 @@ export interface Product {
 	 */
 	photo6: string;
 	photo6Src: string;
-
+	typeProduct: string;
 	category: string;
 	brand: string;
 	model: string;
@@ -52,5 +52,5 @@ export interface Product {
 	depth: string;
 	amount: string;
 	amountWin: string;
-	createdAt?: Date;
+	createdAt?: string;
 }

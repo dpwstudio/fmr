@@ -23,6 +23,7 @@
     "@ionic/angular": "^6.0.7",
     "animate.css": "^4.1.1",
     "flag-icons": "^6.1.1",
+    "moment": "^2.29.1",
     "ngx-owl-carousel-o": "^7.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

@@ -13,7 +13,8 @@
            <div>
              Ajouter des photos
            </div>
-           <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isPhotosComplete()"></ion-icon>
+           <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isPhotosComplete()">
+           </ion-icon>
          </div>
        </a>
      </li>
@@ -73,7 +74,7 @@
  <!-- * App Capsule -->
 
  <!-- Form Ajout Photos Sheet -->
- <div class="modal fade action-sheet" id="picturesForm" tabindex="-1" role="dialog">
+ <div class="modal fade modalbox" id="picturesForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header d-flex align-items-center">
@@ -82,14 +83,14 @@
            <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
          </a>
        </div>
-       <div class="modal-body" style="padding: 15px;">
+       <div class="modal-body">
          <form>
            <div class="row mb-2">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="fileuploadInput" [(ngModel)]="photoFace" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="fileuploadInput" [(ngModel)]="product.photoFace" [ngModelOptions]="{standalone: true}"
                    (change)="onPhotoFaceChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput" *ngIf="!photoFaceSrc">
+                 <label for="fileuploadInput" *ngIf="!product.photoFaceSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -97,16 +98,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photoFaceSrc">
-                   <img [src]="photoFaceSrc">
+                 <div class="image-upload" *ngIf="product.photoFaceSrc">
+                   <img [src]="product.photoFaceSrc">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoDos" [(ngModel)]="photoDos" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photoDos" [(ngModel)]="product.photoDos" [ngModelOptions]="{standalone: true}"
                    (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoDos" *ngIf="!photoDosSrc">
+                 <label for="photoDos" *ngIf="!product.photoDosSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -114,8 +115,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photoDosSrc">
-                   <img [src]="photoDosSrc">
+                 <div class="image-upload" *ngIf="product.photoDosSrc">
+                   <img [src]="product.photoDosSrc">
                  </div>
                </div>
              </div>
@@ -123,9 +124,9 @@
            <div class="row mb-2">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoProfile" [(ngModel)]="photoProfile" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photoProfile" [(ngModel)]="product.photoProfile" [ngModelOptions]="{standalone: true}"
                    (change)="onPhotoProfileChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoProfile" *ngIf="!photoProfileSrc">
+                 <label for="photoProfile" *ngIf="!product.photoProfileSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -133,16 +134,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photoProfileSrc">
-                   <img [src]="photoProfileSrc">
+                 <div class="image-upload" *ngIf="product.photoProfileSrc">
+                   <img [src]="product.photoProfileSrc">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoGriffe" [(ngModel)]="photoGriffe" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photoGriffe" [(ngModel)]="product.photoGriffe" [ngModelOptions]="{standalone: true}"
                    (change)="onPhotoGriffeChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoGriffe" *ngIf="!photoGriffeSrc">
+                 <label for="photoGriffe" *ngIf="!product.photoGriffeSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -150,8 +151,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photoGriffeSrc">
-                   <img [src]="photoGriffeSrc">
+                 <div class="image-upload" *ngIf="product.photoGriffeSrc">
+                   <img [src]="product.photoGriffeSrc">
                  </div>
                </div>
              </div>
@@ -159,9 +160,9 @@
            <div class="row">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photo5" [(ngModel)]="photo5" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photo5" [(ngModel)]="product.photo5" [ngModelOptions]="{standalone: true}"
                    (change)="onPhoto5Change($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photo5" *ngIf="!photo5Src">
+                 <label for="photo5" *ngIf="!product.photo5Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -169,16 +170,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photo5Src">
-                   <img [src]="photo5Src">
+                 <div class="image-upload" *ngIf="product.photo5Src">
+                   <img [src]="product.photo5Src">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photo6" [(ngModel)]="photo6" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photo6" [(ngModel)]="product.photo6" [ngModelOptions]="{standalone: true}"
                    (change)="onPhoto6Change($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photo6" *ngIf="!photo6Src">
+                 <label for="photo6" *ngIf="!product.photo6Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -186,8 +187,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="photo6Src">
-                   <img [src]="photo6Src">
+                 <div class="image-upload" *ngIf="product.photo6Src">
+                   <img [src]="product.photo6Src">
                  </div>
                </div>
              </div>
@@ -201,7 +202,7 @@
  <!-- * Form Ajout Photos Sheet -->
 
  <!-- Form Infos Sheet -->
- <div class="modal fade action-sheet" id="descriptionForm" tabindex="-1" role="dialog">
+ <div class="modal fade modalbox" id="descriptionForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header d-flex align-items-center">
@@ -210,16 +211,16 @@
            <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
          </a>
        </div>
-       <div class="modal-body">
-         <div class="wide-block pt-2 pb-2 border-0">
+       <div class="modal-body pt-0">
+         <div class="pt-2 pb-2 border-0">
            <ul class="nav nav-tabs style1" role="tablist">
              <li class="nav-item">
-               <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+               <a (click)="getTypeProduct('mode')" class="nav-link active" data-toggle="tab" href="#home" role="tab">
                  Mode
                </a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+               <a (click)="getTypeProduct('art')" class="nav-link" data-toggle="tab" href="#profile" role="tab">
                  Art
                </a>
              </li>
@@ -229,7 +230,7 @@
                <form>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <select class="form-control custom-select" [(ngModel)]="category"
+                     <select class="form-control custom-select" [(ngModel)]="product.category"
                        [ngModelOptions]="{standalone: true}">
                        <option value="" selected disabled>
                          <span class="placeholder">Sélectionner une catégorie</span>
@@ -243,32 +244,32 @@
                  <div class="form-group basic">
                    <div class="input-wrapper">
                      <div class="input-wrapper">
-                       <input type="text" class="form-control" [(ngModel)]="brand" [ngModelOptions]="{standalone: true}"
+                       <input type="text" class="form-control" [(ngModel)]="product.brand" [ngModelOptions]="{standalone: true}"
                          placeholder="Marque">
                      </div>
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="model" [ngModelOptions]="{standalone: true}"
+                     <input type="text" class="form-control" [(ngModel)]="product.model" [ngModelOptions]="{standalone: true}"
                        placeholder="Modèle">
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="matter" [ngModelOptions]="{standalone: true}"
+                     <input type="text" class="form-control" [(ngModel)]="product.matter" [ngModelOptions]="{standalone: true}"
                        placeholder="Matière">
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="color" [ngModelOptions]="{standalone: true}"
+                     <input type="text" class="form-control" [(ngModel)]="product.color" [ngModelOptions]="{standalone: true}"
                        placeholder="Couleur">
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <textarea rows="3" class="form-control" [(ngModel)]="description"
+                     <textarea rows="3" class="form-control" [(ngModel)]="product.description"
                        [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
                      <i class="clear-input">
                        <ion-icon name="close-circle"></ion-icon>
@@ -281,7 +282,7 @@
                <form>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <select class="form-control custom-select" [(ngModel)]="categoryArt"
+                     <select class="form-control custom-select" [(ngModel)]="product.categoryArt"
                        [ngModelOptions]="{standalone: true}">
                        <option value="" selected disabled hidden>
                          <span class="placeholder">Sélectionner une catégorie</span>
@@ -296,7 +297,7 @@
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <textarea id="name3" rows="3" class="form-control" [(ngModel)]="descriptionArt"
+                     <textarea id="name3" rows="3" class="form-control" [(ngModel)]="product.descriptionArt"
                        [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
                    </div>
                  </div>
@@ -328,7 +329,7 @@
            <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="height"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.height"
                    [ngModelOptions]="{standalone: true}" placeholder="Haut.">
 
                </div>
@@ -336,7 +337,7 @@
 
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="width"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.width"
                    [ngModelOptions]="{standalone: true}" placeholder="Larg.">
 
                </div>
@@ -344,7 +345,7 @@
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="depth"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.depth"
                    [ngModelOptions]="{standalone: true}" placeholder="Prof.">
 
                </div>
@@ -361,7 +362,7 @@
  <!-- * Form Dimensions -->
 
  <!-- Form  State Choice -->
- <div class="modal fade action-sheet" id="stateForm" tabindex="-1" role="dialog">
+ <div class="modal fade modalbox" id="stateForm" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header d-flex align-items-center">
@@ -370,8 +371,8 @@
            <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
          </a>
        </div>
-       <div class="modal-body">
-         <div class="wide-block pt-2 pb-2 border-0" style="background:#EDEDF5;">
+       <div class="modal-body pt-0" style="background:#EDEDF5;">
+         <div class="pt-2 pb-2 border-0">
            <ul class="nav nav-tabs style1" role="tablist">
              <li class="nav-item">
                <a class="nav-link active" data-toggle="tab" href="#stateMode" role="tab">
@@ -389,7 +390,7 @@
                <div class="wide-block p-0 mb-3">
                  <div class="input-list">
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="neverWornWithTagChoice" [(ngModel)]="stateChoice"
+                     <input type="radio" id="neverWornWithTagChoice" [(ngModel)]="product.stateChoice"
                        value="neverWornWithTagChoice" class="custom-control-input">
                      <label class="custom-control-label" for="neverWornWithTagChoice">
                        <div class="in">
@@ -403,7 +404,7 @@
                      </label>
                    </div>
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="neverWornChoice" [(ngModel)]="stateChoice" value="neverWornChoice"
+                     <input type="radio" id="neverWornChoice" [(ngModel)]="product.stateChoice" value="neverWornChoice"
                        class="custom-control-input">
                      <label class="custom-control-label" for="neverWornChoice">
                        <div class="in">
@@ -417,7 +418,7 @@
                      </label>
                    </div>
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="veryGoodStateChoice" [(ngModel)]="stateChoice" value="veryGoodStateChoice"
+                     <input type="radio" id="veryGoodStateChoice" [(ngModel)]="product.stateChoice" value="veryGoodStateChoice"
                        class="custom-control-input">
                      <label class="custom-control-label" for="veryGoodStateChoice">
                        <div class="in">
@@ -434,7 +435,7 @@
                      </label>
                    </div>
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="goodStateChoice" [(ngModel)]="stateChoice" value="goodStateChoice"
+                     <input type="radio" id="goodStateChoice" [(ngModel)]="product.stateChoice" value="goodStateChoice"
                        class="custom-control-input">
                      <label class="custom-control-label" for="goodStateChoice">
                        <div class="in">
@@ -451,7 +452,7 @@
                      </label>
                    </div>
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="correctChoice" [(ngModel)]="stateChoice" value="correctChoice"
+                     <input type="radio" id="correctChoice" [(ngModel)]="product.stateChoice" value="correctChoice"
                        class="custom-control-input">
                      <label class="custom-control-label" for="correctChoice">
                        <div class="in">
@@ -474,7 +475,7 @@
                  <div class="input-list">
                    <form>
                      <div class="custom-control custom-radio">
-                       <input type="radio" id="veryGoodStateChoiceArt" [(ngModel)]="stateChoiceArt"
+                       <input type="radio" id="veryGoodStateChoiceArt" [(ngModel)]="product.stateChoiceArt"
                          value="veryGoodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
                        <label class="custom-control-label" for="veryGoodStateChoiceArt">
                          <div class="in">
@@ -490,7 +491,7 @@
                        </label>
                      </div>
                      <div class="custom-control custom-radio">
-                       <input type="radio" id="goodStateChoiceArt" [(ngModel)]="stateChoiceArt"
+                       <input type="radio" id="goodStateChoiceArt" [(ngModel)]="product.stateChoiceArt"
                          value="goodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
                        <label class="custom-control-label" for="goodStateChoiceArt">
                          <div class="in">
@@ -506,7 +507,7 @@
                        </label>
                      </div>
                      <div class="custom-control custom-radio">
-                       <input type="radio" id="correctChoiceArt" [(ngModel)]="stateChoiceArt" value="correctChoiceArt"
+                       <input type="radio" id="correctChoiceArt" [(ngModel)]="product.stateChoiceArt" value="correctChoiceArt"
                          name="stateChoiceArt" class="custom-control-input">
                        <label class="custom-control-label" for="correctChoiceArt">
                          <div class="in">
@@ -550,14 +551,14 @@
            <form class="d-flex">
              <div class="form-group basic mr-4">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="amount"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amount"
                    [ngModelOptions]="{standalone: true}" placeholder="Prix">
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="amountWin"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amountWin"
                    [ngModelOptions]="{standalone: true}" placeholder="Vous gagnez">
                </div>
              </div>

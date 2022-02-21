@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/guard/auth/auth.guard';
 import { FormAddressDeliveryComponent } from './components/form-address-delivery/form-address-delivery.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -11,7 +12,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
 const routes: Routes = [
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -23,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'edit-address',
-    component: FormAddressDeliveryComponent
+    component: FormAddressDeliveryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
@@ -31,11 +34,13 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    component: SettingsComponent
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'notifications',
-    component: NotificationsComponent
+    component: NotificationsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

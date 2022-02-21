@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { Product } from 'src/app/modules/shared/models/product.model';
 
 @Component({
   selector: 'app-post-form',
@@ -9,58 +11,38 @@ import { Router } from '@angular/router';
 })
 export class PostFormComponent implements OnInit {
   loading = false;
-  /**
-   * Photo de face
-   */
-  photoFace: string;
-  photoFaceSrc: string;
 
-  /**
-   * Photo de dos
-   */
-  photoDos: string;
-  photoDosSrc: string;
-
-  /**
-   * Photo de profil
-   */
-  photoProfile: string;
-  photoProfileSrc: string;
-
-  /**
-   * Photo de la griffe
-   */
-  photoGriffe: string;
-  photoGriffeSrc: string;
-
-  /**
-   * Photo 5 (facultative)
-   */
-  photo5: string;
-  photo5Src: string;
-
-  /**
-   * Photo 6 (facultative)
-   */
-  photo6: string;
-  photo6Src: string;
-
-  category: string = "";
-  brand: string;
-  model: string;
-  matter: string;
-  color: string;
-  description: string;
-  categoryArt: string = "";
-  descriptionArt: string;
-  stateChoice: string;
-  stateChoiceArt: string;
-  width: string;
-  height: string;
-  depth: string;
-  amount: string;
-  amountWin: string;
-  createdAt = new Date();
+  product: Product = {
+    photoFace: '',
+    photoFaceSrc: '',
+    photoDos: '',
+    photoDosSrc: '',
+    photoProfile: '',
+    photoProfileSrc: '',
+    photoGriffe: '',
+    photoGriffeSrc: '',
+    photo5: '',
+    photo5Src: '',
+    photo6: '',
+    photo6Src: '',
+    typeProduct: 'mode',
+    category: '',
+    brand: '',
+    model: '',
+    matter: '',
+    color: '',
+    description: '',
+    categoryArt: '',
+    descriptionArt: '',
+    stateChoice: '',
+    stateChoiceArt: '',
+    width: '',
+    height: '',
+    depth: '',
+    amount: '',
+    amountWin: '',
+    createdAt: moment().format()
+  }
 
 
   constructor(private router: Router, private formBuilder: FormBuilder) { }
@@ -69,35 +51,37 @@ export class PostFormComponent implements OnInit {
   }
 
   isPhotosComplete() {
-    return this.photoFace
-      && this.photoDos
-      && this.photoProfile
-      && this.photoGriffe
-      || this.photo5
-      || this.photo6;
+    return this.product.photoFace
+      && this.product.photoDos
+      && this.product.photoProfile
+      && this.product.photoGriffe
+      || this.product.photo5
+      || this.product.photo6;
   }
 
   isDescriptionComplete() {
-    return this.category
-      && this.brand
-      && this.model
-      && this.matter
-      && this.color
-      && this.description;
+    return this.product.category
+      && this.product.brand
+      && this.product.model
+      && this.product.matter
+      && this.product.color
+      && this.product.description
+      || (this.product.categoryArt
+        && this.product.descriptionArt);
   }
 
   isDimensionsComplete() {
-    return this.width
-      && this.height
-      && this.depth;
+    return this.product.width
+      && this.product.height
+      && this.product.depth;
   }
 
   isStateChoiceComplete() {
-    return this.stateChoice || this.stateChoiceArt;
+    return this.product.stateChoice || this.product.stateChoiceArt;
   }
 
   isAmountComplete() {
-    return this.amount;
+    return this.product.amount;
   }
 
   onPhotoFaceChange(event) {
@@ -108,8 +92,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        console.log('reader', reader.result);
-        this.photoFaceSrc = reader.result as string;
+        this.product.photoFaceSrc = reader.result as string;
       };
     }
   }
@@ -122,7 +105,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.photoDosSrc = reader.result as string;
+        this.product.photoDosSrc = reader.result as string;
       };
     }
   }
@@ -135,7 +118,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.photoProfileSrc = reader.result as string;
+        this.product.photoProfileSrc = reader.result as string;
       };
     }
   }
@@ -148,7 +131,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.photoGriffeSrc = reader.result as string;
+        this.product.photoGriffeSrc = reader.result as string;
       };
     }
   }
@@ -161,7 +144,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.photo5Src = reader.result as string;
+        this.product.photo5Src = reader.result as string;
       };
     }
   }
@@ -174,12 +157,27 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.photo6Src = reader.result as string;
+        this.product.photo6Src = reader.result as string;
       };
     }
   }
 
+  getTypeProduct(typeProduct) {
+    if (typeProduct === 'mode') {
+      this.product.categoryArt = '';
+      this.product.descriptionArt = '';
+    } else {
+      this.product.category = '';
+      this.product.brand = '';
+      this.product.model = '';
+      this.product.description = '';
+      this.product.color = '';
+      this.product.matter = '';
+    }
+    return this.product.typeProduct = typeProduct;
+  }
+
   addToSell() {
-    console.log('form');
+    console.log('form', this.product);
   }
 }

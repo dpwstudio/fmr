@@ -9,9 +9,16 @@ import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  isUserConnected() {
+    return this.authService.currentUserValue;
   }
 
   logout() {

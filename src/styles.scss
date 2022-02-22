@@ -14608,8 +14608,8 @@ a.text-dark {
 .form-group.basic .custom-select {
   background: #f1f1f6;
   border: none;
-  padding: 15px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 40px;
   color: #27173E;
   font-size: 18px;
 }
@@ -14623,6 +14623,7 @@ a.text-dark {
 .form-group.basic textarea.form-control {
   height: auto;
   padding: 10px;
+  border-radius: 20px;
 }
 
 .form-group.basic.animated .label {
@@ -14711,8 +14712,10 @@ a.text-dark {
 .custom-file-upload {
   position: relative;
   display: flex;
-  width: 100%;
-  height: 163px;
+  margin: 0 auto;
+  border-radius: 20%;
+  width: 165px;
+  height: 165px;
 }
 
 .custom-file-upload input[type="file"] {

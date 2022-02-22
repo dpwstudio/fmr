@@ -8,16 +8,6 @@
   <div class="section mt-2 mb-5 p-3 content-form">
     <h1 class="text-primary my-0" style="font-size: 40px;">S'inscrire</h1>
     <h3 class="mb-3 text-secondary" style="font-weight: 500;">Créer un compte</h3>
-    <div class="d-flex justify-content-between mb-2">
-      <button type="button" class="btn btn-social google">
-        <img src="assets/img/google.png" width="20" class="mr-2" alt="">
-        Google
-      </button>
-      <button type="button" class="btn  btn-social facebook">
-        <img src="assets/img/facebook.png" width="20" class="mr-2" alt="">
-        Facebook
-      </button>
-    </div>
     <form [formGroup]="registerForm">
       <div class="step-1" *ngIf="showStep1" style="height: 250px;">
         <div class="form-group basic">
@@ -85,7 +75,16 @@
 
     </form>
   </div>
-
+  <div class="section">
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
+      <img src="assets/img/google.png" width="20" class="mr-2" alt="">
+      S'inscrire avec Google
+    </button>
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social facebook text-white">
+      <ion-icon name="logo-facebook" class="mr-2"></ion-icon>
+      S'inscrire avec Facebook
+    </button>
+  </div>
 </div>
 <!-- * App Capsule -->
 

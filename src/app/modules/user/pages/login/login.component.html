@@ -1,5 +1,5 @@
 <app-loader [state]="isLoading()"></app-loader>
-<div class="alert alert-success mb-1" role="alert" *ngIf="showAlertSuccess"   style="position: relative;
+<div class="alert alert-success mb-1" role="alert" *ngIf="showAlertSuccess" style="position: relative;
 top: 73px;
 z-index: 99999;">
   Vous êtes maintenant connecté à Dressing FMR
@@ -9,19 +9,10 @@ z-index: 99999;">
   <div class="section mt-2 text-center">
     <img src="assets/img/logo.png" class="mb-2" width="130" alt="">
   </div>
-  <div class="section mt-2 mb-5 p-3 content-form">
+  <div class="section mt-2 p-2 content-form">
     <h1 class="text-primary my-0" style="font-size: 40px;">Connexion</h1>
     <h3 class="mb-3 text-secondary" style="font-weight: 800;">Connectez-vous à votre compte</h3>
-    <div class="d-flex justify-content-between mb-2">
-      <button type="button" class="btn btn-social google">
-        <img src="assets/img/google.png" width="20" class="mr-2" alt="">
-        Google
-      </button>
-      <button type="button" class="btn  btn-social facebook">
-        <img src="assets/img/facebook.png" width="20" class="mr-2" alt="">
-        Facebook
-      </button>
-    </div>
+    
     <form [formGroup]="loginForm">
       <div class="form-group basic">
         <div class="input-wrapper">
@@ -44,17 +35,31 @@ z-index: 99999;">
 
       <div class="form-links mt-2 mb-2">
         <div>
-          <a [routerLink]="['/register']" routerLinkActive="router-link-active" style="font-size: 17px">S'inscrire</a>
+          <a [routerLink]="['/register']" routerLinkActive="router-link-active" style="font-size: 17px;">Je n'ai pas de compte</a>
         </div>
         <div><a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active" class="text-muted"
-            style="font-size: 17px">Mot de passe oublié ?</a>
+            style="font-size: 15px">Mot de passe oublié ?</a>
         </div>
       </div>
-      <button (click)="onSubmit()" class="btn btn-primary btn-block btn-lg"
-        style="font-size: 20px; box-shadow: 0 1px 15px 0 rgb(0 0 0 / 9%);">Se connecter</button>
+      <div class="d-flex align-items-center justify-content-center mt-3">
+
+        <button (click)="onSubmit()" class="btn-connect bg-primary mr-1">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+
+      </div>
 
     </form>
   </div>
-
+  <div class="section">
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
+      <img src="assets/img/google.png" width="20" class="mr-2" alt="">
+      Se connecter avec Google
+    </button>
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social facebook text-white">
+      <ion-icon name="logo-facebook" class="mr-2"></ion-icon>
+      Se connecter avec Facebook
+    </button>
+  </div>
 </div>
 <!-- * App Capsule -->

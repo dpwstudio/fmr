@@ -2,10 +2,7 @@
 
 <!-- App Capsule -->
 <div id="appCapsule" class="content d-flex flex-column justify-content-center">
-  <div class="section mt-2 text-center">
-    <img src="assets/img/logo.png" class="mb-2" width="130" alt="">
-  </div>
-  <div class="section mt-2 mb-5 p-3 content-form">
+  <div class="section content-form">
     <h1 class="text-primary my-0" style="font-size: 40px;">S'inscrire</h1>
     <h3 class="mb-3 text-secondary" style="font-weight: 500;">Créer un compte</h3>
     <form [formGroup]="registerForm">
@@ -30,7 +27,7 @@
           <input type="checkbox" formControlName="newsletters" class="custom-control-input" id="customChecka1">
           <label class="custom-control-label" for="customChecka1" style="text-align: left;">
             Inscrivez-vous à nos newsletters pour recevoir des sélections personnalisées, des offres exclusives et
-            toutes nos actualités. Vous pouvez vous désinscrire à tout moment
+            toutes nos actualités.
           </label>
         </div>
 
@@ -65,24 +62,29 @@
           </label>
         </div>
       </div>
+      <div class="d-flex align-items-center justify-content-center mt-2 mb-1">
+        <button class="btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite"
+          style="font-size: 20px;" *ngIf="showStep1" (click)="initStep('showStep2')">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
 
-
-      <button class="btn btn-primary btn-block btn-lg mt-2" style="font-size: 20px;" *ngIf="showStep1"
-        (click)="initStep('showStep2')">Suivant</button>
-
-      <a (click)="onSubmit()" *ngIf="showStep2" class="btn btn-primary btn-block btn-lg"
-        style="font-size: 20px;">S'inscrire</a>
+        <a (click)="onSubmit()" *ngIf="showStep2"
+          class="btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite"
+          style="font-size: 20px;">
+          <ion-icon name="checkmark-outline" class="text-white"></ion-icon>
+        </a>
+      </div>
 
     </form>
   </div>
   <div class="section">
-    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
-      <img src="assets/img/google.png" width="20" class="mr-2" alt="">
-      S'inscrire avec Google
-    </button>
     <button type="button" class="btn btn-rounded btn-block btn-lg btn-social facebook text-white">
       <ion-icon name="logo-facebook" class="mr-2"></ion-icon>
       S'inscrire avec Facebook
+    </button>
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
+      <img src="assets/img/google.png" width="20" class="mr-2" alt="">
+      S'inscrire avec Google
     </button>
   </div>
 </div>
@@ -92,7 +94,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Terms and Conditions</h5>
+        <h5 class="modal-title">CGV</h5>
         <a href="#" data-dismiss="modal">Close</a>
       </div>
       <div class="modal-body">

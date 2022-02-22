@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.returnUrl]);
         this.currentUser = this.authService.currentUserValue;
         this.showAlertSuccess = true;
-        // alert(`Vous êtes maintenant connecté à Mummy's Food`);
+        alert(`Vous êtes maintenant connecté.`);
       });
   }
 

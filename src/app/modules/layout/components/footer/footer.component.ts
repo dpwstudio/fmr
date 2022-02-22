@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +18,7 @@ export class FooterComponent implements OnInit {
     return this.authService.currentUserValue;
   }
 
+  getTotalCurrentCart() {
+    return this.cartService.cartProductList.length;
+  }
 }

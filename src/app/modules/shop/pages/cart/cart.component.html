@@ -1,93 +1,96 @@
  <!-- App Capsule -->
  <div id="appCapsule">
-
    <div class="section mt-2 mb-2">
-
-
      <div class="listed-detail mt-3">
-       <h1 class="text-center mt-2 mb-2">Mon panier</h1>
+       <h1 class="text-center mt-2 mb-0">Mon panier</h1>
+       <h4 class="text-muted mb-2 text-center" style="font-size: 17px;">Récapitulatif de la commande</h4>
      </div>
 
-     <ul class="listview image-listview media inset mb-2 mx-0">
-       <li>
-         <div class="item">
-           <div class="imageWrapper">
-             <img src="assets/img/annonce/sacs/sneakers.jpeg" alt="image" class="imaged w64">
-           </div>
-           <div class="in">
-             <div class="fsize-16">
-               BALENCIAGA
-               <div class="text-muted fsize-15">Sneakers</div>
-             </div>
-             <span class="text-dark number">650,00 €</span>
-           </div>
+     <ng-container *ngIf="getTotalCurrentCart() > 0">
+       <div class="ariane-fil d-flex align-items-center justify-content-center">
+         <div class="ml-1 mr-1">
+           <a [routerLink]="['/cart']">
+             <h2 class="d-flex align-items-center" routerLinkActive="active">
+               <ion-icon name="bag-handle-outline"></ion-icon>
+               <span>Panier</span>
+             </h2>
+           </a>
          </div>
-       </li>
-       <li>
-         <div class="item">
-           <div class="imageWrapper">
-             <img src="assets/img/annonce/sacs/sacdior.jpeg" alt="image" class="imaged w64">
-           </div>
-           <div class="in">
-             <div class="fsize-16">
-               DIOR
-               <div class="text-muted fsize-15">Sac en main en toile</div>
-             </div>
-             <span class="text-dark number">2327,00 €</span>
-           </div>
+         <ion-icon name="caret-forward-outline"></ion-icon>
+         <div class="ml-1 mr-1">
+           <a [routerLink]="['/delivery']">
+             <h2 class="d-flex align-items-center" routerLinkActive="active">
+               <ion-icon name="cube-outline"></ion-icon>
+               <span>Livraison</span>
+             </h2>
+           </a>
          </div>
-       </li>
-       <li>
-         <div class="item">
-           <div class="imageWrapper">
-             <img src="assets/img/annonce/sacs/saclv.jpeg" alt="image" class="imaged w64">
-           </div>
-           <div class="in">
-             <div class="fsize-16">
-               LOUIS VUITTON
-               <div class="text-muted fsize-15">Sac à bandoulière</div>
-             </div>
-             <span class="text-dark number">1995,00 €</span>
-           </div>
-         </div>
-       </li>
-       <li>
-         <div class="item">
-           <div class="imageWrapper">
-             <img src="assets/img/annonce/sacs/bonnet.jpeg" alt="image" class="imaged w64">
-           </div>
-           <div class="in">
-             <div class="fsize-16">
-               CHANEL
-               <div class="text-muted fsize-15">Bonnet en cachemire</div>
-             </div>
-             <span class="text-dark number">315,00 €</span>
-           </div>
-         </div>
-       </li>
-     </ul>
-
-     <div class="section mt-2 px-0">
-       <div class="transactions">
-         <div class="total-cart mt-5">
-           <div class="d-flex justify-content-between align-items-center">
-             <div class="detail mb-3">
-               <div>
-                 <p class="my-0">Sous-total</p>
-                 <h2 class="my-0 text-dark">Total</h2>
-               </div>
-             </div>
-             <div class="right mb-3">
-               <div class="price">5287,00 €</div>
-               <h2 class="price" style="font-size: 16px;">5287,00 €</h2>
-             </div>
-           </div>
-           <a [routerLink]="['/checkout']" routerLinkActive="router-link-active"
-             class="btn-lg btn-primary btn-block btn">Payer</a>
+         <ion-icon name="caret-forward-outline"></ion-icon>
+         <div class="ml-1 mr-1">
+           <a [routerLink]="['/checkout']">
+             <h2 class="d-flex align-items-center" routerLinkActive="active">
+               <ion-icon name="card-outline"></ion-icon>
+               <span>Paiement</span>
+             </h2>
+           </a>
          </div>
        </div>
-     </div>
-
+       <ul class="listview image-listview media inset mb-2 mx-0">
+         <li *ngFor="let product of carts">
+           <div class="item">
+             <div class="imageWrapper">
+               <img [src]="product.img" alt="image" class="imaged w64">
+             </div>
+             <div class="in">
+               <div class="fsize-16">
+                 {{product.name}}
+                 <div class="text-muted fsize-15">{{product.description}}</div>
+               </div>
+               <span class="text-dark number">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+             </div>
+           </div>
+         </li>
+       </ul>
+       <div class="section mt-2 px-0">
+         <div class="transactions">
+           <div class="total-cart mt-2">
+             <div class="d-flex justify-content-between align-items-center">
+               <div class="detail">
+                 <div>
+                   <p class="my-0">Sous-total</p>
+                   <p class="my-0">Nb d'articles</p>
+                   <h2 class="my-0 text-dark">Total</h2>
+                 </div>
+               </div>
+               <div class="right">
+                 <div class="price">
+                   {{ getTotalTTC() | currency:'EUR':'symbol':'1.2-2':'fr' }}
+                 </div>
+                 <div class="price">
+                   {{carts.length}} {carts.length, plural, =0 {article}
+                   =1
+                   {article} other {articles}}
+                 </div>
+                 <h2 class="price" style="font-size: 16px;">
+                   {{ getTotalTTC() | currency:'EUR':'symbol':'1.2-2':'fr' }}
+                 </h2>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="d-flex align-items-center justify-content-center mt-3">
+           <a [routerLink]="['/delivery']" routerLinkActive="router-link-active"
+             class="btn btn-icon btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite">
+             <ion-icon name="arrow-forward-outline"></ion-icon>
+           </a>
+         </div>
+       </div>
+     </ng-container>
+     <ng-container *ngIf="!getTotalCurrentCart()">
+       <div class="section d-flex align-items-center justify-content-center" style="min-height: 500px;">
+         <p style="font-size: x-large;">Votre panier est vide</p>
+       </div>
+     </ng-container>
    </div>
 
  </div>

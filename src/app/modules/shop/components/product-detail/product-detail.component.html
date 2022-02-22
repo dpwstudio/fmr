@@ -142,8 +142,8 @@
                 <a href="#" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
               </div>
               <div class="col">
-                <a href="#" class="btn btn-block btn-lg btn-primary" data-toggle="modal"
-                  data-target="#DialogIconedSuccess">Ajouter</a>
+                <a href="" class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+                  data-target="#DialogIconedSuccess" (click)="addProductToCart(product)">Ajouter</a>
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@
                           <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
                           <span class="fi fi-{{product.sellerCountry}}"></span>
                         </div>
-                        <a href="#" class="btn btn-icon btn-primary me-1">
+                        <a (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
                           <ion-icon name="bag-add-outline"></ion-icon>
                         </a>
                       </div>

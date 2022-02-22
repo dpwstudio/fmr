@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-shop',
@@ -9,8 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ShopComponent implements OnInit {
   products = [];
   typeParams: string;
+  quantity = 1;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -77,8 +79,14 @@ export class ShopComponent implements OnInit {
     ]
   }
 
+  addProductToCart(product, event: Event) {
+    event.stopPropagation();
+    product.quantity = this.quantity;
+    this.cartService.addProductToCart(product);
+  }
+
   gotoProduct(product) {
-    return  this.router.navigateByUrl(product.url, { state: product });;
+    return this.router.navigateByUrl(product.url, { state: product });;
   }
 
   isTypeParams(type) {

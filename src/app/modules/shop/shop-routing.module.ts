@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CartComponent } from './pages/cart/cart.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { ShopComponent } from './pages/shop/shop.component';
 
 const routes: Routes = [
@@ -32,6 +33,12 @@ const routes: Routes = [
     component: CartComponent,
     data: {
       title: 'Panier'
+    }
+  }, {
+    path: 'delivery',
+    component: DeliveryComponent,
+    data: {
+      title: 'Livraison'
     }
   }, {
     path: 'checkout',

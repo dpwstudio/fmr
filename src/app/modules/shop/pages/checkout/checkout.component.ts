@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from 'src/app/modules/shared/models/cart.model';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,10 +12,12 @@ export class CheckoutComponent implements OnInit {
   recto = true;
   verso = false;
   showLoading = false;
+  carts: Cart[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.getCarts();
   }
 
   turnCard(type: string) {
@@ -25,6 +29,16 @@ export class CheckoutComponent implements OnInit {
       this.verso = true;
     }
   }
+
+  getCarts() {
+    this.carts = this.cartService.cartProductList;
+  }
+
+  getTotalTTC() {
+    return this.carts.reduce((acc, product) => acc = acc + (product.amount * product.quantity), 0);
+  }
+
+
 
   processPayment() {
     this.showLoading = true;

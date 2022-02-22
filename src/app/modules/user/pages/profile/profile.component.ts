@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -35,21 +36,16 @@ export class ProfileComponent implements OnInit {
     items: 2,
     dots: false,
   }
+  quantity = 1;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
 
-  showDarkTheme() {
-    console.log(this.darkMode)
-    if (this.darkMode) {
-      this.renderer.addClass(this.document.body, 'dark-mode');
-    } else {
-      this.renderer.removeClass(this.document.body, 'dark-mode');
-    }
+  addProductToCart(product) {
+    product.quantity = this.quantity;
+    this.cartService.addProductToCart(product);
   }
 
   shareProfile() {

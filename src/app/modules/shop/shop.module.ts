@@ -11,6 +11,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
 import { SharedModule } from '../shared/shared.module';
+import { DeliveryComponent } from './pages/delivery/delivery.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     ProductDetailComponent,
     CartComponent,
     CheckoutComponent,
-    PaymentStatusComponent
+    PaymentStatusComponent,
+    DeliveryComponent
   ],
   imports: [
     CommonModule,

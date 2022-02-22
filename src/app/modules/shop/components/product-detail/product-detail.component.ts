@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -41,8 +42,9 @@ export class ProductDetailComponent implements OnInit {
     sellerImg: '',
     sellerCountry: ''
   };
+  quantity = 1;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -141,6 +143,11 @@ export class ProductDetailComponent implements OnInit {
 
   gotoCategory(category) {
     return this.router.navigate([category.url]);
+  }
+
+  addProductToCart(product) {
+    product.quantity = this.quantity;
+    this.cartService.addProductToCart(product);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -45,8 +46,9 @@ export class HomeComponent implements OnInit {
     items: 2,
     dots: false,
   }
+  quantity = 1;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.categories = [
@@ -168,6 +170,11 @@ export class HomeComponent implements OnInit {
 
   gotoCategory(category) {
     return this.router.navigate([category.url]);
+  }
+
+  addProductToCart(product) {
+    product.quantity = this.quantity;
+    this.cartService.addProductToCart(product);
   }
 
 }

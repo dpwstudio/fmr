@@ -6,12 +6,39 @@
 <div id="appCapsule">
 
   <div class="section mt-2 mb-2 px-0">
-
-
     <div class="listed-detail mt-3">
-      <h1 class="text-center mt-2 mb-2">Checkout</h1>
+      <h1 class="text-center mt-2 mb-0">Checkout</h1>
+      <h4 class="text-muted mb-2 text-center" style="font-size: 17px;">Procéder au paiement</h4>
     </div>
-    <div class="listview-title mt-2">Récapitulatif</div>
+    <div class="ariane-fil d-flex align-items-center justify-content-center">
+      <div class="ml-1 mr-1">
+        <a [routerLink]="['/cart']">
+          <h2 class="d-flex align-items-center" routerLinkActive="active">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span>Panier</span>
+          </h2>
+        </a>
+      </div>
+      <ion-icon name="caret-forward-outline"></ion-icon>
+      <div class="ml-1 mr-1">
+        <a [routerLink]="['/delivery']">
+          <h2 class="d-flex align-items-center" routerLinkActive="active">
+            <ion-icon name="cube-outline"></ion-icon>
+            <span>Livraison</span>
+          </h2>
+        </a>
+      </div>
+      <ion-icon name="caret-forward-outline"></ion-icon>
+      <div class="ml-1 mr-1">
+        <a [routerLink]="['/checkout']">
+          <h2 class="active d-flex align-items-center" routerLinkActive="active">
+            <ion-icon name="card-outline"></ion-icon>
+            <span>Paiement</span>
+          </h2>
+        </a>
+      </div>
+    </div>
+    <div class="listview-title mt-2">Total de la commande</div>
     <ul class="listview image-listview inset">
       <li>
         <div class="item">
@@ -19,27 +46,11 @@
             <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="cash outline"></ion-icon>
           </div>
           <div class="in">
-            <div>Total</div>
-            <span class="text-dark number" style="font-size: 15px;">5287,00 €</span>
+            <div>Total à payer</div>
+            <span class="text-dark number"
+              style="font-size: 15px;">{{ getTotalTTC() | currency:'EUR':'symbol':'1.2-2':'fr' }}</span>
           </div>
         </div>
-      </li>
-    </ul>
-    <div class="listview-title mt-2">Adresse</div>
-    <ul class="listview image-listview inset">
-      <li>
-        <a href="" class="item" data-toggle="modal" data-target="#addressForm">
-          <div class="icon-box bg-primary">
-            <ion-icon name="location-outline" class="md hydrated"></ion-icon>
-          </div>
-          <div class="in">
-            <div>
-              <header class="text-secondary">Adresse enregistrée</header>
-              15 rue de Capucines
-              <footer class="text-dark">75016 PARIS</footer>
-            </div>
-          </div>
-        </a>
       </li>
     </ul>
 
@@ -94,7 +105,11 @@
         </a>
       </div>
       <div class="modal-body">
-        <div id="area" class="pt-4 pb-3">
+        <div class="d-flex justify-content-center align-items-center mt-2">
+          <i class="fa-brands fa-cc-visa fa-2x mr-2 text-secondary"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x text-secondary"></i>
+        </div>
+        <div id="area" class="pt-2 pb-3">
           <div class="master-card" [ngClass]="{
             'recto': recto,
             'verso': verso
@@ -230,58 +245,6 @@
             </div>
           </form>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade action-sheet" id="addressForm" tabindex="-1" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Adresse utilisé</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
-        </a>
-      </div>
-      <div class="modal-body">
-        <div class="section full mt-1 mb-2">
-          <div class="wide-block pb-1 pt-1 border-0">
-            <form>
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label text-secondary" for="address4">Adresse</label>
-                  <textarea id="address4" rows="2" class="form-control">
-                    15 rue des Capucines
-                   </textarea>
-                  <i class="clear-input">
-                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                  </i>
-                </div>
-              </div>
-
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label text-secondary" for="name4">Code postal</label>
-                  <input type="text" class="form-control" id="name4" value="75016">
-                  <i class="clear-input">
-                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                  </i>
-                </div>
-              </div>
-
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label text-secondary" for="city4">Ville</label>
-                  <select class="form-control custom-select" id="city4">
-                    <option value="0">PARIS</option>
-                    <option value="1">CHESSY</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
     </div>

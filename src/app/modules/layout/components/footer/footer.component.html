@@ -27,7 +27,7 @@
     <a [routerLink]="['/cart']" routerLinkActive="active"  class="item">
       <div class="col">
         <ion-icon name="bag-outline"></ion-icon>
-        <span class="badge badge-danger">6</span>
+        <span class="badge badge-danger">{{getTotalCurrentCart()}}</span>
         <!-- <strong>Panier</strong> -->
       </div>
     </a>

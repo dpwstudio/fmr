@@ -29,20 +29,21 @@
       </div>
       <div class="section mt-2">
         <div class="d-flex align-items-center justify-content-between">
-          <h1 class="my-0" style="font-size: 40px;">DIOR</h1>
+          <h1 class="my-0" style="font-size: 40px;">{{product?.name}}</h1>
           <div class="action d-flex align-items-center">
             <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
-              <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon> 245
+              <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
+              {{product?.like}}
             </span>
             <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
           </div>
         </div>
-        <p style="font-size: 19px;">Sac à main en cuir d'agneau Cannage rose vif</p>
+        <p style="font-size: 19px;">{{product?.description}}</p>
         <div class="blog-header-info mt-2 mb-2">
           <div>
-            <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="text-dark">
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="text-dark">
               <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w48 rounded mr-05">
-              Dressing de Ava
+              {{product?.sellerName}}
             </a>
           </div>
           <div class="number" style="font-size: 11px; font-weight: 500;">
@@ -55,6 +56,17 @@
         <div class="section-heading">
           <h2 class="title">Détails de l'article</h2>
         </div>
+
+		  <div class="d-flex justify-content-center">
+			  <div class="chip chip-media mb-2">
+				 <i class="chip-icon bg-primary">
+					<ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+					</ion-icon>
+				 </i>
+				 <span class="chip-label number"
+					style="font-size: 12px;">{{product?.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+			  </div>
+		  </div>
 
         <div class="accordion" id="accordionExample1">
           <div class="item">
@@ -146,147 +158,53 @@
           <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
         </div>
         <owl-carousel-o [options]="carouselMultipleOptions">
-          <ng-template carouselSlide>
-
-            <!-- item -->
-            <div class="item">
-              <a [routerLink]="['/product-detail']" routerLinkActive="active">
-                <div class="blog-card">
-                  <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                    <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="d-flex align-items-center justify-content-between text-muted">
-                      <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w24 rounded mr-05"> Ava
-                    </a>
-                    <div class="d-flex align-items-center justify-content-between text-muted">
-                      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-                      <span class="number" style="font-size: 9px">245</span>
-                    </div>
-                  </div>
-                  <img src="assets/img/annonce/sacs/saclv.jpeg" alt="image" class="imaged w-100">
-                  <div class="bill-box">
-                    <div class="price">2150 €</div>
-                    <h1 style="font-size: 15px; text-transform: uppercase;">Louis Vuitton</h1>
-                    <p>Sac bandoulière</p>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
-                      </div>
-                      <a href="#" class="btn btn-icon btn-primary me-1">
-                        <ion-icon name="bag-add-outline"></ion-icon>
+          <ng-container *ngFor="let product of products">
+            <ng-template carouselSlide>
+              <!-- item -->
+              <div class="item">
+                <a (click)="gotoCategory(product)">
+                  <div class="blog-card">
+                    <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                      <a (click)="gotoCategory(product)"
+                        class="d-flex align-items-center justify-content-between text-muted">
+                        <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                          class="imaged w24 rounded mr-05"> {{product.sellerName}}
                       </a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- * item -->
-          </ng-template>
-          <ng-template carouselSlide>
-
-            <!-- item -->
-            <div class="item">
-              <a href="app-blog-post.html">
-                <div class="blog-card">
-                  <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                    <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="d-flex align-items-center justify-content-between text-muted">
-                      <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w24 rounded mr-05"> Ava
-                    </a>
-                    <div class="d-flex align-items-center justify-content-between text-muted">
-                      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-                      <span class="number" style="font-size: 9px">245</span>
-                    </div>
-                  </div>
-                  <img src="assets/img/annonce/sacs/sacdior.jpeg" alt="image" class="imaged w-100">
-                  <div class="bill-box">
-                    <div class="price">2150 €</div>
-                    <h1 style="font-size: 15px; text-transform: uppercase;">Dior</h1>
-                    <p>Sac en toile</p>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      <div class="d-flex align-items-center justify-content-between text-muted">
+                        <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                        <span class="number" style="font-size: 9px">{{product.like}}</span>
                       </div>
-                      <a href="#" class="btn btn-icon btn-primary me-1">
-                        <ion-icon name="bag-add-outline"></ion-icon>
-                      </a>
                     </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </ng-template>
-
-          <!-- * item -->
-          <ng-template carouselSlide>
-
-            <!-- item -->
-            <div class="item">
-              <a href="app-blog-post.html">
-                <div class="blog-card">
-                  <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                    <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="d-flex align-items-center justify-content-between text-muted">
-                      <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w24 rounded mr-05"> Ava
-                    </a>
-                    <div class="d-flex align-items-center justify-content-between text-muted">
-                      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-                      <span class="number" style="font-size: 9px">245</span>
-                    </div>
-                  </div>
-                  <img src="assets/img/annonce/sacs/bonnet.jpeg" alt="image" class="imaged w-100">
-                  <div class="bill-box">
-                    <div class="price">2150 €</div>
-                    <h1 style="font-size: 15px; text-transform: uppercase;">Chanel</h1>
-                    <p>Bonnet en cachemire</p>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+						  <div class="image-overflow">
+							<img [src]="product.img" [alt]="product.name" [title]="product.name" class="imaged">
+						  </div>
+                    <div class="bill-box">
+                      <div class="chip chip-media mb-2">
+                        <i class="chip-icon bg-primary">
+                          <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                          </ion-icon>
+                        </i>
+                        <span class="chip-label number"
+                          style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                       </div>
-                      <a href="#" class="btn btn-icon btn-primary me-1">
-                        <ion-icon name="bag-add-outline"></ion-icon>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- * item -->
-          </ng-template>
-          <ng-template carouselSlide>
-
-            <!-- item -->
-            <div class="item">
-              <a href="app-blog-post.html">
-                <div class="blog-card">
-                  <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                    <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="d-flex align-items-center justify-content-between text-muted">
-                      <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w24 rounded mr-05"> Ava
-                    </a>
-                    <div class="d-flex align-items-center justify-content-between text-muted">
-                      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-                      <span class="number" style="font-size: 9px">245</span>
-                    </div>
-                  </div>
-                  <img src="assets/img/annonce/sacs/sneakers.jpeg" alt="image" class="imaged w-100">
-                  <div class="bill-box">
-                    <div class="price">650 €</div>
-                    <h1 style="font-size: 15px; text-transform: uppercase;">Balenciaga</h1>
-                    <p>Baskets montantes en cuir</p>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                        <span class="fi fi-fr" style="margin-right: 4px;"></span>
+                      <h1 style="font-size: 15px; text-transform: uppercase;">{{product.name}}</h1>
+                      <p>{{product.description}}</p>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                          <span class="fi fi-{{product.sellerCountry}}"></span>
+                        </div>
+                        <a href="#" class="btn btn-icon btn-primary me-1">
+                          <ion-icon name="bag-add-outline"></ion-icon>
+                        </a>
                       </div>
-                      <a href="#" class="btn btn-icon btn-primary me-1">
-                        <ion-icon name="bag-add-outline"></ion-icon>
-                      </a>
                     </div>
                   </div>
-                </div>
-              </a>
-            </div>
-            <!-- * item -->
-          </ng-template>
+                </a>
+              </div>
+              <!-- * item -->
+            </ng-template>
+          </ng-container>
         </owl-carousel-o>
       </div>
       <!-- * News -->

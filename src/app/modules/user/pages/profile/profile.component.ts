@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
     items: 2,
     dots: false,
   }
- 
+
   carouselMultipleOptions2: OwlOptions = {
     stagePadding: 32,
     loop: true,
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
     items: 2,
     dots: false,
   }
- 
+
   carouselMultipleOptions3: OwlOptions = {
     stagePadding: 32,
     loop: true,
@@ -49,6 +49,23 @@ export class ProfileComponent implements OnInit {
       this.renderer.addClass(this.document.body, 'dark-mode');
     } else {
       this.renderer.removeClass(this.document.body, 'dark-mode');
+    }
+  }
+
+  shareProfile() {
+    const navigator = window.navigator as any;
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: 'FMR Store',
+          text: 'Pop-up store',
+          url: 'https://lumiaouvertures.fr/fmr'
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error: any) => console.log('Error sharing', error));
+    } else {
+      alert('share not supported');
     }
   }
 

@@ -11,7 +11,7 @@
       </a>
     </div>
     <div class="right">
-      <a [routerLink]="['/notifications']" routerLinkActive="router-link-active"  class="headerButton">
+      <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="headerButton">
         <ion-icon class="icon" name="notifications-outline"></ion-icon>
         <span class="badge badge-danger">4</span>
       </a>
@@ -83,23 +83,14 @@
           <div class="listview-title mt-1">Menu</div>
           <ul class="listview flush transparent no-line image-listview">
             <li *ngIf="isUserConnected()">
-              <a [routerLink]="['/notifications']" routerLinkActive="router-link-active"  class="item" data-dismiss="modal">
+              <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="item"
+                data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="notifications-outline"></ion-icon>
                 </div>
                 <div class="in">
                   Notifications
                   <span class="badge badge-primary">10</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="item" data-dismiss="modal">
-                <div class="icon-box bg-primary">
-                  <ion-icon name="bookmark-outline"></ion-icon>
-                </div>
-                <div class="in">
-                  Nouveautés
                 </div>
               </a>
             </li>
@@ -114,7 +105,17 @@
               </a>
             </li>
             <li>
-              <a href="#" class="item" data-dismiss="modal">
+              <a [routerLink]="['/shop', { type: 'news' }]" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+                <div class="icon-box bg-primary">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+                <div class="in">
+                  Nouveautés
+                </div>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="arrow-down-outline"></ion-icon>
                 </div>

@@ -14,7 +14,10 @@ import { StartModule } from './modules/start/start.module';
 import { PostModule } from './modules/post/post.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent

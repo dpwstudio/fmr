@@ -88,9 +88,10 @@
            <div class="row mb-2">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="fileuploadInput" [(ngModel)]="product.photoFace" [ngModelOptions]="{standalone: true}"
-                   (change)="onPhotoFaceChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="fileuploadInput" *ngIf="!product.photoFaceSrc">
+                 <input type="file" id="fileuploadInput" [(ngModel)]="product.img.photoFace"
+                   [ngModelOptions]="{standalone: true}" (change)="onPhotoFaceChange($event)"
+                   accept=".png, .jpg, .jpeg">
+                 <label for="fileuploadInput" *ngIf="!product.img.photoFaceSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -98,16 +99,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photoFaceSrc">
-                   <img [src]="product.photoFaceSrc">
+                 <div class="image-upload" *ngIf="product.img.photoFaceSrc">
+                   <img [src]="product.img.photoFaceSrc">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoDos" [(ngModel)]="product.photoDos" [ngModelOptions]="{standalone: true}"
-                   (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoDos" *ngIf="!product.photoDosSrc">
+                 <input type="file" id="photoDos" [(ngModel)]="product.img.photoDos"
+                   [ngModelOptions]="{standalone: true}" (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
+                 <label for="photoDos" *ngIf="!product.img.photoDosSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -115,8 +116,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photoDosSrc">
-                   <img [src]="product.photoDosSrc">
+                 <div class="image-upload" *ngIf="product.img.photoDosSrc">
+                   <img [src]="product.img.photoDosSrc">
                  </div>
                </div>
              </div>
@@ -124,9 +125,10 @@
            <div class="row mb-2">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoProfile" [(ngModel)]="product.photoProfile" [ngModelOptions]="{standalone: true}"
-                   (change)="onPhotoProfileChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoProfile" *ngIf="!product.photoProfileSrc">
+                 <input type="file" id="photoProfile" [(ngModel)]="product.img.photoProfile"
+                   [ngModelOptions]="{standalone: true}" (change)="onPhotoProfileChange($event)"
+                   accept=".png, .jpg, .jpeg">
+                 <label for="photoProfile" *ngIf="!product.img.photoProfileSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -134,16 +136,17 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photoProfileSrc">
-                   <img [src]="product.photoProfileSrc">
+                 <div class="image-upload" *ngIf="product.img.photoProfileSrc">
+                   <img [src]="product.img.photoProfileSrc">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photoGriffe" [(ngModel)]="product.photoGriffe" [ngModelOptions]="{standalone: true}"
-                   (change)="onPhotoGriffeChange($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photoGriffe" *ngIf="!product.photoGriffeSrc">
+                 <input type="file" id="photoGriffe" [(ngModel)]="product.img.photoGriffe"
+                   [ngModelOptions]="{standalone: true}" (change)="onPhotoGriffeChange($event)"
+                   accept=".png, .jpg, .jpeg">
+                 <label for="photoGriffe" *ngIf="!product.img.photoGriffeSrc">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -151,8 +154,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photoGriffeSrc">
-                   <img [src]="product.photoGriffeSrc">
+                 <div class="image-upload" *ngIf="product.img.photoGriffeSrc">
+                   <img [src]="product.img.photoGriffeSrc">
                  </div>
                </div>
              </div>
@@ -160,9 +163,9 @@
            <div class="row">
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photo5" [(ngModel)]="product.photo5" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photo5" [(ngModel)]="product.img.photo5" [ngModelOptions]="{standalone: true}"
                    (change)="onPhoto5Change($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photo5" *ngIf="!product.photo5Src">
+                 <label for="photo5" *ngIf="!product.img.photo5Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -170,16 +173,16 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photo5Src">
-                   <img [src]="product.photo5Src">
+                 <div class="image-upload" *ngIf="product.img.photo5Src">
+                   <img [src]="product.img.photo5Src">
                  </div>
                </div>
              </div>
              <div class="col-6">
                <div class="custom-file-upload" style="overflow: hidden;">
-                 <input type="file" id="photo6" [(ngModel)]="product.photo6" [ngModelOptions]="{standalone: true}"
+                 <input type="file" id="photo6" [(ngModel)]="product.img.photo6" [ngModelOptions]="{standalone: true}"
                    (change)="onPhoto6Change($event)" accept=".png, .jpg, .jpeg">
-                 <label for="photo6" *ngIf="!product.photo6Src">
+                 <label for="photo6" *ngIf="!product.img.photo6Src">
                    <span>
                      <strong>
                        <ion-icon name="camera" class="md hydrated"></ion-icon>
@@ -187,8 +190,8 @@
                      </strong>
                    </span>
                  </label>
-                 <div class="image-upload" *ngIf="product.photo6Src">
-                   <img [src]="product.photo6Src">
+                 <div class="image-upload" *ngIf="product.img.photo6Src">
+                   <img [src]="product.img.photo6Src">
                  </div>
                </div>
              </div>
@@ -244,27 +247,27 @@
                  <div class="form-group basic">
                    <div class="input-wrapper">
                      <div class="input-wrapper">
-                       <input type="text" class="form-control" [(ngModel)]="product.brand" [ngModelOptions]="{standalone: true}"
-                         placeholder="Marque">
+                       <input type="text" class="form-control" [(ngModel)]="product.brand"
+                         [ngModelOptions]="{standalone: true}" placeholder="Marque">
                      </div>
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="product.model" [ngModelOptions]="{standalone: true}"
-                       placeholder="Modèle">
+                     <input type="text" class="form-control" [(ngModel)]="product.model"
+                       [ngModelOptions]="{standalone: true}" placeholder="Modèle">
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="product.matter" [ngModelOptions]="{standalone: true}"
-                       placeholder="Matière">
+                     <input type="text" class="form-control" [(ngModel)]="product.matter"
+                       [ngModelOptions]="{standalone: true}" placeholder="Matière">
                    </div>
                  </div>
                  <div class="form-group basic">
                    <div class="input-wrapper">
-                     <input type="text" class="form-control" [(ngModel)]="product.color" [ngModelOptions]="{standalone: true}"
-                       placeholder="Couleur">
+                     <input type="text" class="form-control" [(ngModel)]="product.color"
+                       [ngModelOptions]="{standalone: true}" placeholder="Couleur">
                    </div>
                  </div>
                  <div class="form-group basic">
@@ -329,24 +332,24 @@
            <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.height"
-                   [ngModelOptions]="{standalone: true}" placeholder="Haut.">
+                 <input type="number" class="form-control text-center px-0 number"
+                   [(ngModel)]="product.dimensions.height" [ngModelOptions]="{standalone: true}" placeholder="Haut.">
 
                </div>
              </div>
 
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.width"
-                   [ngModelOptions]="{standalone: true}" placeholder="Larg.">
+                 <input type="number" class="form-control text-center px-0 number"
+                   [(ngModel)]="product.dimensions.width" [ngModelOptions]="{standalone: true}" placeholder="Larg.">
 
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.depth"
-                   [ngModelOptions]="{standalone: true}" placeholder="Prof.">
+                 <input type="number" class="form-control text-center px-0 number"
+                   [(ngModel)]="product.dimensions.depth" [ngModelOptions]="{standalone: true}" placeholder="Prof.">
 
                </div>
              </div>
@@ -418,8 +421,8 @@
                      </label>
                    </div>
                    <div class="custom-control custom-radio">
-                     <input type="radio" id="veryGoodStateChoice" [(ngModel)]="product.stateChoice" value="veryGoodStateChoice"
-                       class="custom-control-input">
+                     <input type="radio" id="veryGoodStateChoice" [(ngModel)]="product.stateChoice"
+                       value="veryGoodStateChoice" class="custom-control-input">
                      <label class="custom-control-label" for="veryGoodStateChoice">
                        <div class="in">
                          <div>
@@ -507,8 +510,8 @@
                        </label>
                      </div>
                      <div class="custom-control custom-radio">
-                       <input type="radio" id="correctChoiceArt" [(ngModel)]="product.stateChoiceArt" value="correctChoiceArt"
-                         name="stateChoiceArt" class="custom-control-input">
+                       <input type="radio" id="correctChoiceArt" [(ngModel)]="product.stateChoiceArt"
+                         value="correctChoiceArt" name="stateChoiceArt" class="custom-control-input">
                        <label class="custom-control-label" for="correctChoiceArt">
                          <div class="in">
                            <div>

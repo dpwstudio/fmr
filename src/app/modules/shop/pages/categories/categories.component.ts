@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
 })
 export class CategoriesComponent implements OnInit {
   categories = [];
+  loading = false;
+  subscription: Subscription;
 
   constructor(private router: Router, private productService: ProductService) { }
 
@@ -19,7 +21,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategories() {
-    this.productService.getCategories().pipe(
+    this.subscription = this.productService.getCategories().pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -38,5 +40,9 @@ export class CategoriesComponent implements OnInit {
 
   gotoCategory(category) {
     return this.router.navigate([category.url]);
+  }
+
+  isLoading() {
+    return this.subscription && !this.subscription.closed;
   }
 }

@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Product } from 'src/app/modules/shared/models/product.model';
@@ -11,20 +11,21 @@ import { Product } from 'src/app/modules/shared/models/product.model';
 })
 export class PostFormComponent implements OnInit {
   loading = false;
-
   product: Product = {
-    photoFace: '',
-    photoFaceSrc: '',
-    photoDos: '',
-    photoDosSrc: '',
-    photoProfile: '',
-    photoProfileSrc: '',
-    photoGriffe: '',
-    photoGriffeSrc: '',
-    photo5: '',
-    photo5Src: '',
-    photo6: '',
-    photo6Src: '',
+    img: {
+      photoFace: '',
+      photoFaceSrc: '',
+      photoDos: '',
+      photoDosSrc: '',
+      photoProfile: '',
+      photoProfileSrc: '',
+      photoGriffe: '',
+      photoGriffeSrc: '',
+      photo5: '',
+      photo5Src: '',
+      photo6: '',
+      photo6Src: '',
+    },
     typeProduct: 'mode',
     category: '',
     brand: '',
@@ -36,9 +37,11 @@ export class PostFormComponent implements OnInit {
     descriptionArt: '',
     stateChoice: '',
     stateChoiceArt: '',
-    width: '',
-    height: '',
-    depth: '',
+    dimensions: {
+      width: '',
+      height: '',
+      depth: '',
+    },
     amount: '',
     amountWin: '',
     createdAt: moment().format()
@@ -51,12 +54,12 @@ export class PostFormComponent implements OnInit {
   }
 
   isPhotosComplete() {
-    return this.product.photoFace
-      && this.product.photoDos
-      && this.product.photoProfile
-      && this.product.photoGriffe
-      || this.product.photo5
-      || this.product.photo6;
+    return this.product.img.photoFace
+      && this.product.img.photoDos
+      && this.product.img.photoProfile
+      && this.product.img.photoGriffe
+      || this.product.img.photo5
+      || this.product.img.photo6;
   }
 
   isDescriptionComplete() {
@@ -71,9 +74,9 @@ export class PostFormComponent implements OnInit {
   }
 
   isDimensionsComplete() {
-    return this.product.width
-      && this.product.height
-      && this.product.depth;
+    return this.product.dimensions.width
+      && this.product.dimensions.height
+      && this.product.dimensions.depth;
   }
 
   isStateChoiceComplete() {
@@ -92,7 +95,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photoFaceSrc = reader.result as string;
+        this.product.img.photoFaceSrc = reader.result as string;
       };
     }
   }
@@ -105,7 +108,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photoDosSrc = reader.result as string;
+        this.product.img.photoDosSrc = reader.result as string;
       };
     }
   }
@@ -118,7 +121,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photoProfileSrc = reader.result as string;
+        this.product.img.photoProfileSrc = reader.result as string;
       };
     }
   }
@@ -131,7 +134,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photoGriffeSrc = reader.result as string;
+        this.product.img.photoGriffeSrc = reader.result as string;
       };
     }
   }
@@ -144,7 +147,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photo5Src = reader.result as string;
+        this.product.img.photo5Src = reader.result as string;
       };
     }
   }
@@ -157,7 +160,7 @@ export class PostFormComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.product.photo6Src = reader.result as string;
+        this.product.img.photo6Src = reader.result as string;
       };
     }
   }

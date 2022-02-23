@@ -1,41 +1,43 @@
 export interface Product {
 	id?: number;
 	stripeId?: string;
-	/**
-	 * Photo de face
-	 */
-	photoFace: string;
-	photoFaceSrc: string;
+	img: {
+		/**
+		 * Photo de face
+		 */
+		photoFace: string;
+		photoFaceSrc: string;
 
-	/**
-	 * Photo de dos
-	 */
-	photoDos: string;
-	photoDosSrc: string;
+		/**
+		 * Photo de dos
+		 */
+		photoDos: string;
+		photoDosSrc: string;
 
-	/**
-	 * Photo de profil
-	 */
-	photoProfile: string;
-	photoProfileSrc: string;
+		/**
+		 * Photo de profil
+		 */
+		photoProfile: string;
+		photoProfileSrc: string;
 
-	/**
-	 * Photo de la griffe
-	 */
-	photoGriffe: string;
-	photoGriffeSrc: string;
+		/**
+		 * Photo de la griffe
+		 */
+		photoGriffe: string;
+		photoGriffeSrc: string;
 
-	/**
-	 * Photo 5 (facultative)
-	 */
-	photo5: string;
-	photo5Src: string;
+		/**
+		 * Photo 5 (facultative)
+		 */
+		photo5: string;
+		photo5Src: string;
 
-	/**
-	 * Photo 6 (facultative)
-	 */
-	photo6: string;
-	photo6Src: string;
+		/**
+		 * Photo 6 (facultative)
+		 */
+		photo6: string;
+		photo6Src: string;
+	}
 	typeProduct: string;
 	category: string;
 	brand: string;
@@ -47,9 +49,11 @@ export interface Product {
 	descriptionArt: string;
 	stateChoice: string;
 	stateChoiceArt: string;
-	width: string;
-	height: string;
-	depth: string;
+	dimensions: {
+		width: string;
+		height: string;
+		depth: string;
+	},
 	amount: string;
 	amountWin: string;
 	like?: string;
@@ -59,7 +63,7 @@ export interface Product {
 	/**
 	 * USER INFO
 	 */
-	 sellerName?: string,
-    sellerImg?: string,
-    sellerCountry?: string
+	sellerName?: string,
+	sellerImg?: string,
+	sellerCountry?: string
 }

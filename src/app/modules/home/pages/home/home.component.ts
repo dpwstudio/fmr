@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
     dots: false,
   }
   quantity = 1;
+  subscription: Subscription;
 
   constructor(
     private router: Router,
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCategories() {
-    this.productService.getCategories().pipe(
+    this.subscription = this.productService.getCategories().pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -73,7 +74,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getProducts().pipe(
+    this.subscription = this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -93,6 +94,10 @@ export class HomeComponent implements OnInit {
   addProductToCart(product) {
     product.quantity = this.quantity;
     this.cartService.addProductToCart(product);
+  }
+
+  isLoading() {
+    return this.subscription && !this.subscription.closed;
   }
 
 }

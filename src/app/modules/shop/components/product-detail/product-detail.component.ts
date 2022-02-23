@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Product } from 'src/app/modules/shared/models/product.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
@@ -31,20 +32,7 @@ export class ProductDetailComponent implements OnInit {
     dots: false,
   }
   products = [];
-  product = {
-    name: '',
-    description: '',
-    category: '',
-    SubCategory: '',
-    img: '',
-    amount: 0,
-    fallingAmount: 0,
-    url: '',
-    like: 0,
-    sellerName: '',
-    sellerImg: '',
-    sellerCountry: ''
-  };
+  product: Product;
   quantity = 1;
 
   constructor(

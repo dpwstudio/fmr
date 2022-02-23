@@ -68,7 +68,9 @@ export class ProfileComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products.filter(product => product.sellerName === 'Ava');
+      console.log('products', products)
+      console.log('this.currentUser.firstname', this.currentUser.firstname)
+      this.products = products.filter(product => product.sellerName.toLowerCase() === this.currentUser.firstname.toLowerCase());
     })
   }
 

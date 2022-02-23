@@ -5,6 +5,8 @@ import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { User } from 'src/app/modules/shared/models/user.model';
+import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
@@ -43,14 +45,17 @@ export class ProfileComponent implements OnInit {
     dots: false,
   }
   quantity = 1;
+  currentUser: User;
 
   constructor(
     private cartService: CartService,
     private productService: ProductService,
     private router: Router,
+    private authService: AuthService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
@@ -104,7 +109,7 @@ export class ProfileComponent implements OnInit {
   isKindKids(product) {
     return product.kind === 'kids';
   }
-  
+
   isArtProduct(product) {
     return product.category === 'art';
   }

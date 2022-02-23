@@ -1,0 +1,113 @@
+[{
+  "id": 1,
+  "firstname": "Ava",
+  "lastname": "Ava",
+  "email": "ava@mail.com",
+  "password": "ava",
+  "phone": "0615145745",
+  "ctryCode": "fr",
+  "deliveryAddress": {
+    "address": "15 rue de Paris",
+    "cp": "75001",
+    "city": "Paris",
+    "country": "france"
+  },
+  "billingAddress": {
+    "address": "15 rue de Paris",
+    "cp": "75001",
+    "city": "paris",
+    "country": "france"
+  },
+  "img": {
+    "avatar": "assets/img/sample/avatar/avatar4.jpg",
+    "dressing": "assets/img/dressing/dressing1.png",
+    "gallery": "assets/img/galerie/galerie1.png"
+  },
+  "followers": 5245,
+  "subscription": 215,
+  "createdAt": "2020-08-12"
+}, {
+  "id": 2,
+  "firstname": "John",
+  "lastname": "Jackson",
+  "email": "john@mail.com",
+  "password": "john",
+  "phone": "0615145745",
+  "ctryCode": "gb",
+  "deliveryAddress": {
+    "address": "19 rue léonard de vinci",
+    "cp": "77420",
+    "city": "Londres",
+    "country": "Royaume-uni"
+  },
+  "billingAddress": {
+    "address": "15 rue de Paris",
+    "cp": "75001",
+    "city": "Londres",
+    "country": "Royaume-uni"
+  },
+  "img": {
+    "avatar": "assets/img/sample/avatar/avatar3.jpg",
+    "dressing": "assets/img/dressing/dressing2.png",
+    "gallery": "assets/img/galerie/galerie2.png"
+  },
+  "followers": 1024,
+  "subscription": 248,
+  "createdAt": "2020-08-12"
+}, {
+  "id": 3,
+  "firstname": "Géraldine",
+  "lastname": "Leclair",
+  "email": "geraldine@mail.com",
+  "password": "geraldine",
+  "phone": "0615145745",
+  "ctryCode": "it",
+  "deliveryAddress": {
+    "address": "22 rue de bussy",
+    "cp": "92230",
+    "city": "Rome",
+    "country": "Italie"
+  },
+  "billingAddress": {
+    "address": "15 rue de Paris",
+    "cp": "75001",
+    "city": "Rome",
+    "country": "Italie"
+  },
+  "img": {
+    "avatar": "assets/img/sample/avatar/avatar7.jpg",
+    "dressing": "assets/img/dressing/dressing2.png",
+    "gallery": "assets/img/galerie/galerie2.png"
+  },
+  "followers": 2249,
+  "subscription": 563,
+  "createdAt": "2020-08-12"
+}, {
+  "id": 4,
+  "firstname": "Peter",
+  "lastname": "Johnson",
+  "email": "peter@mail.com",
+  "password": "peter",
+  "phone": "0615145745",
+  "ctryCode": "es",
+  "deliveryAddress": {
+    "address": "22 rue de bussy",
+    "cp": "92230",
+    "city": "benalmadena",
+    "country": "Espagne"
+  },
+  "billingAddress": {
+    "address": "15 rue de Paris",
+    "cp": "75001",
+    "city": "benalmadena",
+    "country": "espagne"
+  },
+  "img": {
+    "avatar": "assets/img/sample/avatar/avatar8.jpg",
+    "dressing": "assets/img/dressing/dressing3.png",
+    "gallery": "assets/img/galerie/galerie3.png"
+  },
+  "followers": 2249,
+  "subscription": 563,
+  "createdAt": "2020-08-12"
+}]

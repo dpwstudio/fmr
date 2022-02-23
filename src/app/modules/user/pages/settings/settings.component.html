@@ -10,7 +10,7 @@
          </span>
        </a>
      </div>
-     <h2 style="font-size: 25px;">AVA</h2>
+     <h2 style="font-size: 25px;">{{currentUser.firstname}}</h2>
    </div>
 
    <div class="listview-title mt-1">Profil</div>
@@ -18,7 +18,8 @@
      <li>
        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="item">
          <div class="in">
-           <div>Voir mon profil</div>
+           <div>Mon profil</div>
+           <span class="text-muted" style="font-size: 15px;">Voir</span>
          </div>
        </a>
      </li>
@@ -31,9 +32,17 @@
        </a>
      </li>
      <li>
-       <a href="#" class="item" data-toggle="modal" data-target="#addressForm">
+       <a href="#" class="item" data-toggle="modal" data-target="#deliveryAddressForm">
          <div class="in">
-           <div>Adresse</div>
+           <div>Adresse de livraison</div>
+           <span class="text-muted" style="font-size: 15px;">Modifier</span>
+         </div>
+       </a>
+     </li>
+     <li>
+       <a href="#" class="item" data-toggle="modal" data-target="#billingAddressForm">
+         <div class="in">
+           <div>Adresse de facturation</div>
            <span class="text-muted" style="font-size: 15px;">Modifier</span>
          </div>
        </a>
@@ -98,7 +107,7 @@
              <form>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Pseudo">
+                   <input type="text" class="form-control" id="name4" placeholder="Pseudo" [value]="currentUser.firstname">
                    <i class="clear-input">
                      <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                    </i>
@@ -106,7 +115,7 @@
                </div>
                <div class="form-group basic">
                  <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Téléphone">
+                   <input type="text" class="form-control" id="name4" placeholder="Téléphone" [value]="currentUser.phone">
                    <i class="clear-input">
                      <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                    </i>
@@ -151,11 +160,11 @@
    </div>
  </div>
 
- <div class="modal fade action-sheet" id="addressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+ <div class="modal fade action-sheet" id="deliveryAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
    <div class="modal-dialog" role="document">
      <div class="modal-content">
        <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Modifier mon adresse</h5>
+         <h5 class="modal-title">Adresse de livraison</h5>
          <a href="#" class="d-flex" data-dismiss="modal">
            <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
          </a>
@@ -168,7 +177,7 @@
                  <div class="input-wrapper">
                    <label class="label text-secondary" for="address4">Adresse</label>
                    <textarea id="address4" rows="2" class="form-control">
-                    15 rue des Capucines
+                    {{currentUser.deliveryAddress.address}}
                    </textarea>
                    <i class="clear-input">
                      <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
@@ -179,7 +188,57 @@
                <div class="form-group basic">
                  <div class="input-wrapper">
                    <label class="label text-secondary" for="name4">Code postal</label>
-                   <input type="text" class="form-control" id="name4" value="75016">
+                   <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.cp">
+                   <i class="clear-input">
+                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                   </i>
+                 </div>
+               </div>
+
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label text-secondary" for="city4">Ville</label>
+                   <select class="form-control custom-select" id="city4">
+                     <option value="0">PARIS</option>
+                     <option value="1">CHESSY</option>
+                   </select>
+                 </div>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="modal fade action-sheet" id="billingAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header d-flex align-items-center">
+         <h5 class="modal-title">Adresse de facturation</h5>
+         <a href="#" class="d-flex" data-dismiss="modal">
+           <ion-icon name="close-outline" style="font-size: 20px;"></ion-icon>
+         </a>
+       </div>
+       <div class="modal-body">
+         <div class="section full mt-1 mb-2">
+           <div class="wide-block pb-1 pt-1 border-0">
+             <form>
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label text-secondary" for="address4">Adresse</label>
+                   <textarea id="address4" rows="2" class="form-control">
+                    {{currentUser.deliveryAddress.address}}
+                   </textarea>
+                   
+                 </div>
+               </div>
+
+               <div class="form-group basic">
+                 <div class="input-wrapper">
+                   <label class="label text-secondary" for="name4">Code postal</label>
+                   <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.cp">
                    <i class="clear-input">
                      <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
                    </i>

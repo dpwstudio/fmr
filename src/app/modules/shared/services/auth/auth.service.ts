@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>;
+  public currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
@@ -39,6 +39,10 @@ export class AuthService {
         this.currentUserSubject.next(user);
         return user;
       }));
+  }
+
+  getUsers() {
+    return this.http.get(`assets/mock-data/users.json`) as Observable<User[]>;
   }
 
   /**

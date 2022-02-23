@@ -39,21 +39,21 @@
   </div>
   <!-- Wallet Card -->
 
-  <!-- Send Money -->
+  <!-- Categories -->
   <div class="section full mt-4" style="margin-top: 70px !important;">
     <div class="section-heading padding">
       <h2 class="title">Catégories</h2>
-      <a [routerLink]="['/shop']" routerLinkActive="active" class="link">Tout voir</a>
+      <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
     </div>
     <owl-carousel-o [options]="carouselSmallOptions">
       <ng-container *ngFor="let category of categories">
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
-            <a (click)="gotoCategory(category)">
+            <a [routerLink]="['/shop', {productType: category.type, category: category.url}]" routerLinkActive="router-link-active" >
               <div class="user-card">
                 <img [src]="category.img" [alt]="category.name" [title]="category.name" class="imaged w-48">
-                <strong>{{category.name}}</strong>
+                <strong style="text-transform: capitalize;">{{category.name}}</strong>
               </div>
             </a>
           </div>
@@ -62,7 +62,7 @@
       </ng-container>
     </owl-carousel-o>
   </div>
-  <!-- * Send Money -->
+  <!-- * Categories -->
 
   <!-- News -->
   <div class="section full mt-4 mb-3">

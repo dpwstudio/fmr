@@ -1,14 +1,29 @@
 export interface User {
-	id: number;
-	lastname: string;
-	firstname: string;
-	email: string;
-	password: string;
-	address: string;
-	zipcode: string;
-	city: string;
-	phone: string;
-	newsletter: number;
-	role: string;
-	createdAt?: Date;
+	id: number,
+	firstname: string,
+	lastname: string,
+	email: string,
+	password: string,
+	phone: string,
+	ctryCode: string,
+	deliveryAddress: {
+		address: string,
+		cp: string,
+		city: string,
+		country: string
+	},
+	billingAddress: {
+		address: string,
+		cp: string,
+		city: string,
+		country: string
+	},
+	img: {
+		avatar: string,
+		dressing: string,
+		gallery: string
+	},
+	followers: number,
+	subscription: number,
+	createdAt: string
 }

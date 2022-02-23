@@ -3,7 +3,7 @@
     "brand": "Louis Vuitton",
     "model": "Sac à bandoulière",
     "description": "Sac à bandoulière",
-    "typeProduct": "mode",
+    "productType": "mode",
     "kind": "womens",
     "category": "bags",
     "img": {
@@ -30,7 +30,7 @@
     "brand": "Dior",
     "model": "Sac en toile",
     "description": "Sac en toile",
-    "typeProduct": "mode",
+    "productType": "mode",
     "kind": "womens",
     "category": "bags",
     "img": {
@@ -57,7 +57,7 @@
     "brand": "Balenciaga",
     "model": "Baskets montantes en cuir",
     "description": "Baskets montantes en cuir",
-    "typeProduct": "mode",
+    "productType": "mode",
     "kind": "mens",
     "category": "shoes",
     "img": {
@@ -84,7 +84,7 @@
     "brand": "Chanel",
     "model": "Bonnet en cachemire",
     "description": "Bonnet en cachemire",
-    "typeProduct": "mode",
+    "productType": "mode",
     "kind": "mens",
     "category": "others",
     "img": {

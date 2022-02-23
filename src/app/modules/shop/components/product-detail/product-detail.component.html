@@ -41,7 +41,7 @@
         <div class="blog-header-info mt-2 mb-2">
           <div>
             <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="text-dark">
-              <img src="assets/img/sample/avatar/avatar4.jpg" alt="img" class="imaged w48 rounded mr-05">
+              <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
               {{product?.sellerName}}
             </a>
           </div>
@@ -100,28 +100,26 @@
             <div class="accordion-header">
               <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion3"
                 aria-expanded="false">
-                <h2 class="my-0">Livraison & Retours</h2>
+                <h2 class="my-0">Contrôle, Livraison & Retours</h2>
               </button>
             </div>
             <div id="accordion3" class="accordion-body collapse" data-parent="#accordionExample1" style="">
               <div class="accordion-content">
-                <h3>Retours sous 30 jours offerts</h3>
-                <p>
-                  Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 30 jours
-                  à compter de sa date de réception. Pour plus d'informations consultez notre FAQ.
-                </p>
-
-                <h3>Livraison standard offerte</h3>
+                <h3><i class="fa-solid fa-certificate mr-1"></i> Contrôle de conformité offerts</h3>
                 <ul>
-                  <li>Dior vous propose deux modes de livraisons rapides et sécurisés</li>
-                  <li>Livraison standard avec UPS (3 à 4 jours ouvrés): offerte</li>
-                  <li>Livraison express avec UPS (1 à 2 jours ouvrés): 9,95€</li>
-                  <li>Les délais de livraison sont estimés à partir de l'expédition de votre commande.</li>
+                  <li>Tous les articles sont réceptionnés dans notre centre.</li>
+                  <li>Tous les articles sont contrôlés par nos experts.</li>
+                  <li>Une fois conforme, nous vous confirmerons l'envoi de votre article.</li>
                 </ul>
-                <h3>Expédition sous 24h</h3>
+                <h3><i class="fa-solid fa-truck-fast mr-1"></i> Expédition sous 24h</h3>
                 <p>
-                  Les commandes effectuées avant midi sont préparées et envoyées le même jour ; celles effectuées après
-                  midi sont envoyées dans les 24 heures
+                  Les articles contrôlés et validés sont immédiatement préparés et envoyés sous 24h.
+                </p>
+                <h3><i class="fa-solid fa-circle-arrow-left mr-1"></i> Retours sous 72 heures</h3>
+                <p>
+                  Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 72
+                  heures
+                  à compter de sa date de réception. Pour plus d'informations consultez notre FAQ.
                 </p>
               </div>
             </div>
@@ -135,10 +133,14 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <a href="#" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
+                <a href="#" class="btn btn-block btn-lg btn-outline-primary">
+                  Négocier
+                </a>
               </div>
               <div class="col">
-                <a href="" class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">Ajouter</a>
+                <a class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">
+                  Ajouter
+                </a>
               </div>
             </div>
           </div>

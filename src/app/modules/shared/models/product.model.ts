@@ -38,7 +38,7 @@ export interface Product {
 		photo6: string;
 		photo6Src: string;
 	}
-	typeProduct: string;
+	productType: string;
 	category: string;
 	brand: string;
 	model: string;

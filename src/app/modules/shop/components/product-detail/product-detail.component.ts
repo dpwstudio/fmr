@@ -2,7 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -44,89 +47,31 @@ export class ProductDetailComponent implements OnInit {
   };
   quantity = 1;
 
-  constructor(private router: Router, private cartService: CartService) {
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private productService: ProductService
+  ) {
   }
 
   ngOnInit(): void {
     this.product = history.state;
     console.log('this.product', this.product);
-    this.products = [
-      {
-        name: 'Dior',
-        description: 'Sac à main en cuir d\'agneau Cannage rose vif',
-        category: 'Mode',
-        SubCategory: 'Sacs',
-        img: 'assets/img/product/img1.jpeg',
-        amount: 3300,
-        fallingAmount: 3300,
-        url: 'product-detail',
-        like: 358,
-        sellerName: 'Ava',
-        sellerImg: 'assets/img/sample/avatar/avatar4.jpg',
-        sellerCountry: 'fr'
-      },
-      {
-        name: 'Louis Vuitton',
-        description: 'Sac à bandoulière',
-        category: 'Mode',
-        SubCategory: 'Sacs',
-        img: 'assets/img/annonce/sacs/saclv.jpeg',
-        amount: 1995,
-        fallingAmount: 1524,
-        url: 'product-detail',
-        like: 188,
-        sellerName: 'Ava',
-        sellerImg: 'assets/img/sample/avatar/avatar4.jpg',
-        sellerCountry: 'fr'
-      },
-      {
-        name: 'Dior',
-        description: 'Sac en toile',
-        category: 'Mode',
-        subCategory: 'Sacs',
-        img: 'assets/img/annonce/sacs/sacdior.jpeg',
-        amount: 2150,
-        fallingAmount: 1850,
-        url: 'product-detail',
-        like: 245,
-        sellerName: 'Géraldine',
-        sellerImg: 'assets/img/sample/avatar/avatar7.jpg',
-        sellerCountry: 'it'
-      },
-      {
-        name: 'Balenciaga',
-        description: 'Baskets montantes en cuir',
-        category: 'Mode',
-        subCategory: 'Chaussures',
-        img: 'assets/img/annonce/sacs/sneakers.jpeg',
-        amount: 650,
-        fallingAmount: 480,
-        url: 'product-detail',
-        like: 68,
-        sellerName: 'Laurent',
-        sellerImg: 'assets/img/sample/avatar/avatar3.jpg',
-        sellerCountry: 'es'
-      },
-      {
-        name: 'Chanel',
-        description: 'Bonnet en cachemire',
-        category: 'Mode',
-        subCategory: 'Autres',
-        img: 'assets/img/annonce/sacs/bonnet.jpeg',
-        amount: 388,
-        fallingAmount: 240,
-        url: 'product-detail',
-        like: 32,
-        sellerName: 'John',
-        sellerImg: 'assets/img/sample/avatar/avatar1.jpg',
-        sellerCountry: 'be'
-      },
-    ];
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService.getProducts().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(products => {
+      this.products = products;
+    })
   }
 
   shareProduct() {
     const navigator = window.navigator as any;
-
     if (navigator.share) {
       navigator
         .share({

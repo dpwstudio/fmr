@@ -2,12 +2,12 @@
   position: relative;
   text-align: center;
   background: #ddd1b6;
-  background-image: linear-gradient(0deg, #ddd1b6 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: linear-gradient(0deg, #ededf5 0%, #ddd1b6 100%);
 
   .in {
     position: relative;
     z-index: 10;
-    padding: 20px 16px 70px 16px;
+    padding: 25px 16px 70px 16px;
   }
 
   .total {
@@ -27,7 +27,6 @@
   z-index: 100;
 
   .card-bg {
-    background: url('../../../../../assets/img/dressing/dressing1.png') center center no-repeat;
     height: 214px;
     border: 5px solid white;
     border-radius: 10px;
@@ -42,4 +41,16 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.image-overflow {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 }

@@ -52,5 +52,14 @@ export interface Product {
 	depth: string;
 	amount: string;
 	amountWin: string;
+	like?: string;
+	url?: string;
 	createdAt?: string;
+
+	/**
+	 * USER INFO
+	 */
+	 sellerName?: string,
+    sellerImg?: string,
+    sellerCountry?: string
 }

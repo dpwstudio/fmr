@@ -1,0 +1,97 @@
+[{
+    "id": 1,
+    "brand": "Louis Vuitton",
+    "model": "Sac à bandoulière",
+    "description": "Sac à bandoulière",
+    "category": "mode",
+    "kind": "womens",
+    "SubCategory": "Sacs",
+    "img": {
+      "photoFace": "assets/img/annonce/sacs/saclv.jpeg",
+      "photoDos": "assets/img/annonce/sacs/saclv.jpeg",
+      "photoProfile": "assets/img/annonce/sacs/saclv.jpeg",
+      "photoGriffe": "assets/img/annonce/sacs/saclv.jpeg",
+      "photo5": "assets/img/annonce/sacs/saclv.jpeg",
+      "photo6": "assets/img/annonce/sacs/saclv.jpeg"
+    },
+    "amount": 1995,
+    "fallingAmount": 1524,
+    "url": "product-detail",
+    "like": 188,
+    "sellerName": "Ava",
+    "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
+    "sellerCountry": "fr"
+  },
+  {
+    "id": 2,
+    "brand": "Dior",
+    "model": "Sac en toile",
+    "description": "Sac en toile",
+    "category": "mode",
+    "kind": "womens",
+    "subCategory": "Sacs",
+    "img": {
+      "photoFace": "assets/img/annonce/sacs/sacdior.jpeg",
+      "photoDos": "assets/img/annonce/sacs/sacdior.jpeg",
+      "photoProfile": "assets/img/annonce/sacs/sacdior.jpeg",
+      "photoGriffe": "assets/img/annonce/sacs/sacdior.jpeg",
+      "photo5": "assets/img/annonce/sacs/sacdior.jpeg",
+      "photo6": "assets/img/annonce/sacs/sacdior.jpeg"
+    },
+    "amount": 2150,
+    "fallingAmount": 1850,
+    "url": "product-detail",
+    "like": 245,
+    "sellerName": "Géraldine",
+    "sellerImg": "assets/img/sample/avatar/avatar7.jpg",
+    "sellerCountry": "it"
+  },
+  {
+    "id": 3,
+    "brand": "Balenciaga",
+    "model": "Baskets montantes en cuir",
+    "description": "Baskets montantes en cuir",
+    "category": "mode",
+    "kind": "mens",
+    "subCategory": "Chaussures",
+    "img": {
+      "photoFace": "assets/img/annonce/sacs/sneakers.jpeg",
+      "photoDos": "assets/img/annonce/sacs/sneakers.jpeg",
+      "photoProfile": "assets/img/annonce/sacs/sneakers.jpeg",
+      "photoGriffe": "assets/img/annonce/sacs/sneakers.jpeg",
+      "photo5": "assets/img/annonce/sacs/sneakers.jpeg",
+      "photo6": "assets/img/annonce/sacs/sneakers.jpeg"
+    },
+    "amount": 650,
+    "fallingAmount": 480,
+    "url": "product-detail",
+    "like": 68,
+    "sellerName": "Laurent",
+    "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
+    "sellerCountry": "es"
+  },
+  {
+    "id": 4,
+    "brand": "Chanel",
+    "model": "Bonnet en cachemire",
+    "description": "Bonnet en cachemire",
+    "category": "mode",
+    "kind": "mens",
+    "subCategory": "Autres",
+    "img": {
+      "photoFace": "assets/img/annonce/sacs/bonnet.jpeg",
+      "photoDos": "assets/img/annonce/sacs/bonnet.jpeg",
+      "photoProfile": "assets/img/annonce/sacs/bonnet.jpeg",
+      "photoGriffe": "assets/img/annonce/sacs/bonnet.jpeg",
+      "photo5": "assets/img/annonce/sacs/bonnet.jpeg",
+      "photo6": "assets/img/annonce/sacs/bonnet.jpeg"
+    },
+    "amount": 388,
+    "fallingAmount": 240,
+    "url": "product-detail",
+    "like": 32,
+    "sellerName": "John",
+    "sellerImg": "assets/img/sample/avatar/avatar1.jpg",
+    "sellerCountry": "be"
+  }
+]

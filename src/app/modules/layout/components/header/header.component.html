@@ -42,7 +42,7 @@
           <div class="sidebar-balance">
             <div class="listview-title">Total Panier</div>
             <div class="in">
-              <h1 class="amount">1380,08 €</h1>
+              <h1 class="amount">{{ getTotalTTC() | currency:'EUR':'symbol':'1.2-2':'fr' }}</h1>
             </div>
           </div>
           <!-- * balance -->

@@ -39,15 +39,16 @@
          <li *ngFor="let product of carts">
            <div class="item">
              <div class="imageWrapper">
-               <img [src]="product.img" alt="image" class="imaged w64">
+               <img [src]="product.img.photoFace" alt="image" class="imaged w64">
              </div>
              <div class="in">
                <div class="fsize-16">
-                 {{product.name}}
+                 {{product.brand}}
                  <div class="text-muted fsize-15">{{product.description}}</div>
                </div>
                <span class="text-dark number">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
              </div>
+             <ion-icon (click)="removeProduct(product)" name="trash-outline" class="ml-2 text-danger" style="font-size: x-large;"></ion-icon>
            </div>
          </li>
        </ul>
@@ -78,7 +79,7 @@
              </div>
            </div>
          </div>
-         <div class="d-flex align-items-center justify-content-center mt-3">
+         <div class="d-flex align-items-center justify-content-center mt-3 mb-5">
            <a [routerLink]="['/delivery']" routerLinkActive="router-link-active"
              class="btn btn-icon btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite">
              <ion-icon name="arrow-forward-outline"></ion-icon>

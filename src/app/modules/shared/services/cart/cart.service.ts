@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { Cart } from '../../models/cart.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private readonly notifier: NotifierService;
   cartProductList: Cart[] = [];
 
-  constructor() {
+  constructor(notifierService: NotifierService) {
+    this.notifier = notifierService;
     const tmpCart = JSON.parse(localStorage.getItem('tmpCart'));
     if (!tmpCart) {
       localStorage.setItem('tmpCart', JSON.stringify([]));
@@ -20,18 +23,19 @@ export class CartService {
   }
 
   addProductToCart(product) {
-    const productExistInCart = this.cartProductList.find(({ name }) => name === product.name); // find product by name
+    const productExistInCart = this.cartProductList.find(({ id }) => id === product.id); // find product by name
     if (!productExistInCart) {
       this.cartProductList.push({ ...product }); // enhance "product" object with "quantity" property
       localStorage.setItem('tmpCart', JSON.stringify(this.cartProductList));
+      this.notifier.notify('success', 'L\'article a été ajouté dans votre panier');
       return;
+    } else {
+      this.notifier.notify('error', 'L\'article est déjà dans votre panier');
     }
-    productExistInCart.quantity += 1;
-    localStorage.setItem('tmpCart', JSON.stringify(productExistInCart));
   }
 
   removeProduct(product) {
-    this.cartProductList = this.cartProductList.filter(({ name }) => name !== product.name);
+    this.cartProductList = this.cartProductList.filter(({ brand }) => brand !== product.brand);
   }
 
   removeCart() {

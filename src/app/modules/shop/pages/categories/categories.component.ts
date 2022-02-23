@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,65 +12,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CategoriesComponent implements OnInit {
   categories = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.categories = [
-      {
-        name: 'Sacs',
-        type: 'Mode',
-        img: 'assets/img/categorie/sac.png',
-        url: 'shop'
-      },
-      {
-        name: 'Vêtements',
-        type: 'Mode',
-        img: 'assets/img/categorie/clothes.png',
-        url: 'shop'
-      },
-      {
-        name: 'Montres',
-        type: 'Mode',
-        img: 'assets/img/categorie/watches.png',
-        url: 'shop'
-      },
-      {
-        name: 'Chaussures',
-        type: 'Mode',
-        img: 'assets/img/categorie/sneakers.png',
-        url: 'shop'
-      },
-      {
-        name: 'Autres',
-        type: 'Mode',
-        img: 'assets/img/categorie/chapeau.png',
-        url: 'shop'
-      },
-      {
-        name: 'Tableaux',
-        type: 'Art',
-        img: 'assets/img/categorie/art/artvisuel.png',
-        url: 'shop'
-      },
-      {
-        name: 'Sculptures',
-        type: 'Art',
-        img: 'assets/img/categorie/art/artdeco.png',
-        url: 'shop'
-      },
-      {
-        name: 'Objets',
-        type: 'Art',
-        img: 'assets/img/categorie/art/objets.png',
-        url: 'shop'
-      },
-      {
-        name: 'Luminaires',
-        type: 'Art',
-        img: 'assets/img/categorie/art/luminaire.png',
-        url: 'shop'
-      },
-    ]
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.productService.getCategories().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(categories => {
+      this.categories = categories;
+    })
   }
 
   isCategoryMode(category) {

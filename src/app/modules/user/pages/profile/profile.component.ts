@@ -1,7 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +14,8 @@ import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  darkMode: boolean = false;
+  private readonly notifier: NotifierService;
+  products = [];
   carouselMultipleOptions: OwlOptions = {
     stagePadding: 32,
     loop: true,
@@ -38,14 +44,27 @@ export class ProfileComponent implements OnInit {
   }
   quantity = 1;
 
-  constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private cartService: CartService,
+    private productService: ProductService,
+    private router: Router,
+    notifierService: NotifierService
+  ) {
+    this.notifier = notifierService;
   }
 
-  addProductToCart(product) {
-    product.quantity = this.quantity;
-    this.cartService.addProductToCart(product);
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService.getProducts().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(products => {
+      this.products = products.filter(product => product.sellerName === 'Ava');
+    })
   }
 
   shareProfile() {
@@ -65,4 +84,28 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  gotoProduct(product) {
+    return this.router.navigateByUrl(product.url, { state: product });
+  }
+
+  addProductToCart(product) {
+    product.quantity = this.quantity;
+    this.cartService.addProductToCart(product);
+  }
+
+  isKindMens(product) {
+    return product.kind === 'mens';
+  }
+
+  isKindWomens(product) {
+    return product.kind === 'womens';
+  }
+
+  isKindKids(product) {
+    return product.kind === 'kids';
+  }
+  
+  isArtProduct(product) {
+    return product.category === 'art';
+  }
 }

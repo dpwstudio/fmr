@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Cart } from 'src/app/modules/shared/models/cart.model';
 import { User } from 'src/app/modules/shared/models/user.model';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
@@ -11,6 +12,7 @@ import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  private readonly notifier: NotifierService;
   carts: Cart[];
   p: number = 1;
   numberPerPage = 6;
@@ -20,8 +22,10 @@ export class CartComponent implements OnInit {
   constructor(
     private router: Router,
     public authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    notifierService: NotifierService
   ) {
+    this.notifier = notifierService;
     if (this.authService.currentUser) {
       this.authService.currentUser.subscribe(x => {
         if (this.currentUser) {
@@ -55,20 +59,12 @@ export class CartComponent implements OnInit {
     }
   }
 
-  increment(cart) {
-    cart.quantity++;
-    if (cart.quantity === 8) {
-      return;
+  removeProduct(product) {
+    product.quantity = 0;
+    if (product.quantity === 0) {
+      this.cartService.removeProduct(product);
     }
-    this.carts = this.cartService.cartProductList;
-    localStorage.setItem('tmpCart', JSON.stringify(this.carts))
-  }
-
-  decrement(cart) {
-    cart.quantity--;
-    if (cart.quantity === 0) {
-      this.cartService.removeProduct(cart);
-    }
+    this.notifier.notify('success', 'L\'article a bien été supprimé du panier.');
     this.carts = this.cartService.cartProductList;
     localStorage.setItem('tmpCart', JSON.stringify(this.carts))
   }

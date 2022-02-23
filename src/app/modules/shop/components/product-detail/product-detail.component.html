@@ -3,13 +3,14 @@
       <div class="section full">
 
         <owl-carousel-o [options]="carouselFullOptions">
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="assets/img/product/img1.jpeg" alt="alt" class="imaged w-100 square">
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-
+          <ng-container *ngFor="let product of products">
+            <ng-template carouselSlide>
+              <div class="item">
+                <img [src]="product?.img.photoFace" alt="alt" class="imaged w-100 square">
+              </div>
+            </ng-template>
+          </ng-container>
+          <!-- <ng-template carouselSlide>
             <div class="item">
               <img src="assets/img/product/img2.jpeg" alt="alt" class="imaged w-100 square">
             </div>
@@ -23,7 +24,7 @@
             <div class="item">
               <img src="assets/img/product/img4.jpeg" alt="alt" class="imaged w-100 square">
             </div>
-          </ng-template>
+          </ng-template> -->
         </owl-carousel-o>
 
       </div>
@@ -57,16 +58,16 @@
           <h2 class="title">Détails de l'article</h2>
         </div>
 
-		  <div class="d-flex justify-content-center">
-			  <div class="chip chip-media mb-2">
-				 <i class="chip-icon bg-primary">
-					<ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
-					</ion-icon>
-				 </i>
-				 <span class="chip-label number"
-					style="font-size: 12px;">{{product?.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-			  </div>
-		  </div>
+        <div class="d-flex justify-content-center">
+          <div class="chip chip-media mb-2">
+            <i class="chip-icon bg-primary">
+              <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+              </ion-icon>
+            </i>
+            <span class="chip-label number"
+              style="font-size: 12px;">{{product?.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          </div>
+        </div>
 
         <div class="accordion" id="accordionExample1">
           <div class="item">
@@ -142,8 +143,7 @@
                 <a href="#" class="btn btn-block btn-lg btn-outline-primary">Négocier</a>
               </div>
               <div class="col">
-                <a href="" class="btn btn-block btn-lg btn-primary" data-toggle="modal"
-                  data-target="#DialogIconedSuccess" (click)="addProductToCart(product)">Ajouter</a>
+                <a href="" class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">Ajouter</a>
               </div>
             </div>
           </div>
@@ -162,8 +162,8 @@
             <ng-template carouselSlide>
               <!-- item -->
               <div class="item">
-                <a (click)="gotoCategory(product)">
-                  <div class="blog-card">
+                <div class="blog-card">
+                  <a (click)="gotoCategory(product)">
                     <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
                       <a (click)="gotoCategory(product)"
                         class="d-flex align-items-center justify-content-between text-muted">
@@ -175,9 +175,9 @@
                         <span class="number" style="font-size: 9px">{{product.like}}</span>
                       </div>
                     </div>
-						  <div class="image-overflow">
-							<img [src]="product.img" [alt]="product.name" [title]="product.name" class="imaged">
-						  </div>
+                    <div class="image-overflow">
+                      <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
+                    </div>
                     <div class="bill-box">
                       <div class="chip chip-media mb-2">
                         <i class="chip-icon bg-primary">
@@ -187,20 +187,21 @@
                         <span class="chip-label number"
                           style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                       </div>
-                      <h1 style="font-size: 15px; text-transform: uppercase;">{{product.name}}</h1>
+                      <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                       <p>{{product.description}}</p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                          <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                          <span class="fi fi-{{product.sellerCountry}}"></span>
-                        </div>
-                        <a (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
-                          <ion-icon name="bag-add-outline"></ion-icon>
-                        </a>
-                      </div>
                     </div>
+                  </a>
+                  <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                    <div class="d-flex align-items-center">
+                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                      <span class="fi fi-{{product.sellerCountry}}"></span>
+                    </div>
+                    <a href="" (click)="addProductToCart(product)"
+                      class="btn btn-icon btn-primary me-1">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </a>
                   </div>
-                </a>
+                </div>
               </div>
               <!-- * item -->
             </ng-template>
@@ -260,27 +261,3 @@
       </div>
     </div>
     <!-- * Share Action Sheet -->
-
-    <div class="modal fade dialogbox" id="DialogIconedSuccess" data-backdrop="static" tabindex="-1" role="dialog"
-      aria-hidden="true" style="display: none;">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-icon text-success">
-            <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
-          </div>
-          <div class="modal-header">
-            <h2 class="modal-title" style="font-size: 22px;">Ajouté au panier</h2>
-          </div>
-          <div class="modal-body">
-            <p class="my-0" style="font-size: 18px;">L'article a bien été ajouté au panier</p>
-          </div>
-          <div class="modal-footer">
-            <div class="btn-inline">
-              <a href="#" class="btn text-muted" data-dismiss="modal" style="font-size: 18px;">
-                Fermer
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>

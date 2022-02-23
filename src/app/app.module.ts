@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,9 @@ import { ContactModule } from './modules/contact/contact.module';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { customNotifierOptions } from 'src/config/config';
+import { NotifierModule } from 'angular-notifier';
+import { IonicModule } from '@ionic/angular';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -33,7 +36,9 @@ registerLocaleData(localeFr, 'fr');
     PostModule,
     ContactModule,
     SharedModule,
+    IonicModule,
     AppRoutingModule,
+    NotifierModule.withConfig(customNotifierOptions),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -41,7 +46,9 @@ registerLocaleData(localeFr, 'fr');
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

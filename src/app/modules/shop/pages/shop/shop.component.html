@@ -43,8 +43,8 @@
       <div class="row">
         <ng-container *ngFor="let product of products">
           <div class="col-6 mb-2">
-            <a (click)="gotoProduct(product)">
-              <div class="blog-card">
+            <div class="blog-card">
+              <a (click)="gotoProduct(product)">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
                   <a (click)="gotoProduct(product)"
                     class="d-flex align-items-center justify-content-between text-muted">
@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="image-overflow">
-                  <img [src]="product.img" [alt]="product.name" [title]="product.name" class="imaged w-100">
+                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged w-100">
                 </div>
                 <div class="bill-box">
                   <div class="chip chip-media mb-2">
@@ -68,20 +68,20 @@
                     <span class="chip-label number"
                       style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.name}}</h1>
+                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                      <span class="fi fi-{{product.sellerCountry}}"></span>
-                    </div>
-                    <a (click)="addProductToCart(product, $event)" class="btn btn-icon btn-primary me-1">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </a>
-                  </div>
                 </div>
+              </a>
+              <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                <div class="d-flex align-items-center">
+                  <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                  <span class="fi fi-{{product.sellerCountry}}"></span>
+                </div>
+                <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
               </div>
-            </a>
+            </div>
           </div>
         </ng-container>
       </div>
@@ -93,8 +93,8 @@
       <div class="row">
         <ng-container *ngFor="let product of products">
           <div class="col-6 mb-2">
-            <a (click)="gotoProduct(product)">
-              <div class="blog-card">
+            <div class="blog-card">
+              <a (click)="gotoProduct(product)">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
                   <a (click)="gotoProduct(product)"
                     class="d-flex align-items-center justify-content-between text-muted">
@@ -107,7 +107,7 @@
                   </div>
                 </div>
                 <div class="image-overflow">
-                  <img [src]="product.img" [alt]="product.name" [title]="product.name" class="imaged">
+                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
                 </div>
                 <div class="bill-box">
                   <div class="chip chip-media mb-2">
@@ -118,20 +118,20 @@
                     <span class="chip-label number"
                       style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.name}}</h1>
+                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                      <span class="fi fi-{{product.sellerCountry}}"></span>
-                    </div>
-                    <a (click)="addProductToCart(product, $event)" class="btn btn-icon btn-primary me-1">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </a>
-                  </div>
                 </div>
+              </a>
+              <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                <div class="d-flex align-items-center">
+                  <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                  <span class="fi fi-{{product.sellerCountry}}"></span>
+                </div>
+                <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
               </div>
-            </a>
+            </div>
           </div>
         </ng-container>
       </div>
@@ -143,8 +143,8 @@
       <div class="row">
         <ng-container *ngFor="let product of products">
           <div class="col-6 mb-2">
-            <a (click)="gotoProduct(product)">
-              <div class="blog-card">
+            <div class="blog-card">
+              <a (click)="gotoProduct(product)">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
                   <a (click)="gotoProduct(product)"
                     class="d-flex align-items-center justify-content-between text-muted">
@@ -157,7 +157,7 @@
                   </div>
                 </div>
                 <div class="image-overflow">
-                  <img [src]="product.img" [alt]="product.name" [title]="product.name" class="imaged">
+                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
                 </div>
                 <div class="bill-box">
                   <div class="chip chip-media mb-2">
@@ -170,20 +170,20 @@
                     <span class="text-danger number"
                       style="font-size: 10px; font-weight: bold;">{{product.fallingAmount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.name}}</h1>
+                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                      <span class="fi fi-{{product.sellerCountry}}"></span>
-                    </div>
-                    <a (click)="addProductToCart(product, $event)" class="btn btn-icon btn-primary me-1">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </a>
-                  </div>
                 </div>
+              </a>
+              <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                <div class="d-flex align-items-center">
+                  <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                  <span class="fi fi-{{product.sellerCountry}}"></span>
+                </div>
+                <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
               </div>
-            </a>
+            </div>
           </div>
         </ng-container>
       </div>

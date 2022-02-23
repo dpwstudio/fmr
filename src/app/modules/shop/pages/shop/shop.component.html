@@ -1,3 +1,4 @@
+<app-loader [state]="isLoading()"></app-loader>
 <!-- Extra Header -->
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">
@@ -28,10 +29,10 @@
   <div class="wide-block pt-1 pb-1 border-0 mt-1">
     <form class="search-form">
       <div class="form-group searchbox">
-        <input type="text" class="form-control">
-        <i class="input-icon">
+        <input type="text" class="form-control px-0" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+        <button class="btn btn-icon btn-primary input-icon" (click)="searchProduct()" style="right: 0; left: initial">
           <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
-        </i>
+        </button>
       </div>
     </form>
   </div>
@@ -66,7 +67,7 @@
                       </ion-icon>
                     </i>
                     <span class="chip-label number"
-                      style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
                   <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
@@ -82,6 +83,11 @@
                 </button>
               </div>
             </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="products.length === 0">
+          <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 600px;">
+            <p style="font-size: x-large;">Aucun article disponible</p>
           </div>
         </ng-container>
       </div>
@@ -116,7 +122,7 @@
                       </ion-icon>
                     </i>
                     <span class="chip-label number"
-                      style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
                   <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
@@ -134,6 +140,11 @@
             </div>
           </div>
         </ng-container>
+        <ng-container *ngIf="products.length === 0">
+          <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 600px;">
+            <p style="font-size: x-large;">Aucun article disponible</p>
+          </div>
+        </ng-container>
       </div>
     </div>
     <!-- * news tab -->
@@ -142,7 +153,7 @@
     <div class="tab-pane fade {{isTypeParams('falling-price') ? 'show active' : ''}}" id="lowPrice" role="tabpanel">
       <div class="row">
         <ng-container *ngFor="let product of products">
-          <div class="col-6 mb-2">
+          <div class="col-6 mb-2" *ngIf="product.amount.fallingPrice">
             <div class="blog-card">
               <a (click)="gotoProduct(product)">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -166,9 +177,9 @@
                       </ion-icon>
                     </i>
                     <span class="chip-label number pr-0"
-                      style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                     <span class="text-danger number"
-                      style="font-size: 10px; font-weight: bold;">{{product.fallingAmount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
                   <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
@@ -186,14 +197,19 @@
             </div>
           </div>
         </ng-container>
+        <ng-container *ngIf="products.length === 0">
+          <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 600px;">
+            <p style="font-size: x-large;">Aucun article disponible</p>
+          </div>
+        </ng-container>
       </div>
     </div>
     <!-- * lowPrice tab -->
-    <div class="text-center">
+    <!-- <div class="text-center">
       <a href="javascript:void;" class="btn btn-icon btn-primary mr-1 mb-4">
         <ion-icon name="refresh-outline"></ion-icon>
       </a>
-    </div>
+    </div> -->
   </div>
 
 </div>

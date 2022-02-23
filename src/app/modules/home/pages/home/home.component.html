@@ -98,7 +98,7 @@
                       </ion-icon>
                     </i>
                     <span class="chip-label number"
-                      style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
                   <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>
@@ -195,9 +195,9 @@
                       </ion-icon>
                     </i>
                     <span class="chip-label number pr-0"
-                      style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                     <span class="text-danger number"
-                      style="font-size: 10px; font-weight: bold;">{{product.fallingAmount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
                   <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.description}}</p>

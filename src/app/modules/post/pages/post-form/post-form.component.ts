@@ -42,8 +42,11 @@ export class PostFormComponent implements OnInit {
       height: '',
       depth: '',
     },
-    amount: '',
-    amountWin: '',
+    amount: {
+      price: '',
+      fallingPrice: '',
+      amountWin: '',
+    },
     createdAt: moment().format()
   }
 
@@ -84,7 +87,7 @@ export class PostFormComponent implements OnInit {
   }
 
   isAmountComplete() {
-    return this.product.amount;
+    return this.product.amount.price;
   }
 
   onPhotoFaceChange(event) {

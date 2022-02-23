@@ -31,11 +31,11 @@ export class CategoriesComponent implements OnInit {
   }
 
   isCategoryMode(category) {
-    return category.type === 'Mode';
+    return category.type === 'mode';
   }
 
   isCategoryArt(category) {
-    return category.type === 'Art';
+    return category.type === 'art';
   }
 
   gotoCategory(category) {

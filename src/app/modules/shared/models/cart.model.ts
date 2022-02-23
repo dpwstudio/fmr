@@ -12,5 +12,7 @@ export interface Cart {
 	};
 	description: string;
 	quantity: number;
-	amount: number;
+	amount: {
+		price: number;
+	}
 }

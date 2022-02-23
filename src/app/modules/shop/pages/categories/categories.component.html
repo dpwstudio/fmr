@@ -48,7 +48,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a (click)="gotoCategory(category)">
+                    <a [routerLink]="['/shop', {category: category.url}]" routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -64,7 +64,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop']" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/shop', {category: category.url}]" routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -80,7 +80,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop']" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/shop', {category: category.url}]" routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -107,7 +107,7 @@
           <div class="row">
             <ng-container *ngFor="let category of categories">
               <div class="col-6 mb-2" *ngIf="isCategoryArt(category)">
-                <a [routerLink]="['/shop']" routerLinkActive="router-link-active">
+                <a [routerLink]="['/shop', {category: category.url}]" routerLinkActive="router-link-active">
                   <div class="blog-card">
                     <img [src]="category.img" alt="image" class="imaged w-100">
                     <div class="bill-box">

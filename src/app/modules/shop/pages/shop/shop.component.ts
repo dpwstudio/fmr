@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Product } from 'src/app/modules/shared/models/product.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
@@ -10,10 +11,13 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
-  products = [];
+export class ShopComponent implements OnInit, OnChanges {
+  products: Product[] = [];
   typeParams: string;
+  category: string;
   quantity = 1;
+  search: string;
+  subscription: Subscription;
 
   constructor(
     private router: Router,
@@ -24,19 +28,30 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.typeParams = params['type'];
-      console.log(`${this.typeParams}`);
+      this.category = params['category'];
+      console.log(`${this.typeParams}`, `${this.category}`);
     });
     this.getProducts();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes) {
+      this.products = changes.products.currentValue;
+    }
+  }
+
   getProducts() {
-    this.productService.getProducts().pipe(
+    this.subscription = this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products;
+      this.products = products.filter(product => product.category === this.category);
     })
+  }
+
+  isLoading() {
+    return this.subscription && !this.subscription.closed;
   }
 
   addProductToCart(product) {
@@ -50,6 +65,17 @@ export class ShopComponent implements OnInit {
 
   isTypeParams(type) {
     return type === this.typeParams;
+  }
+
+  searchProduct() {
+    if (this.search) {
+      this.products = this.products.filter(
+        product => product.brand.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+          || product.model.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+      );
+    } else {
+      this.getProducts();
+    }
   }
 
 }

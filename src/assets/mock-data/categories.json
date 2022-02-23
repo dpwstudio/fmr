@@ -1,55 +1,55 @@
 [{
-    "name": "Sacs",
-    "type": "Mode",
+    "name": "sacs",
+    "type": "mode",
     "img": "assets/img/categorie/sac.png",
-    "url": "shop"
+    "url": "bags"
   },
   {
-    "name": "Vêtements",
-    "type": "Mode",
+    "name": "vêtements",
+    "type": "mode",
     "img": "assets/img/categorie/clothes.png",
-    "url": "shop"
+    "url": "clothes"
   },
   {
     "name": "Montres",
-    "type": "Mode",
+    "type": "mode",
     "img": "assets/img/categorie/watches.png",
-    "url": "shop"
+    "url": "watches"
   },
   {
-    "name": "Chaussures",
-    "type": "Mode",
+    "name": "chaussures",
+    "type": "mode",
     "img": "assets/img/categorie/sneakers.png",
-    "url": "shop"
+    "url": "shoes"
   },
   {
-    "name": "Autres",
-    "type": "Mode",
+    "name": "autres",
+    "type": "mode",
     "img": "assets/img/categorie/chapeau.png",
-    "url": "shop"
+    "url": "others"
   },
   {
-    "name": "Tableaux",
-    "type": "Art",
+    "name": "tableaux",
+    "type": "art",
     "img": "assets/img/categorie/art/artvisuel.png",
-    "url": "shop"
+    "url": "paintings"
   },
   {
-    "name": "Sculptures",
-    "type": "Art",
+    "name": "sculptures",
+    "type": "art",
     "img": "assets/img/categorie/art/artdeco.png",
-    "url": "shop"
+    "url": "sculptures"
   },
   {
-    "name": "Objets",
-    "type": "Art",
+    "name": "objets",
+    "type": "art",
     "img": "assets/img/categorie/art/objets.png",
-    "url": "shop"
+    "url": "objects"
   },
   {
-    "name": "Luminaires",
-    "type": "Art",
+    "name": "luminaires",
+    "type": "art",
     "img": "assets/img/categorie/art/luminaire.png",
-    "url": "shop"
+    "url": "lamps"
   }
 ]

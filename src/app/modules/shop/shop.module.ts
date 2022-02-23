@@ -12,6 +12,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
 import { SharedModule } from '../shared/shared.module';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
     ShopRoutingModule,
     CarouselModule,

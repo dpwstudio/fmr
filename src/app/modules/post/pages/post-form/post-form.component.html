@@ -554,14 +554,14 @@
            <form class="d-flex">
              <div class="form-group basic mr-4">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amount"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amount.price"
                    [ngModelOptions]="{standalone: true}" placeholder="Prix">
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amountWin"
+                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amount.amountWin"
                    [ngModelOptions]="{standalone: true}" placeholder="Vous gagnez">
                </div>
              </div>

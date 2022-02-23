@@ -63,7 +63,7 @@
               </ion-icon>
             </i>
             <span class="chip-label number"
-              style="font-size: 12px;">{{product?.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+              style="font-size: 12px;">{{product?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
           </div>
         </div>
 
@@ -75,7 +75,7 @@
                 <h2 class="my-0">Description</h2>
               </button>
             </div>
-            <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1" style="">
+            <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1">
               <div class="accordion-content">
                 {{product?.description}}
               </div>
@@ -180,7 +180,7 @@
                           </ion-icon>
                         </i>
                         <span class="chip-label number"
-                          style="font-size: 12px;">{{product.amount | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                          style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                       </div>
                       <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
                       <p>{{product.description}}</p>

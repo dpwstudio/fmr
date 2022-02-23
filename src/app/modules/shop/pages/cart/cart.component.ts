@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
   }
 
   getTotalTTC() {
-    return this.carts.reduce((acc, product) => acc = acc + (product.amount * product.quantity), 0);
+    return this.carts.reduce((acc, product) => acc = acc + (product.amount.price * product.quantity), 0);
   }
 
   confirmCart() {

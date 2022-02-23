@@ -3,9 +3,9 @@
     "brand": "Louis Vuitton",
     "model": "Sac à bandoulière",
     "description": "Sac à bandoulière",
-    "category": "mode",
+    "typeProduct": "mode",
     "kind": "womens",
-    "SubCategory": "Sacs",
+    "category": "bags",
     "img": {
       "photoFace": "assets/img/annonce/sacs/saclv.jpeg",
       "photoDos": "assets/img/annonce/sacs/saclv.jpeg",
@@ -14,8 +14,11 @@
       "photo5": "assets/img/annonce/sacs/saclv.jpeg",
       "photo6": "assets/img/annonce/sacs/saclv.jpeg"
     },
-    "amount": 1995,
-    "fallingAmount": 1524,
+    "amount": {
+      "price": 1995,
+      "fallingPrice": 1524,
+      "amountWin": 1542
+    },
     "url": "product-detail",
     "like": 188,
     "sellerName": "Ava",
@@ -27,9 +30,9 @@
     "brand": "Dior",
     "model": "Sac en toile",
     "description": "Sac en toile",
-    "category": "mode",
+    "typeProduct": "mode",
     "kind": "womens",
-    "subCategory": "Sacs",
+    "category": "bags",
     "img": {
       "photoFace": "assets/img/annonce/sacs/sacdior.jpeg",
       "photoDos": "assets/img/annonce/sacs/sacdior.jpeg",
@@ -38,8 +41,11 @@
       "photo5": "assets/img/annonce/sacs/sacdior.jpeg",
       "photo6": "assets/img/annonce/sacs/sacdior.jpeg"
     },
-    "amount": 2150,
-    "fallingAmount": 1850,
+    "amount": {
+      "price": 2150,
+      "fallingPrice": 1850,
+      "amountWin": 1552
+    },
     "url": "product-detail",
     "like": 245,
     "sellerName": "Géraldine",
@@ -51,9 +57,9 @@
     "brand": "Balenciaga",
     "model": "Baskets montantes en cuir",
     "description": "Baskets montantes en cuir",
-    "category": "mode",
+    "typeProduct": "mode",
     "kind": "mens",
-    "subCategory": "Chaussures",
+    "category": "shoes",
     "img": {
       "photoFace": "assets/img/annonce/sacs/sneakers.jpeg",
       "photoDos": "assets/img/annonce/sacs/sneakers.jpeg",
@@ -62,8 +68,11 @@
       "photo5": "assets/img/annonce/sacs/sneakers.jpeg",
       "photo6": "assets/img/annonce/sacs/sneakers.jpeg"
     },
-    "amount": 650,
-    "fallingAmount": 480,
+    "amount": {
+      "price": 650,
+      "fallingPrice": 480,
+      "amountWin": 352
+    },
     "url": "product-detail",
     "like": 68,
     "sellerName": "Laurent",
@@ -75,9 +84,9 @@
     "brand": "Chanel",
     "model": "Bonnet en cachemire",
     "description": "Bonnet en cachemire",
-    "category": "mode",
+    "typeProduct": "mode",
     "kind": "mens",
-    "subCategory": "Autres",
+    "category": "others",
     "img": {
       "photoFace": "assets/img/annonce/sacs/bonnet.jpeg",
       "photoDos": "assets/img/annonce/sacs/bonnet.jpeg",
@@ -86,8 +95,11 @@
       "photo5": "assets/img/annonce/sacs/bonnet.jpeg",
       "photo6": "assets/img/annonce/sacs/bonnet.jpeg"
     },
-    "amount": 388,
-    "fallingAmount": 240,
+    "amount": {
+      "price": 388,
+      "fallingPrice": 240,
+      "amountWin": 185
+    },
     "url": "product-detail",
     "like": 32,
     "sellerName": "John",

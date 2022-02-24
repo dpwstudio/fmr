@@ -11,10 +11,10 @@
       </a>
     </div>
     <div class="right">
-      <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="headerButton">
-        <ion-icon class="icon" name="notifications-outline"></ion-icon>
-        <span class="badge badge-danger">4</span>
-      </a>
+      <a [routerLink]="['/settings']" routerLinkActive="router-link-active"  class="headerButton" *ngIf="isUserConnected()">
+        <img src="{{currentUser.img.avatar}}" alt="image" class="imaged rounded w32">
+        <span class="badge badge-danger">6</span>
+    </a>
     </div>
   </div>
   <!-- * App Header -->
@@ -26,12 +26,12 @@
       <div class="modal-content">
         <div class="modal-body p-0">
           <!-- profile box -->
-          <div class="profileBox pt-2 pb-2">
+          <div class="profileBox pt-2 pb-2" style="min-height: 68px;">
             <div class="image-wrapper">
-              <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="imaged  w36">
+              <img src="{{currentUser.img.avatar}}" alt="image" class="imaged rounded w36" *ngIf="isUserConnected()">
             </div>
             <div class="in">
-              <strong>AVA</strong>
+              <strong>{{currentUser?.firstname}}</strong>
             </div>
             <a href="#" class="btn btn-link btn-icon sidebar-close" data-dismiss="modal">
               <ion-icon name="close-outline"></ion-icon>

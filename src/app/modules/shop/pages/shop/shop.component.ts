@@ -13,11 +13,13 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
 })
 export class ShopComponent implements OnInit, OnChanges {
   products: Product[] = [];
+  categories = [];
   typeParams: string;
   category: string;
   quantity = 1;
   search: string;
   subscription: Subscription;
+  showSearch = false;
 
   constructor(
     private router: Router,
@@ -32,12 +34,24 @@ export class ShopComponent implements OnInit, OnChanges {
       console.log(`${this.typeParams}`, `${this.category}`);
     });
     this.getProducts();
+    this.getCategories();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
       this.products = changes.products.currentValue;
     }
+  }
+
+  getCategories() {
+    this.productService.getCategories().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(categories => {
+      this.categories = categories;
+      console.log('categories', this.categories)
+    });
   }
 
   getProducts() {
@@ -47,7 +61,7 @@ export class ShopComponent implements OnInit, OnChanges {
       })
     ).subscribe(products => {
       this.products = products.filter(product => product.category === this.category);
-    })
+    });
   }
 
   isLoading() {

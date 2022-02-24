@@ -255,7 +255,7 @@
         <div class="wide-block pt-1 pb-4 border-0" style="background: #ededf5;">
           <div class="row">
             <ng-container *ngFor="let product of products">
-              <div class="col-6 mb-2" *ngIf="isKindMens(product)">
+              <div class="col-6 mb-2" *ngIf="isArtProduct(product)">
                 <div class="blog-card">
                   <a (click)="gotoProduct(product)">
                     <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -292,14 +292,14 @@
                       <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
                       <span class="fi fi-{{product.sellerCountry}}"></span>
                     </div>
-                    <a href="" (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                    <a (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
                       <ion-icon name="bag-add-outline"></ion-icon>
                     </a>
                   </div>
                 </div>
               </div>
               <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
-                *ngIf="!isKindMens(product)">
+                *ngIf="!isArtProduct(product)">
                 <p style="font-size: large;">Aucun article disponible</p>
               </div>
             </ng-container>

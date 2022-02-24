@@ -75,8 +75,8 @@
     },
     "url": "product-detail",
     "like": 68,
-    "sellerName": "Laurent",
-    "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
+    "sellerName": "Peter",
+    "sellerImg": "assets/img/sample/avatar/avatar8.jpg",
     "sellerCountry": "es"
   },
   {
@@ -103,7 +103,7 @@
     "url": "product-detail",
     "like": 32,
     "sellerName": "John",
-    "sellerImg": "assets/img/sample/avatar/avatar1.jpg",
+    "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
     "sellerCountry": "be"
   }
 ]

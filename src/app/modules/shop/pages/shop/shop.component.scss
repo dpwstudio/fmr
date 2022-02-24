@@ -9,3 +9,27 @@
     height: 100%;
   }
 }
+
+#search {
+  display: block;
+  padding: 5px;
+  height: 40px;
+  top: -100px;
+  transition: .2s all ease-in-out;
+}
+
+#search.show {
+  display: block;
+  top: 100px;
+}
+
+.appHeader:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999;
+  background: #FFF;
+}

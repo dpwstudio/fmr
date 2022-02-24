@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/modules/shared/models/cart.model';
+import { User } from 'src/app/modules/shared/models/user.model';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 
@@ -11,11 +12,15 @@ import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 })
 export class HeaderComponent implements OnInit {
   carts: Cart[];
+  currentUser: User;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private cartService: CartService
-  ) { }
+  ) {
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit(): void {
     this.getCarts();

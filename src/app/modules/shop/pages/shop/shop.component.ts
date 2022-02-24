@@ -50,7 +50,6 @@ export class ShopComponent implements OnInit, OnChanges {
       })
     ).subscribe(categories => {
       this.categories = categories;
-      console.log('categories', this.categories)
     });
   }
 
@@ -90,6 +89,18 @@ export class ShopComponent implements OnInit, OnChanges {
     } else {
       this.getProducts();
     }
+  }
+
+  isCategoryMode(category) {
+    return category.type === 'mode';
+  }
+
+  isCategoryArt(category) {
+    return category.type === 'art';
+  }
+
+  emptySearch() {
+    return this.search = '';
   }
 
 }

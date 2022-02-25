@@ -5,7 +5,7 @@
   background: white;
 
   .splash-page {
-	 text-align: justify;
+    text-align: justify;
   }
 
   .btn-connect {
@@ -23,8 +23,9 @@
   }
 
   .wide-block {
-	  background: #ffffffe8;
+    background: #ffffffe8;
   }
+
   &::after {
     content: "";
     background: url('../../../../../assets/img/bkg.svg') no-repeat;
@@ -36,4 +37,8 @@
     left: 0;
     transform: rotate(-180deg);
   }
+}
+
+.owl-theme {
+  height: 72vh !important;
 }

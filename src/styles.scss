@@ -11449,7 +11449,7 @@ a.text-dark:hover {
   width: 10px;
   height: 10px;
   margin: 5px 7px;
-  background: #ffffff5e;
+  background: #dfdfdf91;
   display: block;
   -webkit-backface-visibility: visible;
   transition: opacity 200ms ease;
@@ -12503,6 +12503,14 @@ b {
 
 .imaged.radius {
   border-radius: 10px !important;
+}
+
+.imaged.start {
+  width: 130px !important;
+}
+
+.imaged.startText {
+  width: 200px !important;
 }
 
 .imaged.square {

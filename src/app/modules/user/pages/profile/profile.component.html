@@ -19,23 +19,23 @@
   <div class="section full gradientSection">
     <div class="in coin-head">
       <div class="d-flex align-items-center justify-content-center">
-        <img src="{{currentUser.img.avatar}}" class="imaged w48 rounded mr-05" alt="">
-        <h1 class="total my-0 ml-1">{{currentUser.firstname}}</h1>
+        <img src="{{user.img.avatar}}" class="imaged w48 rounded mr-05" alt="">
+        <h1 class="total my-0 ml-1">{{user.firstname}}</h1>
       </div>
       <div class="d-flex align-items-center justify-content-around mt-2">
         <div class="chip chip-media bg-white">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label"><span class="number" style="font-size: 11px;">{{currentUser.followers}}</span>
-            {{currentUser.followers < 1 ? 'Abonné' : 'Abonnés'}}</span>
+          <span class="chip-label"><span class="number" style="font-size: 11px;">{{user.followers}}</span>
+            {{user.followers < 1 ? 'Abonné' : 'Abonnés'}}</span>
         </div>
         <div class="chip chip-media bg-white">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label"><span class="number" style="font-size: 11px;">{{currentUser.subscription}}</span>
-            {{currentUser.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
+          <span class="chip-label"><span class="number" style="font-size: 11px;">{{user.subscription}}</span>
+            {{user.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
         </div>
         <button (click)="shareProfile()" class="btn btn-primary btn-icon">
           <ion-icon name="arrow-redo-outline"></ion-icon>
@@ -49,7 +49,7 @@
       <div class="section mb-3">
         <div class="card">
           <div class="card-body card-bg pt-1"
-            style="background: url('{{currentUser.img.dressing}}') center center no-repeat;">
+            style="background: url('{{user.img.dressing}}') center center no-repeat;">
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active"
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -136,7 +136,7 @@
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" 
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -190,7 +190,7 @@
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" 
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -245,7 +245,7 @@
       <div class="section mb-3">
         <div class="card">
           <div class="card-body card-bg pt-1"
-            style="background: url('{{currentUser.img.gallery}}') center center no-repeat;">
+            style="background: url('{{user.img.gallery}}') center center no-repeat;">
           </div>
         </div>
       </div>
@@ -259,7 +259,7 @@
                 <div class="blog-card">
                   <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                     <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                      <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
+                      <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" 
                         class="d-flex align-items-center justify-content-between text-muted">
                         <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                           class="imaged w24 rounded mr-05"> {{product.sellerName}}

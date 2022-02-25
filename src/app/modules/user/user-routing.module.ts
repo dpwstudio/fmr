@@ -11,7 +11,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileComponent,
     canActivate: [AuthGuard]
   },

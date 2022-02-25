@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
@@ -9,6 +9,7 @@ import { User } from 'src/app/modules/shared/models/user.model';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { UserService } from 'src/app/modules/shared/services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -45,21 +46,41 @@ export class ProfileComponent implements OnInit {
     dots: false,
   }
   quantity = 1;
-  currentUser: User;
+  user: User;
+  users: User[];
+  id: number;
 
   constructor(
     private cartService: CartService,
     private productService: ProductService,
-    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserService,
     private authService: AuthService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.getUsers(this.id);
+      // In a real app: dispatch action to load the details here.
+    });
     this.getProducts();
+  }
+
+  getUsers(id?) {
+    this.userService.getUsers().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(users => {
+      if (id) {
+        this.user = users.filter(user => user.id === id)[0];
+      }
+      this.users = users;
+    })
   }
 
   getProducts() {
@@ -68,7 +89,7 @@ export class ProfileComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products.filter(product => product.sellerName.toLowerCase() === this.currentUser.firstname.toLowerCase());
+      this.products = products.filter(product => product.sellerName.toLowerCase() === this.user.firstname.toLowerCase());
     })
   }
 

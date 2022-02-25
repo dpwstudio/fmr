@@ -42,7 +42,7 @@
     <p style="font-size: 19px;">{{product?.description}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
-        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="text-dark">
+        <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" class="text-dark">
           <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
           {{product?.sellerName}}
         </a>
@@ -164,7 +164,7 @@
             <div class="blog-card">
               <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                  <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
+                  <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" 
                     class="d-flex align-items-center justify-content-between text-muted">
                     <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                       class="imaged w24 rounded mr-05"> {{product.sellerName}}

@@ -16,7 +16,7 @@
    <div class="listview-title mt-1">Profil</div>
    <ul class="listview image-listview inset">
      <li>
-       <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="item">
+       <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
          <div class="in">
            <div>Mon profil</div>
            <span class="text-muted" style="font-size: 15px;">Voir</span>

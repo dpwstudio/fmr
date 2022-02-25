@@ -21,6 +21,7 @@
     },
     "url": "product-detail",
     "like": 188,
+    "sellerId": "1",
     "sellerName": "Ava",
     "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
     "sellerCountry": "fr"
@@ -48,6 +49,7 @@
     },
     "url": "product-detail",
     "like": 245,
+    "sellerId": "3",
     "sellerName": "Géraldine",
     "sellerImg": "assets/img/sample/avatar/avatar7.jpg",
     "sellerCountry": "it"
@@ -75,6 +77,7 @@
     },
     "url": "product-detail",
     "like": 68,
+    "sellerId": "4",
     "sellerName": "Peter",
     "sellerImg": "assets/img/sample/avatar/avatar8.jpg",
     "sellerCountry": "es"
@@ -102,6 +105,7 @@
     },
     "url": "product-detail",
     "like": 32,
+    "sellerId": "2",
     "sellerName": "John",
     "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
     "sellerCountry": "be"

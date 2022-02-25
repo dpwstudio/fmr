@@ -66,6 +66,7 @@ export interface Product {
 	/**
 	 * USER INFO
 	 */
+	sellerId?: number,
 	sellerName?: string,
 	sellerImg?: string,
 	sellerCountry?: string

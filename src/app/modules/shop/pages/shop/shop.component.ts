@@ -22,7 +22,6 @@ export class ShopComponent implements OnInit, OnChanges {
   showSearch = false;
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private productService: ProductService) { }

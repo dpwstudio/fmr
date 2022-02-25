@@ -23,7 +23,7 @@ const routes: Routes = [
       title: 'Catégories'
     }
   }, {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     component: ProductDetailComponent,
     data: {
       title: 'Détail de l\'article'

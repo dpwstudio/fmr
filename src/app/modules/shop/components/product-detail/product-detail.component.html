@@ -1,259 +1,213 @@
-    <!-- App Capsule -->
-    <div id="appCapsule">
-      <div class="section full">
+<app-loader [state]="isLoading()"></app-loader>
 
-        <owl-carousel-o [options]="carouselFullOptions">
-          <ng-template carouselSlide>
-            <div class="item">
-              <img [src]="product?.img.photoFace" alt="alt" class="imaged w-100 square">
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img [src]="product?.img.photoDos" alt="alt" class="imaged w-100 square">
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img [src]="product?.img.photoProfile" alt="alt" class="imaged w-100 square">
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img [src]="product?.img.photoGriffe" alt="alt" class="imaged w-100 square">
-            </div>
-          </ng-template>
-        </owl-carousel-o>
+<!-- App Capsule -->
+<div id="appCapsule">
+  <div class="section full">
 
+    <owl-carousel-o [options]="carouselFullOptions">
+      <ng-template carouselSlide>
+        <div class="item">
+          <img [src]="product?.img.photoFace" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img [src]="product?.img.photoDos" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img [src]="product?.img.photoProfile" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img [src]="product?.img.photoGriffe" alt="alt" class="imaged w-100 square">
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+
+  </div>
+  <div class="section mt-2">
+    <div class="d-flex align-items-center justify-content-between">
+      <h1 class="my-0" style="font-size: 40px;">{{product?.brand}}</h1>
+      <div class="action d-flex align-items-center">
+        <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
+          <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
+          {{product?.like}}
+        </span>
+        <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
       </div>
-      <div class="section mt-2">
-        <div class="d-flex align-items-center justify-content-between">
-          <h1 class="my-0" style="font-size: 40px;">{{product?.brand}}</h1>
-          <div class="action d-flex align-items-center">
-            <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
-              <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
-              {{product?.like}}
-            </span>
-            <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
+    </div>
+    <p style="font-size: 19px;">{{product?.description}}</p>
+    <div class="blog-header-info mt-2 mb-2">
+      <div>
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="text-dark">
+          <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
+          {{product?.sellerName}}
+        </a>
+      </div>
+      <div class="number" style="font-size: 11px; font-weight: 500;">
+        24/09/2021
+      </div>
+    </div>
+  </div>
+
+  <div class="section mt-4">
+    <div class="section-heading">
+      <h2 class="title">Détails de l'article</h2>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="chip chip-media mb-2">
+        <i class="chip-icon bg-primary">
+          <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+          </ion-icon>
+        </i>
+        <span class="chip-label number"
+          style="font-size: 12px;">{{product?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+      </div>
+    </div>
+
+    <div class="accordion" id="accordionExample1">
+      <div class="item">
+        <div class="accordion-header">
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion1"
+            aria-expanded="false">
+            <h2 class="my-0">Description</h2>
+          </button>
+        </div>
+        <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1">
+          <div class="accordion-content">
+            {{product?.description}}
           </div>
         </div>
-        <p style="font-size: 19px;">{{product?.description}}</p>
-        <div class="blog-header-info mt-2 mb-2">
-          <div>
-            <a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="text-dark">
-              <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
-              {{product?.sellerName}}
+      </div>
+
+      <div class="item">
+        <div class="accordion-header">
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion2">
+            <h2 class="my-0">Information Taille & Coupe</h2>
+          </button>
+        </div>
+        <div id="accordion2" class="accordion-body collapse" data-parent="#accordionExample1">
+          <div class="accordion-content">
+            Dimensions : 12 x 10 x 5 cm
+            La taille convient parfaitement aux AirPods Pro, rouge à lèvres et clés
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="accordion-header">
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion3"
+            aria-expanded="false">
+            <h2 class="my-0">Contrôle, Livraison & Retours</h2>
+          </button>
+        </div>
+        <div id="accordion3" class="accordion-body collapse" data-parent="#accordionExample1" style="">
+          <div class="accordion-content">
+            <h3><i class="fa-solid fa-certificate mr-1"></i> Contrôle de conformité offerts</h3>
+            <ul>
+              <li>Tous les articles sont réceptionnés dans notre centre.</li>
+              <li>Tous les articles sont contrôlés par nos experts.</li>
+              <li>Une fois conforme, nous vous confirmerons l'envoi de votre article.</li>
+            </ul>
+            <h3><i class="fa-solid fa-truck-fast mr-1"></i> Expédition sous 24h</h3>
+            <p>
+              Les articles contrôlés et validés sont immédiatement préparés et envoyés sous 24h.
+            </p>
+            <h3><i class="fa-solid fa-circle-arrow-left mr-1"></i> Retours sous 72 heures</h3>
+            <p>
+              Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 72
+              heures
+              à compter de sa date de réception. Pour plus d'informations consultez notre FAQ.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section mt-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <a href="#" class="btn btn-block btn-lg btn-outline-primary">
+              Négocier
             </a>
           </div>
-          <div class="number" style="font-size: 11px; font-weight: 500;">
-            24/09/2021
+          <div class="col">
+            <a class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">
+              Ajouter
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="section mt-4">
-        <div class="section-heading">
-          <h2 class="title">Détails de l'article</h2>
-        </div>
+    </div>
+  </div>
 
-        <div class="d-flex justify-content-center">
-          <div class="chip chip-media mb-2">
-            <i class="chip-icon bg-primary">
-              <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
-              </ion-icon>
-            </i>
-            <span class="chip-label number"
-              style="font-size: 12px;">{{product?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-          </div>
-        </div>
-
-        <div class="accordion" id="accordionExample1">
+  <!-- News -->
+  <div class="section full mt-4 mb-5">
+    <div class="section-heading padding">
+      <h2 class="title">Articles suggérés</h2>
+      <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselMultipleOptions">
+      <ng-container *ngFor="let product of products">
+        <ng-template carouselSlide>
+          <!-- item -->
           <div class="item">
-            <div class="accordion-header">
-              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion1"
-                aria-expanded="false">
-                <h2 class="my-0">Description</h2>
-              </button>
-            </div>
-            <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1">
-              <div class="accordion-content">
-                {{product?.description}}
-              </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="accordion-header">
-              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion2">
-                <h2 class="my-0">Information Taille & Coupe</h2>
-              </button>
-            </div>
-            <div id="accordion2" class="accordion-body collapse" data-parent="#accordionExample1">
-              <div class="accordion-content">
-                Dimensions : 12 x 10 x 5 cm
-                La taille convient parfaitement aux AirPods Pro, rouge à lèvres et clés
-              </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="accordion-header">
-              <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion3"
-                aria-expanded="false">
-                <h2 class="my-0">Contrôle, Livraison & Retours</h2>
-              </button>
-            </div>
-            <div id="accordion3" class="accordion-body collapse" data-parent="#accordionExample1" style="">
-              <div class="accordion-content">
-                <h3><i class="fa-solid fa-certificate mr-1"></i> Contrôle de conformité offerts</h3>
-                <ul>
-                  <li>Tous les articles sont réceptionnés dans notre centre.</li>
-                  <li>Tous les articles sont contrôlés par nos experts.</li>
-                  <li>Une fois conforme, nous vous confirmerons l'envoi de votre article.</li>
-                </ul>
-                <h3><i class="fa-solid fa-truck-fast mr-1"></i> Expédition sous 24h</h3>
-                <p>
-                  Les articles contrôlés et validés sont immédiatement préparés et envoyés sous 24h.
-                </p>
-                <h3><i class="fa-solid fa-circle-arrow-left mr-1"></i> Retours sous 72 heures</h3>
-                <p>
-                  Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 72
-                  heures
-                  à compter de sa date de réception. Pour plus d'informations consultez notre FAQ.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="section mt-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <a href="#" class="btn btn-block btn-lg btn-outline-primary">
-                  Négocier
-                </a>
-              </div>
-              <div class="col">
-                <a class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">
-                  Ajouter
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- News -->
-      <div class="section full mt-4 mb-5">
-        <div class="section-heading padding">
-          <h2 class="title">Articles suggérés</h2>
-          <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
-        </div>
-        <owl-carousel-o [options]="carouselMultipleOptions">
-          <ng-container *ngFor="let product of products">
-            <ng-template carouselSlide>
-              <!-- item -->
-              <div class="item">
-                <div class="blog-card">
-                  <a (click)="gotoCategory(product)">
-                    <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                      <a (click)="gotoCategory(product)"
-                        class="d-flex align-items-center justify-content-between text-muted">
-                        <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
-                          class="imaged w24 rounded mr-05"> {{product.sellerName}}
-                      </a>
-                      <div class="d-flex align-items-center justify-content-between text-muted">
-                        <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-                        <span class="number" style="font-size: 9px">{{product.like}}</span>
-                      </div>
-                    </div>
-                    <div class="image-overflow">
-                      <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
-                    </div>
-                    <div class="bill-box">
-                      <div class="chip chip-media mb-2">
-                        <i class="chip-icon bg-primary">
-                          <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
-                          </ion-icon>
-                        </i>
-                        <span class="chip-label number"
-                          style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-                      </div>
-                      <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
-                      <p>{{product.description}}</p>
-                    </div>
+            <div class="blog-card">
+              <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                  <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
+                    class="d-flex align-items-center justify-content-between text-muted">
+                    <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                      class="imaged w24 rounded mr-05"> {{product.sellerName}}
                   </a>
-                  <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
-                    <div class="d-flex align-items-center">
-                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-                      <span class="fi fi-{{product.sellerCountry}}"></span>
-                    </div>
-                    <a href="" (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </a>
+                  <div class="d-flex align-items-center justify-content-between text-muted">
+                    <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                    <span class="number" style="font-size: 9px">{{product.like}}</span>
                   </div>
                 </div>
+                <div class="image-overflow">
+                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
+                </div>
+                <div class="bill-box">
+                  <div class="chip chip-media mb-2">
+                    <i class="chip-icon bg-primary">
+                      <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                      </ion-icon>
+                    </i>
+                    <span class="chip-label number"
+                      style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                  </div>
+                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                  <p>{{product.description}}</p>
+                </div>
+              </a>
+              <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                <div class="d-flex align-items-center">
+                  <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                  <span class="fi fi-{{product.sellerCountry}}"></span>
+                </div>
+                <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
               </div>
-              <!-- * item -->
-            </ng-template>
-          </ng-container>
-        </owl-carousel-o>
-      </div>
-      <!-- * News -->
-
-
-    </div>
-    <!-- * App Capsule -->
-
-    <!-- Share Action Sheet -->
-    <div class="modal fade action-sheet inset" id="actionSheetShare" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Share with</h5>
+            </div>
           </div>
-          <div class="modal-body">
-            <ul class="action-button-list">
-              <li>
-                <a href="#" class="btn btn-list" data-dismiss="modal">
-                  <span>
-                    <ion-icon name="logo-facebook"></ion-icon>
-                    Facebook
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="btn btn-list" data-dismiss="modal">
-                  <span>
-                    <ion-icon name="logo-twitter"></ion-icon>
-                    Twitter
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="btn btn-list" data-dismiss="modal">
-                  <span>
-                    <ion-icon name="logo-instagram"></ion-icon>
-                    Instagram
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="btn btn-list" data-dismiss="modal">
-                  <span>
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                    Linkedin
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- * Share Action Sheet -->
+          <!-- * item -->
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- * News -->
+
+
+</div>
+<!-- * App Capsule -->

@@ -48,8 +48,11 @@
           <div class="in">
             <div>
               <header class="text-secondary">Adresse de livraison</header>
-              15 rue de Capucines
-              <footer class="text-dark">75016 PARIS</footer>
+              {{currentUser.deliveryAddress.address}}
+              <footer class="text-dark">
+                {{currentUser.deliveryAddress.cp}} {{currentUser.deliveryAddress.city | uppercase}}
+                {{currentUser.deliveryAddress.country| uppercase}}
+              </footer>
             </div>
           </div>
         </a>
@@ -62,8 +65,11 @@
           <div class="in">
             <div>
               <header class="text-secondary">Adresse de facturation</header>
-              15 rue de Capucines
-              <footer class="text-dark">75016 PARIS</footer>
+              {{currentUser.billingAddress.address}}
+              <footer class="text-dark">
+                {{currentUser.billingAddress.cp}} {{currentUser.billingAddress.city | uppercase}}
+                {{currentUser.billingAddress.country| uppercase}}
+              </footer>
             </div>
           </div>
         </a>

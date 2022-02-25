@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
 export class ShopComponent implements OnInit, OnChanges {
   products: Product[] = [];
   categories = [];
-  typeParams: string;
+  typeProduct: string;
   category: string;
   quantity = 1;
   search: string;
@@ -29,17 +29,20 @@ export class ShopComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.typeParams = params['type'];
+      this.typeProduct = params['productType'];
       this.category = params['category'];
-      console.log(`${this.typeParams}`, `${this.category}`);
+      console.log(`${this.typeProduct}`, `${this.category}`);
+      this.getProducts(this.typeProduct, this.category);
     });
-    this.getProducts();
     this.getCategories();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
-      this.products = changes.products.currentValue;
+      console.log('changes', changes);
+      if (changes.products.currentValue) {
+        this.products = changes.products.currentValue;
+      }
     }
   }
 
@@ -53,13 +56,15 @@ export class ShopComponent implements OnInit, OnChanges {
     });
   }
 
-  getProducts() {
+  getProducts(typeProductParams?, categoryParams?) {
     this.subscription = this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products.filter(product => product.category === this.category);
+      this.products = products.filter(product => product.productType === typeProductParams && product.category === categoryParams);
+      console.log('typeProductParams', typeProductParams);
+      console.log('categoryParams', categoryParams);
     });
   }
 
@@ -72,12 +77,8 @@ export class ShopComponent implements OnInit, OnChanges {
     this.cartService.addProductToCart(product);
   }
 
-  gotoProduct(product) {
-    return this.router.navigateByUrl(product.url, { state: product });
-  }
-
   isTypeParams(type) {
-    return type === this.typeParams;
+    return type === this.typeProduct;
   }
 
   searchProduct() {

@@ -83,14 +83,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  gotoCategory(category) {
-    return this.router.navigate([category.url]);
-  }
-
-  gotoProduct(product) {
-    return this.router.navigateByUrl(product.url, { state: product });
-  }
-
   addProductToCart(product) {
     product.quantity = this.quantity;
     this.cartService.addProductToCart(product);

@@ -35,7 +35,7 @@
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
           <span class="chip-label"><span class="number" style="font-size: 11px;">{{currentUser.subscription}}</span>
-          {{currentUser.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
+            {{currentUser.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
         </div>
         <button (click)="shareProfile()" class="btn btn-primary btn-icon">
           <ion-icon name="arrow-redo-outline"></ion-icon>
@@ -80,9 +80,9 @@
                 <ng-container *ngFor="let product of products">
                   <div class="col-6 mb-2" *ngIf="isKindMens(product)">
                     <div class="blog-card">
-                      <a (click)="gotoProduct(product)">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a (click)="gotoProduct(product)"
+                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active"
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -134,9 +134,9 @@
                 <ng-container *ngFor="let product of products">
                   <div class="col-6 mb-2" *ngIf="isKindWomens(product)">
                     <div class="blog-card">
-                      <a (click)="gotoProduct(product)">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a (click)="gotoProduct(product)"
+                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -188,9 +188,9 @@
                 <ng-container *ngFor="let product of products">
                   <div class="col-6 mb-2" *ngIf="isKindKids(product)">
                     <div class="blog-card">
-                      <a (click)="gotoProduct(product)">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                          <a (click)="gotoProduct(product)"
+                          <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
                             class="d-flex align-items-center justify-content-between text-muted">
                             <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                               class="imaged w24 rounded mr-05"> {{product.sellerName}}
@@ -257,9 +257,9 @@
             <ng-container *ngFor="let product of products">
               <div class="col-6 mb-2" *ngIf="isArtProduct(product)">
                 <div class="blog-card">
-                  <a (click)="gotoProduct(product)">
+                  <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                     <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                      <a (click)="gotoProduct(product)"
+                      <a [routerLink]="['/profile']" routerLinkActive="router-link-active" 
                         class="d-flex align-items-center justify-content-between text-muted">
                         <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                           class="imaged w24 rounded mr-05"> {{product.sellerName}}

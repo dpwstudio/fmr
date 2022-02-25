@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Product } from 'src/app/modules/shared/models/product.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
@@ -34,28 +34,40 @@ export class ProductDetailComponent implements OnInit {
   products = [];
   product: Product;
   quantity = 1;
+  id: number;
+  subscription: Subscription;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private cartService: CartService,
     private productService: ProductService
   ) {
   }
 
   ngOnInit(): void {
-    this.product = history.state;
-    console.log('this.product', this.product);
-    this.getProducts();
+    this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.getProducts(this.id);
+      // In a real app: dispatch action to load the details here.
+    });
   }
 
-  getProducts() {
-    this.productService.getProducts().pipe(
+  getProducts(id?) {
+    this.subscription = this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
+      if (id) {
+        this.product = products.filter(product => product.id === id)[0];
+      }
       this.products = products;
     })
+  }
+
+  isLoading() {
+    return this.subscription && !this.subscription.closed;
   }
 
   shareProduct() {
@@ -72,10 +84,6 @@ export class ProductDetailComponent implements OnInit {
     } else {
       alert('share not supported');
     }
-  }
-
-  gotoCategory(category) {
-    return this.router.navigate([category.url]);
   }
 
   addProductToCart(product) {

@@ -5,6 +5,7 @@ import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
 import { User } from 'src/app/modules/shared/models/user.model';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
@@ -89,7 +90,8 @@ export class ProfileComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products.filter(product => product.sellerName.toLowerCase() === this.user.firstname.toLowerCase());
+      console.log('products', products);
+      this.products = products.filter(product => product.sellerId === this.user.id);
     })
   }
 
@@ -106,7 +108,7 @@ export class ProfileComponent implements OnInit {
         .then(() => console.log('Successful share'))
         .catch((error: any) => console.log('Error sharing', error));
     } else {
-      alert('share not supported');
+      this.notifier.notify('error', 'Le partage est indisponible sur votre navigateur');
     }
   }
 

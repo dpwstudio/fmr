@@ -11563,8 +11563,8 @@ a:focus {
 }
 
 .appHeader .pageTitle {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
   padding: 0 10px;
 }
 
@@ -12510,7 +12510,7 @@ b {
 }
 
 .imaged.startText {
-  width: 200px !important;
+  width: 180px !important;
 }
 
 .imaged.square {
@@ -15129,18 +15129,18 @@ a.text-dark {
 }
 
 .chatFooter {
-  height: 56px;
   background: #FFF;
-  border-top: 1px solid #DCDCE9;
+  border-top: none;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1000;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;
+  padding: 0 14px 30px;
 }
 
 .chatFooter .form-group {

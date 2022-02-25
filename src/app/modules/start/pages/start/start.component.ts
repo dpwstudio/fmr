@@ -27,16 +27,4 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  isLoading() {
-
-  }
-
-  gotoHome() {
-    this.loading = true;
-    setTimeout(() => {
-      this.router.navigate(['home']);
-      this.loading = false;
-    }, 2500);
-  }
 }

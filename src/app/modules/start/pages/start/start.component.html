@@ -2,7 +2,7 @@
 <!-- App Header -->
 <div class="appHeader no-border transparent" style="z-index: 111111;">
   <div class="right">
-    <a (click)="gotoHome()" class="headerButton">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="headerButton">
       <ion-icon name="arrow-forward-outline" class="text-primary"></ion-icon>
     </a>
   </div>

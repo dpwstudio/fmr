@@ -1,9 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
 import { Product } from 'src/app/modules/shared/models/product.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
@@ -14,6 +16,7 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
+  private readonly notifier: NotifierService;
   carouselFullOptions: OwlOptions = {
     loop: true,
     margin: 8,
@@ -31,38 +34,42 @@ export class ProductDetailComponent implements OnInit {
     items: 2,
     dots: false,
   }
-  products = [];
+  products: Product[] = [];
   product: Product;
   quantity = 1;
   id: number;
   subscription: Subscription;
+  filtersProducts: FiltersProducts;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private cartService: CartService,
-    private productService: ProductService
+    private productService: ProductService,
+    notifierService: NotifierService
   ) {
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
-      this.getProducts(this.id);
+      this.filtersProducts = {
+        id: this.id
+      }
+      this.getProducts(this.filtersProducts);
       // In a real app: dispatch action to load the details here.
     });
   }
 
-  getProducts(id?) {
+  getProducts(filtersProducts) {
     this.subscription = this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      if (id) {
-        this.product = products.filter(product => product.id === id)[0];
-      }
       this.products = products;
+      this.product = this.products.filter(product => product.id === filtersProducts.id)[0];
     })
   }
 
@@ -82,7 +89,7 @@ export class ProductDetailComponent implements OnInit {
         .then(() => console.log('Successful share'))
         .catch((error: any) => console.log('Error sharing', error));
     } else {
-      alert('share not supported');
+      this.notifier.notify('error', 'Le partage est indisponible sur votre navigateur');
     }
   }
 

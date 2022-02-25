@@ -1,7 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { fromEvent, Subscription, throwError } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
+import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
 import { Product } from 'src/app/modules/shared/models/product.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
@@ -12,14 +13,14 @@ import { ProductService } from 'src/app/modules/shared/services/product/product.
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit, OnChanges {
+  @ViewChild('searchElementRef', { static: true }) searchElementRef: ElementRef<HTMLInputElement>;
   products: Product[] = [];
   categories = [];
-  typeProduct: string;
-  category: string;
   quantity = 1;
   search: string;
   subscription: Subscription;
   showSearch = false;
+  filtersProducts: FiltersProducts;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,12 +29,15 @@ export class ShopComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.typeProduct = params['productType'];
-      this.category = params['category'];
-      console.log(`${this.typeProduct}`, `${this.category}`);
-      this.getProducts(this.typeProduct, this.category);
+      this.filtersProducts = {
+        category: params['category'],
+        productType: params['productType'],
+      }
+      console.log(`${this.filtersProducts}`);
+      this.getProducts(this.filtersProducts);
     });
     this.getCategories();
+    this.initSearchInputHandler();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -55,15 +59,18 @@ export class ShopComponent implements OnInit, OnChanges {
     });
   }
 
-  getProducts(typeProductParams?, categoryParams?) {
-    this.subscription = this.productService.getProducts().pipe(
+  getProducts(filtersProducts, textToSearch?) {
+    this.subscription = this.productService.getProducts(filtersProducts).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.products = products.filter(product => product.productType === typeProductParams && product.category === categoryParams);
-      console.log('typeProductParams', typeProductParams);
-      console.log('categoryParams', categoryParams);
+      if (textToSearch) {
+        this.products = products.filter(product => product.brand.toLowerCase().indexOf(textToSearch.toLowerCase()) > -1 || product.model.toLowerCase().indexOf(textToSearch.toLowerCase()) > -1);
+      } else {
+        this.products = products;
+      }
+      console.log('this.products', this.products)
     });
   }
 
@@ -77,7 +84,7 @@ export class ShopComponent implements OnInit, OnChanges {
   }
 
   isTypeParams(type) {
-    return type === this.typeProduct;
+    return type === this.filtersProducts.productType;
   }
 
   searchProduct() {
@@ -87,8 +94,20 @@ export class ShopComponent implements OnInit, OnChanges {
           || product.model.toLowerCase().indexOf(this.search.toLowerCase()) > -1
       );
     } else {
-      this.getProducts();
+      this.getProducts(this.filtersProducts);
     }
+  }
+
+  initSearchInputHandler() {
+    fromEvent(this.searchElementRef.nativeElement, 'keyup').pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
+    ).subscribe(text => {
+      console.log('text', text)
+      this.getProducts(this.filtersProducts, text);
+      this.search = text;
+    })
   }
 
   isCategoryMode(category) {

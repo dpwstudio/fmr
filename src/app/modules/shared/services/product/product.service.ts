@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { FiltersProducts } from '../../models/filtersProducts.model';
 import { Product } from '../../models/product.model';
 import { User } from '../../models/user.model';
 import { AuthService } from '../auth/auth.service';
@@ -11,7 +13,6 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ProductService {
   currentUser: User;
-
   constructor(
     private http: HttpClient,
     private authService: AuthService
@@ -27,8 +28,11 @@ export class ProductService {
     return this.http.get(`assets/mock-data/categories.json`) as Observable<any[]>;
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get(`assets/mock-data/products.json`) as Observable<Product[]>;
+  getProducts(filters?: FiltersProducts): Observable<Product[]> {
+    return this.http.get(`assets/mock-data/products.json`).pipe(
+      map((products: Product[]) => filters ? products.filter(product => product.category === filters.category
+        && product.productType === filters.productType) : products)
+    ) as Observable<Product[]>;
   }
 
   editProduct(product) {

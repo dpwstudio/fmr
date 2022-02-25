@@ -19,9 +19,14 @@
       "fallingPrice": 1524,
       "amountWin": 1542
     },
+    "dimensions": {
+      "width": 35,
+      "height": 27,
+      "depth": 5
+    },
     "url": "product-detail",
     "like": 188,
-    "sellerId": "1",
+    "sellerId": 1,
     "sellerName": "Ava",
     "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
     "sellerCountry": "fr"
@@ -47,9 +52,14 @@
       "fallingPrice": 1850,
       "amountWin": 1552
     },
+    "dimensions": {
+      "width": 35,
+      "height": 27,
+      "depth": 5
+    },
     "url": "product-detail",
     "like": 245,
-    "sellerId": "3",
+    "sellerId": 3,
     "sellerName": "Géraldine",
     "sellerImg": "assets/img/sample/avatar/avatar7.jpg",
     "sellerCountry": "it"
@@ -75,9 +85,14 @@
       "fallingPrice": 480,
       "amountWin": 352
     },
+    "dimensions": {
+      "width": 35,
+      "height": 27,
+      "depth": 5
+    },
     "url": "product-detail",
     "like": 68,
-    "sellerId": "4",
+    "sellerId": 4,
     "sellerName": "Peter",
     "sellerImg": "assets/img/sample/avatar/avatar8.jpg",
     "sellerCountry": "es"
@@ -103,9 +118,14 @@
       "fallingPrice": 240,
       "amountWin": 185
     },
+    "dimensions": {
+      "width": 35,
+      "height": 27,
+      "depth": 5
+    },
     "url": "product-detail",
     "like": 32,
-    "sellerId": "2",
+    "sellerId": 2,
     "sellerName": "John",
     "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
     "sellerCountry": "be"

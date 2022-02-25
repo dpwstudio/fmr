@@ -1,0 +1,145 @@
+    <!-- App Header -->
+    <div class="appHeader">
+      <div class="left">
+        <a [routerLink]="['/product-detail',product?.id]" routerLinkActive="router-link-active"
+          class="headerButton goBack">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="pageTitle">
+        <img [src]="product?.img.photoFace" alt="" class="imaged rounded w32 mr-1">
+        Négocier avec {{product?.sellerName}}</div>
+      <div class="right">
+      </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+      <div class="message-item">
+        <img src="assets/img/sample/avatar/avatar1.jpg" alt="avatar" class="avatar">
+        <div class="content position-relative">
+          <div class="title">John</div>
+          <div class="bubble number">
+            1985,00 €
+				<button class="btn-icon btn btn-light ml-1 mr-1">
+              <ion-icon name="checkmark-outline" class="text-success"></ion-icon>
+            </button>
+            <button class="btn-icon btn btn-light">
+              <ion-icon name="close-outline" class="text-danger"></ion-icon>
+            </button>
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-item position-relative">
+        <img src="assets/img/sample/avatar/avatar2.jpg" alt="avatar" class="avatar">
+        <div class="content">
+          <div class="title">Marry</div>
+          <div class="bubble number">
+            1985,00 €
+				<button class="btn-icon btn btn-success ml-1 mr-1">
+					<ion-icon name="checkmark-outline"></ion-icon>
+				 </button>
+				 <button class="btn-icon btn btn-danger">
+					<ion-icon name="close-outline"></ion-icon>
+				 </button>
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-item user">
+        <div class="content">
+          <div class="bubble number">
+            1985,00 €
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-divider">
+        Friday, Sep 20, 10:40
+      </div>
+
+      <div class="message-item">
+        <img src="assets/img/sample/avatar/avatar2.jpg" alt="avatar" class="avatar">
+        <div class="content">
+          <div class="title">Marry</div>
+          <div class="bubble number">
+            1985,00 €
+            <button class="btn-icon btn btn-success ml-1 mr-1">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </button>
+            <button class="btn-icon btn btn-danger">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-item">
+        <img src="assets/img/sample/avatar/avatar4.jpg" alt="avatar" class="avatar">
+        <div class="content">
+          <div class="title">Katie</div>
+          <div class="bubble number">
+            1985,00 €
+            <button class="btn-icon btn btn-success ml-1 mr-1">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </button>
+            <button class="btn-icon btn btn-danger">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-item">
+        <img src="assets/img/sample/avatar/avatar2.jpg" alt="avatar" class="avatar">
+        <div class="content">
+          <div class="title">Marry</div>
+          <div class="bubble number">
+            2000,00 €
+            <button class="btn-icon btn btn-success ml-1 mr-1">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </button>
+            <button class="btn-icon btn btn-danger">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+
+      <div class="message-item user">
+        <div class="content">
+          <div class="bubble number">
+            1850,00 €
+          </div>
+          <div class="footer number" style="font-size: 9px;">10:40</div>
+        </div>
+      </div>
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- chat footer -->
+    <div class="chatFooter">
+      <form>
+        <div class="form-group basic">
+          <div class="input-wrapper">
+            <input type="number" class="form-control number" placeholder="Saisir un montant">
+            <i class="clear-input">
+              <ion-icon name="close-circle"></ion-icon>
+            </i>
+          </div>
+        </div>
+        <button type="button" class="btn btn-icon btn-primary rounded">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+      </form>
+    </div>
+    <!-- * chat footer -->

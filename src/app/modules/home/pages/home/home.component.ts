@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
 import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/shared/services/product/product.service';
 
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit {
   }
   quantity = 1;
   subscription: Subscription;
+  filtersProducts: FiltersProducts;
 
   constructor(
     private router: Router,
@@ -74,7 +76,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts() {
-    this.subscription = this.productService.getProducts().pipe(
+    this.subscription = this.productService.getProducts(this.filtersProducts).pipe(
       catchError(error => {
         return throwError(error);
       })

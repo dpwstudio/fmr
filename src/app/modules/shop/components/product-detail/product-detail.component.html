@@ -42,7 +42,7 @@
     <p style="font-size: 19px;">{{product?.description}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
-        <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" class="text-dark">
+        <a [routerLink]="['/profile', product?.sellerId]" routerLinkActive="router-link-active" class="text-dark">
           <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
           {{product?.sellerName}}
         </a>
@@ -92,8 +92,48 @@
         </div>
         <div id="accordion2" class="accordion-body collapse" data-parent="#accordionExample1">
           <div class="accordion-content">
-            Dimensions : 12 x 10 x 5 cm
-            La taille convient parfaitement aux AirPods Pro, rouge à lèvres et clés
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Largeur</font>
+                      </font>
+                    </th>
+                    <th scope="col" class="text-center">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Hauteur</font>
+                      </font>
+                    </th>
+                    <th scope="col" class="text-center">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Profondeur</font>
+                      </font>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">{{product?.dimensions.width}}</font>
+                      </font>
+                    </td>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">{{product?.dimensions.height}}</font>
+                      </font>
+                    </td>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit; text-align: center;">{{product?.dimensions.depth}}</font>
+                      </font>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -135,7 +175,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-block btn-lg btn-outline-primary">
+            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"  class="btn btn-block btn-lg btn-outline-primary">
               Négocier
             </a>
           </div>
@@ -164,7 +204,7 @@
             <div class="blog-card">
               <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                 <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-                  <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active" 
+                  <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
                     class="d-flex align-items-center justify-content-between text-muted">
                     <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
                       class="imaged w24 rounded mr-05"> {{product.sellerName}}

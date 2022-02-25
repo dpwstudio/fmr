@@ -1,4 +1,13 @@
 <app-loader [state]="isLoading()"></app-loader>
+<!-- App Header -->
+<div class="appHeader no-border transparent" style="z-index: 111111;">
+  <div class="right">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
+      <ion-icon name="arrow-forward-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+</div>
+<!-- * App Header -->
 <!-- App Capsule -->
 <div id="appCapsule" class="content d-flex flex-column justify-content-center">
   <div class="section p-2 content-form">

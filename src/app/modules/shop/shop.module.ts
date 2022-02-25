@@ -13,6 +13,7 @@ import { PaymentStatusComponent } from './components/payment-status/payment-stat
 import { SharedModule } from '../shared/shared.module';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { FormsModule } from '@angular/forms';
+import { NegociateComponent } from './components/negociate/negociate.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     CheckoutComponent,
     PaymentStatusComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    NegociateComponent
   ],
   imports: [
     CommonModule,

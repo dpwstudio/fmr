@@ -13,6 +13,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ForgotPasswordComponent,
     SettingsComponent,
     NotificationsComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

@@ -57,17 +57,6 @@
     <div class="listview-title mt-2">Méthode de paiement</div>
     <ul class="listview image-listview inset">
       <li>
-        <a href="#" class="item" data-toggle="modal" data-target="#walletForm">
-          <div class="icon-box bg-primary">
-            <ion-icon name="wallet-outline" role="img" class="md hydrated" aria-label="wallet outline"></ion-icon>
-          </div>
-          <div class="in">
-            <div>Wallet</div>
-            <span class="text-muted">Modifier</span>
-          </div>
-        </a>
-      </li>
-      <li>
         <a href="#" class="item" data-toggle="modal" data-target="#creditCardForm">
           <div class="icon-box bg-primary">
             <ion-icon name="card-outline" role="img" class="md hydrated" aria-label="card outline"></ion-icon>
@@ -213,40 +202,3 @@
   </div>
 </div>
 <!-- * Form Action Sheet -->
-
-<div class="modal fade action-sheet" id="walletForm" tabindex="-1" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Wallet</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-        </a>
-      </div>
-      <div class="modal-body">
-        <div class="action-sheet-content">
-
-          <form>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="account1">Liste des cartes</label>
-                <select class="form-control custom-select" id="account1">
-                  <option value="0">Visa (*** 5019)</option>
-                  <option value="1">Mastercard (*** 6212)</option>
-                  <option value="2">Amex (*** 5021)</option>
-                </select>
-              </div>
-              <div class="input-info">Sélectionner une carte</div>
-            </div>
-            <div class="form-group basic">
-              <button (click)="processPayment()" type="button" class="btn btn-primary btn-block btn-lg"
-                data-dismiss="modal">Procéder au
-                paiement</button>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

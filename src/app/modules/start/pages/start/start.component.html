@@ -2,7 +2,7 @@
 <!-- App Header -->
 <div class="appHeader no-border transparent" style="z-index: 111111;">
   <div class="right">
-    <a href="app-index.html" class="headerButton">
+    <a (click)="gotoHome()" class="headerButton">
       <ion-icon name="arrow-forward-outline" class="text-primary"></ion-icon>
     </a>
   </div>
@@ -10,7 +10,7 @@
 <!-- * App Header -->
 <!-- App Capsule -->
 <div id="appCapsule" class="content">
-  <div class="section" style="position: relative;top: 130px;">
+  <div class="section" style="position: relative;top: 100px;">
     <owl-carousel-o [options]="carouselFullOptions">
       <ng-container>
         <ng-template carouselSlide>
@@ -25,7 +25,7 @@
         </ng-template>
         <ng-template carouselSlide>
           <div class="item p-2 d-flex flex-column align-items-center justify-content-center">
-            <img src="assets/img/fashion.png" alt="alt" class="imaged startText square mb-4">
+            <img src="assets/img/dresses.png" alt="alt" class="imaged startText square mb-4">
             <h2 class="text-center" style="font-size: 30px;">Vous êtes passionné<br>par la mode ?</h2>
             <p class="mb-5 mt-1 text-secondary text-center" style="font-size: 20px;">Vendez ou achetez des pièces
               d'exceptions dans notre boutique éphémère.</p>
@@ -34,7 +34,7 @@
         <ng-template carouselSlide>
           <div class="item p-2 d-flex flex-column align-items-center justify-content-center">
             <img src="assets/img/modern-art.png" alt="alt" class="imaged startText square mb-4">
-            <h2 class="text-center" style="font-size: 30px;">Vous êtes artisan ou<br>passionné par l'art ?</h2>
+            <h2 class="text-center" style="font-size: 30px;">Vous êtes un artiste ou<br>passionné par l'art ?</h2>
             <p class="mb-5 mt-1 text-secondary text-center" style="font-size: 20px;">Vendez ou achetez des pièces
               uniques dans notre boutique éphémère.</p>
           </div>
@@ -45,10 +45,11 @@
 
   <div class="carousel-button-footer">
     <div class="row d-flex justify-content-center">
-      <a (click)="gotoHome()" class="btn-connect bg-primary mr-5 animate__animated animate__pulse animate__infinite">
+      <a [routerLink]="['/register']" routerLinkActive="router-link-active"
+        class="btn-connect bg-primary mr-5 animate__animated animate__pulse animate__infinite">
         <ion-icon name="person-add-outline"></ion-icon>
       </a>
-      <a (click)="gotoHome()" class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
+      <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
         <ion-icon name="person-outline"></ion-icon>
       </a>
     </div>

@@ -103,10 +103,10 @@ export class ShopComponent implements OnInit, OnChanges {
       debounceTime(500),
       distinctUntilChanged(),
       map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
-    ).subscribe(text => {
-      console.log('text', text)
-      this.getProducts(this.filtersProducts, text);
-      this.search = text;
+    ).subscribe(textToSearch => {
+      this.search = textToSearch;
+      console.log('textToSearch', this.searchElementRef.nativeElement.value)
+      this.getProducts(this.filtersProducts, textToSearch);
     })
   }
 
@@ -119,7 +119,8 @@ export class ShopComponent implements OnInit, OnChanges {
   }
 
   emptySearch() {
-    return this.search = '';
+    this.search = '';
+    this.getProducts(this.filtersProducts, this.search);
   }
 
 }

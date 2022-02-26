@@ -301,8 +301,6 @@
           <div class="wide-block pt-1 pb-1" style="border: 0; border-radius: 10px;">
             <form class="search-form">
               <div class="form-group searchbox">
-                <!-- <input type="text" class="form-control" placeholder="Recherche" [(ngModel)]="search"
-                  [ngModelOptions]="{standalone: true}"> -->
                 <input type="text" class="form-control" [(ngModel)]="search"
                 [ngModelOptions]="{standalone: true}" placeholder="Recherche" #searchElementRef>
                 <a class="ms-1 close toggle-searchbox" (click)="emptySearch()">

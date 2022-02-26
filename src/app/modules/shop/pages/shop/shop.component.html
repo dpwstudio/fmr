@@ -25,15 +25,19 @@
 
 <!-- App Capsule -->
 <div id="appCapsule" class="extra-header-active">
-  <div class="section full" style="overflow: hidden;">
+  <div class="section full position-fixed w-100" style="overflow: hidden; z-index: 1; top: 100px; left: 0;">
     <div class="wide-block pt-1 pb-1 d-flex justify-content-center" style="border-top: 0;">
       <button class="btn btn-icon btn-primary input-icon mr-2" data-toggle="modal" data-target="#chooseCategoryForm"
         style="width: 30px; height: 30px;">
         <ion-icon name="filter-outline" class="md hydrated"></ion-icon>
       </button>
-      <button class="btn btn-icon btn-primary input-icon" data-toggle="modal" data-target="#searchForm"
+      <button class="btn btn-icon btn-primary input-icon mr-2" data-toggle="modal" data-target="#searchForm"
         style="width: 30px; height: 30px;">
         <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
+      </button>
+      <button class="btn btn-icon btn-primary input-icon" data-toggle="modal" data-target="#sortForm"
+        style="width: 30px; height: 30px;">
+        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
       </button>
     </div>
   </div>
@@ -301,8 +305,8 @@
           <div class="wide-block pt-1 pb-1" style="border: 0; border-radius: 10px;">
             <form class="search-form">
               <div class="form-group searchbox">
-                <input type="text" class="form-control" [(ngModel)]="search"
-                [ngModelOptions]="{standalone: true}" placeholder="Recherche" #searchElementRef>
+                <input type="text" class="form-control" [(ngModel)]="search" [ngModelOptions]="{standalone: true}"
+                  placeholder="Recherche" #searchElementRef>
                 <a class="ms-1 close toggle-searchbox" (click)="emptySearch()">
                   <i class="icon ion-ios-close-circle" style="color: #cfcfcf;"></i>
                 </a>
@@ -311,6 +315,86 @@
                 </i>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Form Search -->
+
+<!-- Form Search -->
+<div class="modal fade action-sheet" id="sortForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Trier</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full px-3 pt-3 pb-5" style="background: #EDEDF5;">
+          <div class="wide-block p-0" style="border-radius: 10px;
+          border: none;
+          box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);">
+            <div class="input-list">
+              <form>
+                <div class="custom-control custom-radio" (click)="sortProductByDate(products, 'dateAsc')">
+                  <input type="radio" id="dateAsc" [(ngModel)]="sortDate" value="dateAsc" name="sortPrice"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="dateAsc">
+                    <div class="in">
+                      <div>
+                        <p class="my-0" style="font-size: 18px;">Date croissante</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="custom-control custom-radio" (click)="sortProductByDate(products, 'dateDesc')">
+                  <input type="radio" id="dateDesc" [(ngModel)]="sortDate" value="dateDesc" name="sortPrice"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="dateDesc">
+                    <div class="in">
+                      <div>
+                        <p class="my-0" style="font-size: 18px;">Date décroissante</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="wide-block mt-2 p-0" style="border-radius: 10px;
+          border: none;
+          box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);">
+            <div class="input-list">
+              <form>
+                <div class="custom-control custom-radio" (click)="sortProductByPrice(products, 'priceAsc')">
+                  <input type="radio" id="priceAsc" [(ngModel)]="sortPrice" value="priceAsc" name="sortPrice"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="priceAsc">
+                    <div class="in">
+                      <div>
+                        <p class="my-0" style="font-size: 18px;">Prix croissant</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="custom-control custom-radio" (click)="sortProductByPrice(products, 'priceDesc')">
+                  <input type="radio" id="priceDesc" [(ngModel)]="sortPrice" value="priceDesc" name="sortPrice"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="priceDesc">
+                    <div class="in">
+                      <div>
+                        <p class="my-0" style="font-size: 18px;">Prix décroissant</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

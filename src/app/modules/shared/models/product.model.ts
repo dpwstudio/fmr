@@ -55,7 +55,7 @@ export interface Product {
 		depth: string;
 	},
 	amount: {
-		price: string;
+		price: number;
 		fallingPrice: string;
 		amountWin: string;
 	}

@@ -1,5 +1,6 @@
 [{
     "id": 1,
+    "createdAt": "2022-02-26T12:23:10+01:00",
     "brand": "Louis Vuitton",
     "model": "Sac à bandoulière",
     "description": "Sac à bandoulière",
@@ -33,6 +34,7 @@
   },
   {
     "id": 2,
+    "createdAt": "2022-02-24T12:23:10+01:00",
     "brand": "Dior",
     "model": "Sac en toile",
     "description": "Sac en toile",
@@ -66,6 +68,7 @@
   },
   {
     "id": 3,
+    "createdAt": "2022-02-22T12:23:10+01:00",
     "brand": "Balenciaga",
     "model": "Baskets montantes en cuir",
     "description": "Baskets montantes en cuir",
@@ -99,6 +102,7 @@
   },
   {
     "id": 4,
+    "createdAt": "2022-02-20T12:23:10+01:00",
     "brand": "Chanel",
     "model": "Bonnet en cachemire",
     "description": "Bonnet en cachemire",

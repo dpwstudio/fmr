@@ -43,9 +43,9 @@ export class PostFormComponent implements OnInit {
       depth: '',
     },
     amount: {
-      price: '',
-      fallingPrice: '',
-      amountWin: '',
+      price: null,
+      fallingPrice: null,
+      amountWin: null,
     },
     createdAt: moment().format()
   }

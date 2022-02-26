@@ -18,6 +18,8 @@ export class ShopComponent implements OnInit, OnChanges {
   categories = [];
   quantity = 1;
   search: string;
+  sortPrice: string = 'priceDesc';
+  sortDate: string = 'dateDesc';
   subscription: Subscription;
   showSearch = false;
   filtersProducts: FiltersProducts;
@@ -70,8 +72,24 @@ export class ShopComponent implements OnInit, OnChanges {
       } else {
         this.products = products;
       }
-      console.log('this.products', this.products)
+      this.sortProductByDate(this.products, this.sortDate);
     });
+  }
+
+  sortProductByDate(products, sortType) {
+    if (sortType === 'dateAsc') {
+      products.sort((x, y) => +new Date(x.createdAt) - +new Date(y.createdAt));
+    } else {
+      products.sort((x, y) => +new Date(y.createdAt) - +new Date(x.createdAt));
+    }
+  }
+
+  sortProductByPrice(products, sortType) {
+    if (sortType === 'priceAsc') {
+      products.sort((x, y) => x.amount.price - y.amount.price);
+    } else {
+      products.sort((x, y) => y.amount.price - x.amount.price);
+    }
   }
 
   isLoading() {

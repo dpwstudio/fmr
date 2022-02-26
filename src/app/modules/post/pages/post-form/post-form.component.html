@@ -333,7 +333,7 @@
            <form class="d-flex mb-2">
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number"
+                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
                    [(ngModel)]="product.dimensions.height" [ngModelOptions]="{standalone: true}" placeholder="Haut.">
 
                </div>
@@ -341,7 +341,7 @@
 
              <div class="form-group basic mr-2">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number"
+                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
                    [(ngModel)]="product.dimensions.width" [ngModelOptions]="{standalone: true}" placeholder="Larg.">
 
                </div>
@@ -349,7 +349,7 @@
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number"
+                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
                    [(ngModel)]="product.dimensions.depth" [ngModelOptions]="{standalone: true}" placeholder="Prof.">
 
                </div>
@@ -555,14 +555,14 @@
            <form class="d-flex">
              <div class="form-group basic mr-4">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number" [(ngModel)]="product.amount.price"
+                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number" [(ngModel)]="product.amount.price"
                    [ngModelOptions]="{standalone: true}" placeholder="Prix">
                </div>
              </div>
 
              <div class="form-group basic">
                <div class="input-wrapper">
-                 <input type="number" class="form-control text-center px-0 number"
+                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
                    [(ngModel)]="product.amount.amountWin" [ngModelOptions]="{standalone: true}"
                    placeholder="Vous gagnez">
                </div>

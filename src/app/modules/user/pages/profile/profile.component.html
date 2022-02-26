@@ -38,7 +38,7 @@
           <span class="chip-label"><span class="number" style="font-size: 11px;">{{user?.subscription}}</span>
             {{user?.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
         </div>
-        <button (click)="shareProfile()" class="btn btn-primary btn-icon">
+        <button (click)="followProfile(user)" class="btn btn-primary btn-icon" *ngIf="!isMyProfile()">
           <ion-icon name="arrow-redo-outline"></ion-icon>
         </button>
       </div>

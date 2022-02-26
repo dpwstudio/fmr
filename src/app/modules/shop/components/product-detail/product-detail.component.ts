@@ -5,10 +5,10 @@ import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
-import { Product } from 'src/app/modules/shared/models/product.model';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { Product } from 'src/app/modules/_shared/models/product.model';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-detail',

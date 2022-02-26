@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, first, map } from 'rxjs/operators';
-import { User } from 'src/app/modules/shared/models/user.model';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',

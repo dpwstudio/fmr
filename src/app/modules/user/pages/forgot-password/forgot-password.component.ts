@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { User } from 'src/app/modules/shared/models/user.model';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { EmailService } from 'src/app/modules/shared/services/email/email.service';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { EmailService } from 'src/app/modules/_shared/services/email/email.service';
 
 @Component({
   selector: 'app-forgot-password',

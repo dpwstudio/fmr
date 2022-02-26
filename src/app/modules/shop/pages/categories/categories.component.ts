@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
 @Component({
   selector: 'app-categories',

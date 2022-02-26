@@ -10,7 +10,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../_shared/shared.module';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { FormsModule } from '@angular/forms';
 import { NegociateComponent } from './components/negociate/negociate.component';

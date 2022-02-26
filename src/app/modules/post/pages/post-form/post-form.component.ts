@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { Product } from 'src/app/modules/shared/models/product.model';
+import { Product } from 'src/app/modules/_shared/models/product.model';
 
 @Component({
   selector: 'app-post-form',

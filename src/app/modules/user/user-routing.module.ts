@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../shared/guard/auth/auth.guard';
+import { AuthGuard } from '../_shared/guard/auth/auth.guard';
 import { FormAddressDeliveryComponent } from './components/form-address-delivery/form-address-delivery.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';

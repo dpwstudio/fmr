@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
-import { Product } from 'src/app/modules/shared/models/product.model';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { Product } from 'src/app/modules/_shared/models/product.model';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
 @Component({
   selector: 'app-negociate',

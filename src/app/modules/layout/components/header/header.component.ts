@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/app/modules/shared/models/cart.model';
-import { User } from 'src/app/modules/shared/models/user.model';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
+import { Cart } from 'src/app/modules/_shared/models/cart.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-header',

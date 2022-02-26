@@ -5,12 +5,12 @@ import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
-import { User } from 'src/app/modules/shared/models/user.model';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
-import { UserService } from 'src/app/modules/shared/services/user/user.service';
+import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
+import { UserService } from 'src/app/modules/_shared/services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
   }
   quantity = 1;
   user: User;
+  currentUser: User;
   users: User[];
   id: number;
 
@@ -60,6 +61,7 @@ export class ProfileComponent implements OnInit {
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
@@ -69,6 +71,10 @@ export class ProfileComponent implements OnInit {
       // In a real app: dispatch action to load the details here.
     });
     this.getProducts();
+  }
+
+  isMyProfile() {
+    return this.currentUser.id === this.id;
   }
 
   getUsers(id?) {
@@ -95,21 +101,9 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  shareProfile() {
-    const navigator = window.navigator as any;
-
-    if (navigator.share) {
-      navigator
-        .share({
-          title: 'FMR Store',
-          text: 'Pop-up store',
-          url: 'https://lumiaouvertures.fr/fmr'
-        })
-        .then(() => console.log('Successful share'))
-        .catch((error: any) => console.log('Error sharing', error));
-    } else {
-      this.notifier.notify('error', 'Le partage est indisponible sur votre navigateur');
-    }
+  followProfile(user) {
+    console.log('user', user);
+    this.notifier.notify('success', `Vous êtes maintenant abonné au profil de ${user.firstname}`)
   }
 
   addProductToCart(product) {

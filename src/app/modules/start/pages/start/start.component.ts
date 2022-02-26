@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-start',

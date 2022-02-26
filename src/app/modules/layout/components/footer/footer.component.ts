@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-footer',

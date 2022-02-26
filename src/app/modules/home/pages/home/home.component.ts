@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
 @Component({
   selector: 'app-home',

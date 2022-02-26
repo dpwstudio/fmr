@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { EmailService } from 'src/app/modules/shared/services/email/email.service';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { EmailService } from 'src/app/modules/_shared/services/email/email.service';
 
 @Component({
   selector: 'app-register',

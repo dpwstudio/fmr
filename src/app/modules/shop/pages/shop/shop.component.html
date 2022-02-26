@@ -328,7 +328,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Trier</h5>
+        <h5 class="modal-title">Trier par</h5>
         <a href="#" class="d-flex" data-dismiss="modal">
           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
         </a>
@@ -340,38 +340,18 @@
           box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);">
             <div class="input-list">
               <form>
-                <div class="custom-control custom-radio" (click)="sortProductByDate(products, 'dateAsc')">
-                  <input type="radio" id="dateAsc" [(ngModel)]="sortDate" value="dateAsc" name="sortPrice"
-                    class="custom-control-input">
-                  <label class="custom-control-label" for="dateAsc">
-                    <div class="in">
-                      <div>
-                        <p class="my-0" style="font-size: 18px;">Date croissante</p>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div class="custom-control custom-radio" (click)="sortProductByDate(products, 'dateDesc')">
+                <div class="custom-control custom-radio" (click)="sortProduct(products, 'dateDesc')">
                   <input type="radio" id="dateDesc" [(ngModel)]="sortDate" value="dateDesc" name="sortPrice"
                     class="custom-control-input">
                   <label class="custom-control-label" for="dateDesc">
                     <div class="in">
                       <div>
-                        <p class="my-0" style="font-size: 18px;">Date décroissante</p>
+                        <p class="my-0" style="font-size: 18px;">Les plus récents</p>
                       </div>
                     </div>
                   </label>
                 </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="wide-block mt-2 p-0" style="border-radius: 10px;
-          border: none;
-          box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);">
-            <div class="input-list">
-              <form>
-                <div class="custom-control custom-radio" (click)="sortProductByPrice(products, 'priceAsc')">
+                <div class="custom-control custom-radio" (click)="sortProduct(products, 'priceAsc')">
                   <input type="radio" id="priceAsc" [(ngModel)]="sortPrice" value="priceAsc" name="sortPrice"
                     class="custom-control-input">
                   <label class="custom-control-label" for="priceAsc">
@@ -382,7 +362,7 @@
                     </div>
                   </label>
                 </div>
-                <div class="custom-control custom-radio" (click)="sortProductByPrice(products, 'priceDesc')">
+                <div class="custom-control custom-radio" (click)="sortProduct(products, 'priceDesc')">
                   <input type="radio" id="priceDesc" [(ngModel)]="sortPrice" value="priceDesc" name="sortPrice"
                     class="custom-control-input">
                   <label class="custom-control-label" for="priceDesc">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/modules/shared/models/user.model';
-import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-delivery',

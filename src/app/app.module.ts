@@ -9,16 +9,16 @@ import { ShopModule } from './modules/shop/shop.module';
 import { UserModule } from './modules/user/user.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { SharedModule } from './modules/shared/shared.module';
+import { SharedModule } from './modules/_shared/shared.module';
 import { StartModule } from './modules/start/start.module';
 import { PostModule } from './modules/post/post.module';
-import { ContactModule } from './modules/contact/contact.module';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { customNotifierOptions } from 'src/config/config';
 import { NotifierModule } from 'angular-notifier';
 import { IonicModule } from '@ionic/angular';
+import { InfosModule } from './modules/infos/infos.module';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -34,7 +34,7 @@ registerLocaleData(localeFr, 'fr');
     UserModule,
     StartModule,
     PostModule,
-    ContactModule,
+    InfosModule,
     SharedModule,
     IonicModule,
     AppRoutingModule,

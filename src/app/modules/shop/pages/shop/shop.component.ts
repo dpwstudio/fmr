@@ -2,10 +2,10 @@ import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } fr
 import { ActivatedRoute, Router } from '@angular/router';
 import { fromEvent, Subscription, throwError } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/shared/models/filtersProducts.model';
-import { Product } from 'src/app/modules/shared/models/product.model';
-import { CartService } from 'src/app/modules/shared/services/cart/cart.service';
-import { ProductService } from 'src/app/modules/shared/services/product/product.service';
+import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { Product } from 'src/app/modules/_shared/models/product.model';
+import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
 @Component({
   selector: 'app-shop',
@@ -72,23 +72,19 @@ export class ShopComponent implements OnInit, OnChanges {
       } else {
         this.products = products;
       }
-      this.sortProductByDate(this.products, this.sortDate);
+      this.sortProduct(this.products, this.sortDate);
     });
   }
 
-  sortProductByDate(products, sortType) {
+  sortProduct(products, sortType) {
     if (sortType === 'dateAsc') {
       products.sort((x, y) => +new Date(x.createdAt) - +new Date(y.createdAt));
-    } else {
-      products.sort((x, y) => +new Date(y.createdAt) - +new Date(x.createdAt));
-    }
-  }
-
-  sortProductByPrice(products, sortType) {
-    if (sortType === 'priceAsc') {
+    } else if (sortType === 'priceDesc') {
+      products.sort((x, y) => y.amount.price - x.amount.price);
+    } else if (sortType === 'priceAsc') {
       products.sort((x, y) => x.amount.price - y.amount.price);
     } else {
-      products.sort((x, y) => y.amount.price - x.amount.price);
+      products.sort((x, y) => +new Date(y.createdAt) - +new Date(x.createdAt));
     }
   }
 
@@ -128,6 +124,11 @@ export class ShopComponent implements OnInit, OnChanges {
     })
   }
 
+  emptySearch() {
+    this.search = '';
+    this.getProducts(this.filtersProducts, this.search);
+  }
+
   isCategoryMode(category) {
     return category.type === 'mode';
   }
@@ -135,10 +136,4 @@ export class ShopComponent implements OnInit, OnChanges {
   isCategoryArt(category) {
     return category.type === 'art';
   }
-
-  emptySearch() {
-    this.search = '';
-    this.getProducts(this.filtersProducts, this.search);
-  }
-
 }

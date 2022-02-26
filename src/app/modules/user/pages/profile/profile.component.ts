@@ -1,11 +1,9 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';

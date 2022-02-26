@@ -13,6 +13,35 @@
      <h2 style="font-size: 25px;">{{currentUser.firstname}}</h2>
    </div>
 
+   <div class="listview-title mt-1">Notifications</div>
+   <ul class="listview image-listview inset">
+     <li>
+       <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="item">
+         <div class="in">
+           <div>Notifications</div>
+           <span class="badge badge-primary">6</span>
+         </div>
+       </a>
+     </li>
+     <li>
+       <div class="item">
+         <div class="in">
+           <div>
+             Paiement alerte
+             <div class="text-muted" style="font-size: 14px;">
+               Envoyer une notification dès la réception d'un nouveau paiement
+             </div>
+           </div>
+           <div class="custom-control custom-switch">
+             <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
+             <label class="custom-control-label" for="customSwitch4"></label>
+           </div>
+         </div>
+       </div>
+     </li>
+   </ul>
+
+
    <div class="listview-title mt-1">Profil</div>
    <ul class="listview image-listview inset">
      <li>
@@ -49,36 +78,19 @@
      </li>
    </ul>
 
-   <div class="listview-title mt-1">Notifications</div>
+   <div class="listview-title mt-1">Mes favoris</div>
    <ul class="listview image-listview inset">
      <li>
-       <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="item">
+       <a [routerLink]="['/wishlist']" routerLinkActive="router-link-active" class="item">
          <div class="in">
-           <div>Notifications</div>
-           <span class="badge badge-primary">6</span>
+           <div>Ma Wishlist</div>
          </div>
        </a>
-     </li>
-     <li>
-       <div class="item">
-         <div class="in">
-           <div>
-             Paiement alerte
-             <div class="text-muted" style="font-size: 14px;">
-               Envoyer une notification dès la réception d'un nouveau paiement
-             </div>
-           </div>
-           <div class="custom-control custom-switch">
-             <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
-             <label class="custom-control-label" for="customSwitch4"></label>
-           </div>
-         </div>
-       </div>
      </li>
    </ul>
 
    <div class="listview-title mt-1">Sécurité</div>
-   <ul class="listview image-listview inset mb-4">
+   <ul class="listview image-listview inset">
      <li>
        <a href="#" class="item" data-toggle="modal" data-target="#passwordForm">
          <div class="in">
@@ -95,25 +107,26 @@
        </a>
      </li>
    </ul>
-   
+
    <div class="listview-title mt-1">Autres</div>
    <ul class="listview image-listview inset mb-4">
      <li>
-       <a [routerLink]="['/about']" routerLinkActive="router-link-active"  class="item" data-toggle="modal" data-target="#passwordForm">
+       <a [routerLink]="['/about']" routerLinkActive="router-link-active" class="item" data-toggle="modal"
+         data-target="#passwordForm">
          <div class="in">
            <div>A propos de nous</div>
          </div>
        </a>
      </li>
      <li>
-       <a [routerLink]="['/faq']" routerLinkActive="router-link-active"  class="item">
+       <a [routerLink]="['/faq']" routerLinkActive="router-link-active" class="item">
          <div class="in">
            <div>FAQ</div>
          </div>
        </a>
      </li>
      <li>
-       <a [routerLink]="['/contact']" routerLinkActive="router-link-active"  class="item">
+       <a [routerLink]="['/contact']" routerLinkActive="router-link-active" class="item">
          <div class="in">
            <div>Contact</div>
          </div>

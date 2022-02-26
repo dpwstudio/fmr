@@ -1,0 +1,281 @@
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Ma Wishlist
+  </div>
+  <div class="right">
+  </div>
+</div>
+<!-- * App Header -->
+
+<!-- Extra Header -->
+<div class="extraHeader pr-0 pl-0">
+  <ul class="nav nav-tabs lined" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#mode" role="tab">
+        Dressing
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#art" role="tab">
+        Galerie
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- * Extra Header -->
+<!-- App Capsule -->
+<div id="appCapsule" class="extra-header-active">
+  <div class="tab-content mt-1">
+    <!-- Mode tab -->
+    <div class="tab-pane fade active show" id="mode" role="tabpanel">
+      <div class="section full mt-2">
+        <div class="wide-block pt-1 pb-4 border-0" style="background: #ededf5;">
+          <ul class="nav nav-tabs style1" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#homme" role="tab">
+                Homme
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#femme" role="tab">
+                Femme
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#enfant" role="tab">
+                Enfant
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade show active" id="homme" role="tabpanel">
+              <div class="row">
+                <ng-container *ngFor="let product of productsMens; trackBy:trackById">
+                  <div class="col-6 mb-2">
+                    <div class="blog-card">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                        <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+                            class="d-flex align-items-center justify-content-between text-muted">
+                            <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                              class="imaged w24 rounded mr-05"> {{product.sellerName}}
+                          </a>
+                          <div class="d-flex align-items-center justify-content-between text-muted">
+                            <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                            <span class="number" style="font-size: 9px">{{product.like}}</span>
+                          </div>
+                        </div>
+                        <div class="image-overflow">
+                          <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand"
+                            class="imaged">
+                        </div>
+                        <div class="bill-box">
+                          <div class="chip chip-media mb-2">
+                            <i class="chip-icon bg-primary">
+                              <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                              </ion-icon>
+                            </i>
+                            <span class="chip-label number pr-0"
+                              style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                            <span class="text-danger number"
+                              style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                          </div>
+                          <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                          <p>{{product.model}}</p>
+                        </div>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                        <div class="d-flex align-items-center">
+                          <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                          <span class="fi fi-{{product.sellerCountry}}"></span>
+                        </div>
+                        <a href="" (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                          <ion-icon name="bag-add-outline"></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsMens.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="femme" role="tabpanel">
+              <div class="row">
+                <ng-container *ngFor="let product of productsWomens; trackBy:trackById">
+                  <div class="col-6 mb-2">
+                    <div class="blog-card">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                        <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+                            class="d-flex align-items-center justify-content-between text-muted">
+                            <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                              class="imaged w24 rounded mr-05"> {{product.sellerName}}
+                          </a>
+                          <div class="d-flex align-items-center justify-content-between text-muted">
+                            <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                            <span class="number" style="font-size: 9px">{{product.like}}</span>
+                          </div>
+                        </div>
+                        <div class="image-overflow">
+                          <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand"
+                            class="imaged">
+                        </div>
+                        <div class="bill-box">
+                          <div class="chip chip-media mb-2">
+                            <i class="chip-icon bg-primary">
+                              <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                              </ion-icon>
+                            </i>
+                            <span class="chip-label number pr-0"
+                              style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                            <span class="text-danger number"
+                              style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                          </div>
+                          <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                          <p>{{product.model}}</p>
+                        </div>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                        <div class="d-flex align-items-center">
+                          <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                          <span class="fi fi-{{product.sellerCountry}}"></span>
+                        </div>
+                        <a href="" (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                          <ion-icon name="bag-add-outline"></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsWomens.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="enfant" role="tabpanel">
+              <div class="row">
+                <ng-container *ngFor="let product of productsKids; trackBy:trackById">
+                  <div class="col-6 mb-2">
+                    <div class="blog-card">
+                      <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                        <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                          <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+                            class="d-flex align-items-center justify-content-between text-muted">
+                            <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                              class="imaged w24 rounded mr-05"> {{product.sellerName}}
+                          </a>
+                          <div class="d-flex align-items-center justify-content-between text-muted">
+                            <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                            <span class="number" style="font-size: 9px">{{product.like}}</span>
+                          </div>
+                        </div>
+                        <div class="image-overflow">
+                          <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand"
+                            class="imaged">
+                        </div>
+                        <div class="bill-box">
+                          <div class="chip chip-media mb-2">
+                            <i class="chip-icon bg-primary">
+                              <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                              </ion-icon>
+                            </i>
+                            <span class="chip-label number pr-0"
+                              style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                            <span class="text-danger number"
+                              style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                          </div>
+                          <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                          <p>{{product.model}}</p>
+                        </div>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                        <div class="d-flex align-items-center">
+                          <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                          <span class="fi fi-{{product.sellerCountry}}"></span>
+                        </div>
+                        <a href="" (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                          <ion-icon name="bag-add-outline"></ion-icon>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsKids.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="art" role="tabpanel">
+      <div class="section full mt-2">
+        <div class="wide-block pt-1 pb-4 border-0" style="background: #ededf5;">
+          <div class="row">
+            <ng-container *ngFor="let product of productsArt; trackBy:trackById">
+              <div class="col-6 mb-2">
+                <div class="blog-card">
+                  <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                    <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                      <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+                        class="d-flex align-items-center justify-content-between text-muted">
+                        <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                          class="imaged w24 rounded mr-05"> {{product.sellerName}}
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between text-muted">
+                        <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                        <span class="number" style="font-size: 9px">{{product.like}}</span>
+                      </div>
+                    </div>
+                    <div class="image-overflow">
+                      <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
+                    </div>
+                    <div class="bill-box">
+                      <div class="chip chip-media mb-2">
+                        <i class="chip-icon bg-primary">
+                          <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                          </ion-icon>
+                        </i>
+                        <span class="chip-label number pr-0"
+                          style="text-decoration: line-through; font-size:8px; margin-right: 3px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                        <span class="text-danger number"
+                          style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                      </div>
+                      <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                      <p>{{product.model}}</p>
+                    </div>
+                  </a>
+                  <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                    <div class="d-flex align-items-center">
+                      <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                      <span class="fi fi-{{product.sellerCountry}}"></span>
+                    </div>
+                    <a (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+              *ngIf="productsArt.length === 0">
+              <p style="font-size: large;">Aucun article disponible</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

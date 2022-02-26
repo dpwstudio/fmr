@@ -31,7 +31,7 @@ export class ProductService {
   getProducts(filters?: FiltersProducts): Observable<Product[]> {
     return this.http.get(`assets/mock-data/products.json`).pipe(
       map((products: Product[]) => filters ? products.filter(product => product.category === filters.category
-        && product.productType === filters.productType) : products)
+        && product.catalogType === filters.catalogType) : products)
     ) as Observable<Product[]>;
   }
 

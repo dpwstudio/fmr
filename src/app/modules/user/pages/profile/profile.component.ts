@@ -19,7 +19,10 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
 })
 export class ProfileComponent implements OnInit {
   private readonly notifier: NotifierService;
-  products = [];
+  productsArt = [];
+  productsMens = [];
+  productsWomens = [];
+  productsKids = [];
   carouselMultipleOptions: OwlOptions = {
     stagePadding: 32,
     loop: true,
@@ -51,6 +54,7 @@ export class ProfileComponent implements OnInit {
   currentUser: User;
   users: User[];
   id: number;
+  catalogType: string;
 
   constructor(
     private cartService: CartService,
@@ -66,7 +70,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      console.log('params', params);
       this.id = +params['id']; // (+) converts string 'id' to a number
+      this.catalogType = params['catalogType']; // (+) converts string 'id' to a number
       this.getUsers(this.id);
       // In a real app: dispatch action to load the details here.
     });
@@ -96,9 +102,15 @@ export class ProfileComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(products => {
-      console.log('products', products);
-      this.products = products.filter(product => product.sellerId === this.user.id);
+      this.productsArt = products.filter(product => product.sellerId === this.user.id && product.catalogType === 'art');
+      this.productsMens = products.filter(product => product.sellerId === this.user.id && product.kind === 'mens');
+      this.productsWomens = products.filter(product => product.sellerId === this.user.id && product.kind === 'womens');
+      this.productsKids = products.filter(product => product.sellerId === this.user.id && product.kind === 'kids');
     })
+  }
+
+  trackById(index, item) {
+    return item.id;
   }
 
   followProfile(user) {
@@ -109,6 +121,10 @@ export class ProfileComponent implements OnInit {
   addProductToCart(product) {
     product.quantity = this.quantity;
     this.cartService.addProductToCart(product);
+  }
+
+  isCatalogArt() {
+    return this.catalogType === 'art';
   }
 
   isKindMens(product) {

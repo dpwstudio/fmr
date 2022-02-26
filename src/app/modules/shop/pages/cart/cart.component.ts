@@ -47,6 +47,10 @@ export class CartComponent implements OnInit {
     this.carts = this.cartService.cartProductList;
   }
 
+  trackById(index, item) {
+    return item.id;
+  }
+
   getTotalTTC() {
     return this.carts.reduce((acc, product) => acc = acc + (product.amount.price * product.quantity), 0);
   }

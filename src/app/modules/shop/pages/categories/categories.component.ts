@@ -30,6 +30,10 @@ export class CategoriesComponent implements OnInit {
     })
   }
 
+  trackById(index, item) {
+    return item.id;
+  }
+
   isCategoryMode(category) {
     return category.type === 'mode';
   }

@@ -38,7 +38,7 @@ export interface FiltersProducts {
 		photo6?: string;
 		photo6Src?: string;
 	}
-	productType?: string;
+	catalogType?: string;
 	category?: string;
 	brand?: string;
 	model?: string;

@@ -4,7 +4,7 @@
     "brand": "Louis Vuitton",
     "model": "Sac à bandoulière",
     "description": "Sac à bandoulière",
-    "productType": "mode",
+    "catalogType": "mode",
     "kind": "womens",
     "category": "bags",
     "img": {
@@ -38,7 +38,7 @@
     "brand": "Dior",
     "model": "Sac en toile",
     "description": "Sac en toile",
-    "productType": "mode",
+    "catalogType": "mode",
     "kind": "womens",
     "category": "bags",
     "img": {
@@ -72,7 +72,7 @@
     "brand": "Balenciaga",
     "model": "Baskets montantes en cuir",
     "description": "Baskets montantes en cuir",
-    "productType": "mode",
+    "catalogType": "mode",
     "kind": "mens",
     "category": "shoes",
     "img": {
@@ -106,7 +106,7 @@
     "brand": "Chanel",
     "model": "Bonnet en cachemire",
     "description": "Bonnet en cachemire",
-    "productType": "mode",
+    "catalogType": "mode",
     "kind": "mens",
     "category": "others",
     "img": {
@@ -133,5 +133,39 @@
     "sellerName": "John",
     "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
     "sellerCountry": "be"
+  },
+  {
+    "id": 5,
+    "createdAt": "2022-02-14T12:23:10+01:00",
+    "brand": "Dior",
+    "model": "Micro sac lady dior",
+    "description": "Le micro sac Lady Dior incarne parfaitement la vision d'élégance et de beauté de la maison Dior. Confectionnée en cuir d'agneau rose vif à surpiqûres Cannage, sa silhouette iconique est rehaussée du charm D.I.O.R.. Ce micro sac Lady Dior accueillera vos petits essentiels. Il se portera aussi bien à la main grâce à ses anses, qu'épaule ou crossbody grâce à sa bandoulière ajustable et amovible.",
+    "catalogType": "mode",
+    "kind": "womens",
+    "category": "bags",
+    "img": {
+      "photoFace": "assets/img/product/img1.jpeg",
+      "photoDos": "assets/img/product/img2.jpeg",
+      "photoProfile": "assets/img/product/img3.jpeg",
+      "photoGriffe": "assets/img/product/img4.jpeg",
+      "photo5": "assets/img/product/img1.jpeg",
+      "photo6": "assets/img/product/img1.jpeg"
+    },
+    "amount": {
+      "price": 2900,
+      "fallingPrice": 2700,
+      "amountWin": 2750
+    },
+    "dimensions": {
+      "width": 12,
+      "height": 10,
+      "depth": 5
+    },
+    "url": "product-detail",
+    "like": 1546,
+    "sellerId": 1,
+    "sellerName": "Ava",
+    "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
+    "sellerCountry": "fr"
   }
 ]

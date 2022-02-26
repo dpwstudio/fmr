@@ -73,6 +73,9 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
+  trackById(index, item) {
+    return item.id;
+  }
   isLoading() {
     return this.subscription && !this.subscription.closed;
   }

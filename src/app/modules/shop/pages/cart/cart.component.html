@@ -36,7 +36,7 @@
          </div>
        </div>
        <ul class="listview image-listview media inset mb-2 mx-0">
-         <li *ngFor="let product of carts">
+         <li *ngFor="let product of carts; trackBy:trackById">
            <div class="item">
              <div class="imageWrapper">
                <img [src]="product.img.photoFace" alt="image" class="imaged w64">
@@ -44,7 +44,7 @@
              <div class="in">
                <div class="fsize-16">
                  {{product.brand}}
-                 <div class="text-muted fsize-15">{{product.description}}</div>
+                 <div class="text-muted fsize-15">{{product.model}}</div>
                </div>
                <span class="text-dark number">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
              </div>

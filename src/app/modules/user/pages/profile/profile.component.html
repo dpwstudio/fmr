@@ -2,13 +2,13 @@
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#mode" role="tab">
-        Mode
+      <a class="nav-link {{!isCatalogArt() ? 'active' : ''}}" data-toggle="tab" href="#mode" role="tab">
+        Dressing
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#art" role="tab">
-        Art
+      <a class="nav-link {{isCatalogArt() ? 'active' : ''}}" data-toggle="tab" href="#art" role="tab">
+        Galerie
       </a>
     </li>
   </ul>
@@ -45,8 +45,8 @@
     </div>
   </div>
   <div class="tab-content mt-1">
-    <!-- pilled tab -->
-    <div class="tab-pane fade active show" id="mode" role="tabpanel">
+    <!-- Mode tab -->
+    <div class="tab-pane fade {{!isCatalogArt() ? 'active show' : ''}}" id="mode" role="tabpanel">
       <div class="section mb-3">
         <div class="card">
           <div class="card-body card-bg pt-1"
@@ -78,8 +78,8 @@
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="homme" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let product of products">
-                  <div class="col-6 mb-2" *ngIf="isKindMens(product)">
+                <ng-container *ngFor="let product of productsMens; trackBy:trackById">
+                  <div class="col-6 mb-2">
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -109,7 +109,7 @@
                               style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                           </div>
                           <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
-                          <p>{{product.description}}</p>
+                          <p>{{product.model}}</p>
                         </div>
                       </a>
                       <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
@@ -123,17 +123,17 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
-                    *ngIf="!isKindMens(product)">
-                    <p style="font-size: large;">Aucun article disponible</p>
-                  </div>
                 </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsMens.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
               </div>
             </div>
             <div class="tab-pane fade" id="femme" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let product of products">
-                  <div class="col-6 mb-2" *ngIf="isKindWomens(product)">
+                <ng-container *ngFor="let product of productsWomens; trackBy:trackById">
+                  <div class="col-6 mb-2">
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -163,7 +163,7 @@
                               style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                           </div>
                           <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
-                          <p>{{product.description}}</p>
+                          <p>{{product.model}}</p>
                         </div>
                       </a>
                       <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
@@ -177,17 +177,17 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
-                    *ngIf="!isKindWomens(product)">
-                    <p style="font-size: large;">Aucun article disponible</p>
-                  </div>
                 </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsWomens.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
               </div>
             </div>
             <div class="tab-pane fade" id="enfant" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let product of products">
-                  <div class="col-6 mb-2" *ngIf="isKindKids(product)">
+                <ng-container *ngFor="let product of productsKids; trackBy:trackById">
+                  <div class="col-6 mb-2">
                     <div class="blog-card">
                       <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                         <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -217,7 +217,7 @@
                               style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                           </div>
                           <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
-                          <p>{{product.description}}</p>
+                          <p>{{product.model}}</p>
                         </div>
                       </a>
                       <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
@@ -231,18 +231,18 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
-                    *ngIf="!isKindKids(product)">
-                    <p style="font-size: large;">Aucun article disponible</p>
-                  </div>
                 </ng-container>
+                <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+                  *ngIf="productsKids.length === 0">
+                  <p style="font-size: large;">Aucun article disponible</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="art" role="tabpanel">
+    <div class="tab-pane fade {{isCatalogArt() ? 'active show' : ''}}" id="art" role="tabpanel">
       <div class="section mb-3">
         <div class="card">
           <div class="card-body card-bg pt-1" style="background: url('{{user?.img.gallery}}') center center no-repeat;">
@@ -254,8 +254,8 @@
         <div class="section-title">Mes articles</div>
         <div class="wide-block pt-1 pb-4 border-0" style="background: #ededf5;">
           <div class="row">
-            <ng-container *ngFor="let product of products">
-              <div class="col-6 mb-2" *ngIf="isArtProduct(product)">
+            <ng-container *ngFor="let product of productsArt; trackBy:trackById">
+              <div class="col-6 mb-2">
                 <div class="blog-card">
                   <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
                     <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
@@ -284,7 +284,7 @@
                           style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                       </div>
                       <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
-                      <p>{{product.description}}</p>
+                      <p>{{product.model}}</p>
                     </div>
                   </a>
                   <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
@@ -298,11 +298,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
-                *ngIf="!isArtProduct(product)">
-                <p style="font-size: large;">Aucun article disponible</p>
-              </div>
             </ng-container>
+            <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
+              *ngIf="productsArt.length === 0">
+              <p style="font-size: large;">Aucun article disponible</p>
+            </div>
           </div>
         </div>
       </div>

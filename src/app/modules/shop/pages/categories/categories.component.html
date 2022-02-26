@@ -46,9 +46,10 @@
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="homme" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let category of categories">
+                <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {productType: category.type, category: category.url}]" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                      routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -62,9 +63,10 @@
             </div>
             <div class="tab-pane fade" id="femme" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let category of categories">
+                <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {productType: category.type, category: category.url}]" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                      routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -78,9 +80,10 @@
             </div>
             <div class="tab-pane fade" id="enfant" role="tabpanel">
               <div class="row">
-                <ng-container *ngFor="let category of categories">
+                <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {productType: category.type, category: category.url}]" routerLinkActive="router-link-active">
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                      routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <img [src]="category.img" alt="image" class="imaged w-100">
                         <div class="bill-box">
@@ -105,9 +108,10 @@
       <div class="section full">
         <div class="wide-block pt-2 pb-2" style="background: #EDEDF5; border: none;">
           <div class="row">
-            <ng-container *ngFor="let category of categories">
+            <ng-container *ngFor="let category of categories; trackBy:trackById">
               <div class="col-6 mb-2" *ngIf="isCategoryArt(category)">
-                <a [routerLink]="['/shop', {productType: category.type, category: category.url}]" routerLinkActive="router-link-active">
+                <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                  routerLinkActive="router-link-active">
                   <div class="blog-card">
                     <img [src]="category.img" alt="image" class="imaged w-100">
                     <div class="bill-box">

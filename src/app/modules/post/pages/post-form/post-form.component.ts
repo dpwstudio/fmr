@@ -26,7 +26,8 @@ export class PostFormComponent implements OnInit {
       photo6: '',
       photo6Src: '',
     },
-    productType: 'mode',
+    catalogType: 'mode',
+    kind: '',
     category: '',
     brand: '',
     model: '',
@@ -168,8 +169,8 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  getProductType(productType) {
-    if (productType === 'mode') {
+  getcatalogType(catalogType) {
+    if (catalogType === 'mode') {
       this.product.categoryArt = '';
       this.product.descriptionArt = '';
     } else {
@@ -180,7 +181,7 @@ export class PostFormComponent implements OnInit {
       this.product.color = '';
       this.product.matter = '';
     }
-    return this.product.productType = productType;
+    return this.product.catalogType = catalogType;
   }
 
   addToSell() {

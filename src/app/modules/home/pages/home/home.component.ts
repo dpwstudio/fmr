@@ -4,8 +4,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
+import { UserService } from 'src/app/modules/_shared/services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -53,16 +55,19 @@ export class HomeComponent implements OnInit {
   quantity = 1;
   subscription: Subscription;
   filtersProducts: FiltersProducts;
+  users: User[];
 
   constructor(
     private router: Router,
     private cartService: CartService,
-    private productService: ProductService
+    private productService: ProductService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.getCategories();
     this.getProducts();
+    this.getUsers();
   }
 
   getCategories() {
@@ -75,6 +80,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  trackById(index, item) {
+    return item.id;
+  }
+
   getProducts() {
     this.subscription = this.productService.getProducts(this.filtersProducts).pipe(
       catchError(error => {
@@ -82,6 +91,16 @@ export class HomeComponent implements OnInit {
       })
     ).subscribe(products => {
       this.products = products;
+    })
+  }
+
+  getUsers() {
+    this.subscription = this.userService.getUsers().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(users => {
+      this.users = users;
     })
   }
 

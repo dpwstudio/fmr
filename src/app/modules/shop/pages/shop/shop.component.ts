@@ -33,7 +33,7 @@ export class ShopComponent implements OnInit, OnChanges {
     this.activatedRoute.params.subscribe(params => {
       this.filtersProducts = {
         category: params['category'],
-        productType: params['productType'],
+        catalogType: params['catalogType'],
       }
       console.log(`${this.filtersProducts}`);
       this.getProducts(this.filtersProducts);
@@ -76,6 +76,10 @@ export class ShopComponent implements OnInit, OnChanges {
     });
   }
 
+  trackById(index, item) {
+    return item.id;
+  }
+
   sortProduct(products, sortType) {
     if (sortType === 'dateAsc') {
       products.sort((x, y) => +new Date(x.createdAt) - +new Date(y.createdAt));
@@ -98,7 +102,7 @@ export class ShopComponent implements OnInit, OnChanges {
   }
 
   isTypeParams(type) {
-    return type === this.filtersProducts.productType;
+    return type === this.filtersProducts.catalogType;
   }
 
   searchProduct() {

@@ -1,3 +1,18 @@
+ <!-- App Header -->
+ <div class="appHeader">
+   <div class="left">
+   </div>
+   <div class="pageTitle">
+     Panier
+   </div>
+   <div class="right">
+		<a [routerLink]="['/delivery']" routerLinkActive="router-link-active" class="headerButton goBack">
+			<ion-icon name="chevron-forward-outline" class="text-primary"></ion-icon>
+		</a>
+   </div>
+ </div>
+ <!-- * App Header -->
+
  <!-- App Capsule -->
  <div id="appCapsule">
    <div class="section mt-2 mb-2">
@@ -37,7 +52,7 @@
        </div>
        <ul class="listview image-listview media inset mb-2 mx-0">
          <li *ngFor="let product of carts; trackBy:trackById">
-           <div class="item">
+           <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active" class="item">
              <div class="imageWrapper">
                <img [src]="product.img.photoFace" alt="image" class="imaged w64">
              </div>
@@ -48,8 +63,9 @@
                </div>
                <span class="text-dark number">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
              </div>
-             <ion-icon (click)="removeProduct(product)" name="trash-outline" class="ml-2 text-danger" style="font-size: x-large;"></ion-icon>
-           </div>
+             <ion-icon (click)="removeProduct(product)" name="trash-outline" class="ml-2 text-danger"
+               style="font-size: x-large;"></ion-icon>
+				</a>
          </li>
        </ul>
        <div class="section mt-2 px-0">

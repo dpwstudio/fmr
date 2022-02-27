@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
     if (this.authService.currentUser) {
       this.authService.currentUser.subscribe(x => {
         if (this.currentUser) {
-          this.currentUser = x[0]
+          this.currentUser = x
         }
       });
     }

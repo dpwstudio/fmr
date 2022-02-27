@@ -173,17 +173,19 @@
   <div class="section mt-3">
     <div class="card">
       <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"  class="btn btn-block btn-lg btn-outline-primary">
-              Négocier
-            </a>
-          </div>
-          <div class="col">
-            <a class="btn btn-block btn-lg btn-primary" (click)="addProductToCart(product)">
-              Ajouter
-            </a>
-          </div>
+        <div class="row d-flex justify-content-around align-items-center">
+          <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+            class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;">
+            <ion-icon name="hand-left-outline"></ion-icon>
+          </a>
+          <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+            class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
+            <ion-icon name="bookmarks-outline"></ion-icon>
+          </a>
+          <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
+            (click)="addProductToCart(product)">
+            <ion-icon name="bag-add-outline"></ion-icon>
+          </a>
         </div>
       </div>
 

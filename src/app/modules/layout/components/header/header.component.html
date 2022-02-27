@@ -11,10 +11,11 @@
       </a>
     </div>
     <div class="right">
-      <a [routerLink]="['/settings']" routerLinkActive="router-link-active"  class="headerButton" *ngIf="isUserConnected()">
+      <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton"
+        *ngIf="isUserConnected()">
         <img src="{{currentUser.img.avatar}}" alt="image" class="imaged rounded w32">
         <span class="badge badge-danger">6</span>
-    </a>
+      </a>
     </div>
   </div>
   <!-- * App Header -->
@@ -105,7 +106,8 @@
               </a>
             </li>
             <li>
-              <a [routerLink]="['/shop', { type: 'news' }]" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+              <a [routerLink]="['/shop', { type: 'news' }]" routerLinkActive="router-link-active" class="item"
+                data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="bookmark-outline"></ion-icon>
                 </div>
@@ -115,7 +117,8 @@
               </a>
             </li>
             <li>
-              <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+              <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="item"
+                data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="arrow-down-outline"></ion-icon>
                 </div>
@@ -131,7 +134,8 @@
           <div class="listview-title mt-1">Autres</div>
           <ul class="listview flush transparent no-line image-listview">
             <li *ngIf="isUserConnected()">
-              <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item" data-dismiss="modal">
+              <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item"
+                data-dismiss="modal">
                 <div class="icon-box bg-primary">
                   <ion-icon name="person-outline"></ion-icon>
                 </div>

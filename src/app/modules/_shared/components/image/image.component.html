@@ -1,0 +1,10 @@
+<div class="position-relative" style="width: 100%; height: 100%;">
+  <div class="state state2" [class.visible]="state === 2">
+    <img class="final" [src]="src" alt="kiki2">
+  </div>
+  <div class="state state1" [class.visible]="state === 1">
+    <img class="small animate__animated animate__infinite animate__pulse" [src]="defaultImg" alt="kiki">
+  </div>
+  <div class="state state0" [class.visible]="state === 0">
+  </div>
+</div>

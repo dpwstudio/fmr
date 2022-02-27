@@ -51,7 +51,9 @@
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
-                        <img [src]="category.img" alt="image" class="imaged w-100">
+                        <div class="item-categories">
+                          <app-image [src]="category.img"></app-image>
+                        </div>
                         <div class="bill-box">
                           <h1 style="font-size: 14px; text-transform: uppercase;">{{category.name}}</h1>
                         </div>
@@ -68,7 +70,9 @@
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
-                        <img [src]="category.img" alt="image" class="imaged w-100">
+                        <div class="item-categories">
+                          <app-image [src]="category.img"></app-image>
+                        </div>
                         <div class="bill-box">
                           <h1 style="font-size: 14px; text-transform: uppercase;">{{category.name}}</h1>
                         </div>
@@ -85,7 +89,9 @@
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
-                        <img [src]="category.img" alt="image" class="imaged w-100">
+                        <div class="item-categories">
+                          <app-image [src]="category.img"></app-image>
+                        </div>
                         <div class="bill-box">
                           <h1 style="font-size: 14px; text-transform: uppercase;">{{category.name}}</h1>
                         </div>
@@ -113,7 +119,9 @@
                 <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
                   routerLinkActive="router-link-active">
                   <div class="blog-card">
-                    <img [src]="category.img" alt="image" class="imaged w-100">
+                    <div class="item-categories">
+                      <app-image [src]="category.img"></app-image>
+                    </div>
                     <div class="bill-box">
                       <h1 style="font-size: 14px; text-transform: uppercase;">{{category.name}}</h1>
                     </div>

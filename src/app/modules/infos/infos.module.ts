@@ -6,6 +6,7 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { AboutComponent } from './pages/about/about.component';
 import { IonicModule } from '@ionic/angular';
 import { ContactComponent } from './pages/contact/contact.component';
+import { SharedModule } from '../_shared/shared.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     InfosRoutingModule,
     IonicModule
   ]

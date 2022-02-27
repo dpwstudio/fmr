@@ -6,19 +6,18 @@
 
     <owl-carousel-o [options]="carouselFullOptions">
       <ng-template carouselSlide>
-        <div class="item">
-          <img src="assets/img/slide/slide1.png" alt="alt" class="imaged w-100 square">
+        <div class="item item-slide">
+          <app-image src="assets/img/slide/slide1.png"></app-image>
         </div>
       </ng-template>
       <ng-template carouselSlide>
-
-        <div class="item">
-          <img src="assets/img/slide/slide2.png" alt="alt" class="imaged w-100 square">
+        <div class="item item-slide">
+          <app-image src="assets/img/slide/slide2.png"></app-image>
         </div>
       </ng-template>
       <ng-template carouselSlide>
-        <div class="item">
-          <img src="assets/img/slide/slide3.png" alt="alt" class="imaged w-100 square">
+        <div class="item item-slide">
+          <app-image src="assets/img/slide/slide3.png"></app-image>
         </div>
       </ng-template>
     </owl-carousel-o>
@@ -53,7 +52,9 @@
             <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
               routerLinkActive="router-link-active">
               <div class="user-card">
-                <img [src]="category.img" [alt]="category.name" [title]="category.name" class="imaged w-48">
+                <div class="item-categories">
+                  <app-image [src]="category.img"></app-image>
+                </div>
                 <strong style="text-transform: capitalize;">{{category.name}}</strong>
               </div>
             </a>
@@ -89,8 +90,8 @@
                     <span class="number" style="font-size: 9px">{{product.like}}</span>
                   </div>
                 </div>
-                <div class="image-overflow">
-                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
+                <div class="image-overflow" >
+                  <app-image [src]="product.img.photoFace"></app-image>
                 </div>
                 <div class="bill-box">
                   <div class="chip chip-media mb-2">
@@ -134,7 +135,9 @@
         <ng-template carouselSlide>
           <a [routerLink]="['/profile', user.id, {catalogType: 'mode'}]" routerLinkActive="router-link-active"
             class="item">
-            <img src="{{user.img.dressing}}" alt="alt" class="imaged w-100">
+            <div class="item-profile">
+              <app-image [src]="user.img.dressing"></app-image>
+            </div>
             <div class="box">
               <h1>Le dressing de {{user.firstname}}</h1>
               <span>Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
@@ -171,7 +174,7 @@
                   </div>
                 </div>
                 <div class="image-overflow">
-                  <img [src]="product.img.photoFace" [alt]="product.brand" [title]="product.brand" class="imaged">
+                  <app-image [src]="product.img.photoFace"></app-image>
                 </div>
                 <div class="bill-box">
                   <div class="chip chip-media mb-2">
@@ -216,7 +219,9 @@
         <ng-template carouselSlide>
           <a [routerLink]="['/profile', user.id, {catalogType: 'art'}]" routerLinkActive="router-link-active"
             class="item">
-            <img src="{{user.img.gallery}}" alt="alt" class="imaged w-100">
+            <div class="item-profile">
+              <app-image [src]="user.img.gallery"></app-image>
+            </div>
             <div class="box">
               <h1>La galerie de {{user.firstname}}</h1>
               <span>Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>

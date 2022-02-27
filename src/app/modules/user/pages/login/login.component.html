@@ -1,6 +1,6 @@
 <app-loader [state]="isLoading()"></app-loader>
 <!-- App Header -->
-<div class="appHeader no-border transparent" style="z-index: 111111;">
+<div class="appHeader no-border transparent" style="z-index: 1001;">
   <div class="right">
     <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
       <ion-icon name="arrow-forward-outline" class="text-primary"></ion-icon>
@@ -23,8 +23,9 @@
 
       <div class="form-group basic">
         <div class="input-wrapper">
-          <input type="password" formControlName="password" class="form-control" id="password1"
+          <input type="{{inputType}}" formControlName="password" class="form-control" id="password1"
             placeholder="Mot de passe">
+          <ion-icon name="eye" (click)="showPassword()" class="input-eye text-primary"></ion-icon>
         </div>
       </div>
 

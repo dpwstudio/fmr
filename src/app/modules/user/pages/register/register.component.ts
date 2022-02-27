@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   showFinalStep = false;
   registerForm: FormGroup;
   subscription: Subscription;
+  inputType = 'password';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -82,5 +83,9 @@ export class RegisterComponent implements OnInit {
       this.showStep1 = false;
       this.showStep2 = true;
     }
+  }
+
+  showPassword() {
+    return this.inputType === 'password' ? this.inputType = 'text' : this.inputType = 'password';
   }
 }

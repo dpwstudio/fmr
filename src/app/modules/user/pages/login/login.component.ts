@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Subscription, throwError } from 'rxjs';
-import { catchError, first, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   currentUser!: User;
   subscription: Subscription;
   user: User;
+  inputType = 'password';
 
   constructor(
     private router: Router,
@@ -40,7 +41,9 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
     // get return url from route parameters or default to '/'
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
+    console.log('this.returnUrl', this.returnUrl)
   }
 
   get f() {
@@ -64,7 +67,7 @@ export class LoginComponent implements OnInit {
         if (user) {
           this.authService.currentUserSubject.next(user);
           localStorage.setItem('currentUser', JSON.stringify(user));
-          this.router.navigate([this.returnUrl]);
+          this.router.navigateByUrl(this.returnUrl);
           this.currentUser = this.authService.currentUserValue;
           this.notifier.notify('success', `Vous êtes maintenant connecté.`);
         } else {
@@ -75,6 +78,10 @@ export class LoginComponent implements OnInit {
 
   isLoading() {
     return this.subscription && !this.subscription.closed;
+  }
+
+  showPassword() {
+    return this.inputType === 'password' ? this.inputType = 'text' : this.inputType = 'password';
   }
 
 }

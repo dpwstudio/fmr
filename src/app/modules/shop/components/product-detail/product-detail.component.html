@@ -8,29 +8,56 @@
       <ng-template carouselSlide>
         <div class="item item-slide">
           <app-image [src]="product?.img.photoFace"></app-image>
+          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoFace)" data-toggle="modal"
+            data-target="#DialogImage" style="position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <app-image [src]="product?.img.photoDos"></app-image>
+          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoDos)" data-toggle="modal"
+            data-target="#DialogImage" style="position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <app-image [src]="product?.img.photoProfile"></app-image>
+          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoProfile)" data-toggle="modal"
+            data-target="#DialogImage" style="position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <app-image [src]="product?.img.photoGriffe"></app-image>
+          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoGriffe)" data-toggle="modal"
+            data-target="#DialogImage" style="position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
     </owl-carousel-o>
-
   </div>
   <div class="section mt-2">
     <div class="d-flex align-items-center justify-content-between">
-      <h1 class="my-0" style="font-size: 40px;">{{product?.brand}}</h1>
+      <h1 class="my-0" style="font-size: 32px;">{{product?.brand}}</h1>
       <div class="action d-flex align-items-center">
         <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
           <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
@@ -179,7 +206,7 @@
           </a>
           <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
             class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
-            <ion-icon name="bookmarks-outline"></ion-icon>
+            <ion-icon name="diamond-outline"></ion-icon>
           </a>
           <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
             (click)="addProductToCart(product)">
@@ -227,7 +254,7 @@
                     <span class="chip-label number"
                       style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                  <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.model}}</p>
                 </div>
               </a>
@@ -252,3 +279,23 @@
 
 </div>
 <!-- * App Capsule -->
+
+<!-- Dialog Image -->
+<div class="modal fade dialogbox" id="DialogImage" data-backdrop="static" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <img [src]="currentImg" alt="image" class="img-fluid">
+      <div class="modal-footer">
+        <div class="btn-inline">
+          <a href="#" class="btn btn-text-secondary" data-dismiss="modal">
+            <ion-icon name="close-outline"></ion-icon>
+          </a>
+          <a href="#" class="btn btn-text-primary" data-dismiss="modal">
+            <ion-icon name="share-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Dialog Image -->

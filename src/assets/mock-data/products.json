@@ -167,5 +167,107 @@
     "sellerName": "Ava",
     "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
     "sellerCountry": "fr"
+  },
+  {
+    "id": 6,
+    "createdAt": "2022-02-10T12:23:10+01:00",
+    "brand": "Crash",
+    "model": "Sérigraphie originale \"Artgang\" 61x46cm - 2016",
+    "description": "John Matos Aka CRASH : Artgang circa 2016 Sérigraphie originale d'un format de 61 x 46 cm. Numérotée et signée au crayon par l'Artiste. Edition 50 exemplaires. Oeuvre certifiée",
+    "catalogType": "art",
+    "kind": "",
+    "category": "",
+    "img": {
+      "photoFace": "assets/img/annonce/art/oeuvre1.jpeg",
+      "photoDos": "assets/img/annonce/art/oeuvre1.jpeg",
+      "photoProfile": "assets/img/annonce/art/oeuvre1.jpeg",
+      "photoGriffe": "assets/img/annonce/art/oeuvre1.jpeg",
+      "photo5": "assets/img/annonce/art/oeuvre1.jpeg",
+      "photo6": "assets/img/annonce/art/oeuvre1.jpeg"
+    },
+    "amount": {
+      "price": 375,
+      "fallingPrice": 300,
+      "amountWin": 250
+    },
+    "dimensions": {
+      "width": 61,
+      "height": 46,
+      "depth": 3
+    },
+    "url": "product-detail",
+    "like": 1546,
+    "sellerId": 2,
+    "sellerName": "John",
+    "sellerImg": "assets/img/sample/avatar/avatar3.jpg",
+    "sellerCountry": "be"
+  },
+  {
+    "id": 7,
+    "createdAt": "2022-02-05T12:23:10+01:00",
+    "brand": "Koner999",
+    "model": "Lampe de table",
+    "description": "Lampe de table",
+    "catalogType": "art",
+    "kind": "",
+    "category": "luminaires",
+    "img": {
+      "photoFace": "assets/img/annonce/art/oeuvre2.png",
+      "photoDos": "assets/img/annonce/art/oeuvre2.png",
+      "photoProfile": "assets/img/annonce/art/oeuvre2.png",
+      "photoGriffe": "assets/img/annonce/art/oeuvre2.png",
+      "photo5": "assets/img/annonce/art/oeuvre2.png",
+      "photo6": "assets/img/annonce/art/oeuvre2.png"
+    },
+    "amount": {
+      "price": 350,
+      "fallingPrice": 280,
+      "amountWin": 250
+    },
+    "dimensions": {
+      "width": 61,
+      "height": 46,
+      "depth": 3
+    },
+    "url": "product-detail",
+    "like": 748,
+    "sellerId": 4,
+    "sellerName": "Peter",
+    "sellerImg": "assets/img/sample/avatar/avatar8.jpg",
+    "sellerCountry": "es"
+  },
+  {
+    "id": 8,
+    "createdAt": "2022-02-05T12:23:10+01:00",
+    "brand": "Richard Orlinski",
+    "model": "Kong spirit street art",
+    "description": "Kong spirit street art",
+    "catalogType": "art",
+    "kind": "",
+    "category": "sculptures",
+    "img": {
+      "photoFace": "assets/img/annonce/art/oeuvre3.jpeg",
+      "photoDos": "assets/img/annonce/art/oeuvre3.jpeg",
+      "photoProfile": "assets/img/annonce/art/oeuvre3.jpeg",
+      "photoGriffe": "assets/img/annonce/art/oeuvre3.jpeg",
+      "photo5": "assets/img/annonce/art/oeuvre3.jpeg",
+      "photo6": "assets/img/annonce/art/oeuvre3.jpeg"
+    },
+    "amount": {
+      "price": 1850,
+      "fallingPrice": 1580,
+      "amountWin": 1250
+    },
+    "dimensions": {
+      "width": 61,
+      "height": 46,
+      "depth": 3
+    },
+    "url": "product-detail",
+    "like": 857,
+    "sellerId": 4,
+    "sellerName": "Ava",
+    "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
+    "sellerCountry": "fr"
   }
 ]

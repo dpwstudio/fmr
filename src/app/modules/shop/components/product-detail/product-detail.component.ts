@@ -40,6 +40,7 @@ export class ProductDetailComponent implements OnInit {
   id: number;
   subscription: Subscription;
   filtersProducts: FiltersProducts;
+  currentImg: string;
 
   constructor(
     private router: Router,
@@ -99,6 +100,10 @@ export class ProductDetailComponent implements OnInit {
   addProductToCart(product) {
     product.quantity = this.quantity;
     this.cartService.addProductToCart(product);
+  }
+
+  getCurrentProduct(img) {
+    return this.currentImg = img;
   }
 
 }

@@ -73,7 +73,7 @@
       <a [routerLink]="['/shop', { type: 'news' }]" class="link">Tout voir</a>
     </div>
     <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of products; trackBy:trackById">
+      <ng-container *ngFor="let product of productsMode; trackBy:trackById">
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
@@ -102,7 +102,7 @@
                     <span class="chip-label number"
                       style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                  <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.model}}</p>
 
                 </div>
@@ -125,7 +125,7 @@
   </div>
   <!-- * News -->
 
-  <!-- News -->
+  <!-- Les dressings -->
   <div class="section full mt-4 mb-3">
     <div class="section-heading padding">
       <h2 class="title">Les dressings</h2>
@@ -147,6 +147,7 @@
       </ng-container>
     </owl-carousel-o>
   </div>
+  <!-- Les dressings -->
 
   <!-- Baisse de prix -->
   <div class="section full mt-4 mb-5">
@@ -156,7 +157,7 @@
         voir</a>
     </div>
     <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of products; trackBy:trackById">
+      <ng-container *ngFor="let product of productsMode; trackBy:trackById">
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
@@ -187,7 +188,7 @@
                     <span class="text-danger number"
                       style="font-size: 10px; font-weight: bold;">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
                   </div>
-                  <h1 style="font-size: 15px; text-transform: uppercase;">{{product.brand}}</h1>
+                  <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
                   <p>{{product.model}}</p>
                 </div>
               </a>
@@ -231,6 +232,66 @@
       </ng-container>
     </owl-carousel-o>
   </div>
-  <!-- News -->
+  <!-- Les galeries -->
+
+  <!-- Articles art -->
+  <div class="section full mt-4 mb-3">
+    <div class="section-heading padding">
+      <h2 class="title">Nouveautés Art</h2>
+      <a [routerLink]="['/shop', {catalogType: 'art'}]" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselMultipleOptions">
+      <ng-container *ngFor="let product of productsArt; trackBy:trackById">
+        <ng-template carouselSlide>
+          <!-- item -->
+          <div class="item">
+            <div class="blog-card">
+              <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
+                <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
+                  <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+                    class="d-flex align-items-center justify-content-between text-muted">
+                    <img [src]="product.sellerImg" [alt]="product.sellerName" [title]="product.sellerName"
+                      class="imaged w24 rounded mr-05"> {{product.sellerName}}
+                  </a>
+                  <div class="d-flex align-items-center justify-content-between text-muted">
+                    <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
+                    <span class="number" style="font-size: 9px">{{product.like}}</span>
+                  </div>
+                </div>
+                <div class="image-overflow">
+                  <app-image [src]="product.img.photoFace"></app-image>
+                </div>
+                <div class="bill-box">
+                  <div class="chip chip-media mb-2">
+                    <i class="chip-icon bg-primary">
+                      <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+                      </ion-icon>
+                    </i>
+                    <span class="chip-label number"
+                      style="font-size: 12px;">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                  </div>
+                  <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
+                  <p>{{product.model}}</p>
+
+                </div>
+              </a>
+              <div class="d-flex align-items-center justify-content-between" style="padding: 0 10px 10px;">
+                <div class="d-flex align-items-center">
+                  <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
+                  <span class="fi fi-{{product.sellerCountry}}"></span>
+                </div>
+                <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- * item -->
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- * Articles art -->
+
 </div>
 <!-- * App Capsule -->

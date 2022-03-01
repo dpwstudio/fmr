@@ -18,6 +18,7 @@ import { LayoutModule } from '../layout/layout.module';
     CommonModule,
     BrowserAnimationsModule,
     IonicModule,
+    SharedModule,
     LayoutModule,
     CarouselModule,
     SharedModule,

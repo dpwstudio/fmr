@@ -5,12 +5,14 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { LoaderComponent } from './components/loader/loader.component';
 import { IonicModule } from '@ionic/angular';
 import { ImageComponent } from './components/image/image.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
 
 
 @NgModule({
   declarations: [
     LoaderComponent,
     ImageComponent,
+    CardProductComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ImageComponent } from './components/image/image.component';
   ],
   exports: [
     LoaderComponent,
-    ImageComponent
+    ImageComponent,
+    CardProductComponent
   ]
 })
 export class SharedModule { }

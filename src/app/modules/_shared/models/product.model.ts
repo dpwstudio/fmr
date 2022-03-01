@@ -57,8 +57,8 @@ export interface Product {
 	},
 	amount: {
 		price: number;
-		fallingPrice: string;
-		amountWin: string;
+		fallingPrice: number;
+		amountWin: number;
 	}
 	like?: string;
 	url?: string;

@@ -15176,6 +15176,7 @@ a.text-dark {
   font-size: 13px;
   color: #27173E;
   line-height: 1em;
+  min-width: 120px;
   height: 26px;
   display: inline-flex;
   align-items: center;
@@ -15781,9 +15782,9 @@ a.text-dark {
   font-size: 16px;
   line-height: 15px;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  // white-space: wrap;
   overflow: hidden;
-  height: 36px;
+  // height: 36px;
   color: #958d9e;
   font-weight: 500;
   margin: 0 0 10px 0;
@@ -16999,7 +17000,7 @@ body.dark-mode .cookies-box {
 
 .number {
   font-family: 'Poppins', sans-serif !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .listview.inset {

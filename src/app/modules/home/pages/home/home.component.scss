@@ -2,6 +2,7 @@
   width: 100%;
   height: 300px;
   overflow: hidden;
+
   img {
     object-fit: cover;
     height: 100%;
@@ -12,15 +13,18 @@
   width: 100%;
   height: 76px;
   overflow: hidden;
+
   img {
     object-fit: cover;
     height: 100%;
   }
 }
+
 .item-categories {
   width: 100%;
   height: 76px;
   overflow: hidden;
+
   img {
     object-fit: cover;
     height: 100%;
@@ -32,10 +36,11 @@
   height: 250px;
   overflow: hidden;
   border-radius: 10px;
+
   img {
     object-fit: cover;
     height: 100%;
-    
+
   }
 }
 
@@ -75,17 +80,5 @@
 
   span {
     font-size: 13px;
-  }
-}
-
-.image-overflow {
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
   }
 }

@@ -116,4 +116,8 @@ export class HomeComponent implements OnInit {
     return this.subscription && !this.subscription.closed;
   }
 
+  isFallingPrice(product: Product) {
+    return product.amount.fallingPrice > 0;
+  }
+
 }

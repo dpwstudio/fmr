@@ -17,7 +17,7 @@
     },
     "amount": {
       "price": 1995,
-      "fallingPrice": 1524,
+      "fallingPrice": 0,
       "amountWin": 1542
     },
     "dimensions": {
@@ -119,7 +119,7 @@
     },
     "amount": {
       "price": 388,
-      "fallingPrice": 240,
+      "fallingPrice": 0,
       "amountWin": 185
     },
     "dimensions": {

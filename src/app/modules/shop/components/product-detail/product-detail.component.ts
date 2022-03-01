@@ -33,9 +33,9 @@ export class ProductDetailComponent implements OnInit {
     nav: false,
     items: 2,
     dots: false,
-  }
+  };
   products: Product[] = [];
-  product: Product;
+  currentProduct: Product;
   quantity = 1;
   id: number;
   subscription: Subscription;
@@ -75,7 +75,7 @@ export class ProductDetailComponent implements OnInit {
       })
     ).subscribe(products => {
       this.products = products;
-      this.product = this.products.filter(product => product.id === filtersProducts.id)[0];
+      this.currentProduct = this.products.filter(product => product.id === filtersProducts.id)[0];
     })
   }
 
@@ -111,4 +111,8 @@ export class ProductDetailComponent implements OnInit {
     return this.currentImg = productImg;
   }
 
+  isSameCategories(product) {
+    return this.currentProduct.category === product.category
+      && this.currentProduct.id !== product.id;
+  }
 }

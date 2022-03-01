@@ -64,7 +64,7 @@
         <div class="avatar-section">
           <a href="" class="custom-file-upload"
             style="background: url('{{user?.img.dressing}}') center center no-repeat;">
-            <label class="d-flex align-items-center justify-content-center" for="photoProfile">
+            <label class="d-flex align-items-center justify-content-center" for="photoProfile" *ngIf="isMyProfile()">
               <input type="file" id="photoProfile" accept=".png, .jpg, .jpeg">
               <ion-icon name="camera-outline" style="color: #ffffffd9; font-size: 40px;"></ion-icon>
             </label>

@@ -7,7 +7,7 @@
     </a>
   </div>
   <div class="pageTitle">
-    {{product?.brand}}
+    {{currentProduct?.brand}}
   </div>
   <div class="right">
   </div>
@@ -18,47 +18,47 @@
     <owl-carousel-o [options]="carouselFullOptions">
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="product?.img.photoFace" alt="">
+          <img [src]="currentProduct?.img.photoFace" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="product?.img.photoDos" alt="">
+          <img [src]="currentProduct?.img.photoDos" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="product?.img.photoProfile" alt="">
+          <img [src]="currentProduct?.img.photoProfile" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="product?.img.photoGriffe" alt="">
+          <img [src]="currentProduct?.img.photoGriffe" alt="">
         </div>
       </ng-template>
     </owl-carousel-o>
-    <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(product?.img)" data-toggle="modal"
+    <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img)" data-toggle="modal"
       data-target="#DialogImage">
       <ion-icon name="expand-outline"></ion-icon>
     </a>
   </div>
   <div class="section mt-2">
     <div class="d-flex align-items-center justify-content-between">
-      <h1 class="my-0" style="font-size: 32px;">{{product?.brand}}</h1>
+      <h1 class="my-0" style="font-size: 32px;">{{currentProduct?.brand}}</h1>
       <div class="action d-flex align-items-center">
         <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
           <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
-          {{product?.like}}
+          {{currentProduct?.like}}
         </span>
         <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
       </div>
     </div>
-    <p style="font-size: 19px;">{{product?.model}}</p>
+    <p style="font-size: 19px;">{{currentProduct?.model}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
-        <a [routerLink]="['/profile', product?.sellerId]" routerLinkActive="router-link-active" class="text-dark">
-          <img src="{{product?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
-          {{product?.sellerName}}
+        <a [routerLink]="['/profile', currentProduct?.sellerId]" routerLinkActive="router-link-active" class="text-dark">
+          <img src="{{currentProduct?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
+          {{currentProduct?.sellerName}}
         </a>
       </div>
       <div class="number" style="font-size: 11px; font-weight: 500;">
@@ -82,7 +82,7 @@
         </div>
         <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1">
           <div class="accordion-content">
-            {{product?.description}}
+            {{currentProduct?.description}}
           </div>
         </div>
       </div>
@@ -120,17 +120,17 @@
                   <tr>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{product?.dimensions.width}}</font>
+                        <font style="vertical-align: inherit;">{{currentProduct?.dimensions.width}}</font>
                       </font>
                     </td>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{product?.dimensions.height}}</font>
+                        <font style="vertical-align: inherit;">{{currentProduct?.dimensions.height}}</font>
                       </font>
                     </td>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit; text-align: center;">{{product?.dimensions.depth}}</font>
+                        <font style="vertical-align: inherit; text-align: center;">{{currentProduct?.dimensions.depth}}</font>
                       </font>
                     </td>
                   </tr>
@@ -179,7 +179,7 @@
         </ion-icon>
       </i>
       <span class="chip-label number"
-        style="font-size: 12px;">{{product?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+        style="font-size: 12px;">{{currentProduct?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
     </div>
   </div>
 
@@ -188,14 +188,14 @@
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
           <div class="text-center">
-            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+            <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
               class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;">
               <ion-icon name="hand-left-outline"></ion-icon>
             </a>
             <span class="d-block text-secondary">Négocier</span>
           </div>
           <div class="text-center">
-            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+            <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
               class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
               <ion-icon name="star-outline"></ion-icon>
             </a>
@@ -203,7 +203,7 @@
           </div>
           <div class="text-center">
             <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
-              (click)="addProductToCart(product)">
+              (click)="addProductToCart(currentProduct)">
               <ion-icon name="bag-add-outline"></ion-icon>
             </a>
             <span class="d-block text-secondary">Panier</span>
@@ -222,9 +222,11 @@
     </div>
     <owl-carousel-o [options]="carouselMultipleOptions">
       <ng-container *ngFor="let product of products; trackBy:trackById">
-        <ng-template carouselSlide>
-          <app-card-product [product]="product"></app-card-product>
-        </ng-template>
+        <ng-container *ngIf="isSameCategories(product)">
+          <ng-template carouselSlide>
+            <app-card-product [product]="product"></app-card-product>
+          </ng-template>
+        </ng-container>
       </ng-container>
     </owl-carousel-o>
   </div>

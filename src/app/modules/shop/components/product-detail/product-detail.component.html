@@ -1,59 +1,46 @@
 <app-loader [state]="isLoading()"></app-loader>
-
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/shop']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    {{product?.brand}}
+  </div>
+  <div class="right">
+  </div>
+</div>
 <!-- App Capsule -->
 <div id="appCapsule">
-  <div class="section full">
-
+  <div class="section full position-relative">
     <owl-carousel-o [options]="carouselFullOptions">
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <app-image [src]="product?.img.photoFace"></app-image>
-          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoFace)" data-toggle="modal"
-            data-target="#DialogImage" style="position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;">
-            <ion-icon name="expand-outline"></ion-icon>
-          </a>
+          <img [src]="product?.img.photoFace" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <app-image [src]="product?.img.photoDos"></app-image>
-          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoDos)" data-toggle="modal"
-            data-target="#DialogImage" style="position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;">
-            <ion-icon name="expand-outline"></ion-icon>
-          </a>
+          <img [src]="product?.img.photoDos" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <app-image [src]="product?.img.photoProfile"></app-image>
-          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoProfile)" data-toggle="modal"
-            data-target="#DialogImage" style="position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;">
-            <ion-icon name="expand-outline"></ion-icon>
-          </a>
+          <img [src]="product?.img.photoProfile" alt="">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <app-image [src]="product?.img.photoGriffe"></app-image>
-          <a class="btn btn-primary btn-icon" (click)="getCurrentProduct(product?.img.photoGriffe)" data-toggle="modal"
-            data-target="#DialogImage" style="position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;">
-            <ion-icon name="expand-outline"></ion-icon>
-          </a>
+          <img [src]="product?.img.photoGriffe" alt="">
         </div>
       </ng-template>
     </owl-carousel-o>
+    <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(product?.img)" data-toggle="modal"
+      data-target="#DialogImage">
+      <ion-icon name="expand-outline"></ion-icon>
+    </a>
   </div>
   <div class="section mt-2">
     <div class="d-flex align-items-center justify-content-between">
@@ -66,7 +53,7 @@
         <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
       </div>
     </div>
-    <p style="font-size: 19px;">{{product?.description}}</p>
+    <p style="font-size: 19px;">{{product?.model}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
         <a [routerLink]="['/profile', product?.sellerId]" routerLinkActive="router-link-active" class="text-dark">
@@ -200,18 +187,27 @@
     <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
-          <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
-            class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;">
-            <ion-icon name="hand-left-outline"></ion-icon>
-          </a>
-          <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
-            class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
-            <ion-icon name="diamond-outline"></ion-icon>
-          </a>
-          <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
-            (click)="addProductToCart(product)">
-            <ion-icon name="bag-add-outline"></ion-icon>
-          </a>
+          <div class="text-center">
+            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+              class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="hand-left-outline"></ion-icon>
+            </a>
+            <span class="d-block text-secondary">Négocier</span>
+          </div>
+          <div class="text-center">
+            <a [routerLink]="['/negociate', product?.id]" routerLinkActive="router-link-active"
+              class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="star-outline"></ion-icon>
+            </a>
+            <span class="d-block text-secondary">Wishlist</span>
+          </div>
+          <div class="text-center">
+            <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
+              (click)="addProductToCart(product)">
+              <ion-icon name="bag-add-outline"></ion-icon>
+            </a>
+            <span class="d-block text-secondary">Panier</span>
+          </div>
         </div>
       </div>
 
@@ -284,7 +280,29 @@
 <div class="modal fade dialogbox" id="DialogImage" data-backdrop="static" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <img [src]="currentImg" alt="image" class="img-fluid">
+      <!-- <img [src]="currentImg" alt="image" class="img-fluid"> -->
+      <owl-carousel-o [options]="carouselFullOptions">
+        <ng-template carouselSlide>
+          <div class="item item-slide">
+            <img [src]="currentImg?.photoFace" alt="">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="item item-slide">
+            <img [src]="currentImg?.photoDos" alt="">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="item item-slide">
+            <img [src]="currentImg?.photoProfile" alt="">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="item item-slide">
+            <img [src]="currentImg?.photoGriffe" alt="">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
       <div class="modal-footer">
         <div class="btn-inline">
           <a href="#" class="btn btn-text-secondary" data-dismiss="modal">

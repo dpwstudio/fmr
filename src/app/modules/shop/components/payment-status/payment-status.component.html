@@ -1,30 +1,48 @@
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Commande confirmé
+  </div>
+  <div class="right">
+  </div>
+</div>
+<!-- * App Header -->
 <div id="appCapsule">
-
-  <div class="section inset" style="margin-top: 100px;">
-    <div class="card card-user animate__animated animate__tada">
+  <div class="section inset text-center" style="margin-top: 100px;">
+    <div class="bloc-img animate__animated animate__bounceIn animate__delay-1s">
+      <img class="imaged w86" src="assets/img/checked.png" alt="">
+    </div>
+    <div class="card card-user animate__animated animate__bounceInDown">
       <div class="card-body">
-        <img class="avatar border-gray" src="assets/img/checked.png" alt="...">
         <div class="content-card">
-          <h5 class="card-title mb-4">Merci AVA !</h5>
-          <h2 class="text-center mt-2">Votre commande est confirmé !</h2>
+          <h2 class="text-center mt-2">{{currentUser.firstname}}, votre commande est confirmé !</h2>
           <p class="card-description mb-3">
             Votre commande est confirmé, vous recevrez un email de confirmation contenant le récapitulatif de votre
             commande.
           </p>
           <p class="card-description mt-2">
-            N'hésitez pas à nous contacter pour toutes questions concernant votre commande.
+            N'hésitez pas à nous contacter pour toutes questions.
           </p>
         </div>
       </div>
       <div class="card-footer text-center mt-3 border-0">
         <p class="card-description text-center d-flex align-items-center justify-content-center">
           <span class="footer-text">A bientôt sur Dressing FMR.</span>
-          <i class="far fa-smile-wink ml-2" style="font-size: 25px; color: #ffcd6e;"></i></p>
+        </p>
         <img class="mr-3 mb-2" src="assets/img/logo/logo.png" alt="" width="70">
       </div>
     </div>
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active"
-      class="btn btn-rounded btn-primary btn-lg btn-block mb-3">Retour à l'accueil</a>
+    <div class="d-flex justify-content-center">
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+        class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </a>
+    </div>
   </div>
 
 </div>

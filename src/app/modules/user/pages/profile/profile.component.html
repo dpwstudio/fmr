@@ -1,3 +1,16 @@
+<!-- App Header -->
+<div class="appHeader">
+	<div class="left">
+	  <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
+		 <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+	  </a>
+	</div>
+	<div class="pageTitle">
+		Profil de {{user?.firstname}}
+	</div>
+	<div class="right">
+	</div>
+ </div>
 <!-- Extra Header -->
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">
@@ -47,11 +60,15 @@
   <div class="tab-content mt-1">
     <!-- Mode tab -->
     <div class="tab-pane fade {{!isCatalogArt() ? 'active show' : ''}}" id="mode" role="tabpanel">
-      <div class="section mb-3">
-        <div class="card">
-          <div class="card-body card-bg pt-1"
+      <div class="section section-big-img mb-3">
+        <div class="avatar-section">
+          <a href="" class="custom-file-upload"
             style="background: url('{{user?.img.dressing}}') center center no-repeat;">
-          </div>
+            <label class="d-flex align-items-center justify-content-center" for="photoProfile">
+              <input type="file" id="photoProfile" accept=".png, .jpg, .jpeg">
+              <ion-icon name="camera-outline" style="color: #ffffffd9; font-size: 40px;"></ion-icon>
+            </label>
+          </a>
         </div>
       </div>
 
@@ -240,10 +257,15 @@
       </div>
     </div>
     <div class="tab-pane fade {{isCatalogArt() ? 'active show' : ''}}" id="art" role="tabpanel">
-      <div class="section mb-3">
-        <div class="card">
-          <div class="card-body card-bg pt-1" style="background: url('{{user?.img.gallery}}') center center no-repeat;">
-          </div>
+      <div class="section section-big-img mb-3">
+        <div class="avatar-section">
+          <a href="" class="custom-file-upload"
+            style="background: url('{{user?.img.gallery}}') center center no-repeat;">
+            <label class="d-flex align-items-center justify-content-center" for="photoProfile">
+              <input type="file" id="photoProfile" accept=".png, .jpg, .jpeg">
+              <ion-icon name="camera-outline" style="color: #ffffffd9; font-size: 40px;"></ion-icon>
+            </label>
+          </a>
         </div>
       </div>
 

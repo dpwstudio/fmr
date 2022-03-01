@@ -21,18 +21,6 @@
   }
 }
 
-.card {
-  margin-top: -50px;
-  position: relative;
-  z-index: 100;
-
-  .card-bg {
-    height: 214px;
-    border: 5px solid white;
-    border-radius: 10px;
-  }
-}
-
 .section-title {
   margin: 0;
   font-size: 20px;
@@ -53,4 +41,25 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.section-big-img {
+  width: 100%;
+  margin-top: -50px;
+
+  .avatar-section {
+    width: 100%;
+
+    .custom-file-upload {
+      width: 100%;
+      height: 214px;
+      border-radius: 10px;
+      border: 5px solid white;
+
+      label {
+        background: transparent;
+      }
+    }
+  }
+
 }

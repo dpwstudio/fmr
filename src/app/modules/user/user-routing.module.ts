@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../_shared/guard/auth/auth.guard';
-import { FormAddressDeliveryComponent } from './components/form-address-delivery/form-address-delivery.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -15,7 +14,10 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'One'
+    }
   },
   {
     path: 'login',
@@ -24,11 +26,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  },
-  {
-    path: 'edit-address',
-    component: FormAddressDeliveryComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
@@ -41,17 +38,26 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'One'
+    }
   },
   {
     path: 'notifications',
     component: NotificationsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'Two'
+    }
   },
   {
     path: 'wishlist',
     component: WishlistComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'Two'
+    }
   }
 ];
 

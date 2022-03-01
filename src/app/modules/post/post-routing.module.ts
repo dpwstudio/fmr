@@ -6,11 +6,13 @@ import { PostFormComponent } from './pages/post-form/post-form.component';
 const routes: Routes = [
   {
     path: 'post',
-    component: PostFormComponent
+    component: PostFormComponent,
+    data: { animationState: 'One' }
   },
   {
     path: 'post-confirm',
-    component: PostConfirmComponent
+    component: PostConfirmComponent,
+    data: { animationState: 'Two' }
   }
 ];
 

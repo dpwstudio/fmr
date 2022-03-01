@@ -1,329 +1,340 @@
- <!-- App Capsule -->
- <div id="appCapsule">
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Mon compte
+  </div>
+  <div class="right">
+  </div>
+</div>
+<!-- App Capsule -->
+<div id="appCapsule">
+  <div class="section mt-3 text-center">
+    <div class="avatar-section">
+      <a href="" class="custom-file-upload" style="background: url('{{currentUser.img.avatar}}');">
+        <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+        <span class="button">
+          <ion-icon name="camera-outline"></ion-icon>
+        </span>
+      </a>
+    </div>
+    <h2 style="font-size: 25px;">{{currentUser.firstname}}</h2>
+  </div>
 
-   <div class="section mt-3 text-center">
-     <div class="avatar-section">
-       <a href="" class="custom-file-upload" style="background: url('{{currentUser.img.avatar}}');">
-         <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
-         <span class="button">
-           <ion-icon name="camera-outline"></ion-icon>
-         </span>
-       </a>
-     </div>
-     <h2 style="font-size: 25px;">{{currentUser.firstname}}</h2>
-   </div>
-
-   <div class="listview-title mt-1">Notifications</div>
-   <ul class="listview image-listview inset">
-     <li>
-       <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="item">
-         <div class="in">
-           <div>Notifications</div>
-           <span class="badge badge-primary">6</span>
-         </div>
-       </a>
-     </li>
-     <li>
-       <div class="item">
-         <div class="in">
-           <div>
-             Paiement alerte
-             <div class="text-muted" style="font-size: 14px;">
-               Envoyer une notification dès la réception d'un nouveau paiement
-             </div>
-           </div>
-           <div class="custom-control custom-switch">
-             <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
-             <label class="custom-control-label" for="customSwitch4"></label>
-           </div>
-         </div>
-       </div>
-     </li>
-   </ul>
-
-
-   <div class="listview-title mt-1">Profil</div>
-   <ul class="listview image-listview inset">
-     <li>
-       <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
-         <div class="in">
-           <div>Mon profil</div>
-           <span class="text-muted" style="font-size: 15px;">Voir</span>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a href="#" class="item" data-toggle="modal" data-target="#infosForm">
-         <div class="in">
-           <div>Compte</div>
-           <span class="text-muted" style="font-size: 15px;">Modifier</span>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a href="#" class="item" data-toggle="modal" data-target="#deliveryAddressForm">
-         <div class="in">
-           <div>Adresse de livraison</div>
-           <span class="text-muted" style="font-size: 15px;">Modifier</span>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a href="#" class="item" data-toggle="modal" data-target="#billingAddressForm">
-         <div class="in">
-           <div>Adresse de facturation</div>
-           <span class="text-muted" style="font-size: 15px;">Modifier</span>
-         </div>
-       </a>
-     </li>
-   </ul>
-
-   <div class="listview-title mt-1">Mes favoris</div>
-   <ul class="listview image-listview inset">
-     <li>
-       <a [routerLink]="['/wishlist']" routerLinkActive="router-link-active" class="item">
-         <div class="in">
-           <div>Ma Wishlist</div>
-         </div>
-       </a>
-     </li>
-   </ul>
-
-   <div class="listview-title mt-1">Sécurité</div>
-   <ul class="listview image-listview inset">
-     <li>
-       <a href="#" class="item" data-toggle="modal" data-target="#passwordForm">
-         <div class="in">
-           <div>Mot de passe</div>
-           <span class="text-muted" style="font-size: 15px;">Modifier</span>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a (click)="logout()" class="item">
-         <div class="in">
-           <div>Déconnexion</div>
-         </div>
-       </a>
-     </li>
-   </ul>
-
-   <div class="listview-title mt-1">Autres</div>
-   <ul class="listview image-listview inset mb-4">
-     <li>
-       <a [routerLink]="['/about']" routerLinkActive="router-link-active" class="item" data-toggle="modal"
-         data-target="#passwordForm">
-         <div class="in">
-           <div>A propos de nous</div>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a [routerLink]="['/faq']" routerLinkActive="router-link-active" class="item">
-         <div class="in">
-           <div>FAQ</div>
-         </div>
-       </a>
-     </li>
-     <li>
-       <a [routerLink]="['/contact']" routerLinkActive="router-link-active" class="item">
-         <div class="in">
-           <div>Contact</div>
-         </div>
-       </a>
-     </li>
-   </ul>
+  <div class="listview-title mt-1">Notifications</div>
+  <ul class="listview image-listview inset">
+    <li>
+      <a [routerLink]="['/notifications']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Notifications</div>
+          <span class="badge badge-primary">6</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <div class="item">
+        <div class="in">
+          <div>
+            Paiement alerte
+            <div class="text-muted" style="font-size: 14px;">
+              Envoyer une notification dès la réception d'un nouveau paiement
+            </div>
+          </div>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
+            <label class="custom-control-label" for="customSwitch4"></label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 
 
- </div>
- <!-- * App Capsule -->
+  <div class="listview-title mt-1">Profil</div>
+  <ul class="listview image-listview inset">
+    <li>
+      <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Mon profil</div>
+          <span class="text-muted" style="font-size: 15px;">Voir</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="item" data-toggle="modal" data-target="#infosForm">
+        <div class="in">
+          <div>Mes informations</div>
+          <span class="text-muted" style="font-size: 15px;">Modifier</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="item" data-toggle="modal" data-target="#deliveryAddressForm">
+        <div class="in">
+          <div>Adresse de livraison</div>
+          <span class="text-muted" style="font-size: 15px;">Modifier</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="item" data-toggle="modal" data-target="#billingAddressForm">
+        <div class="in">
+          <div>Adresse de facturation</div>
+          <span class="text-muted" style="font-size: 15px;">Modifier</span>
+        </div>
+      </a>
+    </li>
+  </ul>
 
- <div class="modal fade action-sheet" id="infosForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Modifier mon compte</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="section full mt-1 mb-2">
-           <div class="wide-block pb-1 pt-1 border-0">
-             <form>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Nom" [value]="currentUser.lastname">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Pseudo"
-                     [value]="currentUser.firstname">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Téléphone"
-                     [value]="currentUser.phone">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="listview-title mt-1">Mes favoris</div>
+  <ul class="listview image-listview inset">
+    <li>
+      <a [routerLink]="['/wishlist']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Ma Wishlist</div>
+        </div>
+      </a>
+    </li>
+  </ul>
 
- <div class="modal fade action-sheet" id="passwordForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Modifier le mot de passe</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="section full mt-1 mb-2">
-           <div class="wide-block pb-1 pt-1 border-0">
-             <form>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Mot de passe">
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <input type="text" class="form-control" id="name4" placeholder="Confirmer mot de passe">
-                 </div>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="listview-title mt-1">Sécurité</div>
+  <ul class="listview image-listview inset">
+    <li>
+      <a href="#" class="item" data-toggle="modal" data-target="#passwordForm">
+        <div class="in">
+          <div>Mot de passe</div>
+          <span class="text-muted" style="font-size: 15px;">Modifier</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a (click)="logout()" class="item">
+        <div class="in">
+          <div>Déconnexion</div>
+        </div>
+      </a>
+    </li>
+  </ul>
 
- <div class="modal fade action-sheet" id="deliveryAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Adresse de livraison</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="section full mt-1 mb-2">
-           <div class="wide-block pb-1 pt-1 border-0">
-             <form>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="address4">Adresse</label>
-                   <textarea id="address4" rows="2" class="form-control">
+  <div class="listview-title mt-1">Autres</div>
+  <ul class="listview image-listview inset mb-4">
+    <li>
+      <a [routerLink]="['/about']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>A propos de nous</div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/faq']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>FAQ</div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/contact']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Contact</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+
+</div>
+<!-- * App Capsule -->
+
+<div class="modal fade action-sheet" id="infosForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Modifier mes informations</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control" id="name4" placeholder="Nom" [value]="currentUser.lastname">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control" id="name4" placeholder="Pseudo"
+                    [value]="currentUser.firstname">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control" id="name4" placeholder="Téléphone"
+                    [value]="currentUser.phone">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade action-sheet" id="passwordForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Modifier le mot de passe</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control" id="name4" placeholder="Mot de passe">
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control" id="name4" placeholder="Confirmer mot de passe">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade action-sheet" id="deliveryAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Adresse de livraison</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="address4">Adresse</label>
+                  <textarea id="address4" rows="2" class="form-control">
                     {{currentUser.deliveryAddress.address}}
                    </textarea>
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
 
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="name4">Code postal</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.cp">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="city4">Ville</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.city">
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="city4">Pays</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.country">
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <button class="btn btn-primary btn-block btn-lg">Enregistrer</button>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="name4">Code postal</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.cp">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="city4">Ville</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.city">
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="city4">Pays</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.deliveryAddress.country">
+                </div>
+              </div>
+              <div class="form-group basic">
+                <button class="btn btn-primary btn-block btn-lg">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
- <div class="modal fade action-sheet" id="billingAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header d-flex align-items-center">
-         <h5 class="modal-title">Adresse de facturation</h5>
-         <a href="#" class="d-flex" data-dismiss="modal">
-           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-         </a>
-       </div>
-       <div class="modal-body">
-         <div class="section full mt-1 mb-2">
-           <div class="wide-block pb-1 pt-1 border-0">
-             <form>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="address4">Adresse</label>
-                   <textarea id="address4" rows="2" class="form-control">
+<div class="modal fade action-sheet" id="billingAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Adresse de facturation</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="address4">Adresse</label>
+                  <textarea id="address4" rows="2" class="form-control">
                     {{currentUser.billingAddress.address}}
                    </textarea>
 
-                 </div>
-               </div>
+                </div>
+              </div>
 
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="name4">Code postal</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.cp">
-                   <i class="clear-input">
-                     <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
-                   </i>
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="city4">Ville</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.city">
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <div class="input-wrapper">
-                   <label class="label text-secondary" for="city4">Pays</label>
-                   <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.country">
-                 </div>
-               </div>
-               <div class="form-group basic">
-                 <button class="btn btn-primary btn-block btn-lg">Enregistrer</button>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="name4">Code postal</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.cp">
+                  <i class="clear-input">
+                    <ion-icon name="close-circle" role="img" class="md hydrated" aria-label="close circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="city4">Ville</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.city">
+                </div>
+              </div>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label text-secondary" for="city4">Pays</label>
+                  <input type="text" class="form-control" id="name4" [value]="currentUser.billingAddress.country">
+                </div>
+              </div>
+              <div class="form-group basic">
+                <button class="btn btn-primary btn-block btn-lg">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

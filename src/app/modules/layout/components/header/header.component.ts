@@ -13,6 +13,7 @@ import { CartService } from 'src/app/modules/_shared/services/cart/cart.service'
 export class HeaderComponent implements OnInit {
   carts: Cart[];
   currentUser: User;
+  public href: string = "";
 
   constructor(
     private authService: AuthService,
@@ -23,6 +24,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.href = this.router.url;
+    console.log(this.router.url);
     this.getCarts();
   }
 

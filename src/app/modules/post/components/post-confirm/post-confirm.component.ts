@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-post-confirm',
   templateUrl: './post-confirm.component.html',
-  styleUrls: ['./post-confirm.component.scss']
+  styleUrls: ['./post-confirm.component.scss'],
 })
 export class PostConfirmComponent implements OnInit {
+  currentUser: User;
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+    this.currentUser = this.authService.currentUserValue;
+
+  }
 
   ngOnInit(): void {
   }

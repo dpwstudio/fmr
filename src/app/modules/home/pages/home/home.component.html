@@ -1,3 +1,4 @@
+<app-header></app-header>
 <app-loader [state]="isLoading()"></app-loader>
 <!-- App Capsule -->
 <div id="appCapsule">
@@ -140,7 +141,7 @@
             </div>
             <div class="box">
               <h1>Le dressing de {{user.firstname}}</h1>
-              <span>Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
+              <span class="text-secondary">Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
             </div>
           </a>
         </ng-template>
@@ -225,7 +226,7 @@
             </div>
             <div class="box">
               <h1>La galerie de {{user.firstname}}</h1>
-              <span>Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
+              <span class="text-secondary">Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
             </div>
           </a>
         </ng-template>

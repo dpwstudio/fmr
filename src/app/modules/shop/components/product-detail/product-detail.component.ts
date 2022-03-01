@@ -40,7 +40,12 @@ export class ProductDetailComponent implements OnInit {
   id: number;
   subscription: Subscription;
   filtersProducts: FiltersProducts;
-  currentImg: string;
+  currentImg: {
+    photoFace: string;
+    photoDos: string;
+    photoProfile: string;
+    photoGriffe: string;
+  };
 
   constructor(
     private router: Router,
@@ -102,8 +107,8 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addProductToCart(product);
   }
 
-  getCurrentProduct(img) {
-    return this.currentImg = img;
+  getCurrentProduct(productImg) {
+    return this.currentImg = productImg;
   }
 
 }

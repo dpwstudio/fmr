@@ -12,22 +12,25 @@ import { ShopComponent } from './pages/shop/shop.component';
 
 const routes: Routes = [
   {
-    path: 'shop',
-    component: ShopComponent,
-    data: {
-      title: 'Shop'
-    }
-  }, {
     path: 'categories',
     component: CategoriesComponent,
     data: {
-      title: 'Catégories'
+      title: 'Catégories',
+      animationState: 'One'
+    }
+  }, {
+    path: 'shop',
+    component: ShopComponent,
+    data: {
+      title: 'Shop',
+      animationState: 'Two'
     }
   }, {
     path: 'product-detail/:id',
     component: ProductDetailComponent,
     data: {
-      title: 'Détail de l\'article'
+      title: 'Détail de l\'article',
+      animationState: 'Three'
     }
   },
   {
@@ -41,20 +44,24 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent,
     data: {
-      title: 'Panier'
+      title: 'Panier',
+      animationState: 'One'
     }
   }, {
     path: 'delivery',
     component: DeliveryComponent,
+    canActivate: [AuthGuard],
     data: {
-      title: 'Livraison'
+      title: 'Livraison',
+      animationState: 'Two'
     }
   }, {
     path: 'checkout',
     component: CheckoutComponent,
     canActivate: [AuthGuard],
     data: {
-      title: 'Checkout'
+      title: 'Checkout',
+      animationState: 'Three'
     }
   }, {
     path: 'payment-status',

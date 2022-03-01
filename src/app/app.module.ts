@@ -19,6 +19,7 @@ import { customNotifierOptions } from 'src/config/config';
 import { NotifierModule } from 'angular-notifier';
 import { IonicModule } from '@ionic/angular';
 import { InfosModule } from './modules/infos/infos.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -27,6 +28,7 @@ registerLocaleData(localeFr, 'fr');
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HomeModule,
     LayoutModule,

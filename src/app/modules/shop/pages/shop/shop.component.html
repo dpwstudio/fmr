@@ -1,4 +1,18 @@
 <app-loader [state]="isLoading()"></app-loader>
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/categories']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Catalogue
+  </div>
+  <div class="right">
+  </div>
+</div>
+<!-- * App Header -->
 <!-- Extra Header -->
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">

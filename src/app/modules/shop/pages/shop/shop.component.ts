@@ -35,7 +35,6 @@ export class ShopComponent implements OnInit, OnChanges {
         category: params['category'],
         catalogType: params['catalogType'],
       }
-      console.log(`${this.filtersProducts}`);
       this.getProducts(this.filtersProducts);
     });
     this.getCategories();
@@ -44,7 +43,6 @@ export class ShopComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
-      console.log('changes', changes);
       if (changes.products.currentValue) {
         this.products = changes.products.currentValue;
       }
@@ -123,7 +121,6 @@ export class ShopComponent implements OnInit, OnChanges {
       map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
     ).subscribe(textToSearch => {
       this.search = textToSearch;
-      console.log('textToSearch', this.searchElementRef.nativeElement.value)
       this.getProducts(this.filtersProducts, textToSearch);
     })
   }

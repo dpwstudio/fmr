@@ -1,6 +1,7 @@
 <!-- loader -->
-<app-header></app-header>
-<router-outlet>
-  <notifier-container style="position: absolute;"></notifier-container>
-</router-outlet>
+<div [@triggerName]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet">
+    <notifier-container style="position: absolute;"></notifier-container>
+  </router-outlet>
+</div>
 <app-footer></app-footer>

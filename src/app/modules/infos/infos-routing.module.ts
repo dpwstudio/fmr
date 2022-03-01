@@ -1,21 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './pages/about/about.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FaqComponent } from './pages/faq/faq.component';
 
 const routes: Routes = [
   {
     path: 'faq',
-    component: FaqComponent
+    component: FaqComponent,
+    data: {
+      animationState: 'Three'
+    }
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutUsComponent,
+    data: {
+      animationState: 'Three'
+    }
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    data: {
+      animationState: 'Three'
+    }
   }
 ];
 

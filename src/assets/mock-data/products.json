@@ -176,7 +176,7 @@
     "description": "John Matos Aka CRASH : Artgang circa 2016 Sérigraphie originale d'un format de 61 x 46 cm. Numérotée et signée au crayon par l'Artiste. Edition 50 exemplaires. Oeuvre certifiée",
     "catalogType": "art",
     "kind": "",
-    "category": "",
+    "category": "paintings",
     "img": {
       "photoFace": "assets/img/annonce/art/oeuvre1.jpeg",
       "photoDos": "assets/img/annonce/art/oeuvre1.jpeg",
@@ -210,7 +210,7 @@
     "description": "Lampe de table",
     "catalogType": "art",
     "kind": "",
-    "category": "luminaires",
+    "category": "lamps",
     "img": {
       "photoFace": "assets/img/annonce/art/oeuvre2.png",
       "photoDos": "assets/img/annonce/art/oeuvre2.png",
@@ -265,7 +265,41 @@
     },
     "url": "product-detail",
     "like": 857,
-    "sellerId": 4,
+    "sellerId": 1,
+    "sellerName": "Ava",
+    "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
+    "sellerCountry": "fr"
+  },
+  {
+    "id": 9,
+    "createdAt": "2022-02-05T12:23:10+01:00",
+    "brand": "Louis Vuitton",
+    "model": "Panier de basket",
+    "description": "Panier de basket",
+    "catalogType": "art",
+    "kind": "",
+    "category": "objects",
+    "img": {
+      "photoFace": "assets/img/annonce/art/oeuvre4.jpeg",
+      "photoDos": "assets/img/annonce/art/oeuvre4.jpeg",
+      "photoProfile": "assets/img/annonce/art/oeuvre4.jpeg",
+      "photoGriffe": "assets/img/annonce/art/oeuvre4.jpeg",
+      "photo5": "assets/img/annonce/art/oeuvre4.jpeg",
+      "photo6": "assets/img/annonce/art/oeuvre4.jpeg"
+    },
+    "amount": {
+      "price": 3850,
+      "fallingPrice": 3580,
+      "amountWin": 3250
+    },
+    "dimensions": {
+      "width": 61,
+      "height": 46,
+      "depth": 3
+    },
+    "url": "product-detail",
+    "like": 857,
+    "sellerId": 1,
     "sellerName": "Ava",
     "sellerImg": "assets/img/sample/avatar/avatar4.jpg",
     "sellerCountry": "fr"

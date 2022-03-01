@@ -7,7 +7,7 @@ import { Product } from 'src/app/modules/_shared/models/product.model';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.scss']
+  styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
   loading = false;
@@ -186,5 +186,6 @@ export class PostFormComponent implements OnInit {
 
   addToSell() {
     console.log('form', this.product);
+    this.router.navigate(['post-confirm'])
   }
 }

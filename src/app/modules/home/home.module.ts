@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../_shared/shared.module';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SharedModule } from '../_shared/shared.module';
     CommonModule,
     BrowserAnimationsModule,
     IonicModule,
+    LayoutModule,
     CarouselModule,
     SharedModule,
     HomeRoutingModule,

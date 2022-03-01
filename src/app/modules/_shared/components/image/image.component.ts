@@ -16,10 +16,11 @@ export class ImageComponent implements OnInit{
   defaultImg: string;
   state: number;
 
-  constructor(private progressiveImageService: ProgressiveImgService) { }
+  constructor(private progressiveImageService: ProgressiveImgService) {
+    this.defaultImg = 'assets/img/default-img.svg';
+  }
 
   ngOnInit() {
-    this.defaultImg = './assets/img/default-img.svg';
     (async () => {
       try {
         this.state = 0;

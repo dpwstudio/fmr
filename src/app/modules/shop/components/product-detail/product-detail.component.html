@@ -19,28 +19,40 @@
       <ng-template carouselSlide>
         <div class="item item-slide">
           <img [src]="currentProduct?.img.photoFace" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoFace)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <img [src]="currentProduct?.img.photoDos" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoDos)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <img [src]="currentProduct?.img.photoProfile" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoProfile)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <img [src]="currentProduct?.img.photoGriffe" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoGriffe)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
         </div>
       </ng-template>
     </owl-carousel-o>
-    <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img)" data-toggle="modal"
-      data-target="#DialogImage">
-      <ion-icon name="expand-outline"></ion-icon>
-    </a>
   </div>
   <div class="section mt-2">
     <div class="d-flex align-items-center justify-content-between">
@@ -218,8 +230,11 @@
   </div>
 
   <div class="section mt-4">
-    <div class="section-heading">
+    <div class="section-heading d-flex align-items-center justify-content-between">
       <h2 class="title">Commentaires</h2>
+      <button class="btn btn-icon btn-primary" data-toggle="modal" data-target="#commentForm">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </button>
     </div>
     <div class="card bg-white mb-2">
       <owl-carousel-o [options]="carouselMultipleOptions">
@@ -264,29 +279,7 @@
 <div class="modal fade dialogbox" id="DialogImage" data-backdrop="static" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- <img [src]="currentImg" alt="image" class="img-fluid"> -->
-      <owl-carousel-o [options]="carouselFullOptions">
-        <ng-template carouselSlide>
-          <div class="item item-slide">
-            <img [src]="currentImg?.photoFace" alt="">
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item item-slide">
-            <img [src]="currentImg?.photoDos" alt="">
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item item-slide">
-            <img [src]="currentImg?.photoProfile" alt="">
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item item-slide">
-            <img [src]="currentImg?.photoGriffe" alt="">
-          </div>
-        </ng-template>
-      </owl-carousel-o>
+      <img [src]="currentImg" alt="image" class="img-fluid">
       <div class="modal-footer">
         <div class="btn-inline">
           <a href="#" class="btn btn-text-secondary" data-dismiss="modal">
@@ -313,7 +306,8 @@
           <form>
             <div class="form-group basic">
               <div class="input-wrapper">
-                <textarea id="address5" rows="2" class="form-control" placeholder="Saisissez votre commentaire"></textarea>
+                <textarea id="address5" rows="2" class="form-control"
+                  placeholder="Saisissez votre commentaire"></textarea>
               </div>
             </div>
             <div class="form-group basic">

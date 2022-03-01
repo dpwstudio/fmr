@@ -89,6 +89,26 @@
       </a>
     </li>
   </ul>
+  
+  <div class="listview-title mt-1">Gestions des articles</div>
+  <ul class="listview image-listview inset">
+    <li>
+      <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Statistiques des ventes</div>
+          <span class="text-muted" style="font-size: 15px;">Voir</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/products']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Suivi des articles</div>
+          <span class="text-muted" style="font-size: 15px;">Voir</span>
+        </div>
+      </a>
+    </li>
+  </ul>
 
   <div class="listview-title mt-1">Mes favoris</div>
   <ul class="listview image-listview inset">

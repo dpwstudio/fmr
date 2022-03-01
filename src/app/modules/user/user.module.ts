@@ -14,6 +14,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CardProductUserComponent } from './components/card-product-user/card-product-user.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
     NotificationsComponent,
     ResetPasswordComponent,
     WishlistComponent,
+    ProductsComponent,
+    CardProductUserComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +38,9 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
     CarouselModule,
     UserRoutingModule,
     IonicModule
+  ],
+  exports: [
+    CardProductUserComponent
   ]
 })
 export class UserModule { }

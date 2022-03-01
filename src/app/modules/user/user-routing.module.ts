@@ -4,6 +4,7 @@ import { AuthGuard } from '../_shared/guard/auth/auth.guard';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -54,6 +55,14 @@ const routes: Routes = [
   {
     path: 'wishlist',
     component: WishlistComponent,
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'Two'
+    }
+  },
+  {
+    path: 'products',
+    component: ProductsComponent,
     canActivate: [AuthGuard],
     data: {
       animationState: 'Two'

@@ -1,6 +1,6 @@
 <app-loader [state]="isLoading()"></app-loader>
 <!-- App Header -->
-<div class="appHeader no-border transparent" style="z-index: 111111;">
+<div class="appHeader no-border transparent" style="z-index: 1002;">
   <div class="right">
     <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
       <ion-icon name="arrow-forward-outline" class="text-primary"></ion-icon>
@@ -25,12 +25,12 @@
         </div>
         <div class="form-group basic">
           <div class="input-wrapper">
-            <input type="text" formControlName="firstName" class="form-control" id="name4" placeholder="Prénom">
+            <input type="text" formControlName="firstname" class="form-control" id="name4" placeholder="Prénom">
           </div>
         </div>
         <div class="custom-control custom-checkbox mt-2 mb-3">
-          <input type="checkbox" formControlName="newsletters" class="custom-control-input" id="customChecka1">
-          <label class="custom-control-label" for="customChecka1" style="text-align: left;">
+          <input type="checkbox" formControlName="newsletters" class="custom-control-input" id="newsletters">
+          <label class="custom-control-label" for="newsletters" style="text-align: left;">
             Inscrivez-vous à nos newsletters pour recevoir des sélections personnalisées, des offres exclusives et
             toutes nos actualités.
           </label>
@@ -55,8 +55,8 @@
           </div>
         </div>
         <div class="custom-control custom-checkbox mt-2 mb-3">
-          <input type="checkbox" formControlName="cgi" class="custom-control-input" id="customChecka1">
-          <label class="custom-control-label" for="customChecka1" style="text-align: left;">
+          <input type="checkbox" formControlName="cguAccepted" class="custom-control-input" id="cguAccepted">
+          <label class="custom-control-label" for="cguAccepted" style="text-align: left;">
             En m'inscrivant, <a href="#" data-toggle="modal" data-target="#termsModal">j'accepte les Conditions
               générales
               d'utilisation</a> et la Politique de Confidentialité de Dressing fmr
@@ -84,7 +84,7 @@
       S'inscrire avec Facebook
     </button>
     <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
-      <img src="assets/img/auth/google.png" width="20" class="mr-2" alt="">
+      <img src="assets/img/authPage/google.png" width="20" class="mr-2" alt="">
       S'inscrire avec Google
     </button>
   </div>

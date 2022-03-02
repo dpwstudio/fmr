@@ -6,7 +6,7 @@
      Panier
    </div>
    <div class="right">
-		<a [routerLink]="['/delivery']" routerLinkActive="router-link-active" class="headerButton goBack">
+		<a [routerLink]="['/delivery']" routerLinkActive="router-link-active" class="headerButton goBack" *ngIf="carts.length > 0">
 			<ion-icon name="chevron-forward-outline" class="text-primary"></ion-icon>
 		</a>
    </div>

@@ -13,7 +13,7 @@
     <div class="right">
       <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton"
         *ngIf="isUserConnected()">
-        <img src="{{currentUser.img.avatar}}" alt="image" class="imaged rounded w32">
+        <img src="{{currentUser.img ? currentUser.img.avatar : 'assets/img/default-img.svg'}}" alt="image" class="imaged rounded w32">
         <span class="badge badge-danger">6</span>
       </a>
     </div>
@@ -27,9 +27,10 @@
       <div class="modal-content">
         <div class="modal-body p-0">
           <!-- profile box -->
-          <div class="profileBox pt-2 pb-2" style="min-height: 68px;">
+          <div class="profileBox pt-2 pb-2 d-flex align-items-center" style="min-height: 68px;">
             <div class="image-wrapper">
-              <img src="{{currentUser.img.avatar}}" alt="image" class="imaged rounded w36" *ngIf="isUserConnected()">
+              <img src="{{currentUser.img ? currentUser.img.avatar : 'assets/img/default-img.svg'}}" alt="image" class="imaged rounded w36"
+                *ngIf="isUserConnected()">
             </div>
             <div class="in">
               <strong>{{currentUser?.firstname}}</strong>

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Subscription, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, first } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
@@ -55,24 +55,23 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.authService.getUsers()
+    this.subscription = this.authService.login(this.f.email.value, this.f.password.value)
       .pipe(
+        first(),
         catchError(error => {
-          this.notifier.notify('error', error.message);
+          if (error.status === 404) {
+            this.notifier.notify("error", 'Email ou mot de passe incorrect, veuillez réessayer.');
+          } else {
+            this.notifier.notify("error", error.message);
+          }
           return throwError(error);
         }))
-      .subscribe((result: User[]) => {
-        const user = result.filter(user => user.email === this.f.email.value && user.password === this.f.password.value)[0];
-        if (user) {
-          this.authService.currentUserSubject.next(user);
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.router.navigateByUrl(this.returnUrl);
+      .subscribe(
+        result => {
+          this.router.navigate([this.returnUrl]);
           this.currentUser = this.authService.currentUserValue;
-          this.notifier.notify('success', `Vous êtes maintenant connecté.`);
-        } else {
-          this.notifier.notify('error', 'Email ou mot de passe incorrect');
-        }
-      });
+          this.notifier.notify("success", `Vous êtes maintenant connecté à FMR Lifestyle`);
+        });
   }
 
   isLoading() {

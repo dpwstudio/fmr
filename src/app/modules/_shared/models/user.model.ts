@@ -6,18 +6,8 @@ export interface User {
 	password: string,
 	phone: string,
 	ctryCode: string,
-	deliveryAddress: {
-		address: string,
-		cp: string,
-		city: string,
-		country: string
-	},
-	billingAddress: {
-		address: string,
-		cp: string,
-		city: string,
-		country: string
-	},
+	deliveryAddress: string,
+	billingAddress: string,
 	img: {
 		avatar: string,
 		dressing: string,
@@ -25,5 +15,7 @@ export interface User {
 	},
 	followers: number,
 	subscription: number,
+	newsletters: boolean,
+	cguAccepted: boolean,
 	createdAt: string
 }

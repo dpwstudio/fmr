@@ -268,6 +268,12 @@
         </ng-container>
       </ng-container>
     </owl-carousel-o>
+    <ng-container **ngFor="let product of products">
+
+      <div class="" *ngIf="!isSameCategories(product)">
+  Aucun
+      </div>
+    </ng-container>
   </div>
   <!-- * News -->
 

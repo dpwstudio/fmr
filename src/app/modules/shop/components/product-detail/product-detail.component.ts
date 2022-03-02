@@ -112,6 +112,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   isSameCategories(product) {
+    console.log('product', product.category, this.currentProduct.category)
     return this.currentProduct.category === product.category
       && this.currentProduct.id !== product.id;
   }

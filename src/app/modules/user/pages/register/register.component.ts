@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
@@ -12,6 +13,7 @@ import { EmailService } from 'src/app/modules/_shared/services/email/email.servi
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  private readonly notifier: NotifierService;
   showStep1 = true;
   showStep2 = false;
   showStep3 = false;
@@ -26,17 +28,19 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private emailService: EmailService,
+    private notifierService: NotifierService
   ) {
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       email: ["", Validators.required],
-      firstName: ["", Validators.required],
+      firstname: ["", Validators.required],
       newsletters: ["", Validators.required],
+      cguAccepted: ["", Validators.required],
       password: ["", [Validators.required, Validators.minLength(4)]],
       confirmPassword: ["", [Validators.required, Validators.minLength(4)]],
-      cgi: ["", Validators.required],
     });
   }
 
@@ -51,27 +55,27 @@ export class RegisterComponent implements OnInit {
     }
 
     if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
-      alert('Les mots de passe sont différents')
+      this.notifier.notify('error', 'Les mots de passe sont différents')
       return;
     }
 
     console.log('value', this.registerForm.value);
-    // this.subscription = this.authService.register(this.registerForm.value).pipe(
-    //   first(),
-    //   catchError(error => {
-    //     if (error.status === 409) {
-    //       // this.notifier.notify("error", 'Cet email existe déjà, veuillez en saisir un autre.');
-    //     } else {
-    //       // this.notifier.notify("error", error.message);
-    //     }
-    //     return throwError(error);
-    //   })
-    // ).subscribe(data => {
-    //     // this.notifier.notify("success", 'Votre inscription a bien été prise en compte.'); ``
-    //     this.emailService.sendEmailToRegister(this.registerForm.value).subscribe(data => console.log('send email', data));
-    //     this.router.navigate(['/login']);
-    //   }
-    // );
+    this.subscription = this.authService.register(this.registerForm.value).pipe(
+      first(),
+      catchError(error => {
+        if (error.status === 409) {
+          this.notifier.notify("error", 'Cet email existe déjà, veuillez en saisir un autre.');
+        } else {
+          this.notifier.notify("error", error.message);
+        }
+        return throwError(error);
+      })
+    ).subscribe(data => {
+        this.notifier.notify("success", 'Votre inscription a bien été prise en compte.'); ``
+        // this.emailService.sendEmailToRegister(this.registerForm.value).subscribe(data => console.log('send email', data));
+        this.router.navigate(['/login']);
+      }
+    );
   }
 
   isLoading() {

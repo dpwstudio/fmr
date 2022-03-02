@@ -15,7 +15,8 @@ export class UserService {
     private http: HttpClient,
     private authService: AuthService
   ) {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser = this.authService.currentUserValue;
+    console.log('xxxxx', this.currentUser);
   }
 
   createUser(user: User) {
@@ -25,7 +26,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get(`assets/mock-data/users.json`) as Observable<User[]>;
   }
-  
+
   getUser(id): Observable<User[]> {
     return this.http.get(`${environment.fmrApi}/users/${id}`) as Observable<User[]>;
   }
@@ -34,7 +35,10 @@ export class UserService {
     return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, user);
   }
 
-  editAddress(address) {
+  editAddress(address, deliveryAddress = false) {
+    if (deliveryAddress) {
+      address.deliveryAddress = true;
+    }
     return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, address);
   }
 

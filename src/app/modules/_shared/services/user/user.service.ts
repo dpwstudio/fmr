@@ -31,14 +31,13 @@ export class UserService {
     return this.http.get(`${environment.fmrApi}/users/${id}`) as Observable<User[]>;
   }
 
-  editUser(user) {
+  editUserInfos(user) {
+    console.log('user', user);
     return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, user);
   }
 
-  editAddress(address, deliveryAddress = false) {
-    if (deliveryAddress) {
-      address.deliveryAddress = true;
-    }
+  editAddress(address, addressType) {
+    address.addressType = addressType;
     return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, address);
   }
 

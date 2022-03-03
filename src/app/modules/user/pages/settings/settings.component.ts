@@ -19,6 +19,7 @@ export class SettingsComponent implements OnInit {
   currentUser: User;
   editDeliveryAddressForm: FormGroup;
   editBillingAddressForm: FormGroup;
+  editInfosForm: FormGroup;
   editPasswordForm: FormGroup;
   subscription: Subscription;
   deliveryAddress = {
@@ -58,6 +59,11 @@ export class SettingsComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
     });
+    this.editInfosForm = this.formBuilder.group({
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      phone: ['', Validators.required],
+    });
     this.editPasswordForm = this.formBuilder.group({
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
@@ -80,7 +86,23 @@ export class SettingsComponent implements OnInit {
         country: this.billingAddress.country
       });
     }
-    console.log('user', this.deliveryAddress)
+    this.editInfosForm.patchValue({
+      lastname: this.currentUser.lastname,
+      firstname: this.currentUser.firstname,
+      phone: this.currentUser.phone
+    });
+    console.log('user', this.deliveryAddress);
+    this.getCurrentUserImgProfile()
+  }
+
+  getCurrentUserImgProfile() {
+    let imgProfile = '';
+    if (this.currentUser.img) {
+      imgProfile = this.currentUser.img.avatar;
+    } else {
+      imgProfile = 'assets/img/default-img.svg';
+    }
+    return imgProfile;
   }
 
   editDeliveryAddress() {
@@ -90,7 +112,7 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, true).pipe(
+    this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, 'deliveryAddress').pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -108,7 +130,7 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.userService.editAddress(this.editBillingAddressForm.value).pipe(
+    this.subscription = this.userService.editAddress(this.editBillingAddressForm.value, 'billingAddress').pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -117,6 +139,24 @@ export class SettingsComponent implements OnInit {
       this.notifier.notify('success', 'L\'adresse de facturation a été mis à jour avec succès.');
       this.getUser(this.currentUser.id);
     })
+  }
+
+  editInfos() {
+    // stop here if form is invalid
+    if (this.editInfosForm.invalid) {
+      this.notifier.notify('error', 'Veuillez vérifier que toutes les informations sont bien saisies');
+      return;
+    }
+
+    this.subscription = this.userService.editUserInfos(this.editInfosForm.value).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(result => {
+      console.log('result', result);
+      this.notifier.notify('success', 'Vos informations on bien été mises à jour.');
+      this.getUser(this.currentUser.id);
+    });
   }
 
   editPassword() {

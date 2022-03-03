@@ -19,6 +19,7 @@ export class SettingsComponent implements OnInit {
   currentUser: User;
   editDeliveryAddressForm: FormGroup;
   editBillingAddressForm: FormGroup;
+  editPasswordForm: FormGroup;
   subscription: Subscription;
   deliveryAddress = {
     address: '',
@@ -57,6 +58,10 @@ export class SettingsComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
     });
+    this.editPasswordForm = this.formBuilder.group({
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    });
     if (this.currentUser.deliveryAddress) {
       this.deliveryAddress = JSON.parse(this.currentUser.deliveryAddress)[0];
       this.editDeliveryAddressForm.patchValue({
@@ -76,14 +81,6 @@ export class SettingsComponent implements OnInit {
       });
     }
     console.log('user', this.deliveryAddress)
-  }
-
-  get deliveryForm() {
-    return this.editDeliveryAddressForm.controls;
-  }
-
-  get billingForm() {
-    return this.editBillingAddressForm.controls;
   }
 
   editDeliveryAddress() {
@@ -118,6 +115,33 @@ export class SettingsComponent implements OnInit {
     ).subscribe(result => {
       console.log('result', result);
       this.notifier.notify('success', 'L\'adresse de facturation a été mis à jour avec succès.');
+      this.getUser(this.currentUser.id);
+    })
+  }
+
+  editPassword() {
+    // stop here if form is invalid
+    if (this.editPasswordForm.invalid) {
+      this.notifier.notify('error', 'Veuillez saisir le nouveau mot de passe.');
+      return;
+    }
+    if (this.editPasswordForm.value.password !== this.editPasswordForm.value.confirmPassword) {
+      this.notifier.notify('error', 'Les mots de passe sont différents.');
+      return;
+    }
+
+    const body = {
+      password: this.editPasswordForm.value.password,
+      email: this.currentUser.email
+    }
+
+    this.subscription = this.authService.resetPassword(body).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(result => {
+      console.log('result', result);
+      this.notifier.notify('success', 'Le mot de passe a été modifié avec succès.');
       this.getUser(this.currentUser.id);
     })
   }

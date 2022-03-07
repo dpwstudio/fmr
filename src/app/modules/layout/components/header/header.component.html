@@ -13,7 +13,7 @@
     <div class="right">
       <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton"
         *ngIf="isUserConnected()">
-        <img src="{{currentUser.img ? currentUser.img.avatar : 'assets/img/default-img.svg'}}" alt="image" class="imaged rounded w32">
+        <img src="{{getUserImgProfile(currentUser)}}" alt="image" class="imaged rounded w32">
         <span class="badge badge-danger">6</span>
       </a>
     </div>
@@ -29,11 +29,11 @@
           <!-- profile box -->
           <div class="profileBox pt-2 pb-2 d-flex align-items-center" style="min-height: 68px;">
             <div class="image-wrapper">
-              <img src="{{currentUser.img ? currentUser.img.avatar : 'assets/img/default-img.svg'}}" alt="image" class="imaged rounded w36"
+              <img src="{{getUserImgProfile(currentUser)}}" alt="image" class="imaged rounded w36"
                 *ngIf="isUserConnected()">
             </div>
             <div class="in">
-              <strong>{{currentUser?.firstname}}</strong>
+              <strong>{{currentUser?.firstname | uppercase}}</strong>
             </div>
             <a href="#" class="btn btn-link btn-icon sidebar-close" data-dismiss="modal">
               <ion-icon name="close-outline"></ion-icon>

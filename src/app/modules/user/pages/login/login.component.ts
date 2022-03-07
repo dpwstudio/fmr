@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.notifier = notifierService;
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
+    if (this.authService.getCurrentUser()) {
       this.router.navigate(['/home']);
     }
   }
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         result => {
           this.router.navigate([this.returnUrl]);
-          this.currentUser = this.authService.currentUserValue;
+          this.currentUser = this.authService.getCurrentUser();
           this.notifier.notify("success", `Vous êtes maintenant connecté à FMR Lifestyle`);
         });
   }

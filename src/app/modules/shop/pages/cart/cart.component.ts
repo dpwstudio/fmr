@@ -26,22 +26,18 @@ export class CartComponent implements OnInit {
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
-    if (this.authService.currentUser) {
-      this.authService.currentUser.subscribe(x => {
-        if (this.currentUser) {
-          this.currentUser = x
-        }
-      });
-    }
-  }
-
-  isLoggedIn() {
-    return this.authService.currentUserValue;
   }
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+    console.log('this.currentUSer', this.currentUser);
     this.getCarts();
   }
+
+  isLoggedIn() {
+    return this.currentUser;
+  }
+
 
   getCarts() {
     this.carts = this.cartService.cartProductList;

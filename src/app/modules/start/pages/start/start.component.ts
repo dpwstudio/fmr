@@ -20,7 +20,7 @@ export class StartComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) {
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
+    if (this.authService.getCurrentUser()) {
       this.router.navigate(['/home']);
     }
   }

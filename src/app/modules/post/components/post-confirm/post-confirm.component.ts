@@ -11,11 +11,11 @@ export class PostConfirmComponent implements OnInit {
   currentUser: User;
 
   constructor(private authService: AuthService) {
-    this.currentUser = this.authService.currentUserValue;
 
   }
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
   }
 
 }

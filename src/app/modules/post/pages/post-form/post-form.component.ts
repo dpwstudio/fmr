@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Product } from 'src/app/modules/_shared/models/product.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-post-form',
@@ -50,11 +52,17 @@ export class PostFormComponent implements OnInit {
     },
     createdAt: moment().format()
   }
+  currentUser: User;
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
   }
 
   isPhotosComplete() {

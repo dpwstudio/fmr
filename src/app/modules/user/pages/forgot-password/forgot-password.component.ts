@@ -26,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
     private emailService: EmailService,
   ) {
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
+    if (this.authService.getCurrentUser()) {
       this.router.navigate(['/home']);
     }
   }

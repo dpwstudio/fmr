@@ -9,6 +9,9 @@
     FAQ
   </div>
   <div class="right">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
+      <ion-icon name="close-outline" class="text-primary"></ion-icon>
+    </a>
   </div>
 </div>
 <!-- * App Header -->
@@ -159,7 +162,7 @@
         <p class="card-text">
           Contactez-nous
         </p>
-        <a [routerLink]="['/contact']" routerLinkActive="router-link-active"  class="btn btn-light btn-icon">
+        <a [routerLink]="['/contact']" routerLinkActive="router-link-active" class="btn btn-light btn-icon">
           <ion-icon name="mail-open-outline" class="text-secondary"></ion-icon>
         </a>
       </div>

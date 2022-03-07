@@ -33,10 +33,11 @@ export class ProductsComponent implements OnInit {
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
+    console.log('this.currentUSer', this.currentUser);
     this.getProducts();
   }
 

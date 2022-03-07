@@ -107,6 +107,39 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getUserDressingImg(user) {
+    let imgDressing = '';
+    if (user.img) {
+      const img = JSON.parse(user.img)[0];
+
+      if (img.dressing) {
+        imgDressing = img.dressing;
+      }
+      else {
+        imgDressing = 'assets/img/dressing/dressing1.png';
+      }
+    } else {
+      imgDressing = 'assets/img/dressing/dressing1.png';
+    }
+    return imgDressing;
+  }
+
+  getUserGalleryImg(user) {
+    let imgGallery = '';
+    if (user.img) {
+      const img = JSON.parse(user.img)[0];
+
+      if (img.gallery) {
+        imgGallery = img.gallery;
+      } else {
+        imgGallery = 'assets/img/gallery/gallery3.png';
+      }
+    } else {
+      imgGallery = 'assets/img/gallery/gallery3.png';
+    }
+    return imgGallery;
+  }
+
   addProductToCart(product) {
     product.quantity = this.quantity;
     this.cartService.addProductToCart(product);

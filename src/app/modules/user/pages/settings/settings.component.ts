@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
@@ -7,6 +7,7 @@ import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { UploadImageService } from 'src/app/modules/_shared/services/upload-image/upload-image.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
 
 @Component({
@@ -17,6 +18,7 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
 export class SettingsComponent implements OnInit {
   private readonly notifier: NotifierService;
   currentUser: User;
+  editImgForm: FormGroup;
   editDeliveryAddressForm: FormGroup;
   editBillingAddressForm: FormGroup;
   editInfosForm: FormGroup;
@@ -34,40 +36,55 @@ export class SettingsComponent implements OnInit {
     city: '',
     country: ''
   }
+  img = {
+    avatar: '',
+    avatarSrc: '',
+  }
+
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private uploadImageService: UploadImageService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
-    this.currentUser = this.authService.currentUserValue;
+    this.currentUser = this.authService.getCurrentUser();
   }
 
   ngOnInit(): void {
+    this.editImgForm = this.formBuilder.group({
+      avatarUploaded: [""],
+      avatar: [""],
+    });
+
     this.editDeliveryAddressForm = this.formBuilder.group({
       address: ['', Validators.required],
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
     });
+
     this.editBillingAddressForm = this.formBuilder.group({
       address: ['', Validators.required],
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
     });
+
     this.editInfosForm = this.formBuilder.group({
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       phone: ['', Validators.required],
     });
+
     this.editPasswordForm = this.formBuilder.group({
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
     });
+
     if (this.currentUser.deliveryAddress) {
       this.deliveryAddress = JSON.parse(this.currentUser.deliveryAddress)[0];
       this.editDeliveryAddressForm.patchValue({
@@ -91,20 +108,68 @@ export class SettingsComponent implements OnInit {
       firstname: this.currentUser.firstname,
       phone: this.currentUser.phone
     });
-    console.log('user', this.deliveryAddress);
-    this.getCurrentUserImgProfile()
+    this.getUser(this.currentUser.id)
   }
 
-  getCurrentUserImgProfile() {
-    let imgProfile = '';
-    if (this.currentUser.img) {
-      imgProfile = this.currentUser.img.avatar;
-    } else {
-      imgProfile = 'assets/img/default-img.svg';
+  onPhotoSelect(event) {
+    const reader = new FileReader();
+    const file = event.target.files[0];
+    console.log('file', file)
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.editImgForm.get('avatarUploaded').setValue(file);
+        this.editImgForm.get('avatar').setValue(file.name);
+        this.img.avatarSrc = reader.result as string;
+      };
     }
-    return imgProfile;
   }
 
+  /**
+   * Récupère l'image du profil
+   * @param user
+   * @returns 
+   */
+  getUserImgProfile(user) {
+    return this.userService.getUserImgProfile(user).avatar;
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  /**
+   * Modifie l'image de profil
+   * @returns
+   */
+  editImgProfile() {
+    // stop here if form is invalid
+    if (this.editImgForm.invalid) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('uploadedImg', this.editImgForm.get('avatarUploaded').value);
+    formData.append('agentId', '007');
+
+    this.subscription = this.userService.editImg(this.editImgForm.value, 'avatar', this.currentUser.id).pipe(
+      catchError(error => {
+        this.notifier.notify('error', error.message)
+        return throwError(error);
+      })
+    ).subscribe(res => {
+      this.uploadImageService.sendPhotoToServer(formData);
+      this.getUser(this.currentUser.id);
+      this.notifier.notify('success', 'L\'image de profil a bien été mise à jour.');
+    });
+  }
+
+  /**
+   * Modifie l'adresse de livraison
+   * @returns
+   */
   editDeliveryAddress() {
     // stop here if form is invalid
     if (this.editDeliveryAddressForm.invalid) {
@@ -112,17 +177,23 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, 'deliveryAddress').pipe(
+    this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, 'deliveryAddress', this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(result => {
       console.log('result', result);
-      this.notifier.notify('success', 'L\'adresse de livraison a été mis à jour avec succès.');
+      this.refresh();
       this.getUser(this.currentUser.id);
-    })
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.notifier.notify('success', 'L\'adresse de livraison a été mis à jour avec succès.');
+    });
   }
 
+  /**
+   * Modifie l'adresse de facturation
+   * @returns
+   */
   editBillingAddress() {
     // stop here if form is invalid
     if (this.editBillingAddressForm.invalid) {
@@ -130,17 +201,23 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.userService.editAddress(this.editBillingAddressForm.value, 'billingAddress').pipe(
+    this.subscription = this.userService.editAddress(this.editBillingAddressForm.value, 'billingAddress', this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(result => {
       console.log('result', result);
-      this.notifier.notify('success', 'L\'adresse de facturation a été mis à jour avec succès.');
+      this.refresh();
       this.getUser(this.currentUser.id);
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.notifier.notify('success', 'L\'adresse de facturation a été mis à jour avec succès.');
     })
   }
 
+  /**
+   * Modifie les informations personnelles
+   * @returns success
+   */
   editInfos() {
     // stop here if form is invalid
     if (this.editInfosForm.invalid) {
@@ -148,17 +225,24 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.userService.editUserInfos(this.editInfosForm.value).pipe(
+    this.subscription = this.userService.editUserInfos(this.editInfosForm.value, this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(result => {
       console.log('result', result);
-      this.notifier.notify('success', 'Vos informations on bien été mises à jour.');
+      this.refresh();
       this.getUser(this.currentUser.id);
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.notifier.notify('success', 'Vos informations on bien été mises à jour.');
     });
   }
 
+
+  /**
+   * Modifie le mot de passe
+   * @returns 
+   */
   editPassword() {
     // stop here if form is invalid
     if (this.editPasswordForm.invalid) {
@@ -181,27 +265,38 @@ export class SettingsComponent implements OnInit {
       })
     ).subscribe(result => {
       console.log('result', result);
-      this.notifier.notify('success', 'Le mot de passe a été modifié avec succès.');
+      this.refresh();
       this.getUser(this.currentUser.id);
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.notifier.notify('success', 'Le mot de passe a été modifié avec succès.');
     })
   }
 
+  /**
+   * Récupére l'utilisateur courant
+   * @param id
+   */
   getUser(id) {
-    this.userService.getUser(id).pipe(
+    console.log('id', id)
+    this.subscription = this.userService.getUser(id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(user => {
-      console.log('user', user);
-      localStorage.setItem('currentUser', JSON.stringify(user[0]));
-      this.authService.currentUserSubject.next(user[0]);
-    })
+      if (id) {
+        this.currentUser = user.filter(user => user.id === id)[0];
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      }
+    });
   }
 
   isLoading() {
     return this.subscription && !this.subscription.closed;
   }
 
+  /**
+   * Déconnexion de l'utilisateur
+   */
   logout() {
     this.authService.logout();
     this.notifier.notify('success', 'Vous êtes déconnecté')

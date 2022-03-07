@@ -1,16 +1,16 @@
 <!-- App Header -->
 <div class="appHeader">
-	<div class="left">
-	  <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
-		 <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-	  </a>
-	</div>
-	<div class="pageTitle">
-		Profil de {{user?.firstname}}
-	</div>
-	<div class="right">
-	</div>
- </div>
+  <div class="left">
+  </div>
+  <div class="pageTitle">
+    Profil de <span style="text-transform: capitalize;">{{user?.firstname}}</span>
+  </div>
+  <div class="right">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
+      <ion-icon name="close-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+</div>
 <!-- Extra Header -->
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">
@@ -32,24 +32,26 @@
   <div class="section full gradientSection">
     <div class="in coin-head">
       <div class="d-flex align-items-center justify-content-center">
-        <img src="{{user?.img.avatar}}" class="imaged w48 rounded mr-05" alt="">
-        <h1 class="total my-0 ml-1 d-flex align-items-center">{{user?.firstname}}<span
-            class="fi fi-{{user?.ctryCode}} ml-1"></span></h1>
+        <img src="{{getUserImgProfile(user)}}" class="imaged w48 rounded mr-05" alt="">
+        <h1 class="total my-0 ml-1 d-flex align-items-center"><span
+            style="text-transform: capitalize;">{{user?.firstname}}</span>
+          <span class="fi fi-{{user?.ctryCode}} ml-1"></span></h1>
       </div>
       <div class="d-flex align-items-center justify-content-around mt-2">
         <div class="chip chip-media bg-white">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label"><span class="number" style="font-size: 11px;">{{user?.followers}}</span>
-            {{user?.followers < 1 ? 'Abonné' : 'Abonnés'}}</span>
+          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{user?.followersCounter}}</span>
+            {{user?.followersCounter < 1 ? 'Abonné' : 'Abonnés'}}</span>
         </div>
         <div class="chip chip-media bg-white">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label"><span class="number" style="font-size: 11px;">{{user?.subscription}}</span>
-            {{user?.subscription < 1 ? 'Abonnement' : 'Abonnements'}}</span>
+          <span class="chip-label w-100"><span class="number"
+              style="font-size: 11px;">{{user?.subscriptionsCounter}}</span>
+            {{user?.subscriptionsCounter < 1 ? 'Abonnement' : 'Abonnements'}}</span>
         </div>
         <button (click)="followProfile(user)" class="btn btn-primary btn-icon" *ngIf="!isMyProfile()">
           <ion-icon name="arrow-redo-outline"></ion-icon>
@@ -62,10 +64,9 @@
     <div class="tab-pane fade {{!isCatalogArt() ? 'active show' : ''}}" id="mode" role="tabpanel">
       <div class="section section-big-img mb-3">
         <div class="avatar-section">
-          <a href="" class="custom-file-upload"
-            style="background: url('{{user?.img.dressing}}') center center no-repeat;">
+          <a class="custom-file-upload" data-toggle="modal" data-target="#editImgDressingForm"
+            style="background: url('{{getUserImgDressing(user)}}') center center no-repeat;">
             <label class="d-flex align-items-center justify-content-center" for="photoProfile" *ngIf="isMyProfile()">
-              <input type="file" id="photoProfile" accept=".png, .jpg, .jpeg">
               <ion-icon name="camera-outline" style="color: #ffffffd9; font-size: 40px;"></ion-icon>
             </label>
           </a>
@@ -139,10 +140,9 @@
     <div class="tab-pane fade {{isCatalogArt() ? 'active show' : ''}}" id="art" role="tabpanel">
       <div class="section section-big-img mb-3">
         <div class="avatar-section">
-          <a href="" class="custom-file-upload"
-            style="background: url('{{user?.img.gallery}}') center center no-repeat;">
-            <label class="d-flex align-items-center justify-content-center" for="photoProfile">
-              <input type="file" id="photoProfile" accept=".png, .jpg, .jpeg">
+          <a href="" class="custom-file-upload" data-toggle="modal" data-target="#editImgGalleryForm"
+            style="background: url('{{getUserImgGallery(user)}}') center center no-repeat;">
+            <label class="d-flex align-items-center justify-content-center" for="photoProfile" *ngIf="isMyProfile()">
               <ion-icon name="camera-outline" style="color: #ffffffd9; font-size: 40px;"></ion-icon>
             </label>
           </a>
@@ -162,6 +162,95 @@
               *ngIf="productsArt.length === 0">
               <p style="font-size: large;">Aucun article disponible</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade action-sheet" id="editImgDressingForm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Modifier mon dressing</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form [formGroup]="editImgDressingForm">
+              <div class="row justify-content-center mb-1">
+                <div class="col-12">
+                  <div class="custom-file-upload" style="overflow: hidden;">
+                    <input type="file" id="fileDressingUploadInput" (change)="onPhotoDressingSelect($event)"
+                      accept=".png, .jpg, .jpeg">
+                    <label for="fileDressingUploadInput" *ngIf="!img.dressingSrc">
+                      <span>
+                        <strong>
+                          <ion-icon name="camera" class="md hydrated"></ion-icon>
+                          <i>Photo de mon dressing</i>
+                        </strong>
+                      </span>
+                    </label>
+                    <div class="image-upload" *ngIf="img.dressingSrc">
+                      <img src="{{img.dressingSrc}}" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <button (click)="editImgDressing()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade action-sheet" id="editImgGalleryForm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Modifier la galerie</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form [formGroup]="editImgGalleryForm">
+              <div class="row justify-content-center mb-1">
+                <div class="col-12">
+                  <div class="custom-file-upload" style="overflow: hidden;">
+                    <input type="file" id="fileGalleryUploadInput" (change)="onPhotoGallerySelect($event)"
+                      accept=".png, .jpg, .jpeg">
+                    <label for="fileGalleryUploadInput" *ngIf="!img.gallerySrc">
+                      <span>
+                        <strong>
+                          <ion-icon name="camera" class="md hydrated"></ion-icon>
+                          <i>Photo de ma galerie</i>
+                        </strong>
+                      </span>
+                    </label>
+                    <div class="image-upload" *ngIf="img.gallerySrc">
+                      <img src="{{img.gallerySrc}}" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <button (click)="editImgGallery()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

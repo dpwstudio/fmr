@@ -15,8 +15,6 @@ export class UserService {
     private http: HttpClient,
     private authService: AuthService
   ) {
-    this.currentUser = this.authService.currentUserValue;
-    console.log('xxxxx', this.currentUser);
   }
 
   createUser(user: User) {
@@ -24,25 +22,63 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get(`assets/mock-data/users.json`) as Observable<User[]>;
+    return this.http.get(`${environment.fmrApi}/users`) as Observable<User[]>;
   }
 
   getUser(id): Observable<User[]> {
     return this.http.get(`${environment.fmrApi}/users/${id}`) as Observable<User[]>;
   }
 
-  editUserInfos(user) {
-    console.log('user', user);
-    return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, user);
+  editImg(img, imgType, id) {
+    console.log('img', img);
+    console.log('this.currentUser.id', id);
+    img.imgType = imgType;
+    return this.http.put(`${environment.fmrApi}/users/${id}`, img);
   }
 
-  editAddress(address, addressType) {
+  editUserInfos(user, userId) {
+    console.log('user', user);
+    return this.http.put(`${environment.fmrApi}/users/${userId}`, user);
+  }
+
+  editAddress(address, addressType, userId) {
     address.addressType = addressType;
-    return this.http.put(`${environment.fmrApi}/users/${this.currentUser.id}`, address);
+    return this.http.put(`${environment.fmrApi}/users/${userId}`, address);
   }
 
   deleteUser(id) {
     return this.http.delete(`${environment.fmrApi}/users/${id}`);
+  }
+
+  getUserImgProfile(user) {
+    let imgProfile = {
+      avatar: '',
+      dressing: '',
+      gallery: ''
+    };
+    if (user && user.img) {
+      const img = JSON.parse(user.img)[0];
+      if (img.avatar) {
+        imgProfile.avatar = img.avatar;
+      } else {
+        imgProfile.avatar = 'assets/img/default-img.svg';
+      }
+      if (img.dressing) {
+        imgProfile.dressing = img.dressing;
+      } else {
+        imgProfile.dressing = 'assets/img/dressing/dressing1.png';
+      }
+      if (img.gallery) {
+        imgProfile.gallery = img.gallery;
+      } else {
+        imgProfile.gallery = 'assets/img/gallery/gallery3.png';
+      }
+    } else {
+      imgProfile.avatar = 'assets/img/default-img.svg';
+      imgProfile.dressing = 'assets/img/dressing/dressing1.png';
+      imgProfile.gallery = 'assets/img/gallery/gallery3.png';
+    }
+    return imgProfile;
   }
 
 }

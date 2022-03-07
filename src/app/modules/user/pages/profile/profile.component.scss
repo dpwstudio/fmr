@@ -1,7 +1,7 @@
 .gradientSection {
   position: relative;
   text-align: center;
-  background: #ddd1b6;
+  // background: #ddd1b6;
   background-image: linear-gradient(0deg, #ededf5 0%, #ddd1b6 100%);
 
   .in {
@@ -49,17 +49,19 @@
 
   .avatar-section {
     width: 100%;
-
-    .custom-file-upload {
-      width: 100%;
-      height: 214px;
-      border-radius: 10px;
-      border: 5px solid white;
-
-      label {
-        background: transparent;
-      }
-    }
   }
 
+}
+
+.custom-file-upload {
+  display: block;
+  width: 100%;
+  height: 214px;
+  border-radius: 15px;
+  border: 5px solid white;
+  background-color: #f1f1f6;
+
+  label {
+    background: transparent;
+  }
 }

@@ -11,8 +11,7 @@ export class PaymentStatusComponent implements OnInit {
   currentUser: User;
 
   constructor(private authService: AuthService) {
-    this.currentUser = this.authService.currentUserValue;
-
+    this.currentUser = this.authService.getCurrentUser();
   }
 
   ngOnInit(): void {

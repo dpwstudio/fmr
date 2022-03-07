@@ -94,10 +94,11 @@
           <a [routerLink]="['/profile', user.id, {catalogType: 'mode'}]" routerLinkActive="router-link-active"
             class="item">
             <div class="item-profile">
-              <app-image [src]="user.img.dressing"></app-image>
+              <img [src]="getUserDressingImg(user)">
             </div>
             <div class="box">
-              <h1>Le dressing de {{user.firstname}}</h1>
+              <h1>Le dressing de <span style="text-transform: capitalize;font-size: 25px;">{{user.firstname}}</span>
+              </h1>
               <span class="text-secondary">Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
             </div>
           </a>
@@ -137,10 +138,10 @@
           <a [routerLink]="['/profile', user.id, {catalogType: 'art'}]" routerLinkActive="router-link-active"
             class="item">
             <div class="item-profile">
-              <app-image [src]="user.img.gallery"></app-image>
+              <img [src]="getUserGalleryImg(user)">
             </div>
             <div class="box">
-              <h1>La galerie de {{user.firstname}}</h1>
+              <h1>La galerie de <span style="text-transform: capitalize;font-size: 25px;">{{user.firstname}}</span></h1>
               <span class="text-secondary">Membre depuis le {{user.createdAt | date:'dd/MM/YYYY'}}</span>
             </div>
           </a>

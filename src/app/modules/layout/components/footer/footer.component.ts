@@ -15,7 +15,7 @@ export class FooterComponent implements OnInit {
   }
 
   isUserConnected() {
-    return this.authService.currentUserValue;
+    return this.authService.getCurrentUser();
   }
 
   getTotalCurrentCart() {

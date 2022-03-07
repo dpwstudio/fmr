@@ -9,20 +9,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  public currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  /**
-   * Récupère l'utilisateur connecté
-   */
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+  } 
 
   /**
    * Connection au compte
@@ -33,11 +26,10 @@ export class AuthService {
     return this.http.post<any>(`${environment.fmrApi}/auth/login`, { email, password })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-
         console.log('user', user[0])
-        localStorage.setItem('currentUser', JSON.stringify(user[0]));
-        this.currentUserSubject.next(user[0]);
-        return user[0];
+        const currentUser = user[0];
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        return currentUser;
       }));
   }
 
@@ -73,13 +65,12 @@ export class AuthService {
    */
   logout() {
     localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
   }
 
   /**
    * L'utilisateur a le rôle ADMIN
    */
-  isAdmin() {
-    return this.currentUserValue[0].role === 'admin';
-  }
+  // isAdmin() {
+  //   return this.auth.role === 'admin';
+  // }
 }

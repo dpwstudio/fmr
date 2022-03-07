@@ -33,10 +33,10 @@ export class WishlistComponent implements OnInit {
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
     this.getProducts();
   }
 

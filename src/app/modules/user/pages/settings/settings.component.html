@@ -10,18 +10,21 @@
     Mon compte
   </div>
   <div class="right">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
+      <ion-icon name="close-outline" class="text-primary"></ion-icon>
+    </a>
   </div>
 </div>
 <!-- App Capsule -->
 <div id="appCapsule">
   <div class="section mt-3 text-center">
     <div class="avatar-section">
-      <a href="" class="custom-file-upload" style="background: url('{{getCurrentUserImgProfile()}}') no-repeat center center;">
-        <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+      <label class="custom-file-upload" data-toggle="modal" data-target="#editImgForm"
+        style="background: url('{{getUserImgProfile(currentUser)}}') no-repeat center center;">
         <span class="button">
           <ion-icon name="camera-outline"></ion-icon>
         </span>
-      </a>
+      </label>
     </div>
     <h2 style="font-size: 25px;">{{currentUser?.firstname | uppercase}}</h2>
   </div>
@@ -170,7 +173,51 @@
 </div>
 <!-- * App Capsule -->
 
-<div class="modal fade action-sheet" id="infosForm" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade action-sheet" id="editImgForm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Modifier mes images</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="section full mt-1 mb-2">
+          <div class="wide-block pb-1 pt-1 border-0">
+            <form [formGroup]="editImgForm">
+              <div class="row justify-content-center mb-1">
+                <div class="col-6">
+                  <div class="custom-file-upload" style="overflow: hidden;">
+                    <input type="file" id="fileAvatarUploadInput" (change)="onPhotoSelect($event)"
+                      accept=".png, .jpg, .jpeg">
+                    <label for="fileAvatarUploadInput" *ngIf="!img.avatarSrc">
+                      <span>
+                        <strong>
+                          <ion-icon name="camera" class="md hydrated"></ion-icon>
+                          <i>Avatar</i>
+                        </strong>
+                      </span>
+                    </label>
+                    <div class="image-upload" *ngIf="img.avatarSrc">
+                      <img src="{{img.avatarSrc}}" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group basic">
+                <button (click)="editImgProfile()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade action-sheet" id="infosForm" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
@@ -190,7 +237,8 @@
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="Pseudo">
+                  <input type="text" class="form-control" id="firstname" formControlName="firstname"
+                    placeholder="Pseudo">
                 </div>
               </div>
               <div class="form-group basic">
@@ -199,7 +247,8 @@
                 </div>
               </div>
               <div class="form-group basic">
-                <button (click)="editInfos()" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Enregistrer</button>
+                <button (click)="editInfos()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
               </div>
             </form>
           </div>
@@ -209,7 +258,7 @@
   </div>
 </div>
 
-<div class="modal fade action-sheet" id="passwordForm" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade action-sheet" id="passwordForm" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
@@ -224,16 +273,19 @@
             <form [formGroup]="editPasswordForm">
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <input type="password" class="form-control" formControlName="password" id="name4" placeholder="Mot de passe">
+                  <input type="password" class="form-control" formControlName="password" id="name4"
+                    placeholder="Mot de passe">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <input type="password" class="form-control" formControlName="confirmPassword" id="name4" placeholder="Confirmer mot de passe">
+                  <input type="password" class="form-control" formControlName="confirmPassword" id="name4"
+                    placeholder="Confirmer mot de passe">
                 </div>
               </div>
               <div class="form-group basic">
-                <button (click)="editPassword()" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Enregistrer</button>
+                <button (click)="editPassword()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
               </div>
             </form>
           </div>
@@ -243,7 +295,7 @@
   </div>
 </div>
 
-<div class="modal fade action-sheet" id="deliveryAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade action-sheet" id="deliveryAddressForm" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
@@ -267,26 +319,24 @@
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="name4">Code postal</label>
-                  <input type="text" class="form-control" id="name4"
-                    formControlName="zipCode">
+                  <input type="text" class="form-control" id="name4" formControlName="zipCode">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="city4">Ville</label>
-                  <input type="text" class="form-control" id="name4"
-                    formControlName="city">
+                  <input type="text" class="form-control" id="name4" formControlName="city">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="city4">Pays</label>
-                  <input type="text" class="form-control" id="name4"
-                    formControlName="country">
+                  <input type="text" class="form-control" id="name4" formControlName="country">
                 </div>
               </div>
               <div class="form-group basic">
-                <button (click)="editDeliveryAddress()" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Enregistrer</button>
+                <button (click)="editDeliveryAddress()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
               </div>
             </form>
           </div>
@@ -296,7 +346,7 @@
   </div>
 </div>
 
-<div class="modal fade action-sheet" id="billingAddressForm" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade action-sheet" id="billingAddressForm" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
@@ -322,23 +372,27 @@
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="zipCode">Code postal</label>
-                  <input type="text" class="form-control" id="zipCode" [value]="billingAddress.zipCode" formControlName="zipCode">
+                  <input type="text" class="form-control" id="zipCode" [value]="billingAddress.zipCode"
+                    formControlName="zipCode">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="city">Ville</label>
-                  <input type="text" class="form-control" id="city" [value]="billingAddress.city" formControlName="city">
+                  <input type="text" class="form-control" id="city" [value]="billingAddress.city"
+                    formControlName="city">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="country">Pays</label>
-                  <input type="text" class="form-control" id="country" [value]="billingAddress.country" formControlName="country">
+                  <input type="text" class="form-control" id="country" [value]="billingAddress.country"
+                    formControlName="country">
                 </div>
               </div>
               <div class="form-group basic">
-                <button (click)="editBillingAddress()" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Enregistrer</button>
+                <button (click)="editBillingAddress()" class="btn btn-primary btn-block btn-lg"
+                  data-dismiss="modal">Enregistrer</button>
               </div>
             </form>
           </div>

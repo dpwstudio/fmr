@@ -12,12 +12,11 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class ProductService {
-  currentUser: User;
+
   constructor(
     private http: HttpClient,
     private authService: AuthService
   ) {
-    this.currentUser = this.authService.currentUserValue;
   }
 
   createProduct(product: Product) {

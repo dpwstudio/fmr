@@ -145,16 +145,16 @@ export class ProfileComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getProductsMock().pipe(
+    this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
       if (this.user) {
-        this.productsArt = products.filter(product => product.sellerId === this.user.id && product.catalogType === 'art');
-        this.productsMens = products.filter(product => product.sellerId === this.user.id && product.kind === 'mens');
-        this.productsWomens = products.filter(product => product.sellerId === this.user.id && product.kind === 'womens');
-        this.productsKids = products.filter(product => product.sellerId === this.user.id && product.kind === 'kids');
+        this.productsArt = products.filter(product => product.userId === this.user.id && product.catalogType === 'art');
+        this.productsMens = products.filter(product => product.userId === this.user.id && product.kind === 'mens');
+        this.productsWomens = products.filter(product => product.userId === this.user.id && product.kind === 'womens');
+        this.productsKids = products.filter(product => product.userId === this.user.id && product.kind === 'kids');
       }
     })
   }

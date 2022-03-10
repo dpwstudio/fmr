@@ -41,15 +41,15 @@ export class WishlistComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getProductsMock().pipe(
+    this.productService.getProducts().pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      this.productsArt = products.filter(product => product.sellerId === this.currentUser.id && product.catalogType === 'art');
-      this.productsMens = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'mens');
-      this.productsWomens = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'womens');
-      this.productsKids = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'kids');
+      this.productsArt = products.filter(product => product.userId === this.currentUser.id && product.catalogType === 'art');
+      this.productsMens = products.filter(product => product.userId === this.currentUser.id && product.kind === 'mens');
+      this.productsWomens = products.filter(product => product.userId === this.currentUser.id && product.kind === 'womens');
+      this.productsKids = products.filter(product => product.userId === this.currentUser.id && product.kind === 'kids');
     })
   }
 

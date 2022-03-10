@@ -11,7 +11,7 @@ export class Product {
 	fallingPrice = 0;
 	avatar = '';
 	userName = '';
-	userId = '';
+	userId = 0;
 	width = 0;
 	height = 0;
 	depth = 0;

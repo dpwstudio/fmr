@@ -39,13 +39,6 @@ export class ProductService {
     ) as Observable<Product[]>;
   }
 
-  getProductsMock(filters?: FiltersProducts): Observable<ProductModel[]> {
-    return this.http.get(`assets/mock-data/products.json`).pipe(
-      map((products: ProductModel[]) => filters ? products.filter(product => product.category === filters.category
-        && product.catalogType === filters.catalogType) : products)
-    ) as Observable<ProductModel[]>;
-  }
-
   getProducts(filters?: FiltersProducts): Observable<Product[]> {
     return this.http.get(`${environment.fmrApi}/products`).pipe(
       catchError(error => {

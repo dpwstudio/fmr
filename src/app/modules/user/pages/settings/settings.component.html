@@ -2,9 +2,6 @@
 <!-- App Header -->
 <div class="appHeader">
   <div class="left">
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
-      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-    </a>
   </div>
   <div class="pageTitle">
     Mon compte
@@ -94,7 +91,7 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1">Gestions des articles</div>
+  <div class="listview-title mt-1">Suivi</div>
   <ul class="listview image-listview inset">
     <li>
       <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
@@ -108,6 +105,14 @@
       <a [routerLink]="['/products']" routerLinkActive="router-link-active" class="item">
         <div class="in">
           <div>Suivi des articles</div>
+          <span class="text-muted" style="font-size: 15px;">Voir</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/products']" routerLinkActive="router-link-active" class="item">
+        <div class="in">
+          <div>Suivi des achats</div>
           <span class="text-muted" style="font-size: 15px;">Voir</span>
         </div>
       </a>

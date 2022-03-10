@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
   }
 
   getTotalTTC() {
-    return this.carts.reduce((acc, product) => acc = acc + (product.amount.price * product.quantity), 0);
+    return this.carts.reduce((acc, product) => acc = acc + (product.price * product.quantity), 0);
   }
 
   confirmCart() {
@@ -57,6 +57,10 @@ export class CartComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+  goto(product) {
+    this.router.navigate(['/product-detail', product.product.id]);
   }
 
   removeProduct(product) {

@@ -3,10 +3,10 @@
   <div class="blog-card">
     <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
       <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
-        <a [routerLink]="['/profile', product.sellerId]" routerLinkActive="router-link-active"
+        <a [routerLink]="['/profile', product.userId]" routerLinkActive="router-link-active"
           class="d-flex align-items-center justify-content-between text-muted">
-          <img src="{{product.sellerImg ? product.sellerImg : 'assets/img/default-img.svg'}}" [alt]="product.sellerName" [title]="product.sellerName"
-            class="imaged w24 rounded mr-05"> {{product.sellerName}}
+          <img src="{{product.avatar ? product.avatar : 'assets/img/default-img.svg'}}" [alt]="product.avatar" [title]="product.avatar"
+            class="imaged w24 rounded mr-05"> {{product.userName}}
         </a>
         <div class="d-flex align-items-center justify-content-between text-muted">
           <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="image-overflow">
-        <app-image [src]="product.img.photoFace"></app-image>
+        <app-image [src]="product.photoFace"></app-image>
       </div>
       <div class="bill-box">
         <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
@@ -25,9 +25,9 @@
 			  </ion-icon>
 			</i>
 			<span class="chip-label number pr-0 origin-price"
-			  [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+			  [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
 			<span class="text-danger number d-none"
-			  [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+			  [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
 		 </div>
       </div>
     </a>
@@ -37,7 +37,7 @@
     bottom: 0;">
       <div class="d-flex align-items-center">
         <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-        <span class="fi fi-{{product.sellerCountry}}"></span>
+        <span class="fi fi-fr"></span>
       </div>
       <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
         <ion-icon name="bag-add-outline"></ion-icon>

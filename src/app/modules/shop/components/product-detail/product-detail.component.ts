@@ -40,12 +40,7 @@ export class ProductDetailComponent implements OnInit {
   id: number;
   subscription: Subscription;
   filtersProducts: FiltersProducts;
-  currentImg: {
-    photoFace: string;
-    photoDos: string;
-    photoProfile: string;
-    photoGriffe: string;
-  };
+  currentImg: string;
 
   constructor(
     private router: Router,
@@ -73,7 +68,7 @@ export class ProductDetailComponent implements OnInit {
       catchError(error => {
         return throwError(error);
       })
-    ).subscribe(products => {
+    ).subscribe((products: any[]) => {
       this.products = products;
       this.currentProduct = this.products.filter(product => product.id === filtersProducts.id)[0];
     })
@@ -107,8 +102,8 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addProductToCart(product);
   }
 
-  getCurrentProduct(productImg) {
-    return this.currentImg = productImg;
+  getCurrentImg(img) {
+    return this.currentImg = img;
   }
 
   isSameCategories(product) {

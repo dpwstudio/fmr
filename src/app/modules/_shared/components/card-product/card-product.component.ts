@@ -22,7 +22,7 @@ export class CardProductComponent implements OnInit {
   }
 
   isFallingPrice(product: Product) {
-    return product.amount.fallingPrice > 0;
+    return product.fallingPrice > 0;
   }
 
 }

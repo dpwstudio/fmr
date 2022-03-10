@@ -10,7 +10,7 @@ const routes: Routes = [
     data: { animationState: 'One' }
   },
   {
-    path: 'post-confirm',
+    path: 'post-confirm/:id',
     component: PostConfirmComponent,
     data: { animationState: 'Two' }
   }

@@ -1,21 +1,4 @@
-<!-- App Header -->
-<div class="appHeader">
-  <div class="left">
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
-      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-    </a>
-  </div>
-  <div class="pageTitle">
-    Dépot d'une annonce
-  </div>
-  <div class="right">
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
-      <ion-icon name="close-outline" class="text-primary"></ion-icon>
-    </a>
-  </div>
-</div>
-<!-- * App Header -->
-
+<app-header-post [title]="'Dépôt d\'un article'" [linkLeft]="'false'" [linkRight]="'close'"></app-header-post>
 <!-- App Capsule -->
 <div id="appCapsule">
   <div class="section mt-3 text-center">
@@ -83,14 +66,14 @@
   </ul>
 
   <div class="section">
-    <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;" (click)="addToSell()">Mettre en
+    <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;" (click)="addProduct()">Mettre en
       vente</button>
   </div>
 
 </div>
 <!-- * App Capsule -->
 
-<!-- Form Ajout Photos Sheet -->
+<!-- Images Form -->
 <div class="modal fade modalbox" id="picturesForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -105,8 +88,7 @@
           <div class="row mb-2">
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="fileuploadInput" [(ngModel)]="product.img.photoFace"
-                  [ngModelOptions]="{standalone: true}" (change)="onPhotoFaceChange($event)" accept=".png, .jpg, .jpeg">
+                <input type="file" id="fileuploadInput" (change)="onPhotoFaceChange($event)" accept=".png, .jpg, .jpeg">
                 <label for="fileuploadInput" *ngIf="!product.img.photoFaceSrc">
                   <span>
                     <strong>
@@ -116,14 +98,14 @@
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photoFaceSrc">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photoFaceSrc')"></ion-icon>
                   <img [src]="product.img.photoFaceSrc">
                 </div>
               </div>
             </div>
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="photoDos" [(ngModel)]="product.img.photoDos"
-                  [ngModelOptions]="{standalone: true}" (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
+                <input type="file" id="photoDos" (change)="onPhotoDosChange($event)" accept=".png, .jpg, .jpeg">
                 <label for="photoDos" *ngIf="!product.img.photoDosSrc">
                   <span>
                     <strong>
@@ -133,6 +115,7 @@
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photoDosSrc">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photoDosSrc')"></ion-icon>
                   <img [src]="product.img.photoDosSrc">
                 </div>
               </div>
@@ -141,9 +124,7 @@
           <div class="row mb-2">
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="photoProfile" [(ngModel)]="product.img.photoProfile"
-                  [ngModelOptions]="{standalone: true}" (change)="onPhotoProfileChange($event)"
-                  accept=".png, .jpg, .jpeg">
+                <input type="file" id="photoProfile" (change)="onPhotoProfileChange($event)" accept=".png, .jpg, .jpeg">
                 <label for="photoProfile" *ngIf="!product.img.photoProfileSrc">
                   <span>
                     <strong>
@@ -153,15 +134,14 @@
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photoProfileSrc">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photoProfileSrc')"></ion-icon>
                   <img [src]="product.img.photoProfileSrc">
                 </div>
               </div>
             </div>
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="photoGriffe" [(ngModel)]="product.img.photoGriffe"
-                  [ngModelOptions]="{standalone: true}" (change)="onPhotoGriffeChange($event)"
-                  accept=".png, .jpg, .jpeg">
+                <input type="file" id="photoGriffe" (change)="onPhotoGriffeChange($event)" accept=".png, .jpg, .jpeg">
                 <label for="photoGriffe" *ngIf="!product.img.photoGriffeSrc">
                   <span>
                     <strong>
@@ -171,6 +151,7 @@
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photoGriffeSrc">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photoGriffeSrc')"></ion-icon>
                   <img [src]="product.img.photoGriffeSrc">
                 </div>
               </div>
@@ -179,34 +160,34 @@
           <div class="row">
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="photo5" [(ngModel)]="product.img.photo5" [ngModelOptions]="{standalone: true}"
-                  (change)="onPhoto5Change($event)" accept=".png, .jpg, .jpeg">
+                <input type="file" id="photo5" (change)="onPhoto5Change($event)" accept=".png, .jpg, .jpeg">
                 <label for="photo5" *ngIf="!product.img.photo5Src">
                   <span>
                     <strong>
                       <ion-icon name="camera" class="md hydrated"></ion-icon>
-                      <i>Photo 5*</i>
+                      <i>Photo 5</i>
                     </strong>
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photo5Src">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photo5Src')"></ion-icon>
                   <img [src]="product.img.photo5Src">
                 </div>
               </div>
             </div>
             <div class="col-6">
               <div class="custom-file-upload" style="overflow: hidden;">
-                <input type="file" id="photo6" [(ngModel)]="product.img.photo6" [ngModelOptions]="{standalone: true}"
-                  (change)="onPhoto6Change($event)" accept=".png, .jpg, .jpeg">
+                <input type="file" id="photo6" (change)="onPhoto6Change($event)" accept=".png, .jpg, .jpeg">
                 <label for="photo6" *ngIf="!product.img.photo6Src">
                   <span>
                     <strong>
                       <ion-icon name="camera" class="md hydrated"></ion-icon>
-                      <i>Photo 6*</i>
+                      <i>Photo 6</i>
                     </strong>
                   </span>
                 </label>
                 <div class="image-upload" *ngIf="product.img.photo6Src">
+                  <ion-icon name="close-outline" class="md hydrated btn-close" (click)="resetImage('photo6Src')"></ion-icon>
                   <img [src]="product.img.photo6Src">
                 </div>
               </div>
@@ -218,9 +199,9 @@
     </div>
   </div>
 </div>
-<!-- * Form Ajout Photos Sheet -->
+<!-- * Form Images Form -->
 
-<!-- Form Infos Sheet -->
+<!-- Description Form -->
 <div class="modal fade modalbox" id="descriptionForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -230,66 +211,77 @@
           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
         </a>
       </div>
-      <div class="modal-body pt-0">
+      <div class="modal-body pt-0" style="background: #EDEDF5;">
         <div class="pt-2 pb-2 border-0">
           <ul class="nav nav-tabs style1" role="tablist">
             <li class="nav-item">
-              <a (click)="getcatalogType('mode')" class="nav-link active" data-toggle="tab" href="#home" role="tab">
+              <a (click)="getCatalogType('mode')" class="nav-link active" data-toggle="tab" href="#home" role="tab">
                 Mode
               </a>
             </li>
             <li class="nav-item">
-              <a (click)="getcatalogType('art')" class="nav-link" data-toggle="tab" href="#profile" role="tab">
+              <a (click)="getCatalogType('art')" class="nav-link" data-toggle="tab" href="#profile" role="tab">
                 Art
               </a>
             </li>
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
-              <form>
+              <form [formGroup]="postProductForm">
+                <ul class="nav nav-tabs style1 mb-1" role="tablist">
+                  <li class="nav-item" (click)="getKind('mens')">
+                    <a class="nav-link active" data-toggle="tab" href="#example1b" role="tab">
+                      Homme
+                    </a>
+                  </li>
+                  <li class="nav-item" (click)="getKind('womens')">
+                    <a class="nav-link" data-toggle="tab" href="#example2b" role="tab">
+                      Femme
+                    </a>
+                  </li>
+                  <li class="nav-item" (click)="getKind('kids')">
+                    <a class="nav-link" data-toggle="tab" href="#example3b" role="tab">
+                      Enfant
+                    </a>
+                  </li>
+                </ul>
+                <ul class="listview image-listview inset mx-0 mt-2 mb-1">
+                  <li>
+                    <a data-toggle="modal" data-target="#categoryForm" class="item">
+                      <div class="in">
+                        <div>Catégories</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.category.value}}</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a data-toggle="modal" data-target="#brandForm" class="item">
+                      <div class="in">
+                        <div>Marque</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.brand.value}}</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
                 <div class="form-group basic">
                   <div class="input-wrapper">
-                    <select class="form-control custom-select" [(ngModel)]="product.category"
-                      [ngModelOptions]="{standalone: true}">
-                      <option value="" selected disabled>
-                        <span class="placeholder">Sélectionner une catégorie</span>
-                      </option>
-                      <option value="1">Homme</option>
-                      <option value="2">Femme</option>
-                      <option value="3">Enfant</option>
-                    </select>
+                    <input type="text" class="form-control modal-input" formControlName="model" placeholder="Modèle">
                   </div>
                 </div>
                 <div class="form-group basic">
                   <div class="input-wrapper">
-                    <div class="input-wrapper">
-                      <input type="text" class="form-control" [(ngModel)]="product.brand"
-                        [ngModelOptions]="{standalone: true}" placeholder="Marque">
-                    </div>
+                    <input type="text" class="form-control modal-input" formControlName="matter" placeholder="Matière">
                   </div>
                 </div>
                 <div class="form-group basic">
                   <div class="input-wrapper">
-                    <input type="text" class="form-control" [(ngModel)]="product.model"
-                      [ngModelOptions]="{standalone: true}" placeholder="Modèle">
+                    <input type="text" class="form-control modal-input" formControlName="color" placeholder="Couleur">
                   </div>
                 </div>
                 <div class="form-group basic">
                   <div class="input-wrapper">
-                    <input type="text" class="form-control" [(ngModel)]="product.matter"
-                      [ngModelOptions]="{standalone: true}" placeholder="Matière">
-                  </div>
-                </div>
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <input type="text" class="form-control" [(ngModel)]="product.color"
-                      [ngModelOptions]="{standalone: true}" placeholder="Couleur">
-                  </div>
-                </div>
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <textarea rows="3" class="form-control" [(ngModel)]="product.description"
-                      [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
+                    <textarea rows="3" class="form-control modal-input px-3" formControlName="description"
+                      placeholder="Décrivez l'article"></textarea>
                     <i class="clear-input">
                       <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -298,26 +290,21 @@
               </form>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel">
-              <form>
+              <form [formGroup]="postProductForm">
+                <ul class="listview image-listview inset mx-0 mt-2 mb-1">
+                  <li>
+                    <a data-toggle="modal" data-target="#categoryForm" class="item">
+                      <div class="in">
+                        <div>Catégories</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.category.value}}</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
                 <div class="form-group basic">
                   <div class="input-wrapper">
-                    <select class="form-control custom-select" [(ngModel)]="product.categoryArt"
-                      [ngModelOptions]="{standalone: true}">
-                      <option value="" selected disabled hidden>
-                        <span class="placeholder">Sélectionner une catégorie</span>
-                      </option>
-                      <option value="1">Tableaux</option>
-                      <option value="2">Sculptures</option>
-                      <option value="3">Luminaires</option>
-                      <option value="4">Objets</option>
-                      <option value="4">Autres</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <textarea id="name3" rows="3" class="form-control" [(ngModel)]="product.descriptionArt"
-                      [ngModelOptions]="{standalone: true}" placeholder="Décrivez l'article"></textarea>
+                    <textarea id="name3" rows="3" class="form-control modal-input px-3" formControlName="description"
+                      placeholder="Décrivez l'article"></textarea>
                   </div>
                 </div>
               </form>
@@ -331,9 +318,9 @@
     </div>
   </div>
 </div>
-<!-- * Form Infos Sheet -->
+<!-- * Description Form -->
 
-<!-- Form Dimensions Sheet -->
+<!-- Dimensions Form -->
 <div class="modal fade action-sheet" id="dimensionsForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -345,28 +332,25 @@
       </div>
       <div class="modal-body">
         <div class="wide-block pt-2 pb-2 border-0">
-          <form class="d-flex mb-2">
+          <form [formGroup]="postProductForm" class="d-flex mb-2">
             <div class="form-group basic mr-2">
               <div class="input-wrapper">
                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  [(ngModel)]="product.dimensions.height" [ngModelOptions]="{standalone: true}" placeholder="Haut.">
-
+                  formControlName="height" placeholder="Haut.">
               </div>
             </div>
 
             <div class="form-group basic mr-2">
               <div class="input-wrapper">
                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  [(ngModel)]="product.dimensions.width" [ngModelOptions]="{standalone: true}" placeholder="Larg.">
-
+                  formControlName="width" placeholder="Larg.">
               </div>
             </div>
 
             <div class="form-group basic">
               <div class="input-wrapper">
                 <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  [(ngModel)]="product.dimensions.depth" [ngModelOptions]="{standalone: true}" placeholder="Prof.">
-
+                  formControlName="depth" placeholder="Prof.">
               </div>
             </div>
           </form>
@@ -378,9 +362,9 @@
     </div>
   </div>
 </div>
-<!-- * Form Dimensions -->
+<!-- * Dimensions Form -->
 
-<!-- Form  State Choice -->
+<!-- State Choice Form -->
 <div class="modal fade modalbox" id="stateForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -408,94 +392,96 @@
             <div class="tab-pane fade show active" id="stateMode" role="tabpanel">
               <div class="wide-block p-0 mb-3">
                 <div class="input-list">
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="neverWornWithTagChoice" [(ngModel)]="product.stateChoice"
-                      value="neverWornWithTagChoice" class="custom-control-input">
-                    <label class="custom-control-label" for="neverWornWithTagChoice">
-                      <div class="in">
-                        <div>
-                          <p class="my-0" style="font-size: 18px;">Jamais porté avec étiquette</p>
-                          <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
-                            article jamais porté avec étiquette est un article qui n'a jamais été porté et
-                            présente les étiquettes originales d'achat (joindre la photo de l'étiquette).</footer>
+                  <form [formGroup]="postProductForm">
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="neverWornWithTagChoice" formControlName="stateChoice"
+                        value="neverWornWithTagChoice" class="custom-control-input">
+                      <label class="custom-control-label" for="neverWornWithTagChoice">
+                        <div class="in">
+                          <div>
+                            <p class="my-0" style="font-size: 18px;">Jamais porté avec étiquette</p>
+                            <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                              article jamais porté avec étiquette est un article qui n'a jamais été porté et
+                              présente les étiquettes originales d'achat (joindre la photo de l'étiquette).</footer>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="neverWornChoice" [(ngModel)]="product.stateChoice" value="neverWornChoice"
-                      class="custom-control-input">
-                    <label class="custom-control-label" for="neverWornChoice">
-                      <div class="in">
-                        <div>
-                          <p class="my-0" style="font-size: 18px;">Jamais porté</p>
-                          <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
-                            article jamais porté sans étiquette est un article qui n'a jamais été porté et ne
-                            présente aucun défaut ni aucune modification.</footer>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="neverWornChoice" formControlName="stateChoice" value="neverWornChoice"
+                        class="custom-control-input">
+                      <label class="custom-control-label" for="neverWornChoice">
+                        <div class="in">
+                          <div>
+                            <p class="my-0" style="font-size: 18px;">Jamais porté</p>
+                            <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                              article jamais porté sans étiquette est un article qui n'a jamais été porté et ne
+                              présente aucun défaut ni aucune modification.</footer>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="veryGoodStateChoice" [(ngModel)]="product.stateChoice"
-                      value="veryGoodStateChoice" class="custom-control-input">
-                    <label class="custom-control-label" for="veryGoodStateChoice">
-                      <div class="in">
-                        <div>
-                          <p class="my-0" style="font-size: 18px;">Très bon état</p>
-                          <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
-                            article en très bon état est un article d'occasion peu utilisé et très bien
-                            entretenu,
-                            pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le
-                            descriptif
-                            et visibles en photo).</footer>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="veryGoodStateChoice" formControlName="stateChoice"
+                        value="veryGoodStateChoice" class="custom-control-input">
+                      <label class="custom-control-label" for="veryGoodStateChoice">
+                        <div class="in">
+                          <div>
+                            <p class="my-0" style="font-size: 18px;">Très bon état</p>
+                            <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                              article en très bon état est un article d'occasion peu utilisé et très bien
+                              entretenu,
+                              pouvant présenter de légers défauts d'usage (ceux-ci doivent être mentionnés dans le
+                              descriptif
+                              et visibles en photo).</footer>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="goodStateChoice" [(ngModel)]="product.stateChoice" value="goodStateChoice"
-                      class="custom-control-input">
-                    <label class="custom-control-label" for="goodStateChoice">
-                      <div class="in">
-                        <div>
-                          <p class="my-0" style="font-size: 18px;">Bon état</p>
-                          <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
-                            article en bon état est un article d'occasion porté et bien entretenu. Si
-                            l'article
-                            présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en
-                            photo.
-                          </footer>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="goodStateChoice" formControlName="stateChoice" value="goodStateChoice"
+                        class="custom-control-input">
+                      <label class="custom-control-label" for="goodStateChoice">
+                        <div class="in">
+                          <div>
+                            <p class="my-0" style="font-size: 18px;">Bon état</p>
+                            <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">Un
+                              article en bon état est un article d'occasion porté et bien entretenu. Si
+                              l'article
+                              présente des défauts, ceux-ci doivent être mentionnés dans le descriptif et visibles en
+                              photo.
+                            </footer>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="correctChoice" [(ngModel)]="product.stateChoice" value="correctChoice"
-                      class="custom-control-input">
-                    <label class="custom-control-label" for="correctChoice">
-                      <div class="in">
-                        <div>
-                          <p class="my-0" style="font-size: 18px;">Correct</p>
-                          <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
-                            Un article en état correct est un article d'occasion porté fréquemment pouvant
-                            présenter
-                            des défauts (mentionnés dans le descriptif et visibles en photo).
-                          </footer>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="correctChoice" formControlName="stateChoice" value="correctChoice"
+                        class="custom-control-input">
+                      <label class="custom-control-label" for="correctChoice">
+                        <div class="in">
+                          <div>
+                            <p class="my-0" style="font-size: 18px;">Correct</p>
+                            <footer class="text-muted" style="font-size: 14px; font-weight: 500; line-height: 1.2em;">
+                              Un article en état correct est un article d'occasion porté fréquemment pouvant
+                              présenter
+                              des défauts (mentionnés dans le descriptif et visibles en photo).
+                            </footer>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  </div>
+                      </label>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="stateArt" role="tabpanel">
               <div class="wide-block p-0 mb-3">
                 <div class="input-list">
-                  <form>
+                  <form [formGroup]="postProductForm">
                     <div class="custom-control custom-radio">
-                      <input type="radio" id="veryGoodStateChoiceArt" [(ngModel)]="product.stateChoiceArt"
-                        value="veryGoodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
+                      <input type="radio" id="veryGoodStateChoiceArt" formControlName="stateChoice"
+                        value="veryGoodStateChoiceArt" name="stateChoice" class="custom-control-input">
                       <label class="custom-control-label" for="veryGoodStateChoiceArt">
                         <div class="in">
                           <div>
@@ -510,8 +496,8 @@
                       </label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input type="radio" id="goodStateChoiceArt" [(ngModel)]="product.stateChoiceArt"
-                        value="goodStateChoiceArt" name="stateChoiceArt" class="custom-control-input">
+                      <input type="radio" id="goodStateChoiceArt" formControlName="stateChoice"
+                        value="goodStateChoiceArt" name="stateChoice" class="custom-control-input">
                       <label class="custom-control-label" for="goodStateChoiceArt">
                         <div class="in">
                           <div>
@@ -526,8 +512,8 @@
                       </label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input type="radio" id="correctChoiceArt" [(ngModel)]="product.stateChoiceArt"
-                        value="correctChoiceArt" name="stateChoiceArt" class="custom-control-input">
+                      <input type="radio" id="correctChoiceArt" formControlName="stateChoice" value="correctChoiceArt"
+                        name="stateChoice" class="custom-control-input">
                       <label class="custom-control-label" for="correctChoiceArt">
                         <div class="in">
                           <div>
@@ -553,9 +539,9 @@
     </div>
   </div>
 </div>
-<!-- * Form State Choice -->
+<!-- * State Choice Form -->
 
-<!-- Form Amount -->
+<!-- Amount Form -->
 <div class="modal fade action-sheet" id="amountForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -567,22 +553,26 @@
       </div>
       <div class="modal-body">
         <div class="action-sheet-content">
-          <form class="d-flex">
-            <div class="form-group basic mr-4">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  [(ngModel)]="product.amount.price" [ngModelOptions]="{standalone: true}" placeholder="Prix">
+          <form [formGroup]="postProductForm" class="d-flex">
+            <div class="form-group basic pr-1">
+              <div class="input-wrapper text-center">
+                <label for="">Votre prix
+                  <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
+                    [(ngModel)]="product.amount.price" (ngModelChange)="onPriceChange($event)"
+                    [ngModelOptions]="{standalone: true}" placeholder="Montant">
+                </label>
               </div>
             </div>
 
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  [(ngModel)]="product.amount.amountWin" [ngModelOptions]="{standalone: true}"
-                  placeholder="Vous gagnez">
+            <div class="form-group basic pl-1">
+              <div class="input-wrapper text-center">
+                <label for="">Vous gagnez
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number text-success" [(ngModel)]="product.amount.amountWin"
+                    [ngModelOptions]="{standalone: true}" style="font-weight: bold;" placeholder="Vous gagnez">
+                </label>
               </div>
             </div>
-
           </form>
           <div class="form-group basic">
             <button type="button" class="btn btn-primary btn-block btn-lg mt-2" data-dismiss="modal">Valider</button>
@@ -592,4 +582,70 @@
     </div>
   </div>
 </div>
-<!-- * Form Amount -->
+<!-- * Amount Form -->
+
+<!-- Category Form -->
+<div class="modal fade modalbox" id="categoryForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une catégorie</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body" style="background: #EDEDF5;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let categorie of categories">
+                  <input type="radio" id="{{categorie.name}}" name="category" formControlName="category"
+                    [value]="categorie.name" class="custom-control-input">
+                  <label class="custom-control-label" for="{{categorie.name}}">{{categorie.value}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg mt-3" data-dismiss="modal">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Category Form -->
+
+<!-- Brand Form -->
+<div class="modal fade modalbox" id="brandForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une marque</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body" style="background: #EDEDF5;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let brandName of brands">
+                  <input type="radio" id="{{brandName.name}}" name="brand" formControlName="brand"
+                    [value]="brandName.name" class="custom-control-input">
+                  <label class="custom-control-label" for="{{brandName.name}}">{{brandName.value}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg mt-3" data-dismiss="modal">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Brand Form -->

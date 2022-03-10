@@ -46,11 +46,11 @@ export class ProductsComponent implements OnInit {
       catchError(error => {
         return throwError(error);
       })
-    ).subscribe(products => {
-      this.productsArt = products.filter(product => product.sellerId === this.currentUser.id && product.catalogType === 'art');
-      this.productsMens = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'mens');
-      this.productsWomens = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'womens');
-      this.productsKids = products.filter(product => product.sellerId === this.currentUser.id && product.kind === 'kids');
+    ).subscribe((products: any[]) => {
+      this.productsArt = products.filter(product => JSON.parse(product.user)[0].userId === this.currentUser.id && product.catalogType === 'art');
+      this.productsMens = products.filter(product => JSON.parse(product.user)[0].userId === this.currentUser.id && product.kind === 'mens');
+      this.productsWomens = products.filter(product => JSON.parse(product.user)[0].userId === this.currentUser.id && product.kind === 'womens');
+      this.productsKids = products.filter(product => JSON.parse(product.user)[0].userId === this.currentUser.id && product.kind === 'kids');
     })
   }
 

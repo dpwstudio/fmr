@@ -41,7 +41,7 @@ export class WishlistComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getProducts().pipe(
+    this.productService.getProductsMock().pipe(
       catchError(error => {
         return throwError(error);
       })

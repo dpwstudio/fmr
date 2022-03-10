@@ -23,7 +23,8 @@ export class CartService {
   }
 
   addProductToCart(product) {
-    const productExistInCart = this.cartProductList.find(({ id }) => id === product.id); // find product by name
+    console.log('product', product);
+    const productExistInCart = this.cartProductList.find(({ product }) => product.id === product.id); // find product by name
     if (!productExistInCart) {
       this.cartProductList.push({ ...product }); // enhance "product" object with "quantity" property
       localStorage.setItem('tmpCart', JSON.stringify(this.cartProductList));
@@ -35,7 +36,7 @@ export class CartService {
   }
 
   removeProduct(product) {
-    this.cartProductList = this.cartProductList.filter(({ brand }) => brand !== product.brand);
+    this.cartProductList = this.cartProductList.filter(({ product }) => product.brand !== product.brand);
   }
 
   removeCart() {

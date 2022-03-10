@@ -3,7 +3,7 @@
   <div class="blog-card">
     <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active">
       <div class="image-overflow">
-        <app-image [src]="product.img.photoFace"></app-image>
+        <app-image [src]="getImgProduct()"></app-image>
       </div>
       <div class="bill-box">
         <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
@@ -14,9 +14,9 @@
             </ion-icon>
           </i>
           <span class="chip-label number pr-0 origin-price"
-            [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+            [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{getAmountProduct() | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
           <span class="text-danger number d-none"
-            [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.amount.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+            [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
         </div>
       </div>
     </a>

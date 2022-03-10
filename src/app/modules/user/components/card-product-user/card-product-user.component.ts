@@ -22,6 +22,14 @@ export class CardProductUserComponent implements OnInit {
   }
 
   isFallingPrice(product: Product) {
-    return product.amount.fallingPrice > 0;
+    return product.fallingPrice > 0;
+  }
+
+  getImgProduct() {
+    return this.product.photoFace;
+  }
+
+  getAmountProduct() {
+    return this.product.price;
   }
 }

@@ -6,8 +6,8 @@
       <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
     </a>
   </div>
-  <div class="pageTitle">
-    Catalogue
+  <div class="pageTitle" style="text-transform: capitalize;">
+    {{filtersProducts.category}}
   </div>
   <div class="right">
     <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
@@ -99,7 +99,7 @@
     <div class="tab-pane fade {{isTypeParams('falling-price') ? 'show active' : ''}}" id="lowPrice" role="tabpanel">
       <div class="row">
         <ng-container *ngFor="let product of products; trackBy:trackById">
-          <div class="col-6 mb-2" *ngIf="product.amount.fallingPrice">
+          <div class="col-6 mb-2" *ngIf="product.fallingPrice">
             <app-card-product [product]="product"></app-card-product>
           </div>
         </ng-container>

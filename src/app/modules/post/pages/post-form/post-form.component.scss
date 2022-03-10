@@ -1,6 +1,6 @@
 .image-upload {
   width: 172px;
-  height: 163px;
+  height: 100%;
   overflow: hidden;
   border-radius: 10px;
 
@@ -33,4 +33,28 @@
   border-radius: 10px;
   border: none;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+}
+
+.number {
+  font-size: 15px !important;
+}
+
+.modal-input {
+  background: white !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+}
+
+.custom-control-label {
+  font-size: 18px;
+}
+
+.btn-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: #ffffffb8;
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 17px;
 }

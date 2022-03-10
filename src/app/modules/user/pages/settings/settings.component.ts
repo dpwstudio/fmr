@@ -37,7 +37,6 @@ export class SettingsComponent implements OnInit {
     country: ''
   }
   img = {
-    avatar: '',
     avatarSrc: '',
   }
 

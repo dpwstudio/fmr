@@ -6,7 +6,7 @@
       <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
     </a>
   </div>
-  <div class="pageTitle">
+  <div class="pageTitle" style="text-transform: capitalize;">
     {{currentProduct?.brand}}
   </div>
   <div class="right">
@@ -21,8 +21,8 @@
     <owl-carousel-o [options]="carouselFullOptions">
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="currentProduct?.img.photoFace" alt="">
-          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoFace)"
+          <img [src]="currentProduct?.photoFace" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photoFace)"
             data-toggle="modal" data-target="#DialogImage">
             <ion-icon name="expand-outline"></ion-icon>
           </a>
@@ -30,8 +30,8 @@
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="currentProduct?.img.photoDos" alt="">
-          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoDos)"
+          <img [src]="currentProduct?.photoDos" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photoDos)"
             data-toggle="modal" data-target="#DialogImage">
             <ion-icon name="expand-outline"></ion-icon>
           </a>
@@ -39,8 +39,8 @@
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="currentProduct?.img.photoProfile" alt="">
-          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoProfile)"
+          <img [src]="currentProduct?.photoProfile" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photoProfile)"
             data-toggle="modal" data-target="#DialogImage">
             <ion-icon name="expand-outline"></ion-icon>
           </a>
@@ -48,8 +48,8 @@
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
-          <img [src]="currentProduct?.img.photoGriffe" alt="">
-          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentProduct(currentProduct?.img.photoGriffe)"
+          <img [src]="currentProduct?.photoGriffe" alt="">
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photoGriffe)"
             data-toggle="modal" data-target="#DialogImage">
             <ion-icon name="expand-outline"></ion-icon>
           </a>
@@ -59,7 +59,7 @@
   </div>
   <div class="section mt-2">
     <div class="d-flex align-items-center justify-content-between">
-      <h1 class="my-0" style="font-size: 32px;">{{currentProduct?.brand}}</h1>
+      <h1 class="my-0" style="font-size: 32px; text-transform: capitalize;">{{currentProduct?.brand}}</h1>
       <div class="action d-flex align-items-center">
         <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
           <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"></ion-icon>
@@ -71,10 +71,9 @@
     <p style="font-size: 19px;">{{currentProduct?.model}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
-        <a [routerLink]="['/profile', currentProduct?.sellerId]" routerLinkActive="router-link-active"
-          class="text-dark">
-          <img src="{{currentProduct?.sellerImg}}" alt="img" class="imaged w48 rounded mr-05">
-          {{currentProduct?.sellerName}}
+        <a [routerLink]="['/profile', currentProduct?.userId]" routerLinkActive="router-link-active" class="text-dark" style="text-transform: capitalize;">
+          <img src="{{currentProduct?.avatar}}" alt="img" class="imaged w48 rounded mr-05">
+          {{currentProduct?.userName}}
         </a>
       </div>
       <div class="member-date">
@@ -137,17 +136,17 @@
                   <tr>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{currentProduct?.dimensions.width}}</font>
+                        <font style="vertical-align: inherit;">{{currentProduct?.width}}</font>
                       </font>
                     </td>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{currentProduct?.dimensions.height}}</font>
+                        <font style="vertical-align: inherit;">{{currentProduct?.height}}</font>
                       </font>
                     </td>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit; text-align: center;">{{currentProduct?.dimensions.depth}}
+                        <font style="vertical-align: inherit; text-align: center;">{{currentProduct?.depth}}
                         </font>
                       </font>
                     </td>
@@ -197,7 +196,7 @@
         </ion-icon>
       </i>
       <span class="chip-label number"
-        style="font-size: 12px;">{{currentProduct?.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+        style="font-size: 12px;">{{currentProduct?.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
     </div>
   </div>
 
@@ -272,8 +271,8 @@
       </ng-container>
     </owl-carousel-o>
     <ng-container *ngFor="let product of products">
-      <div class="" *ngIf="!isSameCategories(product)">
-        Aucun
+      <div class="text-center w-100" *ngIf="!isSameCategories(product)">
+        Aucun produit suggéré
       </div>
     </ng-container>
   </div>

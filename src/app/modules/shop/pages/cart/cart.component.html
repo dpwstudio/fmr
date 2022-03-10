@@ -6,9 +6,9 @@
      Panier
    </div>
    <div class="right">
-		<a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton" *ngIf="carts.length > 0">
-			<ion-icon name="close-outline" class="text-primary"></ion-icon>
-		</a>
+     <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
+       <ion-icon name="close-outline" class="text-primary"></ion-icon>
+     </a>
    </div>
  </div>
  <!-- * App Header -->
@@ -52,20 +52,20 @@
        </div>
        <ul class="listview image-listview media inset mb-2 mx-0">
          <li *ngFor="let product of carts; trackBy:trackById">
-           <a [routerLink]="['/product-detail', product.id]" routerLinkActive="router-link-active" class="item">
+           <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
              <div class="imageWrapper">
-               <img [src]="product.img.photoFace" alt="image" class="imaged w-100">
+               <img [src]="product?.photoFace" alt="image" class="imaged w-100">
              </div>
              <div class="in">
-               <div class="fsize-16">
-                 {{product.brand}}
-                 <div class="text-muted fsize-15">{{product.model}}</div>
+               <div class="fsize-16" style="text-transform: capitalize;">
+                 {{product.product.brand}}
+                 <div class="text-muted fsize-15">{{product.product.model}}</div>
                </div>
-               <span class="text-dark number">{{product.amount.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+               <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
              </div>
-             <ion-icon (click)="removeProduct(product)" name="trash-outline" class="ml-2 text-danger"
+             <ion-icon (click)="removeProduct(product)" name="trash-outline" class="position-relative ml-2 text-danger"
                style="font-size: x-large;"></ion-icon>
-				</a>
+           </a>
          </li>
        </ul>
        <div class="section mt-2 px-0">

@@ -2,37 +2,37 @@
     "name": "sacs",
     "type": "mode",
     "img": "assets/img/categories/mode/sac.png",
-    "url": "bags"
+    "url": "sacs  "
   },
   {
     "name": "vêtements",
     "type": "mode",
     "img": "assets/img/categories/mode/clothes.png",
-    "url": "clothes"
+    "url": "vêtements"
   },
   {
     "name": "Montres",
     "type": "mode",
     "img": "assets/img/categories/mode/watches.png",
-    "url": "watches"
+    "url": "montres"
   },
   {
     "name": "chaussures",
     "type": "mode",
     "img": "assets/img/categories/mode/sneakers.png",
-    "url": "shoes"
+    "url": "chaussures"
   },
   {
     "name": "autres",
     "type": "mode",
     "img": "assets/img/categories/mode/chapeau.png",
-    "url": "others"
+    "url": "autres"
   },
   {
     "name": "tableaux",
     "type": "art",
     "img": "assets/img/categories/art/artvisuel.png",
-    "url": "paintings"
+    "url": "tableaux"
   },
   {
     "name": "sculptures",
@@ -44,12 +44,12 @@
     "name": "objets",
     "type": "art",
     "img": "assets/img/categories/art/objets.png",
-    "url": "objects"
+    "url": "objets"
   },
   {
     "name": "luminaires",
     "type": "art",
     "img": "assets/img/categories/art/luminaire.png",
-    "url": "lamps"
+    "url": "luminaires"
   }
 ]

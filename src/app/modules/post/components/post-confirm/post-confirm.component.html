@@ -1,33 +1,21 @@
-<!-- App Header -->
-<div class="appHeader">
-  <div class="left">
-    <a [routerLink]="['/post']" routerLinkActive="router-link-active" class="headerButton goBack">
-      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-    </a>
-  </div>
-  <div class="pageTitle">
-    Confirmation de dépot
-  </div>
-  <div class="right">
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
-      <ion-icon name="close-outline" class="text-primary"></ion-icon>
-    </a>
-  </div>
-</div>
-<!-- * App Header -->
+<app-header-post [title]="'Confirmation de dépot'"></app-header-post>
 
 
 <div id="appCapsule">
-  <div class="section inset" style="margin-top: 100px;">
+  <div class="section inset" style="margin-top: 50px;">
     <div class="bloc-img animate__animated animate__bounceIn animate__delay-1s">
-      <img class="imaged w86" src="assets/img/checked.png" alt="">
+      <img class="imaged w76" src="assets/img/checked.png" alt="">
     </div>
     <div class="card card-user animate__animated animate__bounceInDown">
       <div class="card-body">
         <div class="content-card">
-          <h2 class="text-center mt-2">C'est fait {{currentUser.firstname}} !</h2>
+          <h2 class="text-center mt-2">C'est fait <span
+              style="text-transform: capitalize;">{{currentUser.firstname}}</span> !</h2>
+          <div class="image-upload">
+            <app-image [src]="product?.photoFace"></app-image>
+          </div>
           <p class="card-description mb-3 text-secondary">
-            Le dépôt de votre annonce a été effectué avec succès, après étude nous reviendrons vers vous pour vous
+            Le dépôt de votre article a été effectué avec succès, après étude nous reviendrons vers vous pour vous
             confirmer sa mise en ligne ou si nous avons besoin d'éléments supplémentaires.
           </p>
           <p class="card-description mt-2 text-secondary">
@@ -41,12 +29,6 @@
         </p>
         <img class="mr-3 mb-2" src="assets/img/logo/logo.png" alt="" width="70">
       </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <a [routerLink]="['/post']" routerLinkActive="router-link-active"
-        class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </a>
     </div>
   </div>
 

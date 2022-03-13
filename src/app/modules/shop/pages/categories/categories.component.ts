@@ -43,7 +43,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   gotoCategory(category) {
-    return this.router.navigate([category.url]);
+    return this.router.navigate([category.value]);
   }
 
   isLoading() {

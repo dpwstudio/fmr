@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -18,7 +19,9 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
 export class HomeComponent implements OnInit {
   categories = [];
   productsMode: Product[] = [];
+  productsFallingPriceMode: Product[] = [];
   productsArt: Product[] = [];
+  productsFallingPriceArt: Product[] = [];
   carouselFullOptions: OwlOptions = {
     loop: true,
     margin: 8,
@@ -69,6 +72,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getProducts();
+    this.getProductsWithFallingPrice();
     this.getUsers();
   }
 
@@ -87,14 +91,33 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts() {
-    this.subscription = this.productService.getProducts(this.filtersProducts).pipe(
+    const filtersProducts: FiltersProducts = {
+      startDate: moment().subtract(5, 'days').format(),
+      endDate: moment().format()
+    }
+
+    this.subscription = this.productService.getProducts(filtersProducts).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
+      console.log('products', products)
       this.productsMode = products.filter(product => product.catalogType === 'mode');
       this.productsArt = products.filter(product => product.catalogType === 'art');
     })
+  }
+
+  getProductsWithFallingPrice() {
+    this.subscription = this.productService.getProducts().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(products => {
+      console.log('products', products)
+      this.productsFallingPriceMode = products.filter(product => product.catalogType === 'mode' && product.fallingPrice > 0);
+      this.productsFallingPriceArt = products.filter(product => product.catalogType === 'art' && product.fallingPrice > 0);
+    })
+
   }
 
   getUsers() {

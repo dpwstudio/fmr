@@ -2,9 +2,6 @@
 <!-- App Header -->
 <div class="appHeader">
   <div class="left">
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton goBack">
-      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-    </a>
   </div>
   <div class="pageTitle">
     Catégories
@@ -64,7 +61,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <div class="item-categories">
@@ -83,7 +80,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <div class="item-categories">
@@ -102,7 +99,7 @@
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
                         <div class="item-categories">
@@ -132,7 +129,7 @@
           <div class="row">
             <ng-container *ngFor="let category of categories; trackBy:trackById">
               <div class="col-6 mb-2" *ngIf="isCategoryArt(category)">
-                <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                   routerLinkActive="router-link-active">
                   <div class="blog-card">
                     <div class="item-categories">

@@ -50,7 +50,7 @@
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
-            <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+            <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
               routerLinkActive="router-link-active">
               <div class="user-card">
                 <div class="item-categories">
@@ -111,12 +111,13 @@
   <!-- Baisse de prix -->
   <div class="section full mt-4 mb-5">
     <div class="section-heading padding">
-      <h2 class="title">Baisse de prix</h2>
+      <h2 class="title d-flex align-items-center">Baisse de prix <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Mode</span></h2>
       <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="link">Tout
         voir</a>
     </div>
     <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of productsMode; trackBy:trackById">
+      <ng-container *ngFor="let product of productsFallingPriceMode; trackBy:trackById">
         <ng-container *ngIf="isFallingPrice(product)">
           <ng-template carouselSlide>
             <app-card-product [product]="product"></app-card-product>
@@ -151,7 +152,7 @@
   </div>
   <!-- Les galeries -->
 
-  <!-- Articles art -->
+  <!-- Nouveautés art -->
   <div class="section full mt-4 mb-3">
     <div class="section-heading padding">
       <h2 class="title">Nouveautés Art</h2>
@@ -165,7 +166,27 @@
       </ng-container>
     </owl-carousel-o>
   </div>
-  <!-- * Articles art -->
+  <!-- * Nouveautés art -->
+
+  <!-- Baisse de prix Art -->
+  <div class="section full mt-4 mb-5">
+    <div class="section-heading padding">
+      <h2 class="title d-flex align-items-center">Baisse de prix <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Art</span></h2>
+      <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="link">Tout
+        voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselMultipleOptions">
+      <ng-container *ngFor="let product of productsFallingPriceArt; trackBy:trackById">
+        <ng-container *ngIf="isFallingPrice(product)">
+          <ng-template carouselSlide>
+            <app-card-product [product]="product"></app-card-product>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- * Baisse de prix Art -->
 
 </div>
 <!-- * App Capsule -->

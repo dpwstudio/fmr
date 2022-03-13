@@ -50,7 +50,7 @@ export interface ProductModel {
 	dimensions: {
 		width: string;
 		height: string;
-		depth: string;
+		length: string;
 	},
 	amount: {
 		price: number;

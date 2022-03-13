@@ -6,6 +6,9 @@ export class Product {
 	photoGriffe = '';
 	photo5 = '';
 	photo6 = '';
+	invoice = false;
+	certificate = false;
+	noProof = false;
 	price = 0;
 	amountWin = 0;
 	fallingPrice = 0;
@@ -14,7 +17,10 @@ export class Product {
 	userId = 0;
 	width = 0;
 	height = 0;
-	depth = 0;
+	length = 0;
+	size = 0;
+	sizeType = '';
+	diameter = 0;
 
 	constructor(protected product: any) {
 		if (this.img) {
@@ -30,7 +36,16 @@ export class Product {
 			const dimensions = JSON.parse(this.dimensions)[0];
 			this.width = dimensions.width;
 			this.height = dimensions.height;
-			this.depth = dimensions.depth;
+			this.length = dimensions.length;
+			this.size = dimensions.size;
+			this.sizeType = dimensions.sizeType;
+			this.diameter = dimensions.diameter;
+		}
+		if (this.authenticity) {
+			const authenticity = JSON.parse(this.authenticity)[0];
+			this.invoice = authenticity.invoice;
+			this.certificate = authenticity.certificate;
+			this.noProof = authenticity.noProof;
 		}
 		if (this.amount) {
 			const amount = JSON.parse(this.amount)[0];
@@ -40,9 +55,12 @@ export class Product {
 		}
 		if (this.user) {
 			const user = JSON.parse(this.user)[0];
-			const userImg = JSON.parse(user.userImg)[0];
-			const defaultImg = 'assets/img/default-img.svg';
-			this.avatar = userImg.avatar ? userImg.avatar : defaultImg;
+			if (user.userImg) {
+				const userImg = JSON.parse(user.userImg)[0];
+				this.avatar = userImg.avatar;
+			} else {
+				this.avatar = 'assets/img/default-img.svg';
+			}
 			this.userName = user.userName;
 			this.userId = user.userId;
 		}
@@ -98,6 +116,10 @@ export class Product {
 
 	get amount(): string {
 		return this.product.amount;
+	}
+	
+	get authenticity(): string {
+		return this.product.authenticity;
 	}
 
 	get like(): string {

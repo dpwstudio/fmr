@@ -7,7 +7,7 @@
     </a>
   </div>
   <div class="pageTitle" style="text-transform: capitalize;">
-    {{filtersProducts.category}}
+    {{filtersProducts.category ? filtersProducts.category : 'Tous'}}
   </div>
   <div class="right">
     <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
@@ -152,7 +152,7 @@
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <!-- item -->
                   <div class="col-3 mb-2" *ngIf="isCategoryMode(category)">
-                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active" data-dismiss="modal">
                       <div class="user-card">
                         <img [src]="category.img" [alt]="category.name" [title]="category.name" class="imaged w-100">
@@ -169,7 +169,7 @@
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
                   <!-- item -->
                   <div class="col-3 mb-2" *ngIf="isCategoryArt(category)">
-                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.url}]"
+                    <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active" data-dismiss="modal">
                       <div class="user-card">
                         <img [src]="category.img" [alt]="category.name" [title]="category.name" class="imaged w-100">

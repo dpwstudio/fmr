@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { FiltersProducts } from '../../models/filtersProducts.model';
 import { Product } from '../../models/product.model';
-import { ProductModel } from '../../models/productModel.model';
 import { User } from '../../models/user.model';
 import { AuthService } from '../auth/auth.service';
 
@@ -24,6 +23,10 @@ export class ProductService {
     return this.http.post(`${environment.fmrApi}/products`, product);
   }
 
+  getBrands(): Observable<any[]> {
+    return this.http.get(`assets/mock-data/brands.json`) as Observable<any[]>;
+  }
+ 
   getCategories(): Observable<any[]> {
     return this.http.get(`assets/mock-data/categories.json`) as Observable<any[]>;
   }
@@ -40,15 +43,14 @@ export class ProductService {
   }
 
   getProducts(filters?: FiltersProducts): Observable<Product[]> {
-    return this.http.get(`${environment.fmrApi}/products`).pipe(
+    console.log('filters', filters)
+    return this.http.post(`${environment.fmrApi}/products/filters`, filters).pipe(
       catchError(error => {
         return throwError(error);
       }),
-      tap((products: Product[]) => filters ? products.filter(product => product.category === filters.category
-        && product.catalogType === filters.catalogType) : products),
       map((products: Product[]) => {
-          return products.map(product => new Product(product));
-        }),
+        return products.map(product => new Product(product));
+      }),
     ) as Observable<Product[]>;
   }
 

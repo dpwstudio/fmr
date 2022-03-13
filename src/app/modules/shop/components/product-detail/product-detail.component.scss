@@ -4,6 +4,11 @@
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
 }
 
+.accordion-title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
 .chip-label {
   width: 100%;
   text-align: center;
@@ -44,4 +49,9 @@
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+}
+
+.table td, .table th {
+  border: none;
+  font-size: 16px;
 }

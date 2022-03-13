@@ -23,7 +23,7 @@
     "dimensions": {
       "width": 35,
       "height": 27,
-      "depth": 5
+      "length": 5
     },
     "url": "product-detail",
     "like": 188,
@@ -57,7 +57,7 @@
     "dimensions": {
       "width": 35,
       "height": 27,
-      "depth": 5
+      "length": 5
     },
     "url": "product-detail",
     "like": 245,
@@ -91,7 +91,7 @@
     "dimensions": {
       "width": 35,
       "height": 27,
-      "depth": 5
+      "length": 5
     },
     "url": "product-detail",
     "like": 68,
@@ -125,7 +125,7 @@
     "dimensions": {
       "width": 35,
       "height": 27,
-      "depth": 5
+      "length": 5
     },
     "url": "product-detail",
     "like": 32,
@@ -159,7 +159,7 @@
     "dimensions": {
       "width": 12,
       "height": 10,
-      "depth": 5
+      "length": 5
     },
     "url": "product-detail",
     "like": 1546,
@@ -193,7 +193,7 @@
     "dimensions": {
       "width": 61,
       "height": 46,
-      "depth": 3
+      "length": 3
     },
     "url": "product-detail",
     "like": 1546,
@@ -227,7 +227,7 @@
     "dimensions": {
       "width": 61,
       "height": 46,
-      "depth": 3
+      "length": 3
     },
     "url": "product-detail",
     "like": 748,
@@ -261,7 +261,7 @@
     "dimensions": {
       "width": 61,
       "height": 46,
-      "depth": 3
+      "length": 3
     },
     "url": "product-detail",
     "like": 857,
@@ -295,7 +295,7 @@
     "dimensions": {
       "width": 61,
       "height": 46,
-      "depth": 3
+      "length": 3
     },
     "url": "product-detail",
     "like": 857,

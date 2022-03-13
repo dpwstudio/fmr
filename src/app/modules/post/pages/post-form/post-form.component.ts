@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import * as moment from 'moment';
-import { Subscription, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { fromEvent, Subscription, throwError } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
@@ -18,6 +18,7 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
 })
 export class PostFormComponent implements OnInit {
   private readonly notifier: NotifierService;
+  @ViewChild('searchElementRef', { static: true }) searchElementRef: ElementRef<HTMLInputElement>;
   product = {
     img: {
       photoFaceSrc: '',
@@ -39,7 +40,7 @@ export class PostFormComponent implements OnInit {
     dimensions: {
       width: '',
       height: '',
-      depth: '',
+      length: '',
     },
     amount: {
       price: null,
@@ -52,63 +53,10 @@ export class PostFormComponent implements OnInit {
   postProductForm: FormGroup;
   subscription: Subscription;
   categories = [];
-  catalogMode = [
-    {
-      name: 'sacs',
-      value: 'Sacs'
-    }, {
-      name: 'vêtements',
-      value: 'Vêtements'
-    }, {
-      name: 'chaussures',
-      value: 'Chaussures'
-    }, {
-      name: 'montres',
-      value: 'Montres'
-    }, {
-      name: 'autres',
-      value: 'Autres'
-    },
-  ];
-  catalogArt = [
-    {
-      name: 'tableaux',
-      value: 'Tableaux'
-    }, {
-      name: 'sculptures',
-      value: 'Sculptures'
-    }, {
-      name: 'luminaires',
-      value: 'Luminaires'
-    }, {
-      name: 'objets',
-      value: 'Objets'
-    }, {
-      name: 'autres',
-      value: 'Autres'
-    },
-  ];
-  brands = [
-    {
-      name: 'louis vuitton',
-      value: 'Louis Vuitton'
-    }, {
-      name: 'balenciaga',
-      value: 'Balenciaga'
-    }, {
-      name: 'hermes',
-      value: 'Hermes'
-    }, {
-      name: 'saint laurent',
-      value: 'Saint Laurent'
-    }, {
-      name: 'givenchy',
-      value: 'Givenchy'
-    }, {
-      name: 'dior',
-      value: 'Dior'
-    }
-  ];
+  catalogMode = [];
+  catalogArt = [];
+  brands = [];
+  search: string;
 
   constructor(
     private router: Router,
@@ -147,8 +95,14 @@ export class PostFormComponent implements OnInit {
       description: [''],
       height: [''],
       width: [''],
-      depth: [''],
+      length: [''],
+      size: [''],
+      sizeType: [''],
+      diameter: [''],
       stateChoice: [''],
+      invoice: [''],
+      certificate: [''],
+      noProof: [''],
       price: [''],
       amountWin: [''],
       userId: [''],
@@ -166,7 +120,68 @@ export class PostFormComponent implements OnInit {
       userName: this.currentUser.firstname,
       userCountry: this.currentUser,
     });
-    this.categories = this.catalogMode;
+    this.getCategories();
+    this.initSearchInputHandler();
+    this.getBrands();
+  }
+
+  getCategories() {
+    this.subscription = this.productService.getCategories().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(categories => {
+      this.catalogMode = categories.filter(category => category.type === 'mode');
+      this.catalogArt = categories.filter(category => category.type === 'art');
+      this.categories = this.catalogMode;
+      this.sortCategories(this.categories);
+    })
+  }
+
+  getBrands(textToSearch?) {
+    console.log('textToSearch', textToSearch)
+    this.subscription = this.productService.getBrands().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(brands => {
+      if (textToSearch) {
+        this.brands = brands.filter(brand => brand.value.toLowerCase().indexOf(textToSearch.toLowerCase()) > -1);
+      } else {
+        this.brands = brands;
+      }
+      this.sortBrands(this.brands);
+    })
+  }
+
+  sortCategories(categories) {
+    categories.sort((a, b) => {
+      let fa = a.value,
+        fb = b.value;
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  sortBrands(brands) {
+    brands.sort((a, b) => {
+      let fa = a.value,
+        fb = b.value;
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   get f() {
@@ -194,11 +209,19 @@ export class PostFormComponent implements OnInit {
   isDimensionsComplete() {
     return this.f.width.value
       && this.f.height.value
-      && this.f.depth.value;
+      && this.f.length.value
+      || this.f.size.value && this.f.sizeType.value
+      || this.f.diameter.value;
   }
 
   isStateChoiceComplete() {
     return this.f.stateChoice.value;
+  }
+
+  isAuthenticityComplete() {
+    return this.f.invoice.value
+      || this.f.certificate.value
+      || this.f.noProof.value;
   }
 
   isAmountComplete() {
@@ -357,9 +380,10 @@ export class PostFormComponent implements OnInit {
   }
 
   addProduct() {
-    console.log('form', this.postProductForm.value);
+    console.log('form', this.postProductForm);
     // stop here if form is invalid
     if (this.postProductForm.invalid) {
+      this.notifier.notify('error', 'Veuillez renseigner tous les champs.')
       return;
     }
     const files = [];
@@ -378,6 +402,7 @@ export class PostFormComponent implements OnInit {
       })
     ).subscribe((res: { message: string, idProduct: number }) => {
       console.log('res', res);
+      this.postProductForm.reset();
       this.uploadImageService.sendMultiplePhotosToServer(files);
       this.router.navigate(['post-confirm', res.idProduct]);
     });
@@ -391,5 +416,35 @@ export class PostFormComponent implements OnInit {
       amountWin: parseFloat(this.product.amount.amountWin),
     });
   }
+
+  searchProduct() {
+    if (this.search) {
+      console.log('this.search', this.search)
+      this.brands = this.brands.filter(
+        brand => brand.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+      );
+      console.log('brands', this.brands);
+    } else {
+      this.getBrands();
+    }
+  }
+
+  initSearchInputHandler() {
+    fromEvent(this.searchElementRef.nativeElement, 'keyup').pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      map((event: KeyboardEvent) => (event.target as HTMLInputElement).value),
+    ).subscribe(textToSearch => {
+      console.log('textToSearch', textToSearch);
+      this.search = textToSearch;
+      this.getBrands(textToSearch);
+    })
+  }
+
+  emptySearch() {
+    this.search = '';
+    this.getBrands(this.search);
+  }
+
 
 }

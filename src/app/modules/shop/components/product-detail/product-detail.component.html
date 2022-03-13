@@ -68,10 +68,11 @@
         <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
       </div>
     </div>
-    <p style="font-size: 19px;">{{currentProduct?.model}}</p>
+    <p style="font-size: 19px;">{{currentProduct?.model | titlecase}}</p>
     <div class="blog-header-info mt-2 mb-2">
       <div>
-        <a [routerLink]="['/profile', currentProduct?.userId]" routerLinkActive="router-link-active" class="text-dark" style="text-transform: capitalize;">
+        <a [routerLink]="['/profile', currentProduct?.userId]" routerLinkActive="router-link-active" class="text-dark"
+          style="text-transform: capitalize;">
           <img src="{{currentProduct?.avatar}}" alt="img" class="imaged w48 rounded mr-05">
           {{currentProduct?.userName}}
         </a>
@@ -91,62 +92,105 @@
     <div class="accordion" id="accordionExample1">
       <div class="item">
         <div class="accordion-header">
-          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion1"
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#description"
             aria-expanded="false">
-            <h2 class="my-0">Description</h2>
+            <h2 class="accordion-title my-0">Description</h2>
           </button>
         </div>
-        <div id="accordion1" class="accordion-body collapse show" data-parent="#accordionExample1">
+        <div id="description" class="accordion-body collapse show" data-parent="#accordionExample1">
           <div class="accordion-content">
-            {{currentProduct?.description}}
+            {{currentProduct?.description | titlecase}}
           </div>
         </div>
       </div>
 
       <div class="item">
         <div class="accordion-header">
-          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion2">
-            <h2 class="my-0">Information Taille & Coupe</h2>
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#size">
+            <h2 class="accordion-title my-0">Information Taille & Coupe</h2>
           </button>
         </div>
-        <div id="accordion2" class="accordion-body collapse" data-parent="#accordionExample1">
+        <div id="size" class="accordion-body collapse" data-parent="#accordionExample1">
           <div class="accordion-content">
-            <div class="table-responsive">
+            <div class="table-responsive" style="border-radius: 10px;">
               <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-center">
-                      <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Largeur</font>
+                <tbody>
+                  <tr *ngIf="currentProduct?.width > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Longueur</font>
                       </font>
                     </th>
-                    <th scope="col" class="text-center">
+                    <td class="text-center number">
                       <font style="vertical-align: inherit;">
+                        <font class="text-dark" style="vertical-align: inherit; text-align: center;">
+                          {{currentProduct?.length}} cm
+                        </font>
+                      </font>
+                    </td>
+                  </tr>
+                  <tr *ngIf="currentProduct?.width > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Hauteur</font>
                       </font>
                     </th>
-                    <th scope="col" class="text-center">
+                    <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Profondeur</font>
+                        <font class="text-dark" style="vertical-align: inherit;">{{currentProduct?.height}} cm</font>
+                      </font>
+                    </td>
+                  </tr>
+                  <tr *ngIf="currentProduct?.width > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Largeur </font>
                       </font>
                     </th>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font class="text-dark" style="vertical-align: inherit;">{{currentProduct?.width}} cm</font>
+                      </font>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
+                  <tr *ngIf="currentProduct?.size > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Taille</font>
+                      </font>
+                    </th>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{currentProduct?.width}}</font>
+                        <font class="text-dark" style="vertical-align: inherit; text-align: center;">
+                          {{currentProduct?.size}}
+                        </font>
                       </font>
                     </td>
+                  </tr>
+                  <tr *ngIf="currentProduct?.size > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Type de Taille</font>
+                      </font>
+                    </th>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{currentProduct?.height}}</font>
+                        <font class="text-dark" style="vertical-align: inherit; text-align: center;">
+                          {{currentProduct?.sizeType | uppercase}}
+                        </font>
                       </font>
                     </td>
+                  </tr>
+                  <tr *ngIf="currentProduct?.diameter > 0">
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Diamètre</font>
+                      </font>
+                    </th>
                     <td class="text-center number">
                       <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit; text-align: center;">{{currentProduct?.depth}}
+                        <font class="text-dark" style="vertical-align: inherit; text-align: center;">
+                          {{currentProduct?.diameter}} mm
                         </font>
                       </font>
                     </td>
@@ -160,12 +204,75 @@
 
       <div class="item">
         <div class="accordion-header">
-          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#accordion3"
-            aria-expanded="false">
-            <h2 class="my-0">Contrôle, Livraison & Retours</h2>
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#authenticity">
+            <h2 class="accordion-title my-0">Authenticité</h2>
           </button>
         </div>
-        <div id="accordion3" class="accordion-body collapse" data-parent="#accordionExample1" style="">
+        <div id="authenticity" class="accordion-body collapse" data-parent="#accordionExample1">
+          <div class="accordion-content">
+            <div class="table-responsive" style="border-radius: 10px;">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Facture d'achat</font>
+                      </font>
+                    </th>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit; font-size: x-large;">
+                          <ion-icon name="{{currentProduct?.invoice ? 'checkmark' : 'close'}}-outline"
+                            class="text-{{currentProduct?.invoice ? 'success' : 'danger'}}"></ion-icon>
+                        </font>
+                      </font>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Certificat d'authenticité</font>
+                      </font>
+                    </th>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit; font-size: x-large;">
+                          <ion-icon name="{{currentProduct?.certificate ? 'checkmark' : 'close'}}-outline"
+                            class="text-{{currentProduct?.certificate ? 'success' : 'danger'}}"></ion-icon>
+                        </font>
+                      </font>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Aucune facture ni certificat</font>
+                      </font>
+                    </th>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit; font-size: x-large;">
+                          <ion-icon name="{{currentProduct?.noProof ? 'checkmark' : 'close'}}-outline"
+                            class="text-{{currentProduct?.noProof ? 'success' : 'danger'}}"></ion-icon>
+                        </font>
+                      </font>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="accordion-header">
+          <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#control"
+            aria-expanded="false">
+            <h2 class="accordion-title my-0">Contrôle, Livraison & Retours</h2>
+          </button>
+        </div>
+        <div id="control" class="accordion-body collapse" data-parent="#accordionExample1">
           <div class="accordion-content">
             <h3><i class="fa-solid fa-certificate mr-1"></i> Contrôle de conformité offerts</h3>
             <ul>
@@ -270,11 +377,6 @@
         </ng-container>
       </ng-container>
     </owl-carousel-o>
-    <ng-container *ngFor="let product of products">
-      <div class="text-center w-100" *ngIf="!isSameCategories(product)">
-        Aucun produit suggéré
-      </div>
-    </ng-container>
   </div>
   <!-- * News -->
 

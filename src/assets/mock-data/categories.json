@@ -1,61 +1,61 @@
 [{
     "name": "sacs",
-    "type": "mode",
+    "value": "sacs",
     "img": "assets/img/categories/mode/sac.png",
-    "value": "sacs"
+    "type": "mode"
   },
   {
     "name": "vêtements",
-    "type": "mode",
+    "value": "vêtements",
     "img": "assets/img/categories/mode/clothes.png",
-    "value": "vêtements"
+    "type": "mode"
   },
   {
     "name": "montres",
-    "type": "mode",
+    "value": "montres",
     "img": "assets/img/categories/mode/watches.png",
-    "value": "montres"
+    "type": "mode"
   },
   {
     "name": "bijoux",
-    "type": "mode",
+    "value": "bijoux",
     "img": "assets/img/categories/mode/bijoux.jpeg",
-    "value": "bijoux"
+    "type": "mode"
   },
   {
     "name": "chaussures",
-    "type": "mode",
+    "value": "chaussures",
     "img": "assets/img/categories/mode/sneakers.png",
-    "value": "chaussures"
+    "type": "mode"
   },
   {
     "name": "accessoires",
-    "type": "mode",
+    "value": "accessoires",
     "img": "assets/img/categories/mode/chapeau.png",
-    "value": "accessoires"
+    "type": "mode"
   },
   {
     "name": "tableaux",
-    "type": "art",
+    "value": "tableaux",
     "img": "assets/img/categories/art/artvisuel.png",
-    "value": "tableaux"
+    "type": "art"
   },
   {
     "name": "sculptures",
-    "type": "art",
+    "value": "sculptures",
     "img": "assets/img/categories/art/artdeco.png",
-    "value": "sculptures"
+    "type": "art"
   },
   {
     "name": "objets",
-    "type": "art",
+    "value": "objets",
     "img": "assets/img/categories/art/objets.png",
-    "value": "objets"
+    "type": "art"
   },
   {
     "name": "luminaires",
-    "type": "art",
+    "value": "luminaires",
     "img": "assets/img/categories/art/luminaire.png",
-    "value": "luminaires"
+    "type": "art"
   }
 ]

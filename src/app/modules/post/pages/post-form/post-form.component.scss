@@ -16,6 +16,14 @@
   font-weight: bold !important;
 }
 
+.modalbox .modal-dialog .modal-content .modal-header {
+  border-bottom: 0;
+}
+
+.modal.action-sheet .modal-content .modal-header {
+  border-bottom: 0;
+}
+
 .basic {
   label {
     font-size: 15px;

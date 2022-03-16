@@ -30,6 +30,10 @@ export class ProductService {
   getCategories(): Observable<any[]> {
     return this.http.get(`assets/mock-data/categories.json`) as Observable<any[]>;
   }
+  
+  getSubCategories(): Observable<any[]> {
+    return this.http.get(`assets/mock-data/subcategories.json`) as Observable<any[]>;
+  }
 
   getProduct(id) {
     return this.http.get(`${environment.fmrApi}/products/${id}`).pipe(

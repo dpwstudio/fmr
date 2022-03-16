@@ -73,7 +73,7 @@
       <div>
         <a [routerLink]="['/profile', currentProduct?.userId]" routerLinkActive="router-link-active" class="text-dark"
           style="text-transform: capitalize;">
-          <img src="{{currentProduct?.avatar}}" alt="img" class="imaged w48 rounded mr-05">
+          <img src="{{currentProduct?.avatar ? currentProduct.avatar : 'assets/img/default-img.svg'}}" alt="img" class="imaged w48 rounded mr-05">
           {{currentProduct?.userName}}
         </a>
       </div>
@@ -107,15 +107,15 @@
       <div class="item">
         <div class="accordion-header">
           <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#size">
-            <h2 class="accordion-title my-0">Information Taille & Coupe</h2>
+            <h2 class="accordion-title my-0">Dimensions</h2>
           </button>
         </div>
         <div id="size" class="accordion-body collapse" data-parent="#accordionExample1">
           <div class="accordion-content">
             <div class="table-responsive" style="border-radius: 10px;">
               <table class="table table-striped">
-                <tbody>
-                  <tr *ngIf="currentProduct?.width > 0">
+                <tbody *ngIf="currentProduct?.category === 'sacs'">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Longueur</font>
@@ -129,7 +129,7 @@
                       </font>
                     </td>
                   </tr>
-                  <tr *ngIf="currentProduct?.width > 0">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Hauteur</font>
@@ -141,7 +141,7 @@
                       </font>
                     </td>
                   </tr>
-                  <tr *ngIf="currentProduct?.width > 0">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Largeur </font>
@@ -153,7 +153,9 @@
                       </font>
                     </td>
                   </tr>
-                  <tr *ngIf="currentProduct?.size > 0">
+                </tbody>
+                <tbody *ngIf="currentProduct?.category === 'chaussures'">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Taille</font>
@@ -167,7 +169,7 @@
                       </font>
                     </td>
                   </tr>
-                  <tr *ngIf="currentProduct?.size > 0">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Type de Taille</font>
@@ -181,7 +183,9 @@
                       </font>
                     </td>
                   </tr>
-                  <tr *ngIf="currentProduct?.diameter > 0">
+                </tbody>
+                <tbody *ngIf="currentProduct?.category === 'montres'">
+                  <tr>
                     <th scope="col" class="text-left">
                       <font style="vertical-align: inherit; font-size: 16px;">
                         <font style="vertical-align: inherit;">Diamètre</font>
@@ -191,6 +195,22 @@
                       <font style="vertical-align: inherit;">
                         <font class="text-dark" style="vertical-align: inherit; text-align: center;">
                           {{currentProduct?.diameter}} mm
+                        </font>
+                      </font>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="currentProduct?.category === 'vetements'">
+                  <tr>
+                    <th scope="col" class="text-left">
+                      <font style="vertical-align: inherit; font-size: 16px;">
+                        <font style="vertical-align: inherit;">Taille</font>
+                      </font>
+                    </th>
+                    <td class="text-center number">
+                      <font style="vertical-align: inherit;">
+                        <font class="text-dark" style="vertical-align: inherit; text-align: center;">
+                          {{currentProduct?.sizeClothes}}
                         </font>
                       </font>
                     </td>

@@ -13,13 +13,12 @@ export class Product {
 	amountWin = 0;
 	fallingPrice = 0;
 	avatar = '';
-	userName = '';
-	userId = 0;
 	width = 0;
 	height = 0;
 	length = 0;
 	size = 0;
 	sizeType = '';
+	sizeClothes = '';
 	diameter = 0;
 
 	constructor(protected product: any) {
@@ -39,6 +38,7 @@ export class Product {
 			this.length = dimensions.length;
 			this.size = dimensions.size;
 			this.sizeType = dimensions.sizeType;
+			this.sizeClothes = dimensions.sizeClothes;
 			this.diameter = dimensions.diameter;
 		}
 		if (this.authenticity) {
@@ -53,16 +53,13 @@ export class Product {
 			this.amountWin = amount.amountWin;
 			this.fallingPrice = amount.fallingPrice ? amount.fallingPrice : null;
 		}
-		if (this.user) {
-			const user = JSON.parse(this.user)[0];
-			if (user.userImg) {
-				const userImg = JSON.parse(user.userImg)[0];
-				this.avatar = userImg.avatar;
+		if (this.userImg) {
+			const user = JSON.parse(this.userImg)[0];
+			if (user.avatar) {
+				this.avatar = user.avatar;
 			} else {
 				this.avatar = 'assets/img/default-img.svg';
 			}
-			this.userName = user.userName;
-			this.userId = user.userId;
 		}
 	}
 
@@ -84,6 +81,10 @@ export class Product {
 
 	get category(): string {
 		return this.product.category;
+	}
+	
+	get subCategory(): string {
+		return this.product.subCategory;
 	}
 
 	get kind(): string {
@@ -134,7 +135,15 @@ export class Product {
 		return this.product.createdAt;
 	}
 
-	get user(): string {
-		return this.product.user;
+	get userId(): number {
+		return this.product.userId;
+	}
+	
+	get userName(): string {
+		return this.product.firstname;
+	}
+
+	get userImg(): string {
+		return this.product.userImg;
 	}
 }

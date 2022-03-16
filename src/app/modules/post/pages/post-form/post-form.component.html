@@ -33,15 +33,6 @@
       </a>
     </li>
     <li>
-      <a href="#" class="item" data-toggle="modal" data-target="#dimensionsForm">
-        <div class="in">
-          <div>Dimensions</div>
-        </div>
-        <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;" *ngIf="isDimensionsComplete()">
-        </ion-icon>
-      </a>
-    </li>
-    <li>
       <a href="#" class="item" data-toggle="modal" data-target="#stateForm">
         <div class="in">
           <div>Etat</div>
@@ -93,8 +84,8 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Ajouter des photos</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body">
@@ -213,7 +204,6 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-lg btn-block btn-rounded btn-primary mt-2 mb-2" data-dismiss="modal">Valider</button>
         </form>
       </div>
     </div>
@@ -227,8 +217,8 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Informations sur l'article</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body pt-0" style="background: #EDEDF5;">
@@ -275,11 +265,30 @@
                     </a>
                   </li>
                   <li>
+                    <a data-toggle="modal" data-target="#subCategoryForm" class="item">
+                      <div class="in">
+                        <div>Sous-Catégories</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.subCategory.value}}</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
                     <a data-toggle="modal" data-target="#brandForm" class="item">
                       <div class="in">
                         <div>Marque</div>
                         <span class="text-muted" style="text-transform: capitalize">{{f.brand.value}}</span>
                       </div>
+                    </a>
+                  </li>
+                  <li
+                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                    <a href="#" class="item" data-toggle="modal" data-target="#dimensionsForm">
+                      <div class="in">
+                        <div>Dimensions</div>
+                      </div>
+                      <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"
+                        *ngIf="isDimensionsComplete()">
+                      </ion-icon>
                     </a>
                   </li>
                 </ul>
@@ -320,6 +329,16 @@
                       </div>
                     </a>
                   </li>
+                  <li>
+                    <a href="#" class="item" data-toggle="modal" data-target="#dimensionsForm">
+                      <div class="in">
+                        <div>Dimensions</div>
+                      </div>
+                      <ion-icon name="checkmark-circle" class="text-success" style="font-size: 25px;"
+                        *ngIf="isDimensionsComplete()">
+                      </ion-icon>
+                    </a>
+                  </li>
                 </ul>
                 <div class="form-group basic">
                   <div class="input-wrapper">
@@ -329,9 +348,6 @@
                 </div>
               </form>
             </div>
-          </div>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
           </div>
         </div>
       </div>
@@ -346,98 +362,80 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Dimensions de l'article</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body">
-        <div class="wide-block pt-2 pb-2 border-0" *ngIf="f.category.value === 'sacs'">
-          <form [formGroup]="postProductForm" class="d-flex mb-2">
-            <div class="form-group basic mr-2">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="length" placeholder="Long." step="any">
+        <div class="wide-block pt-2 pb-2 border-0" style="background: #EDEDF5;">
+          <form [formGroup]="postProductForm" class="d-flex align-items-center justify-content-center mb-2">
+            <ng-container *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === ''">
+              <div class="form-group basic mr-2">
+                <div class="input-wrapper">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" formControlName="length"
+                    placeholder="Long." step="any">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group basic mr-2">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="height" placeholder="Haut." step="any">
+              <div class="form-group basic mr-2">
+                <div class="input-wrapper">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" formControlName="height"
+                    placeholder="Haut." step="any">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="width" placeholder="Larg." step="any">
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" formControlName="width" placeholder="Larg."
+                    step="any">
+                </div>
               </div>
-            </div>
-
-          </form>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
-          </div>
-        </div>
-        <div class="wide-block pt-2 pb-2 border-0" *ngIf="f.category.value === 'chaussures'">
-          <form [formGroup]="postProductForm" class="d-flex mb-2">
-            <div class="form-group basic mr-2">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="size" placeholder="Taille" step="any" style="height: 51px;">
+            </ng-container>
+            <ng-container *ngIf="f.category.value === 'chaussures'">
+              <div class="form-group basic mr-2">
+                <div class="input-wrapper">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" formControlName="size" placeholder="Taille"
+                    step="any" style="height: 51px;">
+                </div>
               </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <select class="form-control custom-select text-center" id="sizeType" formControlName="sizeType">
-                  <option value="" disabled selected>Type</option>
-                  <option value="eu">EU</option>
-                  <option value="uk">UK</option>
-                  <option value="us">US</option>
-                  <option value="it">IT</option>
-                </select>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <select class="form-control custom-select text-center modal-input" id="sizeType"
+                    formControlName="sizeType">
+                    <option value="" disabled selected>Type</option>
+                    <option value="eu">EU</option>
+                    <option value="uk">UK</option>
+                    <option value="us">US</option>
+                    <option value="it">IT</option>
+                  </select>
+                </div>
               </div>
-            </div>
-          </form>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
-          </div>
-        </div>
-        <div class="wide-block pt-2 pb-2 border-0" *ngIf="f.category.value === 'montres'">
-          <form [formGroup]="postProductForm" class="d-flex mb-2 align-items-center justify-content-center">
-            <div class="form-group basic col-6">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="diameter" placeholder="Diamètre" step="any" style="height: 51px;">
+            </ng-container>
+            <ng-container
+              *ngIf="f.category.value === 'montres' || f.category.value === 'bijoux' && f.subCategory.value === 'bagues'">
+              <div class="form-group basic col-6">
+                <div class="input-wrapper">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" formControlName="diameter"
+                    placeholder="Diamètre" step="any" style="height: 51px;">
+                </div>
               </div>
-            </div>
-            <div class="form-group basic col-2 text-center">
-              <span>MM</span>
-            </div>
-          </form>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
-          </div>
-        </div>
-        <div class="wide-block pt-2 pb-2 border-0" *ngIf="f.category.value === 'chaussures'">
-          <form [formGroup]="postProductForm" class="d-flex mb-2">
-            <div class="form-group basic mr-2">
-              <div class="input-wrapper">
-                <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                  formControlName="size" placeholder="Taille" step="any" style="height: 51px;">
+              <div class="form-group basic col-2 text-center">
+                <span>MM</span>
               </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <select class="form-control custom-select text-center" id="sizeType" formControlName="sizeType">
-                  <option value="" disabled selected>Type</option>
-                  <option value="eu">EU</option>
-                  <option value="uk">UK</option>
-                  <option value="us">US</option>
-                  <option value="it">IT</option>
-                </select>
+            </ng-container>
+            <ng-container *ngIf="f.category.value === 'vêtements'">
+              <div class="form-group basic d-flex justify-content-center">
+                <div class="input-wrapper">
+                  <input type="text" class="form-control text-center px-0 modal-input" placeholder="Taille"
+                    formControlName="sizeClothes">
+                </div>
               </div>
-            </div>
+            </ng-container>
           </form>
           <div class="form-group basic">
             <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
@@ -455,8 +453,8 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Etat de l'article</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body pt-0" style="background:#EDEDF5;">
@@ -616,9 +614,6 @@
               </div>
             </div>
           </div>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
-          </div>
         </div>
       </div>
     </div>
@@ -632,19 +627,19 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Prix de l'article</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pb-2" style="background: #EDEDF5;">
         <div class="action-sheet-content">
           <form [formGroup]="postProductForm" class="d-flex">
             <div class="form-group basic pr-1">
               <div class="input-wrapper text-center">
                 <label for="">Votre prix
-                  <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control text-center px-0 number"
-                    [(ngModel)]="product.amount.price" (ngModelChange)="onPriceChange($event)"
-                    [ngModelOptions]="{standalone: true}" placeholder="Montant">
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" [(ngModel)]="product.amount.price"
+                    (ngModelChange)="onPriceChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Montant">
                 </label>
               </div>
             </div>
@@ -653,15 +648,13 @@
               <div class="input-wrapper text-center">
                 <label for="">Vous gagnez
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
-                    class="form-control text-center px-0 number text-success" [(ngModel)]="product.amount.amountWin"
-                    [ngModelOptions]="{standalone: true}" style="font-weight: bold;" placeholder="Vous gagnez">
+                    class="form-control text-center px-0 number modal-input" [(ngModel)]="product.amount.amountWin"
+                    [ngModelOptions]="{standalone: true}" placeholder="Montant gagné" disabled
+                    style="font-weight: 600; color: #00d47f !important;">
                 </label>
               </div>
             </div>
           </form>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg mt-2" data-dismiss="modal">Valider</button>
-          </div>
         </div>
       </div>
     </div>
@@ -675,8 +668,8 @@
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Choisir une catégorie</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body" style="background: #EDEDF5;">
@@ -686,16 +679,13 @@
               <div class="input-list">
                 <div class="custom-control custom-radio" *ngFor="let categorie of categories">
                   <input type="radio" id="{{categorie.name}}" name="category" formControlName="category"
-                    [value]="categorie.name" class="custom-control-input">
+                    [value]="categorie.value" class="custom-control-input">
                   <label class="custom-control-label" for="{{categorie.name}}"
                     style="text-transform: capitalize;">{{categorie.name}}</label>
                 </div>
               </div>
             </form>
           </div>
-          <button class="btn btn-primary btn-block btn-lg mt-3" data-dismiss="modal">
-            Valider
-          </button>
         </div>
       </div>
     </div>
@@ -703,14 +693,90 @@
 </div>
 <!-- * Category Form -->
 
+<!-- SubCategory Form -->
+<div class="modal fade modalbox" id="subCategoryForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une sous-catégorie</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background: #EDEDF5;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <ng-container *ngIf="f.category.value === 'bijoux'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subBijouxCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'accessoires'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subAccessoiresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'vêtements'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subVetementsCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'chaussures'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subChaussuresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'montres'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subMontresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'sacs'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subSacsCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === ''">
+                  <p class="p-2 text-center">Veuillez choisir une catégorie</p>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * SubCategory Form -->
+
 <!-- Brand Form -->
 <div class="modal fade modalbox" id="brandForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
         <h5 class="modal-title">Choisir une marque</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
         </a>
       </div>
       <div class="modal-body" style="background: #EDEDF5;">
@@ -738,9 +804,6 @@
               </div>
             </form>
           </div>
-          <button class="btn btn-primary btn-block btn-lg mt-3" data-dismiss="modal">
-            Valider
-          </button>
         </div>
       </div>
     </div>
@@ -749,7 +812,7 @@
 <!-- * Brand Form -->
 
 <!-- Authenticity Form -->
-<div class="modal fade modalbox" id="proofForm" tabindex="-1" role="dialog">
+<div class="modal fade action-sheet" id="proofForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex align-items-center">
@@ -759,7 +822,7 @@
         </a>
       </div>
       <div class="modal-body" style="background: #EDEDF5;">
-        <div class="section full mb-2">
+        <div class="section full mt-3 mb-3 px-3">
           <div class="wide-block p-0">
             <form [formGroup]="postProductForm">
               <div class="input-list">

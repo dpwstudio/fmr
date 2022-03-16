@@ -6,7 +6,7 @@
         <a [routerLink]="['/profile', product.userId]" routerLinkActive="router-link-active"
           class="d-flex align-items-center justify-content-between text-muted">
           <img src="{{product.avatar ? product.avatar : 'assets/img/default-img.svg'}}" [alt]="product.avatar" [title]="product.avatar"
-            class="imaged w24 rounded mr-05"> {{product.userName}}
+            class="imaged w24 rounded mr-05"> {{product.userName | titlecase}}
         </a>
         <div class="d-flex align-items-center justify-content-between text-muted">
           <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>

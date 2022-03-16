@@ -1,0 +1,313 @@
+[{
+    "name": "bagues",
+    "value": "bagues",
+    "catalogType": "mode",
+    "category": "bijoux"
+  },
+  {
+    "name": "bracelets",
+    "value": "bracelets",
+    "catalogType": "mode",
+    "category": "bijoux"
+  },
+  {
+    "name": "colliers",
+    "value": "colliers",
+    "catalogType": "mode",
+    "category": "bijoux"
+  },
+  {
+    "name": "boucles d'oreilles",
+    "value": "boucles d'oreilles",
+    "catalogType": "mode",
+    "category": "bijoux"
+  },
+  {
+    "name": "foulards",
+    "value": "foulards",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "carrés",
+    "value": "carrés",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "gants",
+    "value": "gants",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "chapeaux",
+    "value": "chapeaux",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "portefeuilles",
+    "value": "portefeuilles",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "ceintures",
+    "value": "ceintures",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "lunettes",
+    "value": "lunettes",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "petite maroquinerie",
+    "value": "petite maroquinerie",
+    "catalogType": "mode",
+    "category": "accessoires"
+  },
+  {
+    "name": "manteaux",
+    "value": "manteaux",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "trenchs",
+    "value": "trenchs",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "vestes",
+    "value": "vestes",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "robes",
+    "value": "robes",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "blousons",
+    "value": "blousons",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "pulls-gilets",
+    "value": "pulls-gilets",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "tops",
+    "value": "tops",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "jupes",
+    "value": "jupes",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "shorts",
+    "value": "shorts",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "pantalons",
+    "value": "pantalons",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "jeans",
+    "value": "jeans",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "t-shirts",
+    "value": "t-shirts",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "combinaisons",
+    "value": "combinaisons",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "lingerie",
+    "value": "lingerie",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "chemises",
+    "value": "chemises",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "polos",
+    "value": "polos",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "costumes",
+    "value": "costumes",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "bain",
+    "value": "bain",
+    "catalogType": "mode",
+    "category": "vêtements"
+  },
+  {
+    "name": "sneakers",
+    "value": "sneakers",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "escarpins",
+    "value": "escarpins",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "boots",
+    "value": "boots",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "bottes",
+    "value": "bottes",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "sandales",
+    "value": "sandales",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "espadrilles",
+    "value": "espadrilles",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "sabots",
+    "value": "sabots",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "mocassins",
+    "value": "mocassins",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "ballerines",
+    "value": "ballerines",
+    "catalogType": "mode",
+    "category": "chaussures"
+  },
+  {
+    "name": "porté main",
+    "value": "porté main",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "porté épaule",
+    "value": "porté épaule",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "cabas",
+    "value": "cabas",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "bandoulière",
+    "value": "bandoulière",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "pochettes",
+    "value": "pochettes",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "sacs banane",
+    "value": "sacs banane",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "sacs à dos",
+    "value": "sacs à dos",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "sacs de voyage",
+    "value": "sacs de voyage",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "cartable",
+    "value": "cartable",
+    "catalogType": "mode",
+    "category": "sacs"
+  },
+  {
+    "name": "quartz",
+    "value": "quartz",
+    "catalogType": "mode",
+    "category": "montres"
+  },
+  {
+    "name": "mécanique",
+    "value": "mécanique",
+    "catalogType": "mode",
+    "category": "montres"
+  },
+  {
+    "name": "hybride",
+    "value": "hybride",
+    "catalogType": "mode",
+    "category": "montres"
+  },
+  {
+    "name": "connectée",
+    "value": "connectée",
+    "catalogType": "mode",
+    "category": "montres"
+  }
+]

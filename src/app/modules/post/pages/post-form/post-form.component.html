@@ -369,7 +369,8 @@
       <div class="modal-body">
         <div class="wide-block pt-2 pb-2 border-0" style="background: #EDEDF5;">
           <form [formGroup]="postProductForm" class="d-flex align-items-center justify-content-center mb-2">
-            <ng-container *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === ''">
+            <ng-container
+              *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === ''">
               <div class="form-group basic mr-2">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -655,6 +656,9 @@
               </div>
             </div>
           </form>
+          <p class="text-justify mb-1">Le montant gagné est déduit de 11% du montant correspondant à la commission due
+            pour vos articles vendus sur notre plateforme. <a href="">En savoir plus</a></p>
+
         </div>
       </div>
     </div>

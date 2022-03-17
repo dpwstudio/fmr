@@ -369,6 +369,9 @@ export class PostFormComponent implements OnInit {
 				catalogType: 'mode',
 				category: '',
 				description: '',
+				height: '',
+				width: '',
+				length: '',
 			});
 		} else {
 			this.categories = this.catalogArt;
@@ -382,6 +385,13 @@ export class PostFormComponent implements OnInit {
 				description: '',
 				color: '',
 				matter: '',
+				height: '',
+				width: '',
+				length: '',
+				size: '',
+				sizeType: '',
+				diameter: '',
+				sizeClothes: '',
 			});
 		}
 		return this.product.catalogType = catalogType;

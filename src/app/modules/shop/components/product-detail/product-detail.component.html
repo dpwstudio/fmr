@@ -371,20 +371,23 @@
         <ng-container *ngFor="let comment of comments; trackBy:trackById">
           <ng-template carouselSlide>
             <div class="item">
-              <div class="user-card p-2 position-relative" style="min-height: 150px; border-bottom: 3px solid #ddd1b69c;">
+              <div class="user-card p-2 position-relative"
+                style="min-height: 150px; border-bottom: 3px solid #ddd1b69c;">
                 <div class="d-flex align-items-center justify-content-center">
-                    <img [src]="comment.avatar" class="imaged rounded w24 mr-1" alt="">
-                    <a href="" style="font-size: 15px; font-weight: 500;">{{comment.userName | titlecase}}</a>
+                  <img [src]="comment.avatar" class="imaged rounded w24 mr-1" alt="">
+                  <a href="" style="font-size: 15px; font-weight: 500;">{{comment.userName | titlecase}}</a>
                 </div>
                 <p style="line-height: 18px; margin: 20px auto 10px;">{{comment.message}}</p>
-                <span class="number position-absolute w-100 text-muted" style="bottom: 10px; right: 0; font-size: 8px;">Posté le {{comment.createdAt | date:'dd/MM/YYYY'}}</span>
+                <span class="number position-absolute w-100 text-muted"
+                  style="bottom: 10px; right: 0; font-size: 8px;">Posté le
+                  {{comment.createdAt | date:'dd/MM/YYYY'}}</span>
               </div>
             </div>
           </ng-template>
         </ng-container>
       </owl-carousel-o>
     </div>
-    <div class="card bg-white mb-2 p-3" *ngIf="comments.length === 0">
+    <div class="card bg-white mb-2 mx-3 p-3" *ngIf="comments.length === 0">
       Aucun commentaire
     </div>
   </div>
@@ -433,16 +436,19 @@
 <div class="modal fade action-sheet" id="commentForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ajouter un commentaire</h5>
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Poster un commentaire</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          <ion-icon name="close-outline" style="font-size: 25px"></ion-icon>
+        </a>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="background: #EDEDF5;">
         <div class="action-sheet-content">
           <form [formGroup]="commentForm">
             <div class="form-group basic">
               <div class="input-wrapper">
-                <textarea id="comment" rows="2" class="form-control" formControlName="comment" name="comment"
-                  placeholder="Votre commentaire"></textarea>
+                <textarea rows="6" class="form-control modal-input px-3" formControlName="comment" name="comment"
+                  placeholder="Ecrivez votre commentaire"></textarea>
               </div>
             </div>
             <div class="form-group basic">

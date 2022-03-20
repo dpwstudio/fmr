@@ -13932,7 +13932,7 @@ a.badge-dark {
 }
 
 .dialogbox .modal-dialog .modal-content {
-  max-width: 350px;
+  max-width: 100%;
   margin: auto;
   overflow: hidden;
   border: 0;
@@ -14011,7 +14011,6 @@ a.badge-dark {
 
 .dialogbox .modal-dialog .modal-content .modal-footer {
   border: 0;
-  border-top: 1px solid #DCDCE9;
   padding: 0;
   display: block;
   text-align: right;

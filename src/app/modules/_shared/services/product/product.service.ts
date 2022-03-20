@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Comment } from '../../models/comment.model';
 import { FiltersProducts } from '../../models/filtersProducts.model';
 import { Product } from '../../models/product.model';
 import { User } from '../../models/user.model';
@@ -26,11 +27,11 @@ export class ProductService {
   getBrands(): Observable<any[]> {
     return this.http.get(`assets/mock-data/brands.json`) as Observable<any[]>;
   }
- 
+
   getCategories(): Observable<any[]> {
     return this.http.get(`assets/mock-data/categories.json`) as Observable<any[]>;
   }
-  
+
   getSubCategories(): Observable<any[]> {
     return this.http.get(`assets/mock-data/subcategories.json`) as Observable<any[]>;
   }
@@ -66,4 +67,18 @@ export class ProductService {
     return this.http.delete(`${environment.fmrApi}/products/${id}`);
   }
 
+  getComment(id) {
+    return this.http.get(`${environment.fmrApi}/comments/${id}`).pipe(
+      catchError(error => {
+        return throwError(error);
+      }),
+      map((comments: Comment[]) => {
+        return comments.map(product => new Comment(product));
+      })
+    ) as Observable<Comment[]>;
+  }
+
+  addComment(comment: Comment) {
+    return this.http.post(`${environment.fmrApi}/comments`, comment);
+  }
 }

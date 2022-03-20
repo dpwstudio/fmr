@@ -1,12 +1,16 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Subscription, throwError } from 'rxjs';
+import { of, Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Comment } from 'src/app/modules/_shared/models/comment.model';
 import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
 import { Product } from 'src/app/modules/_shared/models/product.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 
@@ -34,22 +38,38 @@ export class ProductDetailComponent implements OnInit {
     items: 2,
     dots: false,
   };
+
+  carouselSmallOptions: OwlOptions = {
+    stagePadding: 32,
+    loop: true,
+    margin: 8,
+    nav: false,
+    items: 4,
+    dots: false,
+  }
+
   products: Product[] = [];
+  comments: Comment[] = [];
   currentProduct: Product;
   quantity = 1;
   id: number;
   subscription: Subscription;
   filtersProducts: FiltersProducts;
   currentImg: string;
+  commentForm: FormGroup;
+  currentUser: User;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private cartService: CartService,
     private productService: ProductService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
+    this.currentUser = this.authService.getCurrentUser();
   }
 
   ngOnInit(): void {
@@ -59,8 +79,21 @@ export class ProductDetailComponent implements OnInit {
         id: this.id
       }
       this.getProducts(this.filtersProducts);
-      // In a real app: dispatch action to load the details here.
+      this.getComments(this.filtersProducts.id);
     });
+    this.commentForm = this.formBuilder.group({
+      comment: ['', Validators.required],
+      productId: [this.id, Validators.required],
+      userId: [this.currentUser.id, Validators.required],
+    });
+  }
+
+  trackById(index, item) {
+    return item.id;
+  }
+
+  isLoading() {
+    return this.subscription && !this.subscription.closed;
   }
 
   getProducts(filtersProducts) {
@@ -74,11 +107,18 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  trackById(index, item) {
-    return item.id;
-  }
-  isLoading() {
-    return this.subscription && !this.subscription.closed;
+  getComments(id) {
+    this.subscription = this.productService.getComment(id).pipe(
+      catchError(error => {
+        if (error.status === 404) {
+          return of([]);
+        }
+        return throwError(error);
+      })
+    ).subscribe((comments: Comment[]) => {
+      console.log('comments', comments);
+      this.comments = comments;
+    })
   }
 
   shareProduct() {
@@ -95,6 +135,23 @@ export class ProductDetailComponent implements OnInit {
     } else {
       this.notifier.notify('error', 'Le partage est indisponible sur votre navigateur');
     }
+  }
+
+  addComment() {
+    // stop here if form is invalid
+    if (this.commentForm.invalid) {
+      this.notifier.notify('error', 'Le formulaire ne semble pas valide.');
+      return;
+    }
+
+    this.subscription = this.productService.addComment(this.commentForm.value).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(result => {
+      this.notifier.notify('success', 'Votre commentaire a été ajouté avec succès.');
+      this.getComments(this.id);
+    })
   }
 
   addProductToCart(product) {

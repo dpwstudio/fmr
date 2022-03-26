@@ -59,7 +59,8 @@ export class ProductDetailComponent implements OnInit {
   currentImg: string;
   commentForm: FormGroup;
   currentUser: User;
-  wishlists: Product[];
+  wishlists: Product[] = [];
+  loves: any[] = [];
 
   constructor(
     private router: Router,
@@ -89,6 +90,7 @@ export class ProductDetailComponent implements OnInit {
       userId: [this.currentUser.id, Validators.required],
     });
     this.getWishlists();
+    this.getLoves();
   }
 
   trackById(index, item) {
@@ -203,5 +205,39 @@ export class ProductDetailComponent implements OnInit {
 
   isInWishlist(): boolean {
     return this.wishlists.length > 0;
+  }
+
+  getLoves() {
+    this.productService.getLoves(this.id).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(loves => {
+      console.log('loves', loves);
+      this.loves = loves;
+    })
+  }
+
+  loveProduct(product, userId) {
+    const data = {
+      productId: product.id,
+      userId: userId
+    }
+
+    this.subscription = this.productService.loveProduct(data).pipe(
+      catchError(error => {
+        if (error.status === 409) {
+          this.notifier.notify('error', 'Vous aimez déjà ce produit')
+        }
+        return throwError(error);
+      })
+    ).subscribe(result => {
+      this.notifier.notify('info', 'Vous aimez cette article ? Acheter le avant qu\'il ne soit trop tard !');
+      this.getLoves();
+    })
+  }
+
+  hasAlreadyLove(userId) {
+    return this.loves.filter(love => love.userId === userId).length > 0;
   }
 }

@@ -96,4 +96,19 @@ export class ProductService {
   addToWishlist(data) {
     return this.http.post(`${environment.fmrApi}/wishlists`, data);
   }
+
+  getLoves(productId): Observable<any[]> {
+    return this.http.get(`${environment.fmrApi}/loves/${productId}`).pipe(
+      catchError(error => {
+        return throwError(error);
+      }),
+      map((lovesProducts) => {
+        return lovesProducts;
+      }),
+    ) as Observable<any[]>;
+  }
+  
+  loveProduct(data) {
+    return this.http.post(`${environment.fmrApi}/loves`, data);
+  }
 }

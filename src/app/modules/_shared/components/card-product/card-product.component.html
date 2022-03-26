@@ -1,17 +1,22 @@
 <!-- item -->
 <div class="item position-relative">
   <div class="blog-card">
+    <div class="d-flex align-items-center justify-content-between text-muted" style="position: absolute;
+    right: 7px;
+    top: 8px;">
+      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;" *ngIf="!hasAlreadyLove(currentUser.id)"
+        (click)="loveProduct(product, currentUser.id, $event)"></ion-icon>
+      <ion-icon name="heart" class="text-danger" style="font-size: 17px; margin-right: 2px;"
+        *ngIf="hasAlreadyLove(currentUser.id)"></ion-icon>
+      <span class="number" style="font-size: 9px">{{loves.length}}</span>
+    </div>
     <a [routerLink]="['/product-detail', productId]" routerLinkActive="router-link-active">
       <div class="blog-header d-flex justify-content-between align-items-center py-2 px-2">
         <a [routerLink]="['/profile', product.userId]" routerLinkActive="router-link-active"
           class="d-flex align-items-center justify-content-between text-muted">
-          <img src="{{product.avatar ? product.avatar : 'assets/img/default-img.svg'}}" [alt]="product.avatar" [title]="product.avatar"
-            class="imaged w24 rounded mr-05"> {{product.userName | titlecase}}
+          <img src="{{product.avatar ? product.avatar : 'assets/img/default-img.svg'}}" [alt]="product.avatar"
+            [title]="product.avatar" class="imaged w24 rounded mr-05"> {{product.userName | titlecase}}
         </a>
-        <div class="d-flex align-items-center justify-content-between text-muted">
-          <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"></ion-icon>
-          <span class="number" style="font-size: 9px">{{product.like}}</span>
-        </div>
       </div>
       <div class="image-overflow">
         <app-image [src]="product.photoFace"></app-image>
@@ -19,16 +24,16 @@
       <div class="bill-box">
         <h1 style="font-size: 14px; text-transform: uppercase;">{{product.brand}}</h1>
         <p class="desc-product" style="text-transform: capitalize;">{{product.model}}</p>
-		  <div class="chip chip-media">
-			<i class="chip-icon bg-primary">
-			  <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
-			  </ion-icon>
-			</i>
-			<span class="chip-label number pr-0 origin-price"
-			  [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-			<span class="text-danger number d-none"
-			  [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-		 </div>
+        <div class="chip chip-media">
+          <i class="chip-icon bg-primary">
+            <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+            </ion-icon>
+          </i>
+          <span class="chip-label number pr-0 origin-price"
+            [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          <span class="text-danger number d-none"
+            [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+        </div>
       </div>
     </a>
     <div class="d-flex align-items-center justify-content-between" style="    padding: 0 10px 10px;

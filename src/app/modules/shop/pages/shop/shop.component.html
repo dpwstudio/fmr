@@ -66,7 +66,7 @@
       <div class="row">
         <ng-container *ngFor="let product of products; trackBy:trackById">
           <div class="col-6 mb-2">
-            <app-card-product [product]="product"></app-card-product>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
           </div>
         </ng-container>
         <ng-container *ngIf="products.length === 0">
@@ -83,7 +83,7 @@
       <div class="row">
         <ng-container *ngFor="let product of products; trackBy:trackById">
           <div class="col-6 mb-2">
-            <app-card-product [product]="product"></app-card-product>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
           </div>
         </ng-container>
         <ng-container *ngIf="products.length === 0">
@@ -100,7 +100,7 @@
       <div class="row">
         <ng-container *ngFor="let product of products; trackBy:trackById">
           <div class="col-6 mb-2" *ngIf="product.fallingPrice">
-            <app-card-product [product]="product"></app-card-product>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
           </div>
         </ng-container>
         <ng-container *ngIf="products.length === 0">

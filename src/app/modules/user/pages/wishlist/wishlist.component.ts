@@ -37,15 +37,16 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
-    this.getProducts();
+    this.getWishlists();
   }
 
-  getProducts() {
-    this.productService.getProducts().pipe(
+  getWishlists() {
+    this.productService.getWishlists(this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
+      console.log('products', products)
       this.productsArt = products.filter(product => product.userId === this.currentUser.id && product.catalogType === 'art');
       this.productsMens = products.filter(product => product.userId === this.currentUser.id && product.kind === 'mens');
       this.productsWomens = products.filter(product => product.userId === this.currentUser.id && product.kind === 'womens');

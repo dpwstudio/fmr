@@ -74,13 +74,14 @@
         <a [routerLink]="['/profile', currentProduct?.userId]" routerLinkActive="router-link-active" class="text-dark"
           style="text-transform: capitalize;">
           <img src="{{currentProduct?.avatar ? currentProduct.avatar : 'assets/img/default-img.svg'}}" alt="img"
-            class="imaged w48 rounded mr-05">
+            class="imaged w36 rounded mr-05">
           {{currentProduct?.userName}}
         </a>
       </div>
       <div class="member-date">
         Membre depuis le
-        <span class="number d-block" style="font-size: 10px; font-weight: 500;">24/09/2021</span>
+        <span class="number d-block"
+          style="font-size: 10px; font-weight: 300;">{{currentProduct?.userDateMember | date:'dd/MM/YYYY'}}</span>
       </div>
     </div>
   </div>
@@ -99,8 +100,8 @@
           </button>
         </div>
         <div id="description" class="accordion-body collapse show" data-parent="#accordionExample1">
-          <div class="accordion-content">
-            {{currentProduct?.description | titlecase}}
+          <div class="accordion-content text-secondary">
+            {{currentProduct?.description}}
           </div>
         </div>
       </div>
@@ -294,18 +295,18 @@
           </button>
         </div>
         <div id="control" class="accordion-body collapse" data-parent="#accordionExample1">
-          <div class="accordion-content">
-            <h3><i class="fa-solid fa-certificate mr-1"></i> Contrôle de conformité offerts</h3>
+          <div class="accordion-content text-secondary">
+            <h4 class="text-primary"><i class="fa-solid fa-certificate mr-1"></i> CONTRÔLE DE CONFORMITE</h4>
             <ul>
               <li>Tous les articles sont réceptionnés dans notre centre.</li>
               <li>Tous les articles sont contrôlés par nos experts.</li>
               <li>Une fois conforme, nous vous confirmerons l'envoi de votre article.</li>
             </ul>
-            <h3><i class="fa-solid fa-truck-fast mr-1"></i> Expédition sous 24h</h3>
+            <h4 class="text-primary"><i class="fa-solid fa-truck-fast mr-1"></i> EXPEDITION SOUS 72h</h4>
             <p>
               Les articles contrôlés et validés sont immédiatement préparés et envoyés sous 24h.
             </p>
-            <h3><i class="fa-solid fa-circle-arrow-left mr-1"></i> Retours sous 72 heures</h3>
+            <h4 class="text-primary"><i class="fa-solid fa-circle-arrow-left mr-1"></i> RETOURS SOUS 72 heures</h4>
             <p>
               Vous avez la possibilité de nous retourner ou échanger tout produit commandé dans un délai de 72
               heures
@@ -332,26 +333,30 @@
     <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
-          <div class="text-center">
-            <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
-              class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;">
-              <ion-icon name="hand-left-outline"></ion-icon>
+          <div class="text-center" *ngIf="currentUser">
+            <a (click)="addToWishlist(currentProduct, currentUser.id)" *ngIf="!isInWishlist()"
+              class="btn btn-block btn-lg btn-icon btn-outline-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="star-outline" class="text-primary"></ion-icon>
             </a>
-            <span class="d-block text-secondary">Négocier</span>
+            <a *ngIf="isInWishlist()"
+              class="btn btn-block btn-lg btn-icon btn-outline-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="star" class="text-primary"></ion-icon>
+            </a>
+            <span class="d-block text-primary">Wishlist</span>
+          </div>
+          <div class="text-center" *ngIf="currentUser">
+            <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
+              class="btn btn-block btn-icon btn-lg btn-outline-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+            </a>
+            <span class="d-block text-primary">Négocier</span>
           </div>
           <div class="text-center">
-            <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
-              class="btn btn-block btn-lg btn-icon btn-primary my-0" style="width: 50px; height: 50px;">
-              <ion-icon name="star-outline"></ion-icon>
-            </a>
-            <span class="d-block text-secondary">Wishlist</span>
-          </div>
-          <div class="text-center">
-            <a class="btn btn-block btn-icon btn-lg btn-primary my-0" style="width: 50px; height: 50px;"
+            <a class="btn btn-block btn-icon btn-lg btn-outline-primary my-0" style="width: 50px; height: 50px;"
               (click)="addProductToCart(currentProduct)">
-              <ion-icon name="bag-add-outline"></ion-icon>
+              <ion-icon name="bag-add" class="text-primary"></ion-icon>
             </a>
-            <span class="d-block text-secondary">Panier</span>
+            <span class="d-block text-primary">Panier</span>
           </div>
         </div>
       </div>
@@ -366,30 +371,38 @@
         <ion-icon name="chatbubble-outline"></ion-icon>
       </button>
     </div>
-    <div class="mb-2" *ngIf="comments.length > 0">
+    <div class="mb-2" *ngIf="comments.length > 0; else noComments">
       <owl-carousel-o [options]="carouselSmallOptions">
         <ng-container *ngFor="let comment of comments; trackBy:trackById">
           <ng-template carouselSlide>
             <div class="item">
               <div class="user-card p-2 position-relative"
-                style="min-height: 150px; border-bottom: 3px solid #ddd1b69c;">
-                <div class="d-flex align-items-center justify-content-center">
-                  <img [src]="comment.avatar" class="imaged rounded w24 mr-1" alt="">
-                  <a href="" style="font-size: 15px; font-weight: 500;">{{comment.userName | titlecase}}</a>
+                style="min-height: 150px; border-top: 4px solid #ddd1b69c; border-radius: 15px 35px">
+                <div class="d-flex align-items-center" style="text-align: left; line-height: 16px;">
+                  <img [src]="comment.avatar" class="imaged rounded w32 mr-1" alt="">
+                  <div class="d-flex flex-column">
+                    <a href="" style="font-size: 15px; font-weight: 500;">{{comment.userName | titlecase}}</a>
+                    <span class="number w-100" style="font-size: 8px; color: #cacaca;">
+                      {{comment.createdAt | date:'dd/MM/YYYY'}}</span>
+                  </div>
                 </div>
                 <p style="line-height: 18px; margin: 20px auto 10px;">{{comment.message}}</p>
-                <span class="number position-absolute w-100 text-muted"
-                  style="bottom: 10px; right: 0; font-size: 8px;">Posté le
-                  {{comment.createdAt | date:'dd/MM/YYYY'}}</span>
               </div>
             </div>
           </ng-template>
         </ng-container>
       </owl-carousel-o>
     </div>
-    <div class="card bg-white mb-2 mx-3 p-3" *ngIf="comments.length === 0">
-      Aucun commentaire
-    </div>
+    <ng-template #noComments>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
+            <p class="m-0 text-secondary">Aucun commentaire</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
 
   <!-- News -->
@@ -398,15 +411,27 @@
       <h2 class="title">Articles suggérés</h2>
       <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
     </div>
-    <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of products; trackBy:trackById">
-        <ng-container *ngIf="isSameCategories(product)">
+    <ng-container *ngIf="productsSuggested.length > 0; else noProducts">
+      <owl-carousel-o [options]="carouselMultipleOptions">
+        <ng-container *ngFor="let product of productsSuggested; trackBy:trackById">
           <ng-template carouselSlide>
-            <app-card-product [product]="product"></app-card-product>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
           </ng-template>
         </ng-container>
-      </ng-container>
-    </owl-carousel-o>
+      </owl-carousel-o>
+    </ng-container>
+
+
+    <ng-template #noProducts>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
+            <p class="m-0 text-secondary">Aucun articles suggérés</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <!-- * News -->
 

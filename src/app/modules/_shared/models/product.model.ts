@@ -1,3 +1,5 @@
+import * as moment from "moment";
+
 export class Product {
 
 	photoFace = '';
@@ -145,5 +147,13 @@ export class Product {
 
 	get userImg(): string {
 		return this.product.userImg;
+	}
+	
+	get userDateMember(): string {
+		return this.product.userDateMember;
+	}
+	
+	get productId(): number {
+		return this.product.productId;
 	}
 }

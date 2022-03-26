@@ -49,6 +49,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   products: Product[] = [];
+  productsSuggested: Product[] = [];
   comments: Comment[] = [];
   currentProduct: Product;
   quantity = 1;
@@ -58,6 +59,7 @@ export class ProductDetailComponent implements OnInit {
   currentImg: string;
   commentForm: FormGroup;
   currentUser: User;
+  wishlists: Product[];
 
   constructor(
     private router: Router,
@@ -86,6 +88,7 @@ export class ProductDetailComponent implements OnInit {
       productId: [this.id, Validators.required],
       userId: [this.currentUser.id, Validators.required],
     });
+    this.getWishlists();
   }
 
   trackById(index, item) {
@@ -104,6 +107,8 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe((products: any[]) => {
       this.products = products;
       this.currentProduct = this.products.filter(product => product.id === filtersProducts.id)[0];
+      this.productsSuggested = products.filter(product => product.category === this.currentProduct.category && product.id !== this.currentProduct.id);
+      console.log('this.currentProduct', this.currentProduct)
     })
   }
 
@@ -163,8 +168,40 @@ export class ProductDetailComponent implements OnInit {
     return this.currentImg = img;
   }
 
-  isSameCategories(product) {
-    return this.currentProduct.category === product.category
-      && this.currentProduct.id !== product.id;
+  addToWishlist(product, userId) {
+    if (userId === product.userId) {
+      this.notifier.notify('error', 'Vous ne pouvez pas ajouter vos propres articles dans votre Wishlist.');
+      return;
+    }
+    const data = {
+      productId: product.id,
+      userId: userId
+    }
+
+    this.subscription = this.productService.addToWishlist(data).pipe(
+      catchError(error => {
+        if (error.status === 409) {
+          this.notifier.notify('error', 'L\'article a déjà été ajouté dans votre Wishlist')
+        }
+        return throwError(error);
+      })
+    ).subscribe(result => {
+      this.notifier.notify('success', 'L\'article a bien été ajouté dans votre Wishlist');
+      this.getWishlists();
+    })
+  }
+
+  getWishlists() {
+    this.productService.getWishlists(this.currentUser.id).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(wishlists => {
+      this.wishlists = wishlists.filter(wishlist => wishlist.productId === this.id);
+    })
+  }
+
+  isInWishlist(): boolean {
+    return this.wishlists.length > 0;
   }
 }

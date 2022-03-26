@@ -73,13 +73,26 @@
       <h2 class="title">Nouveautés</h2>
       <a [routerLink]="['/shop', { type: 'news' }]" class="link">Tout voir</a>
     </div>
-    <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of productsMode; trackBy:trackById">
-        <ng-template carouselSlide>
-          <app-card-product [product]="product"></app-card-product>
-        </ng-template>
-      </ng-container>
-    </owl-carousel-o>
+    <ng-container *ngIf="productsMode.length > 0; else noProductsMode">
+      <owl-carousel-o [options]="carouselMultipleOptions">
+        <ng-container *ngFor="let product of productsMode; trackBy:trackById">
+          <ng-template carouselSlide>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </ng-container>
+
+    <ng-template #noProductsMode>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6"></ion-icon>
+            <p class="m-0 text-secondary">Aucune nouveautés pour le moment</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <!-- * News -->
 
@@ -116,17 +129,58 @@
       <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="link">Tout
         voir</a>
     </div>
-    <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of productsFallingPriceMode; trackBy:trackById">
-        <ng-container *ngIf="isFallingPrice(product)">
-          <ng-template carouselSlide>
-            <app-card-product [product]="product"></app-card-product>
-          </ng-template>
+    <ng-container *ngIf="productsFallingPriceMode.length > 0; else noProductsFallingPriceMode">
+      <owl-carousel-o [options]="carouselMultipleOptions">
+        <ng-container *ngFor="let product of productsFallingPriceMode; trackBy:trackById">
+          <ng-container *ngIf="isFallingPrice(product)">
+            <ng-template carouselSlide>
+              <app-card-product [product]="product" [productId]="product.id"></app-card-product>
+            </ng-template>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </owl-carousel-o>
+      </owl-carousel-o>
+    </ng-container>
+
+    <ng-template #noProductsFallingPriceMode>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6"></ion-icon>
+            <p class="m-0 text-secondary">Aucune nouveautés pour le moment</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <!-- * Baisse de prix -->
+
+  <!-- Nouveautés art -->
+  <div class="section full mt-4 mb-3">
+    <div class="section-heading padding">
+      <h2 class="title">Nouveautés Art</h2>
+      <a [routerLink]="['/shop', {catalogType: 'art'}]" class="link">Tout voir</a>
+    </div>
+    <ng-container *ngIf="productsArt.length > 0; else noProductsArt">
+      <owl-carousel-o [options]="carouselMultipleOptions">
+        <ng-container *ngFor="let product of productsArt; trackBy:trackById">
+          <ng-template carouselSlide>
+            <app-card-product [product]="product" [productId]="product.id"></app-card-product>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </ng-container>
+    <ng-template #noProductsArt>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
+            <p class="m-0 text-secondary">Aucune nouveautés pour le moment</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <!-- * Nouveautés art -->
 
   <!-- Les galeries -->
   <div class="section full mt-4 mb-5">
@@ -152,22 +206,6 @@
   </div>
   <!-- Les galeries -->
 
-  <!-- Nouveautés art -->
-  <div class="section full mt-4 mb-3">
-    <div class="section-heading padding">
-      <h2 class="title">Nouveautés Art</h2>
-      <a [routerLink]="['/shop', {catalogType: 'art'}]" class="link">Tout voir</a>
-    </div>
-    <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of productsArt; trackBy:trackById">
-        <ng-template carouselSlide>
-          <app-card-product [product]="product"></app-card-product>
-        </ng-template>
-      </ng-container>
-    </owl-carousel-o>
-  </div>
-  <!-- * Nouveautés art -->
-
   <!-- Baisse de prix Art -->
   <div class="section full mt-4 mb-5">
     <div class="section-heading padding">
@@ -176,15 +214,30 @@
       <a [routerLink]="['/shop', { type: 'falling-price' }]" routerLinkActive="router-link-active" class="link">Tout
         voir</a>
     </div>
-    <owl-carousel-o [options]="carouselMultipleOptions">
-      <ng-container *ngFor="let product of productsFallingPriceArt; trackBy:trackById">
-        <ng-container *ngIf="isFallingPrice(product)">
-          <ng-template carouselSlide>
-            <app-card-product [product]="product"></app-card-product>
-          </ng-template>
+
+    <ng-container *ngIf="productsFallingPriceArt.length > 0; else noProductsFallingPriceArt">
+      <owl-carousel-o [options]="carouselMultipleOptions">
+        <ng-container *ngFor="let product of productsFallingPriceArt; trackBy:trackById">
+          <ng-container *ngIf="isFallingPrice(product)">
+            <ng-template carouselSlide>
+              <app-card-product [product]="product" [productId]="product.id"></app-card-product>
+            </ng-template>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </owl-carousel-o>
+      </owl-carousel-o>
+    </ng-container>
+
+
+    <ng-template #noProductsFallingPriceArt>
+      <div class="d-flex justify-content-center w-100">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+          <div class="card-body d-flex align-items-center justify-content-between p-3">
+            <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
+            <p class="m-0 text-secondary">Aucune baisse de prix pour le moment</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <!-- * Baisse de prix Art -->
 

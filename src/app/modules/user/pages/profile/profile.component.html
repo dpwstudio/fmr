@@ -98,7 +98,7 @@
               <div class="row">
                 <ng-container *ngFor="let product of productsMens; trackBy:trackById">
                   <div class="col-6 mb-2">
-                    <app-card-product [product]="product"></app-card-product>
+                    <app-card-product [product]="product" [productId]="product.id"></app-card-product>
                   </div>
                 </ng-container>
                 <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
@@ -111,7 +111,7 @@
               <div class="row">
                 <ng-container *ngFor="let product of productsWomens; trackBy:trackById">
                   <div class="col-6 mb-2">
-                    <app-card-product [product]="product"></app-card-product>
+                    <app-card-product [product]="product" [productId]="product.id"></app-card-product>
                   </div>
                 </ng-container>
                 <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
@@ -124,7 +124,7 @@
               <div class="row">
                 <ng-container *ngFor="let product of productsKids; trackBy:trackById">
                   <div class="col-6 mb-2">
-                    <app-card-product [product]="product"></app-card-product>
+                    <app-card-product [product]="product" [productId]="product.id"></app-card-product>
                   </div>
                 </ng-container>
                 <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"
@@ -155,7 +155,7 @@
           <div class="row">
             <ng-container *ngFor="let product of productsArt; trackBy:trackById">
               <div class="col-6 mb-2">
-                <app-card-product [product]="product"></app-card-product>
+                <app-card-product [product]="product" [productId]="product.id"></app-card-product>
               </div>
             </ng-container>
             <div class="col-12 mb-2 d-flex align-items-center justify-content-center" style="min-height: 200px;"

@@ -6,6 +6,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { IonicModule } from '@ionic/angular';
 import { ImageComponent } from './components/image/image.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
+import { CookiesBoxComponent } from './components/cookies-box/cookies-box.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { CardProductComponent } from './components/card-product/card-product.com
     LoaderComponent,
     ImageComponent,
     CardProductComponent,
+    CookiesBoxComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { CardProductComponent } from './components/card-product/card-product.com
   exports: [
     LoaderComponent,
     ImageComponent,
-    CardProductComponent
+    CardProductComponent,
+    CookiesBoxComponent
   ]
 })
 export class SharedModule { }

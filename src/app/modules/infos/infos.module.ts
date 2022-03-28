@@ -8,6 +8,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { SharedModule } from '../_shared/shared.module';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   ],
   imports: [
     CommonModule,
+    LayoutModule,
     SharedModule,
     CarouselModule,
     InfosRoutingModule,

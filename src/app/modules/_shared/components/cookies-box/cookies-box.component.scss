@@ -1,0 +1,39 @@
+.cookies-box {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 14px 3px rgba(0, 0, 0, 0.12);
+  bottom: 10%;
+  left: 16px;
+  right: 16px;
+  padding: 20px 16px;
+  border-radius: 10px;
+  border: 0;
+  overflow: hidden;
+}
+
+.cookies-box.offcanvas-bottom,
+.cookies-box.offcanvas-top {
+  height: auto !important
+}
+
+.cookies-box .offcanvas-header {
+  padding: 0;
+  margin-bottom: 12px
+}
+
+.cookies-box .offcanvas-header .offcanvas-title {
+  margin: 0;
+  font-size: 15px
+}
+
+.cookies-box .offcanvas-body {
+  padding: 0;
+  height: auto;
+  font-size: 13px;
+  line-height: 1.6em
+}
+
+.cookies-box .buttons {
+  margin-top: 16px
+}

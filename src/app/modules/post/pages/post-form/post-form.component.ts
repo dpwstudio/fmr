@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import * as moment from 'moment';
@@ -63,6 +63,7 @@ export class PostFormComponent implements OnInit {
 	catalogArt = [];
 	brands = [];
 	search: string;
+	returnUrl = '';
 
 	constructor(
 		private router: Router,
@@ -71,6 +72,7 @@ export class PostFormComponent implements OnInit {
 		private authService: AuthService,
 		private userService: UserService,
 		private productService: ProductService,
+		private route: ActivatedRoute,
 		notifierService: NotifierService
 	) {
 		this.notifier = notifierService;
@@ -78,6 +80,8 @@ export class PostFormComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.currentUser = this.authService.getCurrentUser();
+		this.returnUrl = this.route.snapshot.routeConfig.path || '/';
+		console.log('this.route.snapshot', this.route.snapshot);
 		this.postProductForm = this.formBuilder.group({
 			photoFace: [''],
 			photoFaceUploaded: [''],
@@ -99,7 +103,7 @@ export class PostFormComponent implements OnInit {
 			model: [''],
 			matter: [''],
 			color: [''],
-			description: [''],
+			description: ['', Validators.required],
 			height: [''],
 			width: [''],
 			length: [''],
@@ -405,12 +409,19 @@ export class PostFormComponent implements OnInit {
 	}
 
 	addProduct() {
-		console.log('form', this.postProductForm);
 		// stop here if form is invalid
-		if (this.postProductForm.invalid) {
-			this.notifier.notify('error', 'Veuillez renseigner tous les champs.')
+		if (this.postProductForm.invalid
+			&& !this.isPhotosComplete()
+			&& !this.isDescriptionComplete()
+			&& !this.isDimensionsComplete()
+			&& !this.isStateChoiceComplete()
+			&& !this.isAuthenticityComplete()
+			&& !this.isAmountComplete()
+		) {
+			this.notifier.notify('error', 'Le formulaire est incomplet, veuillez saisir les champs manquants.')
 			return;
-		}
+		} 
+
 		const files = [];
 		files.push(this.postProductForm.get('photoFaceUploaded').value)
 		files.push(this.postProductForm.get('photoDosUploaded').value)
@@ -431,6 +442,7 @@ export class PostFormComponent implements OnInit {
 			this.uploadImageService.sendMultiplePhotosToServer(files);
 			this.router.navigate(['post-confirm', res.idProduct]);
 		});
+
 	}
 
 	onPriceChange(event) {

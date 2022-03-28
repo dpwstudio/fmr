@@ -1,0 +1,44 @@
+.content {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1000;
+  background: white;
+
+  .splash-page {
+    text-align: justify;
+  }
+
+  .btn-connect {
+    padding: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: white;
+    box-shadow: 0 1px 8px 0 rgb(0 0 0 / 9%);
+  }
+
+  .wide-block {
+    background: #ffffffe8;
+  }
+
+  &::after {
+    content: "";
+    background: url('../../../../../assets/img/bkg.svg') no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    z-index: -1;
+    left: 0;
+    transform: rotate(-180deg);
+  }
+}
+
+.owl-theme {
+  height: 72vh !important;
+}

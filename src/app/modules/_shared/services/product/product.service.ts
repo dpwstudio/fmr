@@ -48,7 +48,6 @@ export class ProductService {
   }
 
   getProducts(filters?: FiltersProducts): Observable<Product[]> {
-    console.log('filters', filters)
     return this.http.post(`${environment.fmrApi}/products/filters`, filters).pipe(
       catchError(error => {
         return throwError(error);

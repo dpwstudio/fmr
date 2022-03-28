@@ -14,6 +14,7 @@ import { SharedModule } from '../_shared/shared.module';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NegociateComponent } from './components/negociate/negociate.component';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NegociateComponent } from './components/negociate/negociate.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    LayoutModule,
     SharedModule,
     ShopRoutingModule,
     CarouselModule,

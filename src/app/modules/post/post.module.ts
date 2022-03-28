@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostConfirmComponent } from './components/post-confirm/post-confirm.component';
 import { HeaderPostComponent } from './components/header-post/header-post.component';
 import { SharedModule } from '../_shared/shared.module';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SharedModule } from '../_shared/shared.module';
   imports: [
     CommonModule,
     FormsModule,
+    LayoutModule,
     SharedModule,
     ReactiveFormsModule,
     PostRoutingModule,

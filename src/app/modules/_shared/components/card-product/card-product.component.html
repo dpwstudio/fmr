@@ -1,13 +1,13 @@
 <!-- item -->
 <div class="item position-relative">
-  <div class="blog-card">
+  <div class="blog-card animate__animated animate__fadeInUp">
     <div class="d-flex align-items-center justify-content-between text-muted" style="position: absolute;
     right: 7px;
     top: 8px;">
-      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;" *ngIf="!hasAlreadyLove(currentUser.id)"
-        (click)="loveProduct(product, currentUser.id, $event)"></ion-icon>
+      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;" *ngIf="!hasAlreadyLove(currentUser?.id)"
+        (click)="loveProduct(product, currentUser?.id)"></ion-icon>
       <ion-icon name="heart" class="text-danger" style="font-size: 17px; margin-right: 2px;"
-        *ngIf="hasAlreadyLove(currentUser.id)"></ion-icon>
+        *ngIf="hasAlreadyLove(currentUser?.id)"></ion-icon>
       <span class="number" style="font-size: 9px">{{loves.length}}</span>
     </div>
     <a [routerLink]="['/product-detail', productId]" routerLinkActive="router-link-active">

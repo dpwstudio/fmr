@@ -1,13 +1,13 @@
 <app-header-post [title]="'Dépôt d\'un article'" [linkLeft]="'false'" [linkRight]="'close'"></app-header-post>
 <!-- App Capsule -->
-<div id="appCapsule">
+<div id="appCapsule" style="overflow: hidden;">
   <div class="section mt-3 text-center">
     <h1 class="my-0" style="font-size: 40px;">Vendre</h1>
     <h4 class="text-muted mb-2 text-center" style="font-size: 17px;">Créer une annonce</h4>
   </div>
 
-  <div class="listview-title mt-1">Visuel</div>
-  <ul class="listview image-listview inset">
+  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Visuel</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#picturesForm">
         <div class="in">
@@ -21,8 +21,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1">Détails</div>
-  <ul class="listview image-listview inset">
+  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Détails</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#descriptionForm">
         <div class="in">
@@ -43,8 +43,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1">Authenticité</div>
-  <ul class="listview image-listview inset">
+  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Authenticité</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#proofForm">
         <div class="in">
@@ -57,8 +57,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1">Montant</div>
-  <ul class="listview image-listview inset">
+  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Montant</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#amountForm">
         <div class="in">
@@ -70,9 +70,11 @@
     </li>
   </ul>
 
-  <div class="section">
-    <button class="btn btn-block btn-primary mt-3 btn-lg" style="font-size: 20px;" (click)="addProduct()">Mettre en
-      vente</button>
+  <div class="d-flex align-items-center justify-content-center mt-3 animate__animated animate__bounceIn">
+    <button (click)="addProduct()"
+      class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </button>
   </div>
 
 </div>
@@ -857,3 +859,4 @@
   </div>
 </div>
 <!-- * Authenticity Form -->
+<app-footer></app-footer>

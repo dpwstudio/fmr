@@ -50,13 +50,11 @@ export class CardProductComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(loves => {
-      console.log('loves', loves);
       this.loves = loves;
     })
   }
 
-  loveProduct(product, userId, event: Event) {
-    event.stopImmediatePropagation();
+  loveProduct(product, userId) {
     const data = {
       productId: product.id,
       userId: userId

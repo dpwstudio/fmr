@@ -16,6 +16,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CardProductUserComponent } from './components/card-product-user/card-product-user.component';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CardProductUserComponent } from './components/card-product-user/card-pr
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    LayoutModule,
     SharedModule,
     CarouselModule,
     UserRoutingModule,

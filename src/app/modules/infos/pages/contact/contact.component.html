@@ -1,105 +1,103 @@
-    <!-- App Header -->
-    <div class="appHeader">
-      <div class="left">
-        <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton goBack">
-          <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
-        </a>
-      </div>
-      <div class="pageTitle">
-        Contact
-      </div>
-      <div class="right">
-        <a href="#" class="headerButton">
-          <ion-icon name="call-outline" class="text-primary"></ion-icon>
-        </a>
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Contact
+  </div>
+  <div class="right">
+    <a href="#" class="headerButton">
+      <ion-icon name="call-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+</div>
+<!-- * App Header -->
+
+<!-- App Capsule -->
+<div id="appCapsule">
+
+  <div class="section mt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="p-1">
+          <div class="text-center">
+            <h2 class="text-primary" style="font-size: xx-large;">Contact</h2>
+            <p class="text-secondary" style="font-size: 18px;">Envoyer nous vos questions<br> en complétant le
+              formulaire</p>
+          </div>
+          <form>
+            <div class="form-group basic animated">
+              <div class="input-wrapper">
+                <input type="text" class="form-control" id="name2" placeholder="Nom Prénom">
+              </div>
+            </div>
+
+            <div class="form-group basic animated">
+              <div class="input-wrapper">
+                <input type="text" class="form-control" id="email2" placeholder="Email">
+              </div>
+            </div>
+
+            <div class="form-group basic animated">
+              <div class="input-wrapper">
+                <label class="label" for="textarea2">Message</label>
+                <textarea id="textarea2" rows="4" class="form-control" placeholder="Message"></textarea>
+              </div>
+            </div>
+
+            <div class="mt-2 text-center">
+              <button type="submit"
+                class="btn btn-primary btn-icon btn-lg btn-block animate__animated animate__infinite animate__pulse"
+                style="width: 60px; height: 60px;">
+                <ion-icon name="paper-plane-outline"></ion-icon>
+              </button>
+            </div>
+
+          </form>
+        </div>
       </div>
     </div>
-    <!-- * App Header -->
+  </div>
 
-    <!-- App Capsule -->
-    <div id="appCapsule">
-
-      <div class="section mt-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="p-1">
-              <div class="text-center">
-                <h2 class="text-primary" style="font-size: xx-large;">Contact</h2>
-                <p class="text-secondary" style="font-size: 18px;">Envoyer nous vos questions<br> en complétant le
-                  formulaire</p>
-              </div>
-              <form>
-                <div class="form-group basic animated">
-                  <div class="input-wrapper">
-                    <input type="text" class="form-control" id="name2" placeholder="Nom Prénom">
-                  </div>
-                </div>
-
-                <div class="form-group basic animated">
-                  <div class="input-wrapper">
-                    <input type="text" class="form-control" id="email2" placeholder="Email">
-                  </div>
-                </div>
-
-                <div class="form-group basic animated">
-                  <div class="input-wrapper">
-                    <label class="label" for="textarea2">Message</label>
-                    <textarea id="textarea2" rows="4" class="form-control" placeholder="Message"></textarea>
-                  </div>
-                </div>
-
-                <div class="mt-2 text-center">
-                  <button type="submit"
-                    class="btn btn-primary btn-icon btn-lg btn-block animate__animated animate__infinite animate__pulse"
-                    style="width: 60px; height: 60px;">
-                    <ion-icon name="paper-plane-outline"></ion-icon>
-                  </button>
-                </div>
-
-              </form>
-            </div>
+  <div class="section mt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="p-1">
+          <div class="text-center">
+            <h2 class="text-primary" style="font-size: xx-large;">Adresse</h2>
+            <p class="card-text text-secondary" style="font-size: large;">
+              1 avenue Montaigne<br>
+              75008 PARIS
+            </p>
           </div>
         </div>
       </div>
-
-      <div class="section mt-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="p-1">
-              <div class="text-center">
-                <h2 class="text-primary" style="font-size: xx-large;">Adresse</h2>
-                <p class="card-text text-secondary" style="font-size: large;">
-                  1 avenue Montaigne<br>
-                  75008 PARIS
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section mt-2 mb-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="p-1">
-              <div class="text-center">
-                <h2 class="text-primary mb-2" style="font-size: xx-large;">Réseaux sociaux</h2>
-                <a href="#" class="btn btn-facebook btn-icon mr-05">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-                <a href="#" class="btn btn-twitter btn-icon mr-05">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-                <a href="#" class="btn btn-instagram btn-icon mr-05">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
     </div>
-    <!-- * App Capsule -->
+  </div>
+
+  <div class="section mt-2 mb-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="p-1">
+          <div class="text-center">
+            <h2 class="text-primary mb-2" style="font-size: xx-large;">Réseaux sociaux</h2>
+            <a href="#" class="btn btn-facebook btn-icon mr-05">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#" class="btn btn-twitter btn-icon mr-05">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#" class="btn btn-instagram btn-icon mr-05">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * App Capsule -->
+<app-footer></app-footer>

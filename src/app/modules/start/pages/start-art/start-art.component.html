@@ -1,0 +1,39 @@
+<!-- App Header -->
+<div class="appHeader no-border transparent" style="z-index: 111111;">
+  <div class="right">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton text-primary d-flex align-items-center" style="font-size: 11px; font-weight: bold;">
+      PASSER
+    </a>
+  </div>
+</div>
+<!-- * App Header -->
+<!-- App Capsule -->
+<div id="appCapsule" class="content d-flex align-items-center justify-content-center">
+
+  <div class="section text-center">
+    <div class="mb-3">
+      <img src="assets/img/startPage/modern-art.png" alt="alt"
+        class="imaged startText square mb-4  animate__animated animate__fadeInDown">
+      <h2 class="text-center animate__animated animate__fadeInUp animate__fast" style="font-size: 30px;">Vous êtes un artiste
+        ou<br>passionné par l'art ?</h2>
+      <p class="mb-5 mt-1 text-secondary text-center animate__animated animate__fadeInUp animate__faster" style="font-size: 20px;">
+        Vendez ou achetez des pièces
+        uniques.</p>
+    </div>
+  </div>
+
+  <div class="carousel-button-footer">
+    <div class="row d-flex justify-content-center">
+      <a [routerLink]="['/register']" routerLinkActive="router-link-active"
+        class="btn-connect bg-primary mr-5 animate__animated animate__pulse animate__infinite">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </a>
+      <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+        class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
+        <ion-icon name="person-outline"></ion-icon>
+      </a>
+    </div>
+  </div>
+
+</div>
+<!-- * App Capsule -->

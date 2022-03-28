@@ -9,19 +9,19 @@
 </div>
 <!-- * App Header -->
 <!-- App Capsule -->
-<div id="appCapsule" class="content d-flex flex-column justify-content-center">
+<div id="appCapsule" class="content d-flex flex-column justify-content-center" style="overflow: hidden;">
   <div class="section p-2 content-form">
-    <h1 class="text-primary my-0" style="font-size: 40px;">Connexion</h1>
-    <h3 class="mb-3 text-secondary" style="font-weight: 800;">Connectez-vous à votre compte</h3>
+    <h1 class="text-primary my-0 animate__animated animate__fadeInDown" style="font-size: 40px;">Connexion</h1>
+    <h3 class="mb-3 text-secondary animate__animated animate__fadeInDown animate__fast" style="font-weight: 800;">Connectez-vous à votre compte</h3>
 
     <form [formGroup]="loginForm">
-      <div class="form-group basic">
+      <div class="form-group basic animate__animated animate__fadeInUp">
         <div class="input-wrapper">
           <input type="email" formControlName="email" class="form-control" id="email1" placeholder="Email">
         </div>
       </div>
 
-      <div class="form-group basic">
+      <div class="form-group basic animate__animated animate__fadeInUp animate__fast">
         <div class="input-wrapper">
           <input type="{{inputType}}" formControlName="password" class="form-control" id="password1"
             placeholder="Mot de passe">
@@ -30,15 +30,14 @@
       </div>
 
       <div class="form-links mt-2 mb-2">
-        <div>
-          <a [routerLink]="['/register']" routerLinkActive="router-link-active" style="font-size: 17px;">Je n'ai pas de
-            compte</a>
-        </div>
-        <div><a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active" class="text-muted"
-            style="font-size: 15px">Mot de passe oublié ?</a>
-        </div>
+        <a [routerLink]="['/register']" routerLinkActive="router-link-active"
+          class="animate__animated animate__fadeInLeft" style="font-size: 17px;">Je n'ai pas de
+          compte</a>
+        <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active"
+          class="text-muted animate__animated animate__fadeInRight" style="font-size: 15px">Mot de passe
+          oublié ?</a>
       </div>
-      <div class="d-flex align-items-center justify-content-center mt-3">
+      <div class="d-flex align-items-center justify-content-center mt-3 animate__animated animate__bounceIn">
         <button (click)="onSubmit()"
           class="btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -47,15 +46,15 @@
 
     </form>
   </div>
-  <div class="section">
-    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social facebook text-white">
-      <ion-icon name="logo-facebook" class="mr-2"></ion-icon>
-      Se connecter avec Facebook
-    </button>
-    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1">
+  <!-- <div class="section">
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social google mb-1 animate__animated animate__fadeInUp">
       <img src="assets/img/authPage/google.png" width="20" class="mr-2" alt="">
       Se connecter avec Google
     </button>
-  </div>
+    <button type="button" class="btn btn-rounded btn-block btn-lg btn-social facebook text-white animate__animated animate__fadeInUp animate__fast">
+      <ion-icon name="logo-facebook" class="mr-2"></ion-icon>
+      Se connecter avec Facebook
+    </button>
+  </div> -->
 </div>
 <!-- * App Capsule -->

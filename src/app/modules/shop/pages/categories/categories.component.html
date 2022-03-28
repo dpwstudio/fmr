@@ -60,7 +60,7 @@
             <div class="tab-pane fade show active" id="homme" role="tabpanel">
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
-                  <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
+                  <div class="col-6 mb-2 animate__animated animate__fadeInUp" *ngIf="isCategoryMode(category)">
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
@@ -79,7 +79,7 @@
             <div class="tab-pane fade" id="femme" role="tabpanel">
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
-                  <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
+                  <div class="col-6 mb-2 animate__animated animate__fadeInUp" *ngIf="isCategoryMode(category)">
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
@@ -98,7 +98,7 @@
             <div class="tab-pane fade" id="enfant" role="tabpanel">
               <div class="row">
                 <ng-container *ngFor="let category of categories; trackBy:trackById">
-                  <div class="col-6 mb-2" *ngIf="isCategoryMode(category)">
+                  <div class="col-6 mb-2 animate__animated animate__fadeInUp" *ngIf="isCategoryMode(category)">
                     <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                       routerLinkActive="router-link-active">
                       <div class="blog-card">
@@ -128,7 +128,7 @@
         <div class="wide-block pt-2 pb-2" style="background: #EDEDF5; border: none;">
           <div class="row">
             <ng-container *ngFor="let category of categories; trackBy:trackById">
-              <div class="col-6 mb-2" *ngIf="isCategoryArt(category)">
+              <div class="col-6 mb-2  animate__animated animate__fadeInUp" *ngIf="isCategoryArt(category)">
                 <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
                   routerLinkActive="router-link-active">
                   <div class="blog-card">
@@ -151,3 +151,4 @@
   </div>
 </div>
 <!-- * App Capsule -->
+<app-footer></app-footer>

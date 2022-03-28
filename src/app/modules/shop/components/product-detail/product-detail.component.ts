@@ -133,7 +133,7 @@ export class ProductDetailComponent implements OnInit {
     if (navigator.share) {
       navigator
         .share({
-          title: 'FMR Store',
+          title: 'FMR Life',
           text: 'Pop-up store',
           url: 'https://lumiaouvertures.fr/fmr'
         })
@@ -213,7 +213,6 @@ export class ProductDetailComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(loves => {
-      console.log('loves', loves);
       this.loves = loves;
     })
   }

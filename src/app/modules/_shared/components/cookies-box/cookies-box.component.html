@@ -1,0 +1,15 @@
+<div id="cookiesbox" class="offcanvas offcanvas-bottom cookies-box animate__animated animate__slideInUp" tabindex="-1" data-bs-scroll="true" *ngIf="state"
+  data-bs-backdrop="false" style="visibility: visible;" aria-modal="true" role="dialog">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Nous utilisons des cookies</h5>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Pour garantir une meilleure expérience utilisateur, nous utilisons des cookies.
+      <a href="#" class="text-secondary"><u>En savoir plus</u></a>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-primary btn-block accept-cookies" data-bs-dismiss="offcanvas" (click)="acceptCookies()">J'accepte</button>
+    </div>
+  </div>
+</div>

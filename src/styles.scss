@@ -7,6 +7,7 @@
  */
 @import url("https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Martel:wght@200;300;400;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import "~angular-notifier/styles";
 
 :root {
@@ -6369,9 +6370,9 @@ a.close.disabled {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 1rem 1rem;
-  border-bottom: 1px solid #dee2e6;
-  border-top-left-radius: .3rem;
-  border-top-right-radius: .3rem;
+  // border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .modal-header .close {
@@ -7070,7 +7071,7 @@ a.bg-primary:focus,
 a.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
-  background-color: #0062cc !important;
+  background-color: #c8b282 !important;
 }
 
 .bg-secondary {
@@ -11086,10 +11087,6 @@ a.text-dark:hover {
     text-decoration: underline;
   }
 
-  abbr[title]::after {
-    content: " ("attr(title) ")";
-  }
-
   pre {
     white-space: pre-wrap !important;
   }
@@ -11431,7 +11428,7 @@ a.text-dark:hover {
 .owl-theme .owl-nav.disabled+.owl-dots {
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: -35px;
 }
 
 .owl-theme .owl-dots {
@@ -11448,7 +11445,7 @@ a.text-dark:hover {
 .owl-theme .owl-dots .owl-dot span {
   width: 10px;
   height: 10px;
-  margin: 5px 7px;
+  margin: 5px;
   background: #dfdfdf91;
   display: block;
   -webkit-backface-visibility: visible;
@@ -11459,6 +11456,7 @@ a.text-dark:hover {
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: #ddd1b6;
+  width: 30px;
 }
 
 body {
@@ -13791,7 +13789,7 @@ a.badge-dark {
 .modal.action-sheet .modal-content {
   box-shadow: none;
   border: 0;
-  border-radius: 15px 15px 0 0;
+  border-radius: 30px 30px 0 0;
 }
 
 .modal.action-sheet .modal-content .action-sheet-content {
@@ -14617,8 +14615,8 @@ a.text-dark {
 .form-group.basic .custom-select {
   background: #f1f1f6;
   border: none;
-  padding: 12px 20px;
-  border-radius: 40px;
+  padding: 10px 20px;
+  border-radius: 6px;
   color: #27173E;
   font-size: 18px;
 }
@@ -14632,7 +14630,7 @@ a.text-dark {
 .form-group.basic textarea.form-control {
   height: auto;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 6px;
 }
 
 .form-group.basic.animated .label {
@@ -14723,8 +14721,8 @@ a.text-dark {
   display: flex;
   margin: 0 auto;
   border-radius: 20%;
-  width: 170px;
-  height: 170px;
+  width: 130px;
+  height: 130px;
 }
 
 .custom-file-upload input[type="file"] {
@@ -15561,7 +15559,7 @@ a.text-dark {
 .wallet-card {
   background: #ffffff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
-  border-radius: 15px 40px;
+  border-radius: 15px;
   padding: 20px 24px;
   position: relative;
   z-index: 10;
@@ -15953,7 +15951,7 @@ a.text-dark {
   justify-content: center;
   font-size: 20px;
   position: absolute;
-  right: 68px;
+  right: 50px;
   bottom: 5px;
 }
 
@@ -17375,4 +17373,13 @@ body.dark-mode .cookies-box {
 .notifier__notification--material .notifier__notification-button {
   display: flex;
   align-items: center;
+}
+
+.img-product {
+  width: 100px !important;
+  height: 100px !important;
+  margin: 10px auto 35px;
+  border-radius: 10px;
+  background-size: cover !important;
+  background-position: center center !important;
 }

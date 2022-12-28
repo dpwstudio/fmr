@@ -46,7 +46,7 @@
       </div>
       <ion-icon name="caret-forward-outline"></ion-icon>
       <div class="ml-1 mr-1">
-        <a [routerLink]="['/checkout']">
+        <a (click)="gotoCheckout(deliveryAddress, billingAddress)">
           <h2 class="d-flex align-items-center" routerLinkActive="active">
             <ion-icon name="card-outline"></ion-icon>
             <span>Paiement</span>
@@ -92,9 +92,9 @@
       </li>
     </ul>
     <div class="d-flex align-items-center justify-content-center mt-3">
-      <a [routerLink]="['/checkout']" routerLinkActive="router-link-active"
+      <a (click)="gotoCheckout(deliveryAddress, billingAddress)" routerLinkActive="router-link-active"
         class="btn btn-icon btn-connect bg-primary mr-1 animate__animated animate__pulse animate__infinite">
-        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="text-white"></ion-icon>
       </a>
     </div>
   </div>

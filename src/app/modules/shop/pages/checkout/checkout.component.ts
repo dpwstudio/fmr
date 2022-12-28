@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/modules/_shared/models/cart.model';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { OrderService } from 'src/app/modules/_shared/services/order/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,7 +15,11 @@ export class CheckoutComponent implements OnInit {
   showLoading = false;
   carts: Cart[];
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
     this.getCarts();

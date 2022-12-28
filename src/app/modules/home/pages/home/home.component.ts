@@ -19,6 +19,8 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
 export class HomeComponent implements OnInit {
   categories = [];
   productsMode: Product[] = [];
+  productsDressingUser: Product[] = [];
+  productsGalleryUser: Product[] = [];
   productsFallingPriceMode: Product[] = [];
   productsArt: Product[] = [];
   productsFallingPriceArt: Product[] = [];
@@ -36,7 +38,7 @@ export class HomeComponent implements OnInit {
     margin: 16,
     nav: false,
     items: 1,
-    dots: true,
+    dots: false,
     autoplay: true,
   }
 
@@ -70,9 +72,14 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const filtersProducts: FiltersProducts = {
+      startDate: moment().subtract(5, 'days').format(),
+      endDate: moment().format()
+    }
     this.getCategories();
-    this.getProducts();
+    this.getProductsOnLast5Days(filtersProducts);
     this.getProductsWithFallingPrice();
+    this.getProducts();
     this.getUsers();
   }
 
@@ -90,19 +97,14 @@ export class HomeComponent implements OnInit {
     return item.id;
   }
 
-  getProducts() {
-    const filtersProducts: FiltersProducts = {
-      startDate: moment().subtract(5, 'days').format(),
-      endDate: moment().format()
-    }
-
-    this.subscription = this.productService.getProducts(filtersProducts).pipe(
+  getProductsOnLast5Days(filters) {
+    this.subscription = this.productService.getProducts(filters).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(products => {
-      console.log('products', products)
       this.productsMode = products.filter(product => product.catalogType === 'mode');
+      console.log('products', products);
       this.productsArt = products.filter(product => product.catalogType === 'art');
     })
   }
@@ -113,7 +115,6 @@ export class HomeComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(products => {
-      console.log('products', products)
       this.productsFallingPriceMode = products.filter(product => product.catalogType === 'mode' && product.fallingPrice > 0);
       this.productsFallingPriceArt = products.filter(product => product.catalogType === 'art' && product.fallingPrice > 0);
     })
@@ -127,40 +128,30 @@ export class HomeComponent implements OnInit {
       })
     ).subscribe(users => {
       this.users = users;
+    });
+  }
+
+  getProducts() {
+    this.subscription = this.productService.getProducts().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(products => {
+      this.productsDressingUser = products;
+      this.productsGalleryUser = products;
     })
   }
 
-  getUserDressingImg(user) {
-    let imgDressing = '';
-    if (user.img) {
-      const img = JSON.parse(user.img)[0];
-
-      if (img.dressing) {
-        imgDressing = img.dressing;
-      }
-      else {
-        imgDressing = 'assets/img/dressing/dressing1.png';
-      }
-    } else {
-      imgDressing = 'assets/img/dressing/dressing1.png';
-    }
-    return imgDressing;
+  getProductsDressingUser(id) {
+    return this.productsDressingUser.filter(product => product.userId === id && product.catalogType === 'mode');
+  }
+  
+  getProductsGalleryUser(id) {
+    return this.productsGalleryUser.filter(product => product.userId === id && product.catalogType === 'art');
   }
 
-  getUserGalleryImg(user) {
-    let imgGallery = '';
-    if (user.img) {
-      const img = JSON.parse(user.img)[0];
-
-      if (img.gallery) {
-        imgGallery = img.gallery;
-      } else {
-        imgGallery = 'assets/img/gallery/gallery3.png';
-      }
-    } else {
-      imgGallery = 'assets/img/gallery/gallery3.png';
-    }
-    return imgGallery;
+  getProductPerUser(id): Product[] {
+    return this.productsDressingUser.filter(product => product.userId === id);
   }
 
   addProductToCart(product) {

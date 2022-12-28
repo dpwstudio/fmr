@@ -11,20 +11,20 @@
         <!-- <strong>Catégories</strong> -->
       </div>
     </a>
-    <a [routerLink]="['/post']" routerLinkActive="router-link-active"  class="item">
+    <a [routerLink]="['/post']" routerLinkActive="router-link-active" class="item">
       <div class="col">
         <div class="action-button large">
           <i class="icon ion-md-add"></i>
         </div>
       </div>
     </a>
-    <a [routerLink]="['/settings']" routerLinkActive="active"  class="item">
+    <a [routerLink]="['/notifications']" routerLinkActive="active" class="item">
       <div class="col">
-        <ion-icon name="person-outline"></ion-icon>
+        <ion-icon name="notifications-outline"></ion-icon>
         <!-- <strong>Profil</strong> -->
       </div>
     </a>
-    <a [routerLink]="['/cart']" routerLinkActive="active"  class="item">
+    <a [routerLink]="['/cart']" routerLinkActive="active" class="item">
       <div class="col">
         <ion-icon name="bag-outline"></ion-icon>
         <span class="badge badge-danger">{{getTotalCurrentCart()}}</span>

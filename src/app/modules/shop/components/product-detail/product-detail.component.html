@@ -62,8 +62,10 @@
       <h1 class="my-0" style="font-size: 32px; text-transform: capitalize;">{{currentProduct?.brand}}</h1>
       <div class="action d-flex align-items-center">
         <span class="number d-flex align-items-center" style="font-size: 12px; margin-right: 8px;">
-          <ion-icon name="heart-outline" style="font-size: 25px; margin-right: 5px;" *ngIf="!hasAlreadyLove(currentUser?.id)" (click)="loveProduct(currentProduct, currentUser?.id)"></ion-icon>
-          <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;" *ngIf="hasAlreadyLove(currentUser?.id)"></ion-icon>
+          <ion-icon name="heart-outline" style="font-size: 25px; margin-right: 5px;"
+            *ngIf="!hasAlreadyLove(currentUser?.id)" (click)="loveProduct(currentProduct, currentUser?.id)"></ion-icon>
+          <ion-icon name="heart" class="text-danger" style="font-size: 25px; margin-right: 5px;"
+            *ngIf="hasAlreadyLove(currentUser?.id)"></ion-icon>
           {{loves.length}}
         </span>
         <ion-icon name="share-outline" style="font-size: 25px" (click)="shareProduct()"></ion-icon>
@@ -330,38 +332,37 @@
     </div>
   </div>
 
-  <div class="section mt-2">
+  <div class="section mt-2" *ngIf="!isMyProduct(currentProduct?.userId)">
     <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
           <div class="text-center" *ngIf="currentUser">
             <a (click)="addToWishlist(currentProduct, currentUser?.id)" *ngIf="!isInWishlist()"
-              class="btn btn-block btn-lg btn-icon btn-outline-primary my-0" style="width: 50px; height: 50px;">
-              <ion-icon name="star-outline" class="text-primary"></ion-icon>
+              class="btn btn-block btn-lg btn-icon btn-outline-warning my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="star-outline" class="text-warning"></ion-icon>
             </a>
-            <a *ngIf="isInWishlist()"
-              class="btn btn-block btn-lg btn-icon btn-outline-primary my-0" style="width: 50px; height: 50px;">
-              <ion-icon name="star" class="text-primary"></ion-icon>
+            <a *ngIf="isInWishlist()" class="btn btn-block btn-lg btn-icon btn-outline-warning my-0"
+              style="width: 50px; height: 50px;">
+              <ion-icon name="star" class="text-warning"></ion-icon>
             </a>
-            <span class="d-block text-primary">Wishlist</span>
+            <span class="d-block text-warning">Wishlist</span>
           </div>
-          <div class="text-center" *ngIf="currentUser">
+          <!-- <div class="text-center" *ngIf="currentUser">
             <a [routerLink]="['/negociate', currentProduct?.id]" routerLinkActive="router-link-active"
               class="btn btn-block btn-icon btn-lg btn-outline-primary my-0" style="width: 50px; height: 50px;">
               <ion-icon name="chatbubbles-outline"></ion-icon>
             </a>
             <span class="d-block text-primary">Négocier</span>
-          </div>
+          </div> -->
           <div class="text-center">
-            <a class="btn btn-block btn-icon btn-lg btn-outline-primary my-0" style="width: 50px; height: 50px;"
+            <a class="btn btn-block btn-icon btn-lg btn-secondary my-0" style="width: 50px; height: 50px;"
               (click)="addProductToCart(currentProduct)">
-              <ion-icon name="bag-add" class="text-primary"></ion-icon>
+              <ion-icon name="bag-add" class="text-white"></ion-icon>
             </a>
-            <span class="d-block text-primary">Panier</span>
+            <span class="d-block text-secondary">Panier</span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -369,7 +370,7 @@
     <div class="section-heading d-flex align-items-center justify-content-between">
       <h2 class="title ml-2">Commentaires</h2>
       <button class="btn btn-icon btn-primary mr-2" data-toggle="modal" data-target="#commentForm">
-        <ion-icon name="chatbubble-outline"></ion-icon>
+        <ion-icon name="chatbubble-ellipses"></ion-icon>
       </button>
     </div>
     <div class="mb-2" *ngIf="comments.length > 0; else noComments">
@@ -378,7 +379,7 @@
           <ng-template carouselSlide>
             <div class="item">
               <div class="user-card p-2 position-relative"
-                style="min-height: 150px; border-top: 4px solid #ddd1b69c; border-radius: 15px 35px">
+                style="min-height: 150px; border-top: 4px solid #ddd1b69c; border-radius: 15px">
                 <div class="d-flex align-items-center" style="text-align: left; line-height: 16px;">
                   <img [src]="comment.avatar" class="imaged rounded w32 mr-1" alt="">
                   <div class="d-flex flex-column">
@@ -396,7 +397,7 @@
     </div>
     <ng-template #noComments>
       <div class="d-flex justify-content-center w-100">
-        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
           <div class="card-body d-flex align-items-center justify-content-between p-3">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
             <p class="m-0 text-secondary">Aucun commentaire</p>
@@ -425,7 +426,7 @@
 
     <ng-template #noProducts>
       <div class="d-flex justify-content-center w-100">
-        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 10px 25px;">
+        <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
           <div class="card-body d-flex align-items-center justify-content-between p-3">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
             <p class="m-0 text-secondary">Aucun articles suggérés</p>

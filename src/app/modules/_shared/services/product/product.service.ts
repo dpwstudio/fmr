@@ -110,4 +110,8 @@ export class ProductService {
   loveProduct(data) {
     return this.http.post(`${environment.fmrApi}/loves`, data);
   }
+
+  sendOffer(offer) {
+    return this.http.post(`${environment.fmrApi}/negociate`, offer);
+  }
 }

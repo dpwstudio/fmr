@@ -2,12 +2,12 @@
 <!-- App Capsule -->
 <div id="appCapsule" style="overflow: hidden;">
   <div class="section mt-3 text-center">
-    <h1 class="my-0" style="font-size: 40px;">Vendre</h1>
-    <h4 class="text-muted mb-2 text-center" style="font-size: 17px;">Créer une annonce</h4>
+    <h1 class="my-0 animate__animated animate__fadeInDown" style="font-size: 40px;">Vendre</h1>
+    <h4 class="text-muted mb-2 text-center animate__animated animate__fadeInDown" style="font-size: 17px;">Créer une annonce</h4>
   </div>
 
-  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Visuel</div>
-  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
+  <div class="listview-title mt-1">Visuel</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInDown animate__faster">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#picturesForm">
         <div class="in">
@@ -21,8 +21,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Détails</div>
-  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
+  <div class="listview-title mt-1">Détails</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInDown animate__faster">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#descriptionForm">
         <div class="in">
@@ -43,8 +43,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Authenticité</div>
-  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
+  <div class="listview-title mt-1">Authenticité</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInDown animate__faster">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#proofForm">
         <div class="in">
@@ -57,8 +57,8 @@
     </li>
   </ul>
 
-  <div class="listview-title mt-1 animate__animated animate__fadeInUp">Montant</div>
-  <ul class="listview image-listview inset animate__animated animate__fadeInUp">
+  <div class="listview-title mt-1">Montant</div>
+  <ul class="listview image-listview inset animate__animated animate__fadeInDown animate__faster">
     <li>
       <a href="#" class="item" data-toggle="modal" data-target="#amountForm">
         <div class="in">
@@ -72,7 +72,7 @@
 
   <div class="d-flex align-items-center justify-content-center mt-3 animate__animated animate__bounceIn">
     <button (click)="addProduct()"
-      class="btn-connect bg-primary animate__animated animate__pulse animate__infinite">
+      class="btn-connect bg-success animate__animated animate__pulse animate__infinite">
       <ion-icon name="checkmark-outline"></ion-icon>
     </button>
   </div>
@@ -441,7 +441,7 @@
             </ng-container>
           </form>
           <div class="form-group basic">
-            <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Valider</button>
+            <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal">Valider</button>
           </div>
         </div>
       </div>
@@ -850,7 +850,7 @@
               </div>
             </form>
           </div>
-          <button class="btn btn-primary btn-block btn-lg mt-3" data-dismiss="modal">
+          <button class="btn btn-success btn-block btn-lg mt-3" data-dismiss="modal">
             Valider
           </button>
         </div>

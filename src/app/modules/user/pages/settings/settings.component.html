@@ -36,22 +36,6 @@
         </div>
       </a>
     </li>
-    <li>
-      <div class="item">
-        <div class="in">
-          <div>
-            Paiement alerte
-            <div class="text-muted" style="font-size: 14px;">
-              Envoyer une notification dès la réception d'un nouveau paiement
-            </div>
-          </div>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch4" checked />
-            <label class="custom-control-label" for="customSwitch4"></label>
-          </div>
-        </div>
-      </div>
-    </li>
   </ul>
 
 
@@ -93,26 +77,26 @@
 
   <div class="listview-title mt-1">Suivi</div>
   <ul class="listview image-listview inset">
-    <li>
+    <!-- <li>
       <a [routerLink]="['/profile', currentUser.id]" routerLinkActive="router-link-active" class="item">
         <div class="in">
           <div>Statistiques des ventes</div>
           <span class="text-muted" style="font-size: 15px;">Voir</span>
         </div>
       </a>
-    </li>
+    </li> -->
     <li>
       <a [routerLink]="['/products']" routerLinkActive="router-link-active" class="item">
         <div class="in">
-          <div>Suivi des articles</div>
+          <div>Mes articles</div>
           <span class="text-muted" style="font-size: 15px;">Voir</span>
         </div>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/products']" routerLinkActive="router-link-active" class="item">
+      <a [routerLink]="['/orders']" routerLinkActive="router-link-active" class="item">
         <div class="in">
-          <div>Suivi des achats</div>
+          <div>Mes commandes</div>
           <span class="text-muted" style="font-size: 15px;">Voir</span>
         </div>
       </a>

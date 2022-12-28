@@ -37,6 +37,7 @@ export class DeliveryComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService,
     notifierService: NotifierService
@@ -76,6 +77,16 @@ export class DeliveryComponent implements OnInit {
         city: this.billingAddress.city,
         country: this.billingAddress.country
       });
+    }
+  }
+
+  gotoCheckout(deliveryAddress, billingAddress) {
+    console.log('deliveryAddress', deliveryAddress)
+    console.log('billingAddress', billingAddress)
+    if (deliveryAddress.address && billingAddress.address) {
+      this.router.navigate(['checkout']);
+    } else {
+      this.notifier.notify('error', 'Veuillez compléter vos adresses.');
     }
   }
 

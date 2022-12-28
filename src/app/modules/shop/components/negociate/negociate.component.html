@@ -8,7 +8,7 @@
       </div>
       <div class="pageTitle">
         <img [src]="product?.photoFace" alt="" class="imaged rounded w32 mr-1">
-        Négocier avec {{product?.userName}}</div>
+        Négocier avec {{product?.userName | uppercase}}</div>
       <div class="right">
         <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="headerButton">
           <ion-icon name="close-outline" class="text-primary"></ion-icon>
@@ -131,17 +131,17 @@
 
     <!-- chat footer -->
     <div class="chatFooter">
-      <form>
+      <form [formGroup]="offerForm">
         <div class="form-group basic">
           <div class="input-wrapper">
-            <input type="number" pattern="[0-9]*" inputmode="decimal" class="form-control number"
-              placeholder="Saisir un montant">
+            <input type="number" pattern="[0-9]*" class="form-control number" formControlName="amount"
+              placeholder="Saisir un montant" style="font-size: 15px; font-weight: 300;">
             <i class="clear-input">
               <ion-icon name="close-circle"></ion-icon>
             </i>
           </div>
         </div>
-        <button type="button" class="btn btn-icon btn-primary rounded">
+        <button type="button" class="btn btn-icon btn-primary rounded" (click)="sendOffer()">
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
       </form>

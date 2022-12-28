@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -9,7 +8,6 @@ import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
-import { UploadImageService } from 'src/app/modules/_shared/services/upload-image/upload-image.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
 
 @Component({
@@ -56,8 +54,6 @@ export class ProfileComponent implements OnInit {
   id: number;
   catalogType: string;
 
-  editImgDressingForm: FormGroup;
-  editImgGalleryForm: FormGroup;
   img = {
     dressingSrc: '',
     gallerySrc: '',
@@ -68,9 +64,7 @@ export class ProfileComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private userService: UserService,
-    private uploadImageService: UploadImageService,
     private authService: AuthService,
     notifierService: NotifierService
   ) {
@@ -84,16 +78,6 @@ export class ProfileComponent implements OnInit {
       this.catalogType = params['catalogType']; // (+) converts string 'id' to a number
       this.getUser(this.id);
       // In a real app: dispatch action to load the details here.
-    });
-
-    this.editImgDressingForm = this.formBuilder.group({
-      dressingUploaded: [""],
-      dressing: [""],
-    });
-    
-    this.editImgGalleryForm = this.formBuilder.group({
-      galleryUploaded: [""],
-      gallery: [""],
     });
 
     this.getProducts();
@@ -110,24 +94,6 @@ export class ProfileComponent implements OnInit {
    */
   getUserImgProfile(user) {
     return this.userService.getUserImgProfile(user).avatar;
-  }
-
-  /**
-   * Récupère l'image du dressing
-   * @param user
-   * @returns 
-   */ 
-  getUserImgDressing(user) {
-    return this.userService.getUserImgProfile(user).dressing;
-  }
-
-  /**
-   * Récupère l'image de la galerie
-   * @param user
-   * @returns 
-   */
-  getUserImgGallery(user) {
-    return this.userService.getUserImgProfile(user).gallery;
   }
 
   getUser(id) {
@@ -161,82 +127,6 @@ export class ProfileComponent implements OnInit {
 
   trackById(index, item) {
     return item.id;
-  }
-
-  onPhotoDressingSelect(event) {
-    const reader = new FileReader();
-    const file = event.target.files[0];
-    console.log('file', file)
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.editImgDressingForm.get('dressingUploaded').setValue(file);
-        this.editImgDressingForm.get('dressing').setValue(file.name);
-        this.img.dressingSrc = reader.result as string;
-      };
-    }
-  }
-
-  onPhotoGallerySelect(event) {
-    const reader = new FileReader();
-    const file = event.target.files[0];
-    console.log('file', file)
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.editImgGalleryForm.get('galleryUploaded').setValue(file);
-        this.editImgGalleryForm.get('gallery').setValue(file.name);
-        this.img.gallerySrc = reader.result as string;
-      };
-    }
-  }
-
-  editImgDressing() {
-    // stop here if form is invalid
-    if (this.editImgDressingForm.invalid) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('uploadedImg', this.editImgDressingForm.get('dressingUploaded').value);
-    formData.append('agentId', '007');
-
-    this.subscription = this.userService.editImg(this.editImgDressingForm.value, 'dressing', this.currentUser.id).pipe(
-      catchError(error => {
-        this.notifier.notify('error', error.message)
-        return throwError(error);
-      })
-    ).subscribe(res => {
-      this.uploadImageService.sendPhotoToServer(formData);
-      this.notifier.notify('success', 'L\'image du dressing a bien été mise à jour.');
-      this.getUser(this.currentUser.id);
-    });
-  }
-
-  editImgGallery() {
-    // stop here if form is invalid
-    if (this.editImgGalleryForm.invalid) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('uploadedImg', this.editImgGalleryForm.get('galleryUploaded').value);
-    formData.append('agentId', '007');
-
-    this.subscription = this.userService.editImg(this.editImgGalleryForm.value, 'gallery', this.currentUser.id).pipe(
-      catchError(error => {
-        this.notifier.notify('error', error.message)
-        return throwError(error);
-      })
-    ).subscribe(res => {
-      this.uploadImageService.sendPhotoToServer(formData);
-      this.notifier.notify('success', 'L\'image de la galerie a bien été mise à jour.');
-      this.getUser(this.currentUser.id);
-    });
   }
 
   followProfile(user) {

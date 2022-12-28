@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../../models/user.model';
 import { AuthService } from '../auth/auth.service';
@@ -22,7 +23,11 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get(`${environment.fmrApi}/users`) as Observable<User[]>;
+    return this.http.get(`${environment.fmrApi}/users`).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ) as Observable<User[]>;
   }
 
   getUser(id): Observable<User[]> {

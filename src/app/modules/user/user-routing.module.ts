@@ -4,6 +4,7 @@ import { AuthGuard } from '../_shared/guard/auth/auth.guard';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -49,7 +50,7 @@ const routes: Routes = [
     component: NotificationsComponent,
     canActivate: [AuthGuard],
     data: {
-      animationState: 'Two'
+      animationState: 'One'
     }
   },
   {
@@ -63,6 +64,14 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      animationState: 'Two'
+    }
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
     canActivate: [AuthGuard],
     data: {
       animationState: 'Two'

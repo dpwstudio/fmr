@@ -239,4 +239,8 @@ export class ProductDetailComponent implements OnInit {
   hasAlreadyLove(userId) {
     return this.loves.filter(love => love.userId === userId).length > 0;
   }
+
+  isMyProduct(userId) {
+    return userId === this.currentUser.id;
+  }
 }

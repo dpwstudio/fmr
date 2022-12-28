@@ -1,0 +1,111 @@
+<!-- App Header -->
+<div class="appHeader">
+  <div class="left">
+    <a [routerLink]="['/settings']" routerLinkActive="router-link-active" class="headerButton goBack">
+      <ion-icon name="chevron-back-outline" class="text-primary"></ion-icon>
+    </a>
+  </div>
+  <div class="pageTitle">
+    Suivi des commandes
+  </div>
+  <div class="right">
+  </div>
+</div>
+<!-- * App Header -->
+
+<!-- Extra Header -->
+<div class="extraHeader pr-0 pl-0">
+  <ul class="nav nav-tabs lined" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#waiting" role="tab">
+        En attente
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#shipped" role="tab">
+        Expédiés
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#received" role="tab">
+        Reçues
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- * Extra Header -->
+
+<div id="appCapsule" class="extra-header-active">
+  <div class="tab-content mt-1">
+    <!-- Mode tab -->
+    <div class="tab-pane fade active show" id="waiting" role="tabpanel">
+      <!-- Transactions -->
+      <div class="section mt-2">
+        <ul class="listview image-listview media inset mb-2 mx-0">
+          <li *ngFor="let product of carts; trackBy:trackById">
+            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+              <div class="imageWrapper">
+                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+              </div>
+              <div class="in">
+                <div class="fsize-16" style="text-transform: capitalize;">
+                  {{product.product.brand}}
+                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                </div>
+                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- * Transactions -->
+    </div>
+
+    <div class="tab-pane fade" id="shipped" role="tabpanel">
+      <!-- Transactions -->
+      <div class="section mt-2">
+        <ul class="listview image-listview media inset mb-2 mx-0">
+          <li *ngFor="let product of carts; trackBy:trackById">
+            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+              <div class="imageWrapper">
+                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+              </div>
+              <div class="in">
+                <div class="fsize-16" style="text-transform: capitalize;">
+                  {{product.product.brand}}
+                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                </div>
+                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- * Transactions -->
+    </div>
+
+    <div class="tab-pane fade" id="received" role="tabpanel">
+      <!-- Transactions -->
+      <div class="section mt-2">
+        <ul class="listview image-listview media inset mb-2 mx-0">
+          <li *ngFor="let product of carts; trackBy:trackById">
+            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+              <div class="imageWrapper">
+                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+              </div>
+              <div class="in">
+                <div class="fsize-16" style="text-transform: capitalize;">
+                  {{product.product.brand}}
+                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                </div>
+                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- * Transactions -->
+    </div>
+  </div>
+
+</div>

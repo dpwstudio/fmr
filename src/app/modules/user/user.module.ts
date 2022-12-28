@@ -17,6 +17,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CardProductUserComponent } from './components/card-product-user/card-product-user.component';
 import { LayoutModule } from '../layout/layout.module';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LayoutModule } from '../layout/layout.module';
     WishlistComponent,
     ProductsComponent,
     CardProductUserComponent,
+    OrdersComponent,
   ],
   imports: [
     CommonModule,

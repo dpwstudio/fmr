@@ -17,8 +17,7 @@
  <div id="appCapsule">
    <div class="section mt-2 mb-2">
      <div class="listed-detail mt-3">
-       <h1 class="text-center mt-2 mb-0">Mon panier</h1>
-       <h4 class="text-muted mb-2 text-center" style="font-size: 17px;">Récapitulatif de la commande</h4>
+       <h1 class="text-center mt-2 mb-2">Mon panier</h1>
      </div>
 
      <ng-container *ngIf="getTotalCurrentCart() > 0">
@@ -58,8 +57,8 @@
              </div>
              <div class="in">
                <div class="fsize-16" style="text-transform: capitalize;">
-                 {{product.product.brand}}
-                 <div class="text-muted fsize-15">{{product.product.model}}</div>
+                 {{product.brand}}
+                 <div class="text-muted fsize-15">{{product.model}}</div>
                </div>
                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
              </div>

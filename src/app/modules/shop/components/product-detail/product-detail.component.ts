@@ -58,9 +58,12 @@ export class ProductDetailComponent implements OnInit {
   filtersProducts: FiltersProducts;
   currentImg: string;
   commentForm: FormGroup;
+  editPriceForm: FormGroup;
   currentUser: User;
   wishlists: Product[] = [];
   loves: any[] = [];
+  price: string;
+  amountWin: string;
 
   constructor(
     private router: Router,
@@ -89,6 +92,12 @@ export class ProductDetailComponent implements OnInit {
       productId: [this.id, Validators.required],
       userId: [this.currentUser.id, Validators.required],
     });
+    this.editPriceForm = this.formBuilder.group({
+      price: ['', Validators.required],
+      fallingPrice: [''],
+      oldPrice: [''],
+      amountWin: ['', Validators.required],
+    });
     this.getWishlists();
     this.getLoves();
   }
@@ -109,8 +118,10 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe((products: any[]) => {
       this.products = products;
       this.currentProduct = this.products.filter(product => product.id === filtersProducts.id)[0];
+      console.log('this.currentProduct', this.currentProduct);
+      this.price = String(this.currentProduct.price);
+      this.amountWin = String(this.currentProduct.amountWin);
       this.productsSuggested = products.filter(product => product.category === this.currentProduct.category && product.id !== this.currentProduct.id);
-      console.log('this.currentProduct', this.currentProduct)
     })
   }
 
@@ -123,7 +134,6 @@ export class ProductDetailComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe((comments: Comment[]) => {
-      console.log('comments', comments);
       this.comments = comments;
     })
   }
@@ -147,7 +157,7 @@ export class ProductDetailComponent implements OnInit {
   addComment() {
     // stop here if form is invalid
     if (this.commentForm.invalid) {
-      this.notifier.notify('error', 'Le formulaire ne semble pas valide.');
+      this.notifier.notify('error', 'Le formulaire est invalide.');
       return;
     }
 
@@ -236,11 +246,44 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  hasAlreadyLove(userId) {
+  hasAlreadyLove(userId): boolean {
     return this.loves.filter(love => love.userId === userId).length > 0;
   }
 
-  isMyProduct(userId) {
+  isMyProduct(userId): boolean {
     return userId === this.currentUser.id;
+  }
+
+  onPriceChange(event) {
+    const amount = event * 0.89;
+    this.amountWin = amount.toFixed(2);
+    this.editPriceForm.patchValue({
+      price: event,
+      fallingPrice: event,
+      oldPrice: this.currentProduct.price,
+      amountWin: parseFloat(this.amountWin),
+    });
+  }
+
+  isFallingPrice(product: Product) {
+    return product?.fallingPrice > 0;
+  }
+
+  editPrice() {
+    console.log(this.editPriceForm.value);
+    const product = {
+      amount: this.editPriceForm.value,
+      id: this.currentProduct.id
+    }
+    console.log('prodjuct', product)
+    this.productService.editProduct(product).pipe(
+      catchError(error => {
+        this.notifier.notify('error', error.message);
+        return throwError(error);
+      })
+    ).subscribe(res => {
+      this.notifier.notify('success', 'La baisse de prix a bien été prise en compte.');
+      this.getProducts(this.filtersProducts);
+    })
   }
 }

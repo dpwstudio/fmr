@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Cart } from 'src/app/modules/_shared/models/cart.model';
+import { Order } from 'src/app/modules/_shared/models/order.model';
+import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { OrderService } from 'src/app/modules/_shared/services/order/order.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,14 +15,20 @@ import { CartService } from 'src/app/modules/_shared/services/cart/cart.service'
 })
 export class OrdersComponent implements OnInit {
   carts: Cart[];
-
+  ordersPending: Order[] = [];
+  ordersShipping: Order[] = [];
+  ordersDelivered: Order[] = [];
+  
   constructor(
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private orderService: OrderService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.getCarts();
+    this.getOrders();
   }
 
   trackById(index, item) {
@@ -30,5 +41,29 @@ export class OrdersComponent implements OnInit {
 
   getCarts() {
     this.carts = this.cartService.cartProductList;
+  }
+
+  getOrders() {
+    this.orderService.getOrders().pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(orders => {
+      this.ordersPending = orders.filter(order => order.status === 'pending');
+      this.ordersShipping = orders.filter(order => order.status === 'shipping');
+      this.ordersDelivered = orders.filter(order => order.status === 'delivered');
+    });
+  }
+
+  getProductPhoto(carts) {
+    return JSON.parse(carts)[0].photoFace;
+  }
+
+  getProductBrand(carts) {
+    return JSON.parse(carts)[0].brand;
+  }
+
+  getProductName(carts) {
+    return JSON.parse(carts)[0].model;
   }
 }

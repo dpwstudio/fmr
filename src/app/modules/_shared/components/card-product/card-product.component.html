@@ -4,8 +4,8 @@
     <div class="d-flex align-items-center justify-content-between text-muted" style="position: absolute;
     right: 7px;
     top: 8px;">
-      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;" *ngIf="!hasAlreadyLove(currentUser?.id)"
-        (click)="loveProduct(product, currentUser?.id)"></ion-icon>
+      <ion-icon name="heart-outline" style="font-size: 17px; margin-right: 2px;"
+        *ngIf="!hasAlreadyLove(currentUser?.id)" (click)="loveProduct(product, currentUser?.id)"></ion-icon>
       <ion-icon name="heart" class="text-danger" style="font-size: 17px; margin-right: 2px;"
         *ngIf="hasAlreadyLove(currentUser?.id)"></ion-icon>
       <span class="number" style="font-size: 9px">{{loves.length}}</span>
@@ -29,10 +29,18 @@
             <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
             </ion-icon>
           </i>
-          <span class="chip-label number pr-0 origin-price"
-            [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-          <span class="text-danger number d-none"
-            [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          <ng-container *ngIf="product.fallingPrice">
+            <span class="chip-label number pr-0 origin-price"
+              [ngClass]="{'falling-price-origin': isFallingPrice(product)}">
+              {{product.oldPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+            <span class="text-danger number d-none"
+              [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          </ng-container>
+          <ng-container *ngIf="!product.fallingPrice">
+            <span class="chip-label number pr-0 origin-price"
+              [ngClass]="{'falling-price-origin': isFallingPrice(product)}">
+              {{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          </ng-container>
         </div>
       </div>
     </a>

@@ -24,9 +24,17 @@ export class CartService {
 
   addProductToCart(product) {
     console.log('product', product);
-    const productExistInCart = this.cartProductList.find(({ product }) => product.id === product.id); // find product by name
+    const productExistInCart = this.cartProductList.find(product => product.id === product.id); // find product by name
     if (!productExistInCart) {
-      this.cartProductList.push({ ...product }); // enhance "product" object with "quantity" property
+      this.cartProductList.push({
+        id: product.id,
+        brand: product.brand,
+        model: product.model,
+        photoFace: product.photoFace,
+        quantity: product.quantity,
+        price: product.price,
+        userId: product.userId
+      }); // enhance "product" object with "quantity" property
       localStorage.setItem('tmpCart', JSON.stringify(this.cartProductList));
       this.notifier.notify('success', 'L\'article a été ajouté dans votre panier');
       return;
@@ -36,7 +44,7 @@ export class CartService {
   }
 
   removeProduct(product) {
-    this.cartProductList = this.cartProductList.filter(({ product }) => product.brand !== product.brand);
+    this.cartProductList = this.cartProductList.filter(product => product.brand !== product.brand);
   }
 
   removeCart() {

@@ -4,6 +4,7 @@ export interface Order {
 	email: string;
 	localization: string;
 	total: number;
+	shippingFees: number;
 	carts: string;
 	status: string;
 	createdAt?: Date;

@@ -14,6 +14,7 @@ export class Product {
 	price = 0;
 	amountWin = 0;
 	fallingPrice = 0;
+	oldPrice = 0;
 	avatar = '';
 	width = 0;
 	height = 0;
@@ -54,6 +55,7 @@ export class Product {
 			this.price = amount.price;
 			this.amountWin = amount.amountWin;
 			this.fallingPrice = amount.fallingPrice ? amount.fallingPrice : null;
+			this.oldPrice = amount.oldPrice ? amount.oldPrice : null;
 		}
 		if (this.userImg) {
 			const user = JSON.parse(this.userImg)[0];

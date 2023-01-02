@@ -98,7 +98,24 @@
       </a>
     </div>
   </div>
-
+  <div class="section mt-2 px-0">
+    <div class="transactions">
+      <div class="total-cart mt-2">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="detail">
+            <div>
+              <h2 class="my-0 text-dark">Frais de port</h2>
+            </div>
+          </div>
+          <div class="right">
+            <h2 class="price mb-0" style="font-size: 16px;">
+              {{getShippingFees() | currency:'EUR':'symbol':'1.2-2':'fr' }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- * App Capsule -->
 
@@ -117,28 +134,33 @@
             <form [formGroup]="editDeliveryAddressForm">
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <label class="label text-secondary" for="address4">Adresse</label>
-                  <textarea id="address4" rows="2" class="form-control" formControlName="address">
+                  <label class="label text-secondary" for="address">Adresse</label>
+                  <textarea id="address" rows="2" class="form-control" formControlName="address">
                    </textarea>
                 </div>
               </div>
 
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <label class="label text-secondary" for="name4">Code postal</label>
-                  <input type="text" class="form-control" id="name4" formControlName="zipCode">
+                  <label class="label text-secondary" for="zipCode">Code postal</label>
+                  <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <label class="label text-secondary" for="city4">Ville</label>
-                  <input type="text" class="form-control" id="name4" formControlName="city">
+                  <label class="label text-secondary" for="city">Ville</label>
+                  <input type="text" class="form-control" id="city" formControlName="city">
                 </div>
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <label class="label text-secondary" for="city4">Pays</label>
-                  <input type="text" class="form-control" id="name4" formControlName="country">
+                  <label class="label text-secondary" for="country">Pays</label>
+                  <select class="form-control custom-select text-left modal-input" id="country"
+                    formControlName="country">
+                    <option *ngFor="let country of countries" value="{{country.name}}">
+                      {{country.name | uppercase}}</option>
+                  </select>
+                  <input type="hidden" class="form-control" id="countryCode" formControlName="countryCode">
                 </div>
               </div>
               <div class="form-group basic">
@@ -193,8 +215,11 @@
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="country">Pays</label>
-                  <input type="text" class="form-control" id="country" [value]="billingAddress.country"
+                  <select class="form-control custom-select text-left modal-input" id="country"
                     formControlName="country">
+                    <option *ngFor="let country of countries" value="{{country.name}}">
+                      {{country.name | uppercase}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group basic">

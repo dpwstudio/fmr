@@ -13,10 +13,18 @@
             <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
             </ion-icon>
           </i>
-          <span class="chip-label number pr-0 origin-price"
-            [ngClass]="{'falling-price-origin': isFallingPrice(product)}">{{getAmountProduct() | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-          <span class="text-danger number d-none"
-            [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          <ng-container *ngIf="product.fallingPrice">
+            <span class="chip-label number pr-0 origin-price"
+              [ngClass]="{'falling-price-origin': isFallingPrice(product)}">
+              {{product.oldPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+            <span class="text-danger number d-none"
+              [ngClass]="{'falling-price-new d-block': isFallingPrice(product)}">{{product.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          </ng-container>
+          <ng-container *ngIf="!product.fallingPrice">
+            <span class="chip-label number pr-0 origin-price"
+              [ngClass]="{'falling-price-origin': isFallingPrice(product)}">
+              {{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          </ng-container>
         </div>
       </div>
     </a>

@@ -46,6 +46,7 @@ export class PaymentStatusComponent implements OnInit {
         email: email,
         localization: billingAddress,
         total: this.getTotalTTC(),
+        shippingFees: this.getTotalTTC(),
         carts: JSON.stringify(carts),
         status: 'pending',
         userId: id

@@ -52,3 +52,35 @@
     }
   }
 }
+
+
+.transactions {
+  .item {
+    padding: 10px 15px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .total-cart {
+    background: #ffffff;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+    padding: 20px 24px;
+    margin-bottom: 10px;
+    position: fixed;
+    bottom: 61px;
+    width: 100%;
+    left: 0;
+
+    p {
+      font-size: 18px;
+    }
+  }
+}

@@ -17,17 +17,17 @@
 <div class="extraHeader pr-0 pl-0">
   <ul class="nav nav-tabs lined" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#waiting" role="tab">
+      <a class="nav-link active" data-toggle="tab" href="#pending" role="tab">
         En attente
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#shipped" role="tab">
+      <a class="nav-link" data-toggle="tab" href="#shipping" role="tab">
         Expédiés
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#received" role="tab">
+      <a class="nav-link" data-toggle="tab" href="#delivered" role="tab">
         Reçues
       </a>
     </li>
@@ -38,21 +38,22 @@
 <div id="appCapsule" class="extra-header-active">
   <div class="tab-content mt-1">
     <!-- Mode tab -->
-    <div class="tab-pane fade active show" id="waiting" role="tabpanel">
+    <div class="tab-pane fade active show" id="pending" role="tabpanel">
       <!-- Transactions -->
       <div class="section mt-2">
         <ul class="listview image-listview media inset mb-2 mx-0">
-          <li *ngFor="let product of carts; trackBy:trackById">
-            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+          <li *ngFor="let order of ordersPending; trackBy:trackById">
+            <a (click)="goto(order)" routerLinkActive="router-link-active" class="item">
               <div class="imageWrapper">
-                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+                <img [src]="getProductPhoto(order.carts)" alt="image" class="imaged w-100">
               </div>
               <div class="in">
                 <div class="fsize-16" style="text-transform: capitalize;">
-                  {{product.product.brand}}
-                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                  {{getProductBrand(order.carts)}}
+                  <div class="text-muted fsize-15">{{getProductName(order.carts)}}</div>
                 </div>
-                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                <span
+                  class="text-dark number">{{order.total + order.shippingFees | currency:'EUR':'symbol':'1.2-2':'fr'}}</span>
               </div>
             </a>
           </li>
@@ -61,21 +62,22 @@
       <!-- * Transactions -->
     </div>
 
-    <div class="tab-pane fade" id="shipped" role="tabpanel">
+    <div class="tab-pane fade" id="shipping" role="tabpanel">
       <!-- Transactions -->
       <div class="section mt-2">
         <ul class="listview image-listview media inset mb-2 mx-0">
-          <li *ngFor="let product of carts; trackBy:trackById">
-            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+          <li *ngFor="let order of ordersShipping; trackBy:trackById">
+            <a (click)="goto(order)" routerLinkActive="router-link-active" class="item">
               <div class="imageWrapper">
-                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+                <img [src]="getProductPhoto(order.carts)" alt="image" class="imaged w-100">
               </div>
               <div class="in">
                 <div class="fsize-16" style="text-transform: capitalize;">
-                  {{product.product.brand}}
-                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                  {{getProductBrand(order.carts)}}
+                  <div class="text-muted fsize-15">{{getProductName(order.carts)}}</div>
                 </div>
-                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                <span
+                  class="text-dark number">{{order.total + order.shippingFees | currency:'EUR':'symbol':'1.2-2':'fr'}}</span>
               </div>
             </a>
           </li>
@@ -84,21 +86,22 @@
       <!-- * Transactions -->
     </div>
 
-    <div class="tab-pane fade" id="received" role="tabpanel">
+    <div class="tab-pane fade" id="delivered" role="tabpanel">
       <!-- Transactions -->
       <div class="section mt-2">
         <ul class="listview image-listview media inset mb-2 mx-0">
-          <li *ngFor="let product of carts; trackBy:trackById">
-            <a (click)="goto(product)" routerLinkActive="router-link-active" class="item">
+          <li *ngFor="let order of ordersDelivered; trackBy:trackById">
+            <a (click)="goto(order)" routerLinkActive="router-link-active" class="item">
               <div class="imageWrapper">
-                <img [src]="product?.photoFace" alt="image" class="imaged w-100">
+                <img [src]="getProductPhoto(order.carts)" alt="image" class="imaged w-100">
               </div>
               <div class="in">
                 <div class="fsize-16" style="text-transform: capitalize;">
-                  {{product.product.brand}}
-                  <div class="text-muted fsize-15">{{product.product.model}}</div>
+                  {{getProductBrand(order.carts)}}
+                  <div class="text-muted fsize-15">{{getProductName(order.carts)}}</div>
                 </div>
-                <span class="text-dark number">{{product.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+                <span
+                  class="text-dark number">{{order.total + order.shippingFees | currency:'EUR':'symbol':'1.2-2':'fr'}}</span>
               </div>
             </a>
           </li>

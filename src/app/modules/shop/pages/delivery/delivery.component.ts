@@ -1,14 +1,21 @@
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Subscription, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { UploadImageService } from 'src/app/modules/_shared/services/upload-image/upload-image.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
+import { europe, outreMer, shippingFees } from 'src/config/constant';
+
+interface Country {
+  code: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-delivery',
@@ -25,14 +32,15 @@ export class DeliveryComponent implements OnInit {
     address: '',
     zipCode: '',
     city: '',
-    country: ''
+    country: '',
   }
   billingAddress = {
     address: '',
     zipCode: '',
     city: '',
-    country: ''
+    country: '',
   }
+  countries: [Country];
   subscription: Subscription;
 
   constructor(
@@ -40,6 +48,7 @@ export class DeliveryComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private http: HttpClient,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
@@ -47,6 +56,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCountriesSelectBox();
     this.editDeliveryAddressForm = this.formBuilder.group({
       address: ['', Validators.required],
       zipCode: ['', Validators.required],
@@ -66,7 +76,7 @@ export class DeliveryComponent implements OnInit {
         address: this.deliveryAddress.address,
         zipCode: this.deliveryAddress.zipCode,
         city: this.deliveryAddress.city,
-        country: this.deliveryAddress.country
+        country: this.deliveryAddress.country,
       });
     }
     if (this.currentUser.billingAddress) {
@@ -75,7 +85,7 @@ export class DeliveryComponent implements OnInit {
         address: this.billingAddress.address,
         zipCode: this.billingAddress.zipCode,
         city: this.billingAddress.city,
-        country: this.billingAddress.country
+        country: this.billingAddress.country,
       });
     }
   }
@@ -96,6 +106,7 @@ export class DeliveryComponent implements OnInit {
       this.notifier.notify('error', 'L\'adresse de livraison est incomplète');
       return;
     }
+    console.log('this.editBillingAddressForm.value', this.editBillingAddressForm.value)
 
     this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, 'deliveryAddress', this.currentUser.id).pipe(
       catchError(error => {
@@ -115,7 +126,7 @@ export class DeliveryComponent implements OnInit {
       this.notifier.notify('error', 'L\'adresse de facturation est incomplète');
       return;
     }
-
+    console.log('this.editBillingAddressForm.value', this.editBillingAddressForm.value)
     this.subscription = this.userService.editAddress(this.editBillingAddressForm.value, 'billingAddress', this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
@@ -145,5 +156,30 @@ export class DeliveryComponent implements OnInit {
 
   isLoading() {
     return this.subscription && !this.subscription.closed;
+  }
+
+  getShippingFees() {
+    if (!this.currentUser.deliveryAddress) {
+      return 15;
+    } else {
+      const deliveryAddress = JSON.parse(this.currentUser.deliveryAddress)[0];
+      console.log('this.currentUser', this.currentUser);
+      if (deliveryAddress.country === 'France') {
+        return shippingFees.france;
+      } else if (outreMer.indexOf(deliveryAddress.country) > -1) {
+        return shippingFees.outreMer;
+      } else if (europe.indexOf(deliveryAddress.country) > -1) {
+        return shippingFees.europe;
+      } else {
+        return shippingFees.international;
+      }
+    }
+  }
+
+  getCountriesSelectBox() {
+    return this.http.get('assets/mock-data/countries.json').subscribe((countries: [Country]) => {
+      this.countries = countries;
+      console.log('countries', this.countries);
+    });
   }
 }

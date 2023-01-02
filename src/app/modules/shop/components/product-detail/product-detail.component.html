@@ -57,7 +57,27 @@
       </ng-template>
     </owl-carousel-o>
   </div>
-  <div class="section mt-2">
+  <div class="section mt-4">
+    <div class="d-flex justify-content-center mt-5 mb-1">
+      <div class="chip chip-media bg-white">
+        <i class="chip-icon bg-primary">
+          <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
+          </ion-icon>
+        </i>
+        <ng-container *ngIf="currentProduct?.fallingPrice">
+          <span class="chip-label number pr-0 origin-price"
+            [ngClass]="{'falling-price-origin': isFallingPrice(currentProduct)}">
+            {{currentProduct?.oldPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+          <span class="text-danger number d-none"
+            [ngClass]="{'falling-price-new d-block': isFallingPrice(currentProduct)}">{{currentProduct?.fallingPrice | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+        </ng-container>
+        <ng-container *ngIf="!currentProduct?.fallingPrice">
+          <span class="chip-label number pr-0 origin-price"
+            [ngClass]="{'falling-price-origin': isFallingPrice(currentProduct)}">
+            {{currentProduct?.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
+        </ng-container>
+      </div>
+    </div>
     <div class="d-flex align-items-center justify-content-between">
       <h1 class="my-0" style="font-size: 32px; text-transform: capitalize;">{{currentProduct?.brand}}</h1>
       <div class="action d-flex align-items-center">
@@ -321,22 +341,12 @@
 
     </div>
   </div>
-  <div class="d-flex justify-content-center mt-2 mb-2">
-    <div class="chip chip-media bg-white">
-      <i class="chip-icon bg-primary">
-        <ion-icon name="cash-outline" role="img" class="md hydrated" aria-label="alarm outline">
-        </ion-icon>
-      </i>
-      <span class="chip-label number"
-        style="font-size: 12px;">{{currentProduct?.price | currency:'EUR':'symbol':'3.2-2':'fr'}}</span>
-    </div>
-  </div>
 
-  <div class="section mt-2" *ngIf="!isMyProduct(currentProduct?.userId)">
+  <div class="section mt-2">
     <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
-          <div class="text-center" *ngIf="currentUser">
+          <div class="text-center" *ngIf="!isMyProduct(currentProduct?.userId)">
             <a (click)="addToWishlist(currentProduct, currentUser?.id)" *ngIf="!isInWishlist()"
               class="btn btn-block btn-lg btn-icon btn-outline-warning my-0" style="width: 50px; height: 50px;">
               <ion-icon name="star-outline" class="text-warning"></ion-icon>
@@ -354,7 +364,14 @@
             </a>
             <span class="d-block text-primary">Négocier</span>
           </div> -->
-          <div class="text-center">
+          <div class="text-center" *ngIf="isMyProduct(currentProduct?.userId)">
+            <a data-toggle="modal" data-target="#editPriceForm"
+              class="btn btn-block btn-icon btn-lg btn-outline-primary my-0" style="width: 50px; height: 50px;">
+              <ion-icon name="arrow-down-outline" class="text-primary"></ion-icon>
+            </a>
+            <span class="d-block text-primary">Baisser le prix</span>
+          </div>
+          <div class="text-center" *ngIf="!isMyProduct(currentProduct?.userId)">
             <a class="btn btn-block btn-icon btn-lg btn-secondary my-0" style="width: 50px; height: 50px;"
               (click)="addProductToCart(currentProduct)">
               <ion-icon name="bag-add" class="text-white"></ion-icon>
@@ -483,6 +500,53 @@
                 data-dismiss="modal">Envoyer</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade action-sheet" id="editPriceForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Prix de l'article</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body pb-2" style="background: #EDEDF5;">
+        <div class="action-sheet-content">
+          <form [formGroup]="editPriceForm" class="d-flex">
+            <div class="form-group basic pr-1">
+              <div class="input-wrapper text-center">
+                <label for="">Votre prix
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" [(ngModel)]="price"
+                    (ngModelChange)="onPriceChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Montant">
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group basic pl-1">
+              <div class="input-wrapper text-center">
+                <label for="">Vous gagnez
+                  <input type="number" pattern="[0-9]*" inputmode="decimal"
+                    class="form-control text-center px-0 number modal-input" [(ngModel)]="amountWin"
+                    [ngModelOptions]="{standalone: true}" placeholder="Montant gagné" disabled
+                    style="font-weight: 600; color: #00d47f !important; background: #f0f0f0 !important;">
+                </label>
+              </div>
+            </div>
+
+          </form>
+          <div class="form-group basic">
+            <button type="button" class="btn btn-primary btn-block btn-lg" (click)="editPrice()"
+              data-dismiss="modal">Valider</button>
+          </div>
+          <p class="text-left mb-1">Le montant gagné est déduit de 11% du montant correspondant à la commission due
+            pour vos articles vendus sur notre plateforme. <a href="">En savoir plus</a></p>
+
         </div>
       </div>
     </div>

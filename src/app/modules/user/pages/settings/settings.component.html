@@ -319,8 +319,12 @@
               </div>
               <div class="form-group basic">
                 <div class="input-wrapper">
-                  <label class="label text-secondary" for="city4">Pays</label>
-                  <input type="text" class="form-control" id="name4" formControlName="country">
+                  <label class="label text-secondary" for="country">Pays</label>
+                  <select class="form-control custom-select text-left modal-input" id="country"
+                    formControlName="country">
+                    <option *ngFor="let country of countries" value="{{country.name}}">
+                      {{country.name | uppercase}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group basic">
@@ -375,8 +379,11 @@
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label text-secondary" for="country">Pays</label>
-                  <input type="text" class="form-control" id="country" [value]="billingAddress.country"
+                  <select class="form-control custom-select text-left modal-input" id="country"
                     formControlName="country">
+                    <option *ngFor="let country of countries" value="{{country.name}}">
+                      {{country.name | uppercase}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group basic">

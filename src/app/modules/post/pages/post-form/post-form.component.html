@@ -419,7 +419,7 @@
               </div>
             </ng-container>
             <ng-container
-              *ngIf="f.category.value === 'montres' || f.category.value === 'bijoux' && f.subCategory.value === 'bagues'">
+              *ngIf="f.category.value === 'montres' || f.category.value === 'joaillerie' && f.subCategory.value === 'bagues'">
               <div class="form-group basic col-6">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -714,8 +714,8 @@
           <div class="wide-block p-0">
             <form [formGroup]="postProductForm">
               <div class="input-list">
-                <ng-container *ngIf="f.category.value === 'bijoux'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subBijouxCategories">
+                <ng-container *ngIf="f.category.value === 'joaillerie'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subJewelryCategories">
                     <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
                       [value]="subCategory.name" class="custom-control-input">
                     <label class="custom-control-label" for="{{subCategory.name}}"

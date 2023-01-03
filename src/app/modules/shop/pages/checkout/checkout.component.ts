@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service'
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { EmailService } from 'src/app/modules/_shared/services/email/email.service';
 import { OrderService } from 'src/app/modules/_shared/services/order/order.service';
+import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 import { europe, outreMer, shippingFees } from 'src/config/constant';
 
 @Component({
@@ -31,6 +32,7 @@ export class CheckoutComponent implements OnInit {
     private authService: AuthService,
     private orderService: OrderService,
     private emailService: EmailService,
+    private productService: ProductService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
@@ -101,6 +103,7 @@ export class CheckoutComponent implements OnInit {
             this.showLoading = false;
             this.router.navigate(['payment-status']);
             this.notifier.notify('success', 'Votre paiement a été accepté.');
+            this.editStatusProduct(true, carts);
             // this.emailService.sendEmailToNewOrder(this.order).subscribe(data => console.log('data', data));
             this.cartService.removeCart();
           },
@@ -109,6 +112,20 @@ export class CheckoutComponent implements OnInit {
           });
     } else {
       this.notifier.notify('error', 'Votre panier est vide.')
+    }
+  }
+
+  editStatusProduct(status: boolean, carts) {
+    if (!status) {
+      return;
+    } else {
+      carts.forEach(cart => {
+        const product = {
+          status: 'selled',
+          id: cart.id
+        };
+        this.productService.editProduct(product).subscribe(res => this.notifier.notify('success', 'produit modifié'));
+      })
     }
   }
 }

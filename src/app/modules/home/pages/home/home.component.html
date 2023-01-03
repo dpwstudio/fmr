@@ -66,10 +66,23 @@
   </div>
   <!-- * Categories -->
 
+  <!-- Bannière MODE -->
+  <div class="section full mt-3 position-relative">
+    <img src="assets/img/banniere-mode.jpg" alt="image" class="imaged w-100 square">
+    <div class="text-banner position-absolute">
+      <h1 class="mb-1">DES PIECES D'EXCEPTIONS</h1>
+      <p class="mb-0">Trouverez-vous la perle rare ?</p>
+      <a [routerLink]="['/categories']" routerLinkActive="router-link-active"
+        class="btn btn-primary position-absolute">Consulter</a>
+    </div>
+  </div>
+  <!-- * Bannière MODE -->
+
   <!-- News -->
   <div class="section full mt-4 mb-5">
     <div class="section-heading padding">
-      <h2 class="title">Nouveautés</h2>
+      <h2 class="title d-flex align-items-center">Nouveautés <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Mode</span></h2>
       <a [routerLink]="['/shop', { type: 'news' }]" class="link">Tout voir</a>
     </div>
     <ng-container *ngIf="productsMode.length > 0; else noProductsMode">
@@ -85,7 +98,7 @@
     <ng-template #noProductsMode>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6"></ion-icon>
             <p class="m-0 text-secondary">Aucune nouveautés disponible</p>
           </div>
@@ -106,12 +119,14 @@
           <ng-template carouselSlide>
             <a [routerLink]="['/profile', user.id, {catalogType: 'mode'}]" routerLinkActive="router-link-active"
               class="item">
-              <div style="background: white; border-radius: 15px; padding: 20px 0 0;">
-                <div class="box">
-                  <h1>Le dressing de <span
-                      style="text-transform: capitalize; font-size: 25px;">{{user.firstname}}</span>
-                  </h1>
-                  <span class="text-secondary">{{getProductsDressingUser(user.id).length}}
+              <div style="background: white; border-radius: 15px; padding: 10px 0 0;">
+                <div class="box d-flex justify-content-between align-items-center">
+                  <div class="left">
+                    <p class="mb-0 text-dark">Le dressing de</p>
+                    <span class="position-relative"
+                      style="font-size: 17px; top: -8px; font-weight: 600; letter-spacing: 2px;">{{user.firstname | uppercase}}</span>
+                  </div>
+                  <span class="text-secondary ml-3">{{getProductsDressingUser(user.id).length}}
                     {{getProductsDressingUser(user.id).length > 1 ? 'articles': 'article'}}</span>
                 </div>
                 <div class="d-flex align-items-center justify-content-between px-2 py-2"
@@ -123,7 +138,7 @@
                   </ng-container>
                   <ng-template #noProducts>
                     <div class="img-product d-flex align-items-center justify-content-center">
-                      <p class="text-center">
+                      <p class="text-center text-secondary">
                         Dressing vide
                       </p>
                     </div>
@@ -139,7 +154,7 @@
     <ng-template #noProductsFallingPriceMode>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6"></ion-icon>
             <p class="m-0 text-secondary">Aucun dressing disponible</p>
           </div>
@@ -172,7 +187,7 @@
     <ng-template #noProductsFallingPriceMode>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6"></ion-icon>
             <p class="m-0 text-secondary">Aucune nouveautés disponible</p>
           </div>
@@ -182,10 +197,50 @@
   </div>
   <!-- * Baisse de prix -->
 
+  <!-- Categories -->
+  <div class="section full mt-2 mb-5">
+    <div class="section-heading padding">
+      <h2 class="title">Nouveaux membres</h2>
+    </div>
+    <owl-carousel-o [options]="carouselSmallOptions">
+      <ng-container *ngFor="let user of users; trackBy:trackById">
+        <ng-template carouselSlide>
+          <!-- item -->
+          <div class="item">
+            <a [routerLink]="['/profile', user.id]"
+              routerLinkActive="router-link-active">
+              <div class="user-card">
+                <div class="item-categories">
+                  <app-image [src]="getUserImgProfile(user)"></app-image>
+                </div>
+                <strong style="text-transform: capitalize;">{{user.firstname | titlecase}}</strong>
+              </div>
+            </a>
+          </div>
+          <!-- * item -->
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- * Categories -->
+
+  <!-- Bannière ART -->
+  <div class="section full mt-3 position-relative">
+    <img src="assets/img/banniere-art.jpg" alt="image" class="imaged w-100 square">
+    <div class="text-banner position-absolute">
+      <h1 class="mb-1">ART VISUEL, ART DECO</h1>
+      <p class="mb-0">Tout l'art à porté de main</p>
+      <a [routerLink]="['/categories']" routerLinkActive="router-link-active"
+        class="btn btn-primary position-absolute">Consulter</a>
+    </div>
+  </div>
+  <!-- * Bannière ART -->
+
   <!-- Nouveautés art -->
   <div class="section full mt-4 mb-5">
     <div class="section-heading padding">
-      <h2 class="title">Nouveautés Art</h2>
+      <h2 class="title d-flex align-items-center">Nouveautés <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Art</span></h2>
       <a [routerLink]="['/shop', {catalogType: 'art'}]" class="link">Tout voir</a>
     </div>
     <ng-container *ngIf="productsArt.length > 0; else noProductsArt">
@@ -200,7 +255,7 @@
     <ng-template #noProductsArt>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
             <p class="m-0 text-secondary">Aucune nouveautés disponible</p>
           </div>
@@ -222,11 +277,14 @@
           <ng-template carouselSlide>
             <a [routerLink]="['/profile', user.id, {catalogType: 'art'}]" routerLinkActive="router-link-active"
               class="item">
-              <div style="background: white; border-radius: 15px; padding: 20px 0 0;">
-                <div class="box">
-                  <h1>La galerie de <span style="text-transform: capitalize;font-size: 25px;">{{user.firstname}}</span>
-                  </h1>
-                  <span class="text-secondary">{{getProductsGalleryUser(user.id).length}}
+              <div style="background: white; border-radius: 15px; padding: 10px 0 0;">
+                <div class="box d-flex justify-content-between align-items-center">
+                  <div class="left">
+                    <p class="mb-0 text-dark">La galerie de</p>
+                    <span class="position-relative"
+                      style="font-size: 17px; top: -8px; font-weight: 600; letter-spacing: 2px;">{{user.firstname | uppercase}}</span>
+                  </div>
+                  <span class="text-secondary ml-3">{{getProductsGalleryUser(user.id).length}}
                     {{getProductsGalleryUser(user.id).length > 1 ? 'articles': 'article'}}</span>
                 </div>
                 <div class="d-flex align-items-center justify-content-between px-2 py-2"
@@ -238,9 +296,9 @@
                   </ng-container>
                   <ng-template #noProducts>
                     <div class="img-product d-flex align-items-center justify-content-center">
-                        <p class="text-center">
-                          Galerie vide
-                        </p>
+                      <p class="text-center text-secondary">
+                        Galerie vide
+                      </p>
                     </div>
                   </ng-template>
                 </div>
@@ -254,7 +312,7 @@
     <ng-template #noGalleries>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
             <p class="m-0 text-secondary">Aucune Galerie disponible</p>
           </div>
@@ -289,7 +347,7 @@
     <ng-template #noProductsFallingPriceArt>
       <div class="d-flex justify-content-center w-100">
         <div class="card" style="border-top: 4px solid #ddd1b6 !important; border-radius: 15px;">
-          <div class="card-body d-flex align-items-center justify-content-between p-3">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
             <ion-icon name="information-circle" class="mr-2" style="font-size: x-large; color: #ddd1b6;"></ion-icon>
             <p class="m-0 text-secondary">Aucune baisse de prix disponible</p>
           </div>
@@ -298,6 +356,18 @@
     </ng-template>
   </div>
   <!-- * Baisse de prix Art -->
+
+  <!-- Bannière Buy sell -->
+  <div class="section full mt-3 position-relative">
+    <img src="assets/img/banniere-buy-sell.jpg" alt="image" class="imaged w-100 square">
+    <div class="text-banner position-absolute">
+      <h1 class="mb-1">ACHETER, REVENDRE</h1>
+      <p class="mb-0">Le meilleur moyen de rester dans l'air du temps</p>
+      <a [routerLink]="['/post']" routerLinkActive="router-link-active"
+        class="btn btn-primary position-absolute">Vendre</a>
+    </div>
+  </div>
+  <!-- * Bannière Buy sell -->
 
 </div>
 <!-- * App Capsule -->

@@ -40,7 +40,7 @@ export class DeliveryComponent implements OnInit {
     city: '',
     country: '',
   }
-  countries: [Country];
+  countries: Country[];
   subscription: Subscription;
 
   constructor(
@@ -91,8 +91,6 @@ export class DeliveryComponent implements OnInit {
   }
 
   gotoCheckout(deliveryAddress, billingAddress) {
-    console.log('deliveryAddress', deliveryAddress)
-    console.log('billingAddress', billingAddress)
     if (deliveryAddress.address && billingAddress.address) {
       this.router.navigate(['checkout']);
     } else {
@@ -106,7 +104,6 @@ export class DeliveryComponent implements OnInit {
       this.notifier.notify('error', 'L\'adresse de livraison est incomplète');
       return;
     }
-    console.log('this.editBillingAddressForm.value', this.editBillingAddressForm.value)
 
     this.subscription = this.userService.editAddress(this.editDeliveryAddressForm.value, 'deliveryAddress', this.currentUser.id).pipe(
       catchError(error => {
@@ -126,7 +123,7 @@ export class DeliveryComponent implements OnInit {
       this.notifier.notify('error', 'L\'adresse de facturation est incomplète');
       return;
     }
-    console.log('this.editBillingAddressForm.value', this.editBillingAddressForm.value)
+
     this.subscription = this.userService.editAddress(this.editBillingAddressForm.value, 'billingAddress', this.currentUser.id).pipe(
       catchError(error => {
         return throwError(error);
@@ -163,7 +160,6 @@ export class DeliveryComponent implements OnInit {
       return 15;
     } else {
       const deliveryAddress = JSON.parse(this.currentUser.deliveryAddress)[0];
-      console.log('this.currentUser', this.currentUser);
       if (deliveryAddress.country === 'France') {
         return shippingFees.france;
       } else if (outreMer.indexOf(deliveryAddress.country) > -1) {
@@ -177,9 +173,8 @@ export class DeliveryComponent implements OnInit {
   }
 
   getCountriesSelectBox() {
-    return this.http.get('assets/mock-data/countries.json').subscribe((countries: [Country]) => {
+    return this.http.get('assets/mock-data/countries.json').subscribe((countries: Country[]) => {
       this.countries = countries;
-      console.log('countries', this.countries);
     });
   }
 }

@@ -1,4 +1,5 @@
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,6 +10,11 @@ import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { UploadImageService } from 'src/app/modules/_shared/services/upload-image/upload-image.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
+
+interface Country {
+  code: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-settings',
@@ -39,6 +45,8 @@ export class SettingsComponent implements OnInit {
   img = {
     avatarSrc: '',
   }
+  countries: Country[];
+
 
 
   constructor(
@@ -47,6 +55,7 @@ export class SettingsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private uploadImageService: UploadImageService,
+    private http: HttpClient,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
@@ -54,6 +63,7 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCountriesSelectBox();
     this.editImgForm = this.formBuilder.group({
       avatarUploaded: [""],
       avatar: [""],
@@ -137,6 +147,12 @@ export class SettingsComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
+  }
+
+  getCountriesSelectBox() {
+    return this.http.get('assets/mock-data/countries.json').subscribe((countries: Country[]) => {
+      this.countries = countries;
+    });
   }
 
   /**

@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
     this.getProductsWithFallingPrice();
     this.getProducts();
     this.getUsers();
+    this.getNewMembers();
   }
 
   getCategories() {
@@ -145,7 +146,7 @@ export class HomeComponent implements OnInit {
   getProductsDressingUser(id) {
     return this.productsDressingUser.filter(product => product.userId === id && product.catalogType === 'mode');
   }
-  
+
   getProductsGalleryUser(id) {
     return this.productsGalleryUser.filter(product => product.userId === id && product.catalogType === 'art');
   }
@@ -167,4 +168,16 @@ export class HomeComponent implements OnInit {
     return product.fallingPrice > 0;
   }
 
+  getNewMembers() {
+    console.log('this.users', this.users);
+  }
+    
+  /**
+     * Récupère l'image du profil
+     * @param user
+     * @returns 
+     */
+  getUserImgProfile(user) {
+    return this.userService.getUserImgProfile(user).avatar;
+  }
 }

@@ -53,7 +53,7 @@ export class PostFormComponent implements OnInit {
 	postProductForm: FormGroup;
 	subscription: Subscription;
 	categories = [];
-	subBijouxCategories = [];
+	subJewelryCategories = [];
 	subAccessoiresCategories = [];
 	subVetementsCategories = [];
 	subChaussuresCategories = [];
@@ -151,13 +151,13 @@ export class PostFormComponent implements OnInit {
 				return throwError(error);
 			})
 		).subscribe(subCategories => {
-			this.subBijouxCategories = subCategories.filter(subCategory => subCategory.category === 'bijoux');
+			this.subJewelryCategories = subCategories.filter(subCategory => subCategory.category === 'joaillerie');
 			this.subAccessoiresCategories = subCategories.filter(subCategory => subCategory.category === 'accessoires');
 			this.subVetementsCategories = subCategories.filter(subCategory => subCategory.category === 'vêtements');
 			this.subChaussuresCategories = subCategories.filter(subCategory => subCategory.category === 'chaussures');
 			this.subMontresCategories = subCategories.filter(subCategory => subCategory.category === 'montres');
 			this.subSacsCategories = subCategories.filter(subCategory => subCategory.category === 'sacs');
-			this.sort(this.subBijouxCategories);
+			this.sort(this.subJewelryCategories);
 			this.sort(this.subAccessoiresCategories);
 			this.sort(this.subVetementsCategories);
 			this.sort(this.subChaussuresCategories);

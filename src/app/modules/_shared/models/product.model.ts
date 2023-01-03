@@ -24,7 +24,7 @@ export class Product {
 	sizeClothes = '';
 	diameter = 0;
 
-	constructor(protected product: any) {
+	constructor(private product: any) {
 		if (this.img) {
 			const img = JSON.parse(this.img)[0];
 			this.photoFace = img.photoFace;
@@ -157,5 +157,9 @@ export class Product {
 	
 	get productId(): number {
 		return this.product.productId;
+	}
+	
+	get status(): string {
+		return this.product.status;
 	}
 }

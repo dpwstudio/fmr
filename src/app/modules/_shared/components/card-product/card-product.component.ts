@@ -77,4 +77,7 @@ export class CardProductComponent implements OnInit {
     return this.loves.filter(love => love.userId === userId).length > 0;
   }
 
+  isSelled(status) {
+    return status === 'selled';
+  }
 }

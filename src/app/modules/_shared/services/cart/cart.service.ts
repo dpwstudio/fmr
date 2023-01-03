@@ -24,7 +24,7 @@ export class CartService {
 
   addProductToCart(product) {
     console.log('product', product);
-    const productExistInCart = this.cartProductList.find(product => product.id === product.id); // find product by name
+    const productExistInCart = this.cartProductList.find(cart => cart.id === product.id); // find product by name
     if (!productExistInCart) {
       this.cartProductList.push({
         id: product.id,
@@ -44,7 +44,7 @@ export class CartService {
   }
 
   removeProduct(product) {
-    this.cartProductList = this.cartProductList.filter(product => product.brand !== product.brand);
+    this.cartProductList = this.cartProductList.filter(cart => cart.brand !== product.brand);
   }
 
   removeCart() {

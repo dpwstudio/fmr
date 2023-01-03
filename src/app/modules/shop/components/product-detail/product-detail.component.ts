@@ -270,7 +270,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   editPrice() {
-    console.log(this.editPriceForm.value);
     const product = {
       amount: this.editPriceForm.value,
       id: this.currentProduct.id
@@ -284,6 +283,10 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe(res => {
       this.notifier.notify('success', 'La baisse de prix a bien été prise en compte.');
       this.getProducts(this.filtersProducts);
-    })
+    });
+  }
+
+  isSelled(status) {
+    return status === 'selled';
   }
 }

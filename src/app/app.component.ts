@@ -9,7 +9,7 @@ import { routeTransitionAnimations } from './modules/_shared/animations/routeTra
   animations: [routeTransitionAnimations]
 })
 export class AppComponent {
-  title = 'dressingfmr';
+  title = 'fmrlife';
   prepareRoute(outlet: RouterOutlet): boolean {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animationState'];
   }

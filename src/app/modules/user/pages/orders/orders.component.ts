@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Cart } from 'src/app/modules/_shared/models/cart.model';
 import { Order } from 'src/app/modules/_shared/models/order.model';
+import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { OrderService } from 'src/app/modules/_shared/services/order/order.service';
@@ -18,17 +19,20 @@ export class OrdersComponent implements OnInit {
   ordersPending: Order[] = [];
   ordersShipping: Order[] = [];
   ordersDelivered: Order[] = [];
-  
+  currentUser: User;
+
   constructor(
     private cartService: CartService,
     private router: Router,
     private orderService: OrderService,
     private authService: AuthService
-  ) { }
+  ) {
+    this.currentUser = this.authService.getCurrentUser();
+  }
 
   ngOnInit(): void {
     this.getCarts();
-    this.getOrders();
+    this.getOrders(this.currentUser.id);
   }
 
   trackById(index, item) {
@@ -43,8 +47,8 @@ export class OrdersComponent implements OnInit {
     this.carts = this.cartService.cartProductList;
   }
 
-  getOrders() {
-    this.orderService.getOrders().pipe(
+  getOrders(id) {
+    this.orderService.getOrdersByUser(id).pipe(
       catchError(error => {
         return throwError(error);
       })

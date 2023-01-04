@@ -86,4 +86,12 @@ export class UserService {
     return imgProfile;
   }
 
+  getCountryUserProfile(address) {
+    console.log('address', address);
+    if (address) {
+      const userAddress = JSON.parse(address)[0];
+      return userAddress.country;
+    }
+  }
+
 }

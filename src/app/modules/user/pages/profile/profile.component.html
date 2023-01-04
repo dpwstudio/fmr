@@ -33,26 +33,25 @@
     <div class="in coin-head">
       <div class="d-flex align-items-center justify-content-center">
         <img src="{{getUserImgProfile(user)}}" class="imaged w48 rounded mr-05" alt="">
-        <h1 class="total my-0 ml-1 d-flex align-items-center"><span
+        <h1 class="total my-0 ml-1 d-flex flex-column justify-content-start align-items-center"><span
             style="text-transform: capitalize;">{{user?.firstname}}</span>
-          <span class="fi fi-{{user?.ctryCode}} ml-1"></span></h1>
+          <span class="badge badge-light">{{getCountryUserProfile(user?.deliveryAddress)}}</span></h1>
       </div>
       <div class="d-flex align-items-center justify-content-around mt-2">
-        <div class="chip chip-media bg-white">
+        <a class="chip chip-media bg-white" data-toggle="modal" data-target="#followersModal">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{user?.followersCounter}}</span>
-            {{user?.followersCounter < 1 ? 'Abonné' : 'Abonnés'}}</span>
-        </div>
-        <div class="chip chip-media bg-white">
+          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{nbFollowers}}</span>
+            {{nbFollowers <= 1 ? 'Abonné' : 'Abonnés'}}</span>
+        </a>
+        <a class="chip chip-media bg-white" data-toggle="modal" data-target="#subscriptionsModal">
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label w-100"><span class="number"
-              style="font-size: 11px;">{{user?.subscriptionsCounter}}</span>
-            {{user?.subscriptionsCounter < 1 ? 'Abonnement' : 'Abonnements'}}</span>
-        </div>
+          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{nbSubscriptions}}</span>
+            {{nbSubscriptions <= 1 ? 'Abonnement' : 'Abonnements'}}</span>
+        </a>
         <button (click)="followProfile(user)" class="btn btn-primary btn-icon" *ngIf="!isMyProfile()">
           <ion-icon name="person-add" style="font-size: 20px;"></ion-icon>
         </button>
@@ -147,3 +146,65 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+<div class="modal fade modalbox" id="followersModal" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Abonnés</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body py-2" style="background: #EDEDF5;">
+        <div class="section full mt-1 mb-2">
+          <ul class="listview image-listview inset" *ngIf="hasFollowers(followers)">
+            <li *ngFor="let follower of followers">
+              <a [routerLink]="['/profile', follower.id]" class="item" data-dismiss="modal">
+                <img src="{{getUserImgProfile(follower)}}" alt="image" class="image">
+                <div class="in">
+                  <div>
+                    {{follower.firstname | titlecase}}
+                    <footer>{{getCountryUserProfile(follower?.deliveryAddress)}}</footer>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <p class="text-center p-3" style="font-size: 18px;" *ngIf="!hasFollowers(followers)">Aucun abonné</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modalbox" id="subscriptionsModal" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Abonnements</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body py-2" style="background: #EDEDF5;">
+        <div class="section full mt-1 mb-2">
+          <ul class="listview image-listview inset" *ngIf="hasSubscribers(subscribers)">
+            <li *ngFor="let subscriber of subscribers">
+              <a [routerLink]="['/profile', subscriber.id]" class="item" data-dismiss="modal">
+                <img src="{{getUserImgProfile(subscriber)}}" alt="image" class="image">
+                <div class="in">
+                  <div>
+                    {{subscriber.firstname | titlecase}}
+                    <footer>{{getCountryUserProfile(subscriber?.deliveryAddress)}}</footer>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <p class="text-center p-3" style="font-size: 18px;" *ngIf="!hasSubscribers(subscribers)">Aucun abonnement</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

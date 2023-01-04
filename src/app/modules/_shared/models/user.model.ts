@@ -8,8 +8,6 @@ export interface User {
 	deliveryAddress: string,
 	billingAddress: string,
 	img: string,
-	followersCounter: number,
-	subscriptionsCounter: number,
 	newsletters: boolean,
 	cguAccepted: boolean,
 	createdAt: string

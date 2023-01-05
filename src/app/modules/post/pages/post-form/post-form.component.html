@@ -90,7 +90,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="background: #f7f7ff;">
         <form>
           <div class="row mb-2">
             <div class="col-6">
@@ -223,7 +223,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body pt-0" style="background: #EDEDF5;">
+      <div class="modal-body pt-0" style="background:  #f7f7ff;">
         <div class="pt-2 pb-2 border-0">
           <ul class="nav nav-tabs style1" role="tablist">
             <li class="nav-item">
@@ -293,20 +293,28 @@
                       </ion-icon>
                     </a>
                   </li>
+                  <li
+                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                    <a href="#" class="item" data-toggle="modal" data-target="#mattersForm">
+                      <div class="in">
+                        <div>Matière</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.matter.value}}</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                    <a href="#" class="item" data-toggle="modal" data-target="#colorsForm">
+                      <div class="in">
+                        <div>Couleur</div>
+                        <span class="text-muted" style="text-transform: capitalize">{{f.color.value}}</span>
+                      </div>
+                    </a>
+                  </li>
                 </ul>
                 <div class="form-group basic">
                   <div class="input-wrapper">
                     <input type="text" class="form-control modal-input" formControlName="model" placeholder="Modèle">
-                  </div>
-                </div>
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <input type="text" class="form-control modal-input" formControlName="matter" placeholder="Matière">
-                  </div>
-                </div>
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <input type="text" class="form-control modal-input" formControlName="color" placeholder="Couleur">
                   </div>
                 </div>
                 <div class="form-group basic">
@@ -369,7 +377,7 @@
         </a>
       </div>
       <div class="modal-body">
-        <div class="wide-block pt-2 pb-2 border-0" style="background: #EDEDF5;">
+        <div class="wide-block pt-2 pb-2 border-0" style="background:  #f7f7ff;">
           <form [formGroup]="postProductForm" class="d-flex align-items-center justify-content-center mb-2">
             <ng-container
               *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === ''">
@@ -440,9 +448,6 @@
               </div>
             </ng-container>
           </form>
-          <div class="form-group basic">
-            <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal">Valider</button>
-          </div>
         </div>
       </div>
     </div>
@@ -460,7 +465,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body pt-0" style="background:#EDEDF5;">
+      <div class="modal-body pt-0" style="background: #f7f7ff;">
         <div class="pt-2 pb-2 border-0">
           <ul class="nav nav-tabs style1" role="tablist">
             <li class="nav-item">
@@ -634,7 +639,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body pb-2" style="background: #EDEDF5;">
+      <div class="modal-body pb-2" style="background:  #f7f7ff;">
         <div class="action-sheet-content">
           <form [formGroup]="postProductForm" class="d-flex">
             <div class="form-group basic pr-1">
@@ -678,7 +683,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body" style="background: #EDEDF5;">
+      <div class="modal-body" style="background:  #f7f7ff;">
         <div class="section full mb-2">
           <div class="wide-block p-0">
             <form [formGroup]="postProductForm">
@@ -709,7 +714,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body" style="background: #EDEDF5;">
+      <div class="modal-body" style="background:  #f7f7ff;">
         <div class="section full mb-2">
           <div class="wide-block p-0">
             <form [formGroup]="postProductForm">
@@ -785,7 +790,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body" style="background: #EDEDF5;">
+      <div class="modal-body" style="background:  #f7f7ff;">
         <div class="section full mb-2">
           <div class="wide-block p-0">
             <form class="search-form py-2 px-2">
@@ -817,6 +822,66 @@
 </div>
 <!-- * Brand Form -->
 
+<!-- Matter Form -->
+<div class="modal fade modalbox" id="mattersForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une matière</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let matter of getMatters()">
+                  <input type="radio" id="{{matter}}" name="matter" formControlName="matter" [value]="matter"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="{{matter}}">{{matter | titlecase}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Matter Form -->
+
+<!-- Color Form -->
+<div class="modal fade modalbox" id="colorsForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une couleur</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background: #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let color of getColors()">
+                  <input type="radio" id="{{color}}" name="color" formControlName="color" [value]="color"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="{{color}}">{{color | titlecase}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Color Form -->
+
 <!-- Authenticity Form -->
 <div class="modal fade action-sheet" id="proofForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -827,7 +892,7 @@
           <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
         </a>
       </div>
-      <div class="modal-body" style="background: #EDEDF5;">
+      <div class="modal-body" style="background:  #f7f7ff;">
         <div class="section full mt-3 mb-3 px-3">
           <div class="wide-block p-0">
             <form [formGroup]="postProductForm">
@@ -850,9 +915,6 @@
               </div>
             </form>
           </div>
-          <button class="btn btn-success btn-block btn-lg mt-3" data-dismiss="modal">
-            Valider
-          </button>
         </div>
       </div>
     </div>

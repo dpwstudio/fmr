@@ -1,6 +1,104 @@
-<!-- loader -->
-<div [@triggerName]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet">
-    <notifier-container style="position: absolute;"></notifier-container>
-  </router-outlet>
+<div class="hero-wrap hero">
+  <div class="overlay"></div>
+  <div class="circle-bg"></div>
+  <div class="circle-bg-2"></div>
+  <div class="container">
+    <div class="textContent">
+      <div class="hero-header">
+        <div class="itemLogo">
+          <img src="assets/img/logo/logo.png" width="120" alt="logo" class="image mb-3">
+        </div>
+      </div>
+      <h1 class="heroTitle">
+        Pop-up store online
+      </h1>
+      <div class="hero-content">
+        <ul class="heroList">
+          <li>
+            <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"
+              class="mr-1">
+            </ion-icon>
+            Achat et revente d'article de mode
+          </li>
+          <li>
+            <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"
+              class="mr-1">
+            </ion-icon>
+            Achat et revente d'objet d'art
+          </li>
+          <li>
+            <ion-icon name="checkmark-outline" role="img" class="md hydrated" aria-label="checkmark outline"
+              class="mr-1">
+            </ion-icon>
+            Paiement sécurisé
+          </li>
+        </ul>
+      </div>
+
+
+
+      <div class="buttonWrapper">
+        <div class="qrBlock mt-2 mb-3">
+          <div class="text text-dark">
+            <div class="d-flex align-items-center" style="line-height: 0; font-size: 30px;">
+              <ion-icon name="phone-portrait-outline" role="img" class="md hydrated mr-1"></ion-icon>
+              <strong>Scanner le QRCODE</strong>
+            </div>
+            pour tester l'application sur votre mobile.
+          </div>
+        </div>
+        <img src="assets/img/qrcode.png" alt="" width="150" class="rounded">
+        <div class="qrBlock mt-3">
+          <div class="text text-dark">
+            <div class="d-flex align-items-center" style="line-height: 0; font-size: 30px;">
+              <ion-icon name="download-outline" role="img" class="md hydrated mr-1"></ion-icon>
+              <strong>Installer l'application</strong>
+            </div>
+            sur votre écran d'accueil en attendant la version mobile.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phoneContent">
+      <div class="phoneWrapper">
+        <div class="in">
+          <iframe class="getFrame" src="https://kdrive.fr/fmr" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="mobile">
+
+  <!-- loader -->
+  <div [@triggerName]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet">
+      <notifier-container style="position: absolute;"></notifier-container>
+    </router-outlet>
+  </div>
+  <!-- </div>
+
+<div class="modal fade action-sheet inset w-100" id="actionSheetInset" tabindex="-1" role="dialog" aria-hidden="true"
+  style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content py-3">
+      <div class="modal-header">
+        <h5 class="modal-title">Scan the QRCode to access a mobile version</h5>
+      </div>
+      <div class="modal-body text-center py-3">
+        <img src="assets/img/qrcode.png" alt="" width="200" class="rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Scan the QRCode to access a mobile version</h5>
+    <ion-icon name="close-outline" (click)="modal.dismiss('Cross click')" style="font-size: 30px; cursor: pointer;"></ion-icon>
+  </div>
+  <div class="modal-body text-center">
+    <img src="assets/img/qrcode.png" alt="" width="200" class="rounded">
+  </div>
+</ng-template> -->

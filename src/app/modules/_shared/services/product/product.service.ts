@@ -21,6 +21,7 @@ export class ProductService {
   }
 
   createProduct(product: Product) {
+    console.log('product', product);
     return this.http.post(`${environment.fmrApi}/products`, product);
   }
 
@@ -78,6 +79,7 @@ export class ProductService {
   }
 
   addComment(comment: Comment) {
+    console.log('comment', comment);
     return this.http.post(`${environment.fmrApi}/comments`, comment);
   }
   

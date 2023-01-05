@@ -116,6 +116,7 @@ export class PostFormComponent implements OnInit {
 			certificate: [''],
 			noProof: [''],
 			price: [''],
+			user: [''],
 			amountWin: [''],
 			userId: [''],
 		});
@@ -124,12 +125,23 @@ export class PostFormComponent implements OnInit {
 			catalogType: this.product.catalogType,
 			kind: this.product.kind,
 			category: this.product.category,
+			user: JSON.stringify([{
+				imgProfile: this.currentUser.img,
+				country: this.getCountryUserProfile(this.currentUser.deliveryAddress),
+				firstname: this.currentUser.firstname
+			}]),
 			userId: this.currentUser.id
 		});
 		this.getCategories();
 		this.getSubCategories();
 		this.initSearchInputHandler();
 		this.getBrands();
+		this.getMatters();
+		this.getColors();
+	}
+
+	getCountryUserProfile(address) {
+		return this.userService.getCountryUserProfile(address);
 	}
 
 	getCategories() {
@@ -182,6 +194,14 @@ export class PostFormComponent implements OnInit {
 		})
 	}
 
+	getMatters() {
+		return ['cachemire', 'coton', 'cuir', 'cuir exotique', 'cuir vegan', 'cuir verni', 'denim', 'fourrure', 'fourrure synthétique', 'laine', 'lézard', 'lin', 'métal', 'paille', 'pailleté', 'plastique', 'polyamide', 'polyester', 'sequin', 'soie', 'suede', 'synthétique', 'toile', 'tweed', 'veau façon poulain', 'velours', 'autre'];
+	}
+
+	getColors() {
+		return ['argenté', 'beige', 'blanc', 'bleu', 'bordeaux', 'camel', 'doré', 'gris', 'jaune', 'marine', 'marron', 'multicolore', 'noir', 'orange', 'rose', 'rouge', 'vert', 'violet', 'autre'];
+	}
+
 	sort(datas) {
 		datas.sort((a, b) => {
 			let fa = a.value,
@@ -230,6 +250,10 @@ export class PostFormComponent implements OnInit {
 			|| this.f.size.value && this.f.sizeType.value
 			|| this.f.diameter.value
 			|| this.f.sizeClothes.value;
+	}
+
+	isMatterComplete() {
+		return this.f.matter.value;
 	}
 
 	isStateChoiceComplete() {
@@ -420,7 +444,7 @@ export class PostFormComponent implements OnInit {
 		) {
 			this.notifier.notify('error', 'Le formulaire est incomplet, veuillez saisir les champs manquants.')
 			return;
-		} 
+		}
 
 		const files = [];
 		files.push(this.postProductForm.get('photoFaceUploaded').value)

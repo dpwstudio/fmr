@@ -55,6 +55,34 @@
           </a>
         </div>
       </ng-template>
+      <ng-template carouselSlide>
+        <div class="item item-slide">
+          <ng-container *ngIf="hasNoPhoto(currentProduct?.photo5)">
+            <img src="assets/img/default-img.png" alt="">
+          </ng-container>
+          <ng-container *ngIf="!hasNoPhoto(currentProduct?.photo5)">
+            <img [src]="currentProduct?.photo5" alt="">
+          </ng-container>
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photo5)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item item-slide">
+          <ng-container *ngIf="hasNoPhoto(currentProduct?.photo6)">
+            <img src="assets/img/default-img.png" alt="">
+          </ng-container>
+          <ng-container *ngIf="!hasNoPhoto(currentProduct?.photo6)">
+            <img [src]="currentProduct?.photo6" alt="">
+          </ng-container>
+          <a class="btn btn-primary btn-icon btn-slide" (click)="getCurrentImg(currentProduct?.photo6)"
+            data-toggle="modal" data-target="#DialogImage">
+            <ion-icon name="expand-outline"></ion-icon>
+          </a>
+        </div>
+      </ng-template>
     </owl-carousel-o>
   </div>
   <div class="section mt-4">
@@ -348,7 +376,7 @@
     <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-around align-items-center">
-          <div class="text-center" *ngIf="!isMyProduct(currentProduct?.userId)">
+          <div class="text-center" *ngIf="!isMyProduct(currentProduct?.userId) && currentUser">
             <a (click)="addToWishlist(currentProduct, currentUser?.id)" *ngIf="!isInWishlist()"
               class="btn btn-block btn-lg btn-icon btn-outline-warning my-0" style="width: 50px; height: 50px;">
               <ion-icon name="star-outline" class="text-warning"></ion-icon>
@@ -388,13 +416,18 @@
   <div class="section full mt-4">
     <div class="section-heading d-flex align-items-center justify-content-between">
       <h2 class="title ml-2">Commentaires</h2>
-      <button class="btn btn-icon btn-primary mr-2" data-toggle="modal" data-target="#commentForm">
-        <ion-icon name="chatbubble-ellipses"></ion-icon>
-      </button>
+      <div class="btn-action">
+        <button class="btn btn-icon btn-primary mr-1" data-toggle="modal" data-target="#commentForm">
+          <ion-icon name="chatbubble-ellipses"></ion-icon>
+        </button>
+        <button class="btn btn-icon btn-primary mr-1" data-toggle="modal" data-target="#allComments" *ngIf="comments.length > 5">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </button>
+      </div>
     </div>
     <div class="mb-2" *ngIf="comments.length > 0; else noComments">
-      <owl-carousel-o [options]="carouselSmallOptions">
-        <ng-container *ngFor="let comment of comments; trackBy:trackById">
+      <owl-carousel-o [options]="carouselSingleOptions">
+        <ng-container *ngFor="let comment of comments | slice:0:5; trackBy:trackById">
           <ng-template carouselSlide>
             <div class="item">
               <div class="user-card p-2 position-relative"
@@ -488,7 +521,7 @@
           <ion-icon name="close-outline" style="font-size: 25px"></ion-icon>
         </a>
       </div>
-      <div class="modal-body" style="background: #EDEDF5;">
+      <div class="modal-body" style="background:  #f7f7ff;">
         <div class="action-sheet-content">
           <form [formGroup]="commentForm">
             <div class="form-group basic">
@@ -508,6 +541,35 @@
   </div>
 </div>
 
+<div class="modal fade modalbox" id="allComments" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Commentaires</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          <ion-icon name="close-outline" style="font-size: 25px"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body px-4" style="background: #f7f7ff;">
+        <div class="item mb-2" *ngFor="let comment of comments">
+          <div class="user-card p-2 position-relative"
+            style="min-height: 150px; border-top: 4px solid #ddd1b69c; border-radius: 15px">
+            <div class="d-flex align-items-center" style="text-align: left; line-height: 16px;">
+              <img [src]="comment.avatar" class="imaged rounded w32 mr-1" alt="">
+              <div class="d-flex flex-column">
+                <a href="" style="font-size: 15px; font-weight: 500;">{{comment.userName | titlecase}}</a>
+                <span class="number w-100" style="font-size: 8px; color: #cacaca;">
+                  {{comment.createdAt | date:'dd/MM/YYYY'}}</span>
+              </div>
+            </div>
+            <p style="line-height: 18px; margin: 20px auto 10px;">{{comment.message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade action-sheet" id="editPriceForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -517,7 +579,7 @@
           OK
         </a>
       </div>
-      <div class="modal-body pb-2" style="background: #EDEDF5;">
+      <div class="modal-body pb-2" style="background:  #f7f7ff;">
         <div class="action-sheet-content">
           <form [formGroup]="editPriceForm" class="d-flex">
             <div class="form-group basic pr-1">

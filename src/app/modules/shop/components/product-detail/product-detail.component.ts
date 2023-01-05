@@ -39,6 +39,16 @@ export class ProductDetailComponent implements OnInit {
     dots: false,
   };
 
+  carouselSingleOptions: OwlOptions = {
+    stagePadding: 30,
+    loop: true,
+    margin: 16,
+    nav: false,
+    items: 1,
+    dots: false,
+    autoplay: true,
+  }
+
   carouselSmallOptions: OwlOptions = {
     stagePadding: 32,
     loop: true,
@@ -86,11 +96,11 @@ export class ProductDetailComponent implements OnInit {
       }
       this.getProducts(this.filtersProducts);
       this.getComments(this.filtersProducts.id);
-    });
-    this.commentForm = this.formBuilder.group({
-      comment: ['', Validators.required],
-      productId: [this.id, Validators.required],
-      userId: [this.currentUser.id, Validators.required],
+      this.commentForm = this.formBuilder.group({
+        comment: ['', Validators.required],
+        productId: [this.id, Validators.required],
+        userId: [this.currentUser?.id, Validators.required],
+      });
     });
     this.editPriceForm = this.formBuilder.group({
       price: ['', Validators.required],
@@ -118,7 +128,6 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe((products: any[]) => {
       this.products = products;
       this.currentProduct = this.products.filter(product => product.id === filtersProducts.id)[0];
-      console.log('this.currentProduct', this.currentProduct);
       this.price = String(this.currentProduct.price);
       this.amountWin = String(this.currentProduct.amountWin);
       this.productsSuggested = products.filter(product => product.category === this.currentProduct.category && product.id !== this.currentProduct.id);
@@ -143,9 +152,9 @@ export class ProductDetailComponent implements OnInit {
     if (navigator.share) {
       navigator
         .share({
-          title: 'FMR Life',
-          text: 'Pop-up store',
-          url: 'https://lumiaouvertures.fr/fmr'
+          title: 'FMR Lifestyle',
+          text: 'Pop-up store online',
+          url: 'https://kdrive.fr/fmr'
         })
         .then(() => console.log('Successful share'))
         .catch((error: any) => console.log('Error sharing', error));
@@ -167,6 +176,7 @@ export class ProductDetailComponent implements OnInit {
       })
     ).subscribe(result => {
       this.notifier.notify('success', 'Votre commentaire a été ajouté avec succès.');
+      this.commentForm.reset();
       this.getComments(this.id);
     })
   }
@@ -177,7 +187,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getCurrentImg(img) {
-    return this.currentImg = img;
+    if (img?.endsWith('_')) {
+      return this.currentImg = 'assets/img/default-img.png';
+    } else {
+      return this.currentImg = img;
+    }
   }
 
   addToWishlist(product, userId) {
@@ -204,7 +218,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getWishlists() {
-    this.productService.getWishlists(this.currentUser.id).pipe(
+    this.productService.getWishlists(this.currentUser?.id).pipe(
       catchError(error => {
         return throwError(error);
       })
@@ -250,8 +264,8 @@ export class ProductDetailComponent implements OnInit {
     return this.loves.filter(love => love.userId === userId).length > 0;
   }
 
-  isMyProduct(userId): boolean {
-    return userId === this.currentUser.id;
+  isMyProduct(userId?): boolean {
+    return userId === this.currentUser?.id;
   }
 
   onPriceChange(event) {
@@ -274,7 +288,6 @@ export class ProductDetailComponent implements OnInit {
       amount: this.editPriceForm.value,
       id: this.currentProduct.id
     }
-    console.log('prodjuct', product)
     this.productService.editProduct(product).pipe(
       catchError(error => {
         this.notifier.notify('error', error.message);
@@ -288,5 +301,9 @@ export class ProductDetailComponent implements OnInit {
 
   isSelled(status) {
     return status === 'selled';
+  }
+
+  hasNoPhoto(photo) {
+    return photo?.endsWith('_');
   }
 }

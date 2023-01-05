@@ -17,7 +17,8 @@ import { UserService } from 'src/app/modules/_shared/services/user/user.service'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  categories = [];
+  categoriesMode = [];
+  categoriesArt = [];
   productsMode: Product[] = [];
   productsDressingUser: Product[] = [];
   productsGalleryUser: Product[] = [];
@@ -90,7 +91,8 @@ export class HomeComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(categories => {
-      this.categories = categories;
+      this.categoriesMode = categories.filter(category => category.type === 'mode');
+      this.categoriesArt = categories.filter(category => category.type === 'art');
     })
   }
 
@@ -179,5 +181,15 @@ export class HomeComponent implements OnInit {
      */
   getUserImgProfile(user) {
     return this.userService.getUserImgProfile(user).avatar;
+  }
+
+  getGenderTranslate(gender) {
+    if (gender === 'womens') {
+      return 'Femme';
+    } else if (gender === 'mens') {
+      return 'Homme';
+    } else {
+      return 'Enfant';
+    }
   }
 }

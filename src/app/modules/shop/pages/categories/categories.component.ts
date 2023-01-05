@@ -10,7 +10,10 @@ import { ProductService } from 'src/app/modules/_shared/services/product/product
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  categories = [];
+  categoriesWomens = [];
+  categoriesMens = [];
+  categoriesKids = [];
+  categoriesArt = [];
   loading = false;
   subscription: Subscription;
 
@@ -26,7 +29,10 @@ export class CategoriesComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(categories => {
-      this.categories = categories;
+      this.categoriesWomens = categories.filter(category => category.gender === 'womens');
+      this.categoriesMens = categories.filter(category => category.gender === 'mens');
+      this.categoriesKids = categories.filter(category => category.gender === 'kids');
+      this.categoriesArt = categories.filter(category => category.type === 'art');
     })
   }
 

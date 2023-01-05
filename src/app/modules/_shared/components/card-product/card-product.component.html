@@ -2,7 +2,7 @@
 <div class="item position-relative">
   <a [routerLink]="['/product-detail', productId]"
     class="selled position-absolute d-flex align-items-center justify-content-center animate__animated animate__fadeInUp" *ngIf="isSelled(product.status)"
-    style="width: 100%; height: 100%; background-color: #ffffffba; z-index: 2; border-radius: 10px;">
+    style="width: 100%; height: 100%; background-color: #ffffffba; z-index: 1; border-radius: 10px;">
     <p class="text-dark" style="font-size: 25px; font-weight: 600;">Vendu</p>
   </a>
   <div class="blog-card animate__animated animate__fadeInUp">
@@ -55,7 +55,7 @@
     bottom: 0;">
       <div class="d-flex align-items-center">
         <ion-icon name="location-outline" style="margin-right: 3px"></ion-icon>
-        <span class="fi fi-fr"></span>
+        <span>France</span>
       </div>
       <button (click)="addProductToCart(product)" class="btn btn-icon btn-primary me-1">
         <ion-icon name="bag-add-outline"></ion-icon>

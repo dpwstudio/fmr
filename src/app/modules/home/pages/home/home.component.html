@@ -12,12 +12,22 @@
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
+          <app-image src="assets/img/slide/slide4.jpeg"></app-image>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item item-slide">
           <app-image src="assets/img/slide/slide2.png"></app-image>
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item item-slide">
           <app-image src="assets/img/slide/slide3.png"></app-image>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item item-slide">
+          <app-image src="assets/img/slide/slide5.jpeg"></app-image>
         </div>
       </ng-template>
     </owl-carousel-o>
@@ -41,11 +51,12 @@
   <!-- Categories -->
   <div class="section full mt-4" style="margin-top: 70px !important;">
     <div class="section-heading padding">
-      <h2 class="title">Catégories</h2>
+      <h2 class="title d-flex align-items-center">Catégories <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Mode</span></h2>
       <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
     </div>
     <owl-carousel-o [options]="carouselSmallOptions">
-      <ng-container *ngFor="let category of categories; trackBy:trackById">
+      <ng-container *ngFor="let category of categoriesMode; trackBy:trackById">
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
@@ -55,7 +66,10 @@
                 <div class="item-categories">
                   <app-image [src]="category.img"></app-image>
                 </div>
-                <strong style="text-transform: capitalize;">{{category.name}}</strong>
+                <strong class="mb-0" style="text-transform: capitalize; line-height: 13px;">
+                  {{category.name}}
+                  <br> <span class="text-secondary" style="font-size: 8px;">{{getGenderTranslate(category.gender) | uppercase}}</span>
+                </strong>
               </div>
             </a>
           </div>
@@ -207,8 +221,7 @@
         <ng-template carouselSlide>
           <!-- item -->
           <div class="item">
-            <a [routerLink]="['/profile', user.id]"
-              routerLinkActive="router-link-active">
+            <a [routerLink]="['/profile', user.id]" routerLinkActive="router-link-active">
               <div class="user-card">
                 <div class="item-categories">
                   <app-image [src]="getUserImgProfile(user)"></app-image>
@@ -236,8 +249,37 @@
   </div>
   <!-- * Bannière ART -->
 
+  <!-- Categories ART-->
+  <div class="section full mt-4">
+    <div class="section-heading padding">
+      <h2 class="title d-flex align-items-center">Catégories <span class="ml-1 text-secondary"
+          style="font-size: x-small;">Art</span></h2>
+      <a [routerLink]="['/categories']" routerLinkActive="active" class="link">Tout voir</a>
+    </div>
+    <owl-carousel-o [options]="carouselSmallOptions">
+      <ng-container *ngFor="let category of categoriesArt; trackBy:trackById">
+        <ng-template carouselSlide>
+          <!-- item -->
+          <div class="item">
+            <a [routerLink]="['/shop', {catalogType: category.type, category: category.value}]"
+              routerLinkActive="router-link-active">
+              <div class="user-card">
+                <div class="item-categories">
+                  <app-image [src]="category.img"></app-image>
+                </div>
+                <strong style="text-transform: capitalize;">{{category.name}}</strong>
+              </div>
+            </a>
+          </div>
+          <!-- * item -->
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- * Categories ART -->
+
   <!-- Nouveautés art -->
-  <div class="section full mt-4 mb-5">
+  <div class="section full mt-5 mb-5">
     <div class="section-heading padding">
       <h2 class="title d-flex align-items-center">Nouveautés <span class="ml-1 text-secondary"
           style="font-size: x-small;">Art</span></h2>

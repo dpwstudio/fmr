@@ -2,37 +2,119 @@
     "name": "sacs",
     "value": "sacs",
     "img": "assets/img/categories/mode/sac.png",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
   },
   {
     "name": "vêtements",
     "value": "vêtements",
     "img": "assets/img/categories/mode/clothes.png",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
   },
   {
     "name": "montres",
     "value": "montres",
     "img": "assets/img/categories/mode/watches.png",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
   },
   {
     "name": "joaillerie",
     "value": "joaillerie",
     "img": "assets/img/categories/mode/bijoux.jpeg",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
   },
   {
     "name": "chaussures",
     "value": "chaussures",
     "img": "assets/img/categories/mode/sneakers.png",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
   },
   {
     "name": "accessoires",
     "value": "accessoires",
     "img": "assets/img/categories/mode/chapeau.png",
-    "type": "mode"
+    "type": "mode",
+    "gender": "womens"
+  }, {
+    "name": "sacs",
+    "value": "sacs",
+    "img": "assets/img/categories/mode/mens/bags.jpg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "vêtements",
+    "value": "vêtements",
+    "img": "assets/img/categories/mode/mens/clothes.jpg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "montres",
+    "value": "montres",
+    "img": "assets/img/categories/mode/mens/watches.jpeg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "joaillerie",
+    "value": "joaillerie",
+    "img": "assets/img/categories/mode/mens/bijoux.jpg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "chaussures",
+    "value": "chaussures",
+    "img": "assets/img/categories/mode/mens/shoes.jpg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "accessoires",
+    "value": "accessoires",
+    "img": "assets/img/categories/mode/mens/chapeaux.jpg",
+    "type": "mode",
+    "gender": "mens"
+  },
+  {
+    "name": "sacs",
+    "value": "sacs",
+    "img": "assets/img/categories/mode/kids/bags.jpg",
+    "type": "mode",
+    "gender": "kids"
+  },
+  {
+    "name": "vêtements",
+    "value": "vêtements",
+    "img": "assets/img/categories/mode/kids/clothes.jpg",
+    "type": "mode",
+    "gender": "kids"
+  },
+  {
+    "name": "joaillerie",
+    "value": "joaillerie",
+    "img": "assets/img/categories/mode/kids/bijoux.png",
+    "type": "mode",
+    "gender": "kids"
+  },
+  {
+    "name": "chaussures",
+    "value": "chaussures",
+    "img": "assets/img/categories/mode/kids/shoes.jpg",
+    "type": "mode",
+    "gender": "kids"
+  },
+  {
+    "name": "accessoires",
+    "value": "accessoires",
+    "img": "assets/img/categories/mode/kids/chapeaux.jpeg",
+    "type": "mode",
+    "gender": "kids"
   },
   {
     "name": "tableaux",

@@ -80,6 +80,10 @@
 </div>
 <!-- * App Capsule -->
 
+<!----------->
+<!-- MODAL -->
+<!----------->
+
 <!-- Images Form -->
 <div class="modal fade modalbox" id="picturesForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -282,8 +286,7 @@
                       </div>
                     </a>
                   </li>
-                  <li
-                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                  <li *ngIf="showDimensions()">
                     <a href="#" class="item" data-toggle="modal" data-target="#dimensionsForm">
                       <div class="in">
                         <div>Dimensions</div>
@@ -293,8 +296,7 @@
                       </ion-icon>
                     </a>
                   </li>
-                  <li
-                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                  <li *ngIf="showMatter()">
                     <a href="#" class="item" data-toggle="modal" data-target="#mattersForm">
                       <div class="in">
                         <div>Matière</div>
@@ -302,8 +304,7 @@
                       </div>
                     </a>
                   </li>
-                  <li
-                    *ngIf="f.subCategory.value !== 'bracelets' && f.subCategory.value !== 'colliers' && f.subCategory.value !== 'boucles d\'oreilles'">
+                  <li *ngIf="showColor()">
                     <a href="#" class="item" data-toggle="modal" data-target="#colorsForm">
                       <div class="in">
                         <div>Couleur</div>
@@ -366,6 +367,155 @@
 </div>
 <!-- * Description Form -->
 
+<!-- Category Form -->
+<div class="modal fade modalbox" id="categoryForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une catégorie</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let categorie of categories">
+                  <input type="radio" id="{{categorie.name}}" name="category" formControlName="category"
+                    [value]="categorie.value" class="custom-control-input">
+                  <label class="custom-control-label" for="{{categorie.name}}"
+                    style="text-transform: capitalize;">{{categorie.name}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Category Form -->
+
+<!-- SubCategory Form -->
+<div class="modal fade modalbox" id="subCategoryForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une sous-catégorie</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <ng-container *ngIf="f.category.value === 'joaillerie'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subJewelryCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'accessoires'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subAccessoiresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'vêtements'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subVetementsCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'chaussures'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subChaussuresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'montres'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subMontresCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'sacs'">
+                  <div class="custom-control custom-radio" *ngFor="let subCategory of subSacsCategories">
+                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
+                      [value]="subCategory.name" class="custom-control-input">
+                    <label class="custom-control-label" for="{{subCategory.name}}"
+                      style="text-transform: capitalize;">{{subCategory.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === ''">
+                  <p class="p-2 text-center">Veuillez choisir une catégorie</p>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * SubCategory Form -->
+
+<!-- Brand Form -->
+<div class="modal fade modalbox" id="brandForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une marque</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form class="search-form py-2 px-2">
+              <div class="form-group searchbox">
+                <input type="text" class="form-control" [(ngModel)]="search" [ngModelOptions]="{standalone: true}"
+                  placeholder="Recherche" #searchElementRef>
+                <a class="ms-1 close toggle-searchbox" (click)="emptySearch()">
+                  <i class="icon ion-ios-close-circle" style="color: #cfcfcf;"></i>
+                </a>
+                <i class="input-icon" (click)="searchProduct()">
+                  <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
+                </i>
+              </div>
+            </form>
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let brand of brands">
+                  <input type="radio" id="{{brand.name}}" name="brand" formControlName="brand" [value]="brand.name"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="{{brand.name}}">{{brand.name}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Brand Form -->
+
 <!-- Dimensions Form -->
 <div class="modal fade action-sheet" id="dimensionsForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -379,8 +529,7 @@
       <div class="modal-body">
         <div class="wide-block pt-2 pb-2 border-0" style="background:  #f7f7ff;">
           <form [formGroup]="postProductForm" class="d-flex align-items-center justify-content-center mb-2">
-            <ng-container
-              *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === '' || f.category.value === 'accessoires'">
+            <ng-container *ngIf="showDimensionsWithLengthWidthHeight()">
               <div class="form-group basic mr-2">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -392,20 +541,20 @@
               <div class="form-group basic mr-2">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
-                    class="form-control text-center px-0 number modal-input" formControlName="height"
-                    placeholder="Haut." step="any">
+                    class="form-control text-center px-0 number modal-input" formControlName="width" placeholder="Larg."
+                    step="any">
                 </div>
               </div>
 
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
-                    class="form-control text-center px-0 number modal-input" formControlName="width" placeholder="Larg."
-                    step="any">
+                    class="form-control text-center px-0 number modal-input" formControlName="height"
+                    placeholder="Haut." step="any">
                 </div>
               </div>
             </ng-container>
-            <ng-container *ngIf="f.category.value === 'chaussures'">
+            <ng-container *ngIf="showDimensionsWithSizeType()">
               <div class="form-group basic mr-2">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -426,8 +575,7 @@
                 </div>
               </div>
             </ng-container>
-            <ng-container
-              *ngIf="f.category.value === 'montres' || f.category.value === 'joaillerie' && f.subCategory.value === 'bagues'">
+            <ng-container *ngIf="showDimensionsWithDiameter()">
               <div class="form-group basic col-6">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -439,7 +587,7 @@
                 <span>MM</span>
               </div>
             </ng-container>
-            <ng-container *ngIf="f.category.value === 'vêtements'">
+            <ng-container *ngIf="showDimensionsWithSize()">
               <div class="form-group basic d-flex justify-content-center">
                 <div class="input-wrapper">
                   <input type="text" class="form-control text-center px-0 modal-input" placeholder="Taille"
@@ -454,6 +602,75 @@
   </div>
 </div>
 <!-- * Dimensions Form -->
+
+<!-- Matter Form -->
+<div class="modal fade modalbox" id="mattersForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une matière</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <ng-container *ngIf="f.category.value !== 'montres' && f.category.value !== 'joaillerie'">
+                  <div class="custom-control custom-radio" *ngFor="let matter of mattersAll">
+                    <input type="radio" id="{{matter}}" name="matter" formControlName="matter" [value]="matter"
+                      class="custom-control-input">
+                    <label class="custom-control-label" for="{{matter}}" style="text-transform: capitalize;">{{matter.name}}</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="f.category.value === 'joaillerie' || f.category.value === 'montres'">
+                  <div class="custom-control custom-radio" *ngFor="let matter of mattersJewelry">
+                    <input type="radio" id="{{matter}}" name="matter" formControlName="matter" [value]="matter"
+                      class="custom-control-input">
+                    <label class="custom-control-label" for="{{matter}}" style="text-transform: capitalize;">{{matter.name}}</label>
+                  </div>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Matter Form -->
+
+<!-- Color Form -->
+<div class="modal fade modalbox" id="colorsForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une couleur</h5>
+        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
+          OK
+        </a>
+      </div>
+      <div class="modal-body" style="background: #f7f7ff;">
+        <div class="section full mb-2">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-radio" *ngFor="let color of getColors()">
+                  <input type="radio" id="{{color}}" name="color" formControlName="color" [value]="color"
+                    class="custom-control-input">
+                  <label class="custom-control-label" for="{{color}}">{{color | titlecase}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Color Form -->
 
 <!-- State Choice Form -->
 <div class="modal fade modalbox" id="stateForm" tabindex="-1" role="dialog">
@@ -629,6 +846,46 @@
 </div>
 <!-- * State Choice Form -->
 
+<!-- Authenticity Form -->
+<div class="modal fade action-sheet" id="proofForm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title">Choisir une preuve d'authenticité</h5>
+        <a href="#" class="d-flex" data-dismiss="modal">
+          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
+        </a>
+      </div>
+      <div class="modal-body" style="background:  #f7f7ff;">
+        <div class="section full mt-3 mb-3 px-3">
+          <div class="wide-block p-0">
+            <form [formGroup]="postProductForm">
+              <div class="input-list">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" formControlName="invoice" name="invoice"
+                    id="invoice">
+                  <label class="custom-control-label" for="invoice">Facture d'achat</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" formControlName="certificate" name="certificate"
+                    id="certificate">
+                  <label class="custom-control-label" for="certificate">Certificat d'authenticité</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" formControlName="noProof" name="noProof"
+                    id="noProof">
+                  <label class="custom-control-label" for="noProof">Aucune facture ni certificat</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- * Authenticity Form -->
+
 <!-- Amount Form -->
 <div class="modal fade action-sheet" id="amountForm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -673,252 +930,4 @@
 </div>
 <!-- * Amount Form -->
 
-<!-- Category Form -->
-<div class="modal fade modalbox" id="categoryForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une catégorie</h5>
-        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
-          OK
-        </a>
-      </div>
-      <div class="modal-body" style="background:  #f7f7ff;">
-        <div class="section full mb-2">
-          <div class="wide-block p-0">
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <div class="custom-control custom-radio" *ngFor="let categorie of categories">
-                  <input type="radio" id="{{categorie.name}}" name="category" formControlName="category"
-                    [value]="categorie.value" class="custom-control-input">
-                  <label class="custom-control-label" for="{{categorie.name}}"
-                    style="text-transform: capitalize;">{{categorie.name}}</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * Category Form -->
-
-<!-- SubCategory Form -->
-<div class="modal fade modalbox" id="subCategoryForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une sous-catégorie</h5>
-        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
-          OK
-        </a>
-      </div>
-      <div class="modal-body" style="background:  #f7f7ff;">
-        <div class="section full mb-2">
-          <div class="wide-block p-0">
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <ng-container *ngIf="f.category.value === 'joaillerie'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subJewelryCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === 'accessoires'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subAccessoiresCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === 'vêtements'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subVetementsCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === 'chaussures'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subChaussuresCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === 'montres'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subMontresCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === 'sacs'">
-                  <div class="custom-control custom-radio" *ngFor="let subCategory of subSacsCategories">
-                    <input type="radio" id="{{subCategory.name}}" name="subCategory" formControlName="subCategory"
-                      [value]="subCategory.name" class="custom-control-input">
-                    <label class="custom-control-label" for="{{subCategory.name}}"
-                      style="text-transform: capitalize;">{{subCategory.name}}</label>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="f.category.value === ''">
-                  <p class="p-2 text-center">Veuillez choisir une catégorie</p>
-                </ng-container>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * SubCategory Form -->
-
-<!-- Brand Form -->
-<div class="modal fade modalbox" id="brandForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une marque</h5>
-        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
-          OK
-        </a>
-      </div>
-      <div class="modal-body" style="background:  #f7f7ff;">
-        <div class="section full mb-2">
-          <div class="wide-block p-0">
-            <form class="search-form py-2 px-2">
-              <div class="form-group searchbox">
-                <input type="text" class="form-control" [(ngModel)]="search" [ngModelOptions]="{standalone: true}"
-                  placeholder="Recherche" #searchElementRef>
-                <a class="ms-1 close toggle-searchbox" (click)="emptySearch()">
-                  <i class="icon ion-ios-close-circle" style="color: #cfcfcf;"></i>
-                </a>
-                <i class="input-icon" (click)="searchProduct()">
-                  <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
-                </i>
-              </div>
-            </form>
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <div class="custom-control custom-radio" *ngFor="let brand of brands">
-                  <input type="radio" id="{{brand.name}}" name="brand" formControlName="brand" [value]="brand.name"
-                    class="custom-control-input">
-                  <label class="custom-control-label" for="{{brand.name}}">{{brand.name}}</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * Brand Form -->
-
-<!-- Matter Form -->
-<div class="modal fade modalbox" id="mattersForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une matière</h5>
-        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
-          OK
-        </a>
-      </div>
-      <div class="modal-body" style="background:  #f7f7ff;">
-        <div class="section full mb-2">
-          <div class="wide-block p-0">
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <div class="custom-control custom-radio" *ngFor="let matter of getMatters()">
-                  <input type="radio" id="{{matter}}" name="matter" formControlName="matter" [value]="matter"
-                    class="custom-control-input">
-                  <label class="custom-control-label" for="{{matter}}">{{matter | titlecase}}</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * Matter Form -->
-
-<!-- Color Form -->
-<div class="modal fade modalbox" id="colorsForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une couleur</h5>
-        <a href="#" class="d-flex" data-dismiss="modal" style="font-weight: 600;">
-          OK
-        </a>
-      </div>
-      <div class="modal-body" style="background: #f7f7ff;">
-        <div class="section full mb-2">
-          <div class="wide-block p-0">
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <div class="custom-control custom-radio" *ngFor="let color of getColors()">
-                  <input type="radio" id="{{color}}" name="color" formControlName="color" [value]="color"
-                    class="custom-control-input">
-                  <label class="custom-control-label" for="{{color}}">{{color | titlecase}}</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * Color Form -->
-
-<!-- Authenticity Form -->
-<div class="modal fade action-sheet" id="proofForm" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-flex align-items-center">
-        <h5 class="modal-title">Choisir une preuve d'authenticité</h5>
-        <a href="#" class="d-flex" data-dismiss="modal">
-          <ion-icon name="close-outline" style="font-size: 25px;"></ion-icon>
-        </a>
-      </div>
-      <div class="modal-body" style="background:  #f7f7ff;">
-        <div class="section full mt-3 mb-3 px-3">
-          <div class="wide-block p-0">
-            <form [formGroup]="postProductForm">
-              <div class="input-list">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" formControlName="invoice" name="invoice"
-                    id="invoice">
-                  <label class="custom-control-label" for="invoice">Facture d'achat</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" formControlName="certificate" name="certificate"
-                    id="certificate">
-                  <label class="custom-control-label" for="certificate">Certificat d'authenticité</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" formControlName="noProof" name="noProof"
-                    id="noProof">
-                  <label class="custom-control-label" for="noProof">Aucune facture ni certificat</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- * Authenticity Form -->
 <app-footer></app-footer>

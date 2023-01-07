@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.isUserConnected()) {
+    if (this.currentUser) {
       this.getTotalNotifications();
       this.getNotifications(this.currentUser.id);
     }

@@ -20,7 +20,9 @@ export class NotificationsService {
     private authService: AuthService
   ) {
     this.currentUser = this.authService.getCurrentUser();
-    this.getNotification(this.currentUser.id);
+    if(this.currentUser) {
+      this.getNotification(this.currentUser.id);
+    }
   }
 
   addNotification(type, to, from) {

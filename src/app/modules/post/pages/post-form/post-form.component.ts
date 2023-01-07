@@ -63,6 +63,8 @@ export class PostFormComponent implements OnInit {
 	catalogMode = [];
 	catalogArt = [];
 	brands = [];
+	mattersAll = [];
+	mattersJewelry = [];
 	search: string;
 	returnUrl = '';
 
@@ -152,7 +154,7 @@ export class PostFormComponent implements OnInit {
 				return throwError(error);
 			})
 		).subscribe(categories => {
-			this.catalogMode = categories.filter(category => category.type === 'mode');
+			this.catalogMode = categories.filter(category => category.type === 'mode' && category.gender === 'womens');
 			this.catalogArt = categories.filter(category => category.type === 'art');
 			this.categories = this.catalogMode;
 			this.sort(this.categories);
@@ -197,8 +199,19 @@ export class PostFormComponent implements OnInit {
 	}
 
 	getMatters() {
-		return ['cachemire', 'coton', 'cuir', 'cuir exotique', 'cuir vegan', 'cuir verni', 'denim', 'fourrure', 'fourrure synthétique', 'laine', 'lézard', 'lin', 'métal', 'paille', 'pailleté', 'plastique', 'polyamide', 'polyester', 'sequin', 'soie', 'suede', 'synthétique', 'toile', 'tweed', 'veau façon poulain', 'velours', 'autre'];
+		this.subscription = this.productService.getMatters().pipe(
+			catchError(error => {
+				return throwError(error);
+			})
+		).subscribe(matters => {
+			console.log('matters', matters);
+			this.mattersAll = matters.filter(matter => matter.category === 'all');
+			this.mattersJewelry = matters.filter(matter => matter.category === 'jewelry');
+			this.sort(this.mattersAll);
+			this.sort(this.mattersJewelry);
+		})
 	}
+
 
 	getColors() {
 		return ['argenté', 'beige', 'blanc', 'bleu', 'bordeaux', 'camel', 'doré', 'gris', 'jaune', 'marine', 'marron', 'multicolore', 'noir', 'orange', 'rose', 'rouge', 'vert', 'violet', 'autre'];
@@ -520,6 +533,52 @@ export class PostFormComponent implements OnInit {
 				return throwError(error);
 			})
 		).subscribe(res => console.log('res', res));
+	}
+
+	showDimensions() {
+		return this.f.subCategory.value !== 'lunettes'
+			&& this.f.subCategory.value !== 'bracelets'
+			&& this.f.subCategory.value !== 'colliers'
+			&& this.f.subCategory.value !== 'boucles d\'oreilles';
+	}
+
+	showDimensionsWithLengthWidthHeight() {
+		console.log('', this.f)
+		return this.f.category.value === 'sacs'
+			|| this.f.catalogType.value === 'art'
+			|| this.f.category.value === ''
+			|| this.f.category.value === 'accessoires'
+			|| this.f.subCategory.value === 'petite maroquinerie'
+			|| this.f.subCategory.value === 'carrés'
+			|| this.f.subCategory.value === 'portefeuilles'
+			&& this.f.subCategory.value !== 'chapeaux';
+	}
+
+	showDimensionsWithSizeType() {
+		return this.f.category.value === 'chaussures'
+			|| this.f.subCategory.value === 'chapeaux';
+	}
+
+	showDimensionsWithDiameter() {
+		return this.f.category.value === 'montres'
+			|| this.f.category.value === 'joaillerie'
+			&& this.f.subCategory.value === 'bagues';
+	}
+
+	showDimensionsWithSize() {
+		return this.f.category.value === 'vêtements' || this.f.category.value === 'ceintures' || this.f.category.value === 'gants';
+	}
+
+	showMatter() {
+		return this.f.subCategory.value !== 'bracelets'
+			&& this.f.subCategory.value !== 'colliers'
+			&& this.f.subCategory.value !== 'boucles d\'oreilles';
+	}
+
+	showColor() {
+		return this.f.subCategory.value !== 'bracelets'
+			&& this.f.subCategory.value !== 'colliers'
+			&& this.f.subCategory.value !== 'boucles d\'oreilles';
 	}
 
 }

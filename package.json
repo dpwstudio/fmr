@@ -24,7 +24,6 @@
     "@stripe/stripe-js": "^1.46.0",
     "angular-notifier": "^10.0.0",
     "animate.css": "^4.1.1",
-    "flag-icons": "^6.1.1",
     "moment": "^2.29.1",
     "ngx-owl-carousel-o": "^7.0.1",
     "rxjs": "~6.6.0",

@@ -33,8 +33,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/animate.css/animate.css",
-              "node_modules/flag-icons/css/flag-icons.min.css"
+              "node_modules/animate.css/animate.css"
             ],
             "scripts": [],
             "serviceWorker": true,

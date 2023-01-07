@@ -11563,7 +11563,7 @@ a:focus {
 }
 
 .appHeader .pageTitle {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   padding: 0 10px;
 }
@@ -12800,22 +12800,22 @@ a.badge-dark {
 }
 
 .image-listview>li .item .image {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 400px;
   margin-right: 16px;
 }
 
 .image-listview>li .item .icon-box {
-  min-width: 36px;
-  max-width: 36px;
-  width: 36px;
-  height: 36px;
+  min-width: 30px;
+  max-width: 30px;
+  width: 30px px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1em;
-  font-size: 22px;
+  font-size: 18px;
   border-radius: 400px;
   margin-right: 16px;
 }
@@ -12853,7 +12853,7 @@ a.badge-dark {
 }
 
 .image-listview>li.active .item {
-  background: rgba(220, 220, 233, 0.3) !important;
+  background: #b5b5da38 !important;
 }
 
 .image-listview.text>li:after {

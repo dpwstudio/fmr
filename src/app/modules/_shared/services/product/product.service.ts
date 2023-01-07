@@ -73,7 +73,7 @@ export class ProductService {
         return throwError(error);
       }),
       map((comments: Comment[]) => {
-        return comments.map(product => new Comment(product));
+        return comments.map(comment => new Comment(comment));
       })
     ) as Observable<Comment[]>;
   }

@@ -8,11 +8,14 @@ import { of, Subscription, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Comment } from 'src/app/modules/_shared/models/comment.model';
 import { FiltersProducts } from 'src/app/modules/_shared/models/filtersProducts.model';
+import { NotificationUser } from 'src/app/modules/_shared/models/notification.model';
 import { Product } from 'src/app/modules/_shared/models/product.model';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
+import { NotificationsService } from 'src/app/modules/_shared/services/notifications/notifications.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-detail',
@@ -82,6 +85,7 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private notificationService: NotificationsService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
@@ -96,6 +100,8 @@ export class ProductDetailComponent implements OnInit {
       }
       this.getProducts(this.filtersProducts);
       this.getComments(this.filtersProducts.id);
+      this.getWishlists(this.id);
+
       this.commentForm = this.formBuilder.group({
         comment: ['', Validators.required],
         productId: [this.id, Validators.required],
@@ -108,7 +114,6 @@ export class ProductDetailComponent implements OnInit {
       oldPrice: [''],
       amountWin: ['', Validators.required],
     });
-    this.getWishlists();
     this.getLoves();
   }
 
@@ -178,7 +183,20 @@ export class ProductDetailComponent implements OnInit {
       this.notifier.notify('success', 'Votre commentaire a été ajouté avec succès.');
       this.commentForm.reset();
       this.getComments(this.id);
+      this.createNotification(
+        'comment',
+        this.currentProduct,
+        this.currentUser
+      );
     })
+  }
+
+  createNotification(type, to, from) {
+    this.notificationService.addNotification(type, to, from).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(res => console.log('res', res));
   }
 
   addProductToCart(product) {
@@ -213,17 +231,22 @@ export class ProductDetailComponent implements OnInit {
       })
     ).subscribe(result => {
       this.notifier.notify('success', 'L\'article a bien été ajouté dans votre Wishlist');
-      this.getWishlists();
+      this.getWishlists(this.id);
+      this.createNotification(
+        'wishlist',
+        product,
+        this.currentUser
+      );
     })
   }
 
-  getWishlists() {
+  getWishlists(id) {
     this.productService.getWishlists(this.currentUser?.id).pipe(
       catchError(error => {
         return throwError(error);
       })
     ).subscribe(wishlists => {
-      this.wishlists = wishlists.filter(wishlist => wishlist.productId === this.id);
+      this.wishlists = wishlists.filter(wishlist => wishlist.productId === id);
     })
   }
 

@@ -35,14 +35,11 @@ export class UserService {
   }
 
   editImg(img, imgType, id) {
-    console.log('img', img);
-    console.log('this.currentUser.id', id);
     img.imgType = imgType;
     return this.http.put(`${environment.fmrApi}/users/${id}`, img);
   }
 
   editUserInfos(user, userId) {
-    console.log('user', user);
     return this.http.put(`${environment.fmrApi}/users/${userId}`, user);
   }
 
@@ -87,7 +84,6 @@ export class UserService {
   }
 
   getCountryUserProfile(address) {
-    console.log('address', address);
     if (address) {
       const userAddress = JSON.parse(address)[0];
       return userAddress.country;

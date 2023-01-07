@@ -1,0 +1,39 @@
+.item {
+  padding: 11px 13px !important;
+}
+
+.icon-notif {
+  font-size: 23px;
+  margin-right: 12px;
+}
+
+.text-grey {
+  color: lightgrey
+}
+
+.number {
+  font-size: 8px !important;
+  color: #958d9e;
+}
+
+.title {
+  font-size: 18px !important;
+}
+
+.text {
+  font-size: 14px !important;
+  color: #958d9e;
+}
+
+.image-overflow {
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}

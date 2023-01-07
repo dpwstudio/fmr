@@ -4,19 +4,22 @@ import { NotifierService } from 'angular-notifier';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin, Subscription, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { NotificationUser } from 'src/app/modules/_shared/models/notification.model';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
 import { CartService } from 'src/app/modules/_shared/services/cart/cart.service';
 import { FollowerService } from 'src/app/modules/_shared/services/follower/follower.service';
+import { NotificationsService } from 'src/app/modules/_shared/services/notifications/notifications.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, OnChanges {
+export class ProfileComponent implements OnInit {
   private readonly notifier: NotifierService;
   productsArt = [];
   productsMens = [];
@@ -55,7 +58,7 @@ export class ProfileComponent implements OnInit, OnChanges {
   id: number;
   catalogType: string;
   nbFollowers: number;
-  nbSubscriptions: number;
+  nbSubscribers: number;
 
   img = {
     dressingSrc: '',
@@ -72,6 +75,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     private userService: UserService,
     private authService: AuthService,
     private followerService: FollowerService,
+    private notificationService: NotificationsService,
     notifierService: NotifierService
   ) {
     this.notifier = notifierService;
@@ -81,7 +85,6 @@ export class ProfileComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
-      console.log('xxxxxx', this.id);
       this.catalogType = params['catalogType']; // (+) converts string 'id' to a number
       this.getUser(this.id);
       this.getCountFollowers(this.id);
@@ -91,10 +94,6 @@ export class ProfileComponent implements OnInit, OnChanges {
       this.getProducts();
       // In a real app: dispatch action to load the details here.
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('changes', changes);
   }
 
   isMyProfile() {
@@ -150,8 +149,7 @@ export class ProfileComponent implements OnInit, OnChanges {
       profileId: user.id,
       followerId: this.currentUser.id
     };
-    console.log('user', follower);
-
+    console.log('this.currentUser', this.currentUser);
     this.followerService.createFollower(follower).pipe(
       catchError(error => {
         if (error.status === 409) {
@@ -165,6 +163,11 @@ export class ProfileComponent implements OnInit, OnChanges {
       this.getFollowers(this.id);
       this.getSubscribers(this.id);
       this.notifier.notify('success', `Vous êtes maintenant abonné au profil de ${user.firstname}`);
+      this.createNotification(
+        'follower',
+        user,
+        this.currentUser
+      );
     });
   }
 
@@ -183,9 +186,8 @@ export class ProfileComponent implements OnInit, OnChanges {
       catchError(error => {
         return throwError(error);
       })
-    ).subscribe(subscription => {
-      console.log(subscription)
-      this.nbSubscriptions = subscription.length;
+    ).subscribe(subscribers => {
+      this.nbSubscribers = subscribers.length;
     })
   }
 
@@ -195,7 +197,6 @@ export class ProfileComponent implements OnInit, OnChanges {
         return throwError(error);
       }),
       map(results => {
-        console.log(results);
         let followers = [];
         results[0].forEach(follower => {
           results[1].forEach(user => {
@@ -208,7 +209,6 @@ export class ProfileComponent implements OnInit, OnChanges {
       })
     ).subscribe(followers => {
       this.followers = followers;
-      console.log('this.followers', this.followers)
     })
   }
 
@@ -222,22 +222,18 @@ export class ProfileComponent implements OnInit, OnChanges {
         return throwError(error);
       }),
       map(results => {
-        console.log(results);
         let subscribers = [];
         results[0].forEach(subscriber => {
           results[1].forEach(user => {
             if (subscriber.profileId === user.id && subscriber.followerId === id) {
-              console.log('subscriber.profileId === this.id', subscriber.profileId, this.id)
               subscribers.push(user);
             }
           })
         });
-        console.log('subscribers', subscribers)
         return subscribers;
       })
     ).subscribe(subscribers => {
       this.subscribers = subscribers;
-      console.log('this.subscribers', this.subscribers)
     })
   }
 
@@ -268,5 +264,13 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   isArtProduct(product) {
     return product.category === 'art';
+  }
+
+  createNotification(type, to, from) {
+    this.notificationService.addNotification(type, to, from).pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    ).subscribe(res => console.log('res', res));
   }
 }

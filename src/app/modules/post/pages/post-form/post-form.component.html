@@ -3,7 +3,8 @@
 <div id="appCapsule" style="overflow: hidden;">
   <div class="section mt-3 text-center">
     <h1 class="my-0 animate__animated animate__fadeInDown" style="font-size: 40px;">Vendre</h1>
-    <h4 class="text-muted mb-2 text-center animate__animated animate__fadeInDown" style="font-size: 17px;">Créer une annonce</h4>
+    <h4 class="text-muted mb-2 text-center animate__animated animate__fadeInDown" style="font-size: 17px;">Créer une
+      annonce</h4>
   </div>
 
   <div class="listview-title mt-1">Visuel</div>
@@ -71,8 +72,7 @@
   </ul>
 
   <div class="d-flex align-items-center justify-content-center mt-3 animate__animated animate__bounceIn">
-    <button (click)="addProduct()"
-      class="btn-connect bg-success animate__animated animate__pulse animate__infinite">
+    <button (click)="addProduct()" class="btn-connect bg-success animate__animated animate__pulse animate__infinite">
       <ion-icon name="checkmark-outline"></ion-icon>
     </button>
   </div>
@@ -380,7 +380,7 @@
         <div class="wide-block pt-2 pb-2 border-0" style="background:  #f7f7ff;">
           <form [formGroup]="postProductForm" class="d-flex align-items-center justify-content-center mb-2">
             <ng-container
-              *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === ''">
+              *ngIf="f.category.value === 'sacs' || f.catalogType.value === 'art' || f.category.value === '' || f.category.value === 'accessoires'">
               <div class="form-group basic mr-2">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"
@@ -427,7 +427,7 @@
               </div>
             </ng-container>
             <ng-container
-              *ngIf="f.category.value === 'montres' || f.category.value === 'joaillerie' && f.subCategory.value === 'bagues'">
+              *ngIf="f.category.value === 'montres' || f.category.value === 'joaillerie' && f.subCategory.value === 'bagues'">
               <div class="form-group basic col-6">
                 <div class="input-wrapper">
                   <input type="number" pattern="[0-9]*" inputmode="decimal"

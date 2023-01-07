@@ -35,7 +35,7 @@
         <img src="{{getUserImgProfile(user)}}" class="imaged w48 rounded mr-05" alt="">
         <h1 class="total my-0 ml-1 d-flex flex-column justify-content-start align-items-center"><span
             style="text-transform: capitalize;">{{user?.firstname}}</span>
-          <span class="badge badge-light">{{getCountryUserProfile(user?.deliveryAddress)}}</span></h1>
+          <span class="badge badge-light badge-country">{{getCountryUserProfile(user?.deliveryAddress)}}</span></h1>
       </div>
       <div class="d-flex align-items-center justify-content-around mt-2">
         <a class="chip chip-media bg-white" data-toggle="modal" data-target="#followersModal">
@@ -49,8 +49,8 @@
           <i class="chip-icon bg-primary">
             <ion-icon name="person-outline" role="img" class="md hydrated" aria-label="person outline"></ion-icon>
           </i>
-          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{nbSubscriptions}}</span>
-            {{nbSubscriptions <= 1 ? 'Abonnement' : 'Abonnements'}}</span>
+          <span class="chip-label w-100"><span class="number" style="font-size: 11px;">{{nbSubscribers}}</span>
+            {{nbSubscribers <= 1 ? 'Abonnement' : 'Abonnements'}}</span>
         </a>
         <button (click)="followProfile(user)" class="btn btn-primary btn-icon" *ngIf="!isMyProfile()">
           <ion-icon name="person-add" style="font-size: 20px;"></ion-icon>

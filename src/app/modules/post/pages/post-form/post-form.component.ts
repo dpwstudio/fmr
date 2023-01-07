@@ -7,6 +7,7 @@ import { fromEvent, Subscription, throwError } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { User } from 'src/app/modules/_shared/models/user.model';
 import { AuthService } from 'src/app/modules/_shared/services/auth/auth.service';
+import { NotificationsService } from 'src/app/modules/_shared/services/notifications/notifications.service';
 import { ProductService } from 'src/app/modules/_shared/services/product/product.service';
 import { UploadImageService } from 'src/app/modules/_shared/services/upload-image/upload-image.service';
 import { UserService } from 'src/app/modules/_shared/services/user/user.service';
@@ -73,6 +74,7 @@ export class PostFormComponent implements OnInit {
 		private userService: UserService,
 		private productService: ProductService,
 		private route: ActivatedRoute,
+		private notificationService: NotificationsService,
 		notifierService: NotifierService
 	) {
 		this.notifier = notifierService;
@@ -462,9 +464,14 @@ export class PostFormComponent implements OnInit {
 			})
 		).subscribe((res: { message: string, idProduct: number }) => {
 			console.log('res', res);
-			this.postProductForm.reset();
 			this.uploadImageService.sendMultiplePhotosToServer(files);
 			this.router.navigate(['post-confirm', res.idProduct]);
+			this.createNotification(
+				'post',
+				this.postProductForm.value,
+				this.currentUser
+			);
+			this.postProductForm.reset();
 		});
 
 	}
@@ -507,5 +514,12 @@ export class PostFormComponent implements OnInit {
 		this.getBrands(this.search);
 	}
 
+	createNotification(type, to, from) {
+		this.notificationService.addNotification(type, to, from).pipe(
+			catchError(error => {
+				return throwError(error);
+			})
+		).subscribe(res => console.log('res', res));
+	}
 
 }

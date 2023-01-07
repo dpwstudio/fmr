@@ -2,7 +2,7 @@
   position: relative;
   text-align: center;
   // background: #ddd1b6;
-  background-image: linear-gradient(0deg,  #f7f7ff 0%, #ddd1b6 100%);
+  background-image: linear-gradient(0deg, #f7f7ff 0%, #ddd1b6 100%);
 
   .in {
     position: relative;
@@ -64,4 +64,13 @@
   label {
     background: transparent;
   }
+}
+
+.badge-country {
+  font-size: 9px;
+  padding: 0 15px;
+  margin-top: 4px;
+  text-transform: uppercase;
+  background: #ddd1b6 !important;
+  color: white;
 }

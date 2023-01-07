@@ -1,7 +1,9 @@
-export interface Cart {
-	id: number;
+export interface NotificationUser {
+	id?: number;
 	type: string;
 	message: string;
-	userId: number;
-	notifiedAt: string;
+	userIdToNotify: number;
+	img?: string;
+	status: string;
+	notifiedAt?: string;
 }

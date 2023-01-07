@@ -68,7 +68,8 @@
                 </div>
                 <strong class="mb-0" style="text-transform: capitalize; line-height: 13px;">
                   {{category.name}}
-                  <br> <span class="text-secondary" style="font-size: 8px;">{{getGenderTranslate(category.gender) | uppercase}}</span>
+                  <br> <span class="text-secondary"
+                    style="font-size: 8px;">{{getGenderTranslate(category.gender) | uppercase}}</span>
                 </strong>
               </div>
             </a>
@@ -82,7 +83,9 @@
 
   <!-- Bannière MODE -->
   <div class="section full mt-3 position-relative">
-    <img src="assets/img/banniere-mode.jpg" alt="image" class="imaged w-100 square">
+    <div class="image-overflow">
+      <app-image [src]="'assets/img/banniere-mode.jpg'"></app-image>
+    </div>
     <div class="text-banner position-absolute">
       <h1 class="mb-1">DES PIECES D'EXCEPTIONS</h1>
       <p class="mb-0">Trouverez-vous la perle rare ?</p>
@@ -239,7 +242,9 @@
 
   <!-- Bannière ART -->
   <div class="section full mt-3 position-relative">
-    <img src="assets/img/banniere-art.jpg" alt="image" class="imaged w-100 square">
+    <div class="image-overflow">
+      <app-image [src]="'assets/img/banniere-art.jpg'"></app-image>
+    </div>
     <div class="text-banner position-absolute">
       <h1 class="mb-1">ART VISUEL, ART DECO</h1>
       <p class="mb-0">Tout l'art à porté de main</p>
@@ -401,7 +406,9 @@
 
   <!-- Bannière Buy sell -->
   <div class="section full mt-3 position-relative">
-    <img src="assets/img/banniere-buy-sell.jpg" alt="image" class="imaged w-100 square">
+    <div class="image-overflow">
+      <app-image [src]="'assets/img/banniere-buy-sell.jpg'"></app-image>
+    </div>
     <div class="text-banner position-absolute">
       <h1 class="mb-1">ACHETER, REVENDRE</h1>
       <p class="mb-0">Le meilleur moyen de rester dans l'air du temps</p>
